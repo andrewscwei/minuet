@@ -1,0 +1,555 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+/// Selector for label elements. Each element is meant to contain text only. For
+/// optimal results, do not nest label elements. For italics, use <i>, and for
+/// bold, use <b>. <a> is not treated as a label element and should only be used
+/// to make a nested element a hyperlink.
+///
+/// @param {string} $type ['all'] - Type of the label (i.e. 'body', 'header',
+///                                 'all')
+///
+/// @group selectors
+@mixin labels($type:'all') {
+  @if ($type == 'all') or ($type == 'body') {
+    p                  { @content; }
+    em                 { @content; }
+    strong             { @content; }
+    label              { @content; }
+    a[type='label']    { @content; }
+    li[type='label']   { @content; }
+    span[type='label'] { @content; }
+  }
+
+  @if ($type == 'all') or ($type == 'header') {
+    h1 { @content; }
+    h2 { @content; }
+    h3 { @content; }
+    h4 { @content; }
+    h5 { @content; }
+    h6 { @content; }
+  }
+}
+
+/// Selects labels with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin label($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include labels() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects labels with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin label-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include labels() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects labels with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin label-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include labels() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for static elements.
+///
+/// @group selectors
+@mixin statics() {
+  form { @content; }
+}
+
+/// Selects statics with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin static($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include statics() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects statics with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin static-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include statics() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects statics with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin static-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include statics() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for button elements.
+///
+/// @group selectors
+@mixin buttons() {
+  a[type='button']       { @content; }
+  input[type='submit']   { @content; }
+  input[type='button']   { @content; }
+  input[type='checkbox'] { @content; }
+  input[type='file']     { @content; }
+  button                 { @content; }
+}
+
+/// Selects buttons with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin button($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include buttons() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects buttons with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin button-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include buttons() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects buttons with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin button-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include buttons() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for hyperlinks.
+///
+/// @group selectors
+@mixin links() {
+  a:not([type='button']):not([type='label']) { @content; }
+}
+
+/// Selects links with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin link($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include links() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects links with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin link-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include links() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects links with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin link-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include links() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for textfield input elements.
+///
+/// @group selectors
+@mixin textfields() {
+  input[type='text']           { @content; }
+  input[type='password']       { @content; }
+  input[type='number']         { @content; }
+  input[type='date']           { @content; }
+  input[type='month']          { @content; }
+  input[type='week']           { @content; }
+  input[type='time']           { @content; }
+  input[type='datetime']       { @content; }
+  input[type='datetime-local'] { @content; }
+  input[type='email']          { @content; }
+  input[type='search']         { @content; }
+  input[type='tel']            { @content; }
+  input[type='url']            { @content; }
+  textarea                     { @content; }
+}
+
+/// Selects textfields with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin textfield($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include textfields() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects textfields with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin textfield-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include textfields() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects textfields with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin textfield-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include textfields() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for box elements.
+///
+/// @group selectors
+@mixin boxes() {
+  article    { @content; }
+  aside      { @content; }
+  details    { @content; }
+  dialog     { @content; }
+  summary    { @content; }
+  footer     { @content; }
+  header     { @content; }
+  main       { @content; }
+  figcaption { @content; }
+  figure     { @content; }
+  hgroup     { @content; }
+  nav        { @content; }
+  section    { @content; }
+  div        { @content; }
+  table      { @content; }
+  tr         { @content; }
+  td         { @content; }
+  th         { @content; }
+  tbody      { @content; }
+  thead      { @content; }
+  tfoot      { @content; }
+  col        { @content; }
+}
+
+/// Selects boxes with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin box($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include boxes() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects boxes with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin box-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include boxes() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects boxes with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin box-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include boxes() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for list elements.
+///
+/// @group selectors
+@mixin lists() {
+  ul { @content; }
+  ol { @content; }
+}
+
+/// Selects lists with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin list($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include lists() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects lists with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin list-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include lists() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects lists with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin list-id($id:'') {
+  @if ($id == '') { @warn 'ID must be specified'; }
+  @else {
+    @include lists() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for list items.
+///
+/// @group selectors
+@mixin list-items() {
+  li:not([type='label']) { @content; }
+}
+
+/// Selects list items with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin list-item($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include list-items() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects list items with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin list-item-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include list-items() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects list items with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin list-item-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include list-items() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+

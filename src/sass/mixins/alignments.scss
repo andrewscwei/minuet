@@ -1,0 +1,886 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+/// Sets the margin of an element. Similar to the original 'margin' CSS rule,
+/// except for the addition of 2 values: null and ''. If null is specified for
+/// a specific side of the margin, that side will not be set. If '' is specified
+/// for a specific side of the margin, it will take the value of the previous
+/// side.
+///
+/// @param {List} $margin - List of values for each side of the margin ordered
+///                         by top, right, bottom and left. Other than the first
+///                         value, all values are optional. If values are left
+///                         out, the behavior will be similar to the original
+///                         'margin' CSS rule (i.e. bottom matches top, right
+///                         matches left, etc).
+///
+/// @example
+///   @include margin(0px);
+///
+///   // margin-top: 0px;
+///   // margin-right: 0px;
+///   // margin-bottom: 0px;
+///   // margin-left: 0px;
+///
+/// @example
+///   @include margin(0px 5px);
+///
+///   // margin-top: 0px;
+///   // margin-right: 5px;
+///   // margin-bottom: 0px;
+///   // margin-left: 5px;
+///
+/// @example
+///   @include margin(0px 5px '' null);
+///
+///   // margin-top: 0px;
+///   // margin-right: 5px;
+///   // margin-bottom: 5px;
+///
+/// @group alignments
+@mixin margin($margin) {
+  $top: nth($margin, 1);
+  $right: if(length($margin) > 1, nth($margin, 2), $top);
+  $bottom: if(length($margin) > 2, nth($margin, 3), $top);
+  $left: if(length($margin) > 3, nth($margin, 4), $right);
+
+  @if ($right == '') { $right: $top; }
+  @if ($bottom == '') { $bottom: $right; }
+  @if ($left == '') { $left: $bottom; }
+
+  @if ($top != null) and ($top != '-') { margin-top: $top; }
+  @if ($right != null) and ($right != '-') { margin-right: $right; }
+  @if ($bottom != null) and ($bottom != '-') { margin-bottom: $bottom; }
+  @if ($left != null) and ($left != '-') { margin-left: $left; }
+}
+
+/// Sets the horizontal margins (i.e. left and right respectively). Values are
+/// optional except for the first value. If null is specified, that side of
+/// the margin will not be set. If '' is specified, the previous value will be
+/// used instead (likewise if it is left out).
+///
+/// @param {List} $margin - List of up to 2 values for left and right margins
+///                         respectively.
+///
+/// @group alignments
+@mixin marginH($margin) {
+  $left: nth($margin, 1);
+  $right: if(length($margin) > 1, nth($margin, 2), $left);
+
+  @if ($right == '') { $right: $left; }
+
+  @if ($left != null) and ($left != '-') { margin-left: $left; }
+  @if ($right != null) and ($right != '-') { margin-right: $right; }
+}
+
+/// Sets the vertical margins (i.e. top and bottom respectively). Values are
+/// optional except for the first value. If null is specified, that side of
+/// the margin will not be set. If '' is specified, the previous value will be
+/// used instead (likewise if it is left out).
+///
+/// @param {List} $margin - List of up to 2 values for top and bottom margins
+///                         respectively.
+///
+/// @group alignments
+@mixin marginV($margin) {
+  $top: nth($margin, 1);
+  $bottom: if(length($margin) > 1, nth($margin, 2), $top);
+
+  @if ($bottom == '') { $right: $top; }
+
+  @if ($top != null) and ($top != '-') { margin-top: $top; }
+  @if ($bottom != null) and ($bottom != '-') { margin-bottom: $bottom; }
+}
+
+/// Sets the padding of an element. Similar to the original 'padding' CSS rule,
+/// except for the addition of 2 values: null and ''. If null is specified for
+/// a specific side of the padding, that side will not be set. If '' is
+/// specified for a specific side of the padding, it will take the value of the
+/// previous side.
+///
+/// @param {List} $padding - List of values for each side of the padding ordered
+///                          by top, right, bottom and left. Other than the
+///                          first value, all values are optional. If values are
+///                          left out, the behavior will be similar to the
+///                          original 'padding' CSS rule (i.e. bottom matches
+///                          top, right matches left, etc).
+///
+/// @example
+///   @include padding(0px);
+///
+///   // padding-top: 0px;
+///   // padding-right: 0px;
+///   // padding-bottom: 0px;
+///   // padding-left: 0px;
+///
+/// @example
+///   @include padding(0px 5px);
+///
+///   // padding-top: 0px;
+///   // padding-right: 5px;
+///   // padding-bottom: 0px;
+///   // padding-left: 5px;
+///
+/// @example
+///   @include padding(0px 5px '' null);
+///
+///   // padding-top: 0px;
+///   // padding-right: 5px;
+///   // padding-bottom: 5px;
+///
+/// @group alignments
+@mixin padding($padding) {
+  $top: nth($padding, 1);
+  $right: if(length($padding) > 1, nth($padding, 2), $top);
+  $bottom: if(length($padding) > 2, nth($padding, 3), $top);
+  $left: if(length($padding) > 3, nth($padding, 4), $right);
+
+  @if ($right == '') { $right: $top; }
+  @if ($bottom == '') { $bottom: $right; }
+  @if ($left == '') { $left: $bottom; }
+
+  @if ($top != null) and ($top != '-') { padding-top: $top; }
+  @if ($right != null) and ($right != '-') { padding-right: $right; }
+  @if ($bottom != null) and ($bottom != '-') { padding-bottom: $bottom; }
+  @if ($left != null) and ($left != '-') { padding-left: $left; }
+}
+
+/// Sets the horizontal paddings (i.e. left and right respectively). Values are
+/// optional except for the first value. If null is specified, that side of
+/// the padding will not be set. If '' is specified, the previous value will be
+/// used instead (likewise if it is left out).
+///
+/// @param {List} $padding - List of up to 2 values for left and right paddings
+///                          respectively.
+///
+/// @group alignments
+@mixin paddingH($padding) {
+  $left: nth($padding, 1);
+  $right: if(length($padding) > 1, nth($padding, 2), $left);
+
+  @if ($right == '') { $right: $left; }
+
+  @if ($left != null) and ($left != '-') { padding-left: $left; }
+  @if ($right != null) and ($right != '-') { padding-right: $right; }
+}
+
+/// Sets the vertical paddings (i.e. top and bottom respectively). Values are
+/// optional except for the first value. If null is specified, that side of
+/// the padding will not be set. If '' is specified, the previous value will be
+/// used instead (likewise if it is left out).
+///
+/// @param {List} $padding - List of up to 2 values for top and bottom paddings
+///                          respectively.
+///
+/// @group alignments
+@mixin paddingV($padding) {
+  $top: nth($padding, 1);
+  $bottom: if(length($padding) > 1, nth($padding, 2), $top);
+
+  @if ($bottom == '') { $right: $top; }
+
+  @if ($top != null) and ($top != '-') { padding-top: $top; }
+  @if ($bottom != null) and ($bottom != '-') { padding-bottom: $bottom; }
+}
+
+/// Sets the edge of an element (i.e. top, right, bottom and left). This mixin
+/// makes setting edges similar to margins and paddings where you can apply
+/// a list of up to 4 values to set all edges. If null is specified for a
+/// specific edge, that edge will not be set. If '' is specified for a specific
+/// edge, it will take the value of the previous edge.
+///
+/// @param {List} $edge - List of values for each edge ordered by top, right,
+///                       bottom and left. Other than the first value, all
+///                       values are optional. If values are left out, the
+///                       behavior will be similar to what the 'padding' and
+///                       'margin' CSS rules would do (i.e. bottom matches top,
+///                       right matches left, etc).
+///
+/// @example
+///   @include edge(0px);
+///
+///   // top: 0px;
+///   // right: 0px;
+///   // bottom: 0px;
+///   // left: 0px;
+///
+/// @example
+///   @include edge(0px 5px);
+///
+///   // top: 0px;
+///   // right: 5px;
+///   // bottom: 0px;
+///   // left: 5px;
+///
+/// @example
+///   @include edge(0px 5px '' null);
+///
+///   // top: 0px;
+///   // right: 5px;
+///   // bottom: 5px;
+///
+/// @group alignments
+@mixin edge($edge) {
+  $top: nth($edge, 1);
+  $right: if(length($edge) > 1, nth($edge, 2), $top);
+  $bottom: if(length($edge) > 2, nth($edge, 3), $top);
+  $left: if(length($edge) > 3, nth($edge, 4), $right);
+
+  @if ($right == '') { $right: $top; }
+  @if ($bottom == '') { $bottom: $right; }
+  @if ($left == '') { $left: $bottom; }
+
+  @if ($top != null) and ($top != '-') { top: $top; }
+  @if ($right != null) and ($right != '-') { right: $right; }
+  @if ($bottom != null) and ($bottom != '-') { bottom: $bottom; }
+  @if ($left != null) and ($left != '-') { left: $left; }
+}
+
+/// Sets the horizontal edges (i.e. left and right respectively). Values are
+/// optional except for the first value. If null is specified, that side of
+/// the edge will not be set. If '' is specified, the previous value will be
+/// used instead (likewise if it is left out).
+///
+/// @param {List} $edge - List of up to 2 values for top and bottom edges
+///                       respectively.
+///
+/// @group alignments
+@mixin edgeH($edge) {
+  $left: nth($edge, 1);
+  $right: if(length($edge) > 1, nth($edge, 2), $left);
+
+  @if ($right == '') { $right: $left; }
+
+  @if ($left != null) and ($left != '-') { left: $left; }
+  @if ($right != null) and ($right != '-') { right: $right; }
+}
+
+/// Sets the vertical edges (i.e. top and bottom respectively). Values are
+/// optional except for the first value. If null is specified, that side of
+/// the edge will not be set. If '' is specified, the previous value will be
+/// used instead (likewise if it is left out).
+///
+/// @param {List} $edge - List of up to 2 values for left and right edges
+///                       respectively.
+///
+/// @group alignments
+@mixin edgeV($edge) {
+  $top: nth($edge, 1);
+  $bottom: if(length($edge) > 1, nth($edge, 2), $top);
+
+  @if ($bottom == '') { $right: $top; }
+
+  @if ($top != null) and ($top != '-') { top: $top; }
+  @if ($bottom != null) and ($bottom != '-') { bottom: $bottom; }
+}
+
+/// Clearfix hack for floated elements.
+///
+/// @group alignments
+@mixin clearfix() {
+  *zoom: 1;
+
+  &:before {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/// Transforms containing selector into a container that can freely align child
+/// inline-blocks with no fixed width/height requirements. Beware of whitespace
+/// between inline elements.
+///
+/// @param {List}   $alignH ['center'] - Horizontal alignment of child elements
+///                                      (i.e. left, center, right). Option to
+///                                      specify left/right paddings
+///                                      respectively.
+/// @param {List}   $alignV ['center'] - Vertical alignment of child elements
+///                                      (i.e. top, center, bototm). Option to
+///                                      specify top/bottom paddings
+///                                      respectively.
+/// @param {string} $inline [false]    - Specifies if this block is an inline
+///                                      block.
+///
+/// @group alignments
+@mixin fluid-block($alignH:'center', $alignV:'center', $inline:false) {
+  @if $alignH != null and length($alignH) > 0 {
+    @if length($alignH) > 1 { padding-left: nth($alignH, 2);  }
+    @if length($alignH) > 2 { padding-right: nth($alignH, 3); }
+  }
+
+  @if $alignV != null and length($alignV) > 0 {
+    @if length($alignV) > 1 { padding-top: nth($alignV, 2);    }
+    @if length($alignV) > 2 { padding-bottom: nth($alignV, 3); }
+  }
+
+  $h: nth($alignH, 1);
+  $v: nth($alignV, 1);
+
+  @if      $h == 'left'                     { text-align: left;   }
+  @else if $h == 'center' or $h == 'middle' { text-align: center; }
+  @else if $h == 'right'                    { text-align: right;  }
+
+  @if      $v == 'top'                      { & > * { vertical-align: top;    } }
+  @else if $v == 'center' or $v == 'middle' { & > * { vertical-align: middle; } }
+  @else if $v == 'bottom'                   { & > * { vertical-align: bottom; } }
+
+  @if   $inline == true { display: inline-block; }
+  @else                 { display: block;        }
+
+  & > * {
+    display: inline-block;
+  }
+
+  &:before {
+    height: 100%;
+    vertical-align: middle;
+    content: '';
+    display: inline-block;
+  }
+}
+
+/// Transforms containing selector into a flexbox which auto aligns child
+/// elements according to the specified params.
+///
+/// @param {List}    $alignH ['center'] - Horizontal alignment of child elements
+///                                       (i.e. left, center, right). Option to
+///                                       specify left/right paddings
+///                                       respectively.
+/// @param {List}    $alignV ['center'] - Vertical alignment of child elements
+///                                       (i.e. top, middle, bottom). Option to
+///                                       specify top/bottom paddings
+///                                       respectively.
+/// @param {boolean} $direction [row]   - Determines the main axis (i.e. row,
+///                                       row-reverse, column, column-reverse).
+/// @param {boolean} $wrap [false]      - Determines if wrapping is enabled.
+/// @param {string}  $inline [false]    - Specifies if this flexbox is inline.
+/// @param {string}  $uniform [false]   - Specifies if this flexbox has uniform
+///                                       sized items.
+///
+/// @group alignments
+@mixin flex-block($alignH:'center', $alignV:'center', $direction:row, $wrap:false, $inline:false, $uniform:false) {
+  line-height: normal;
+  white-space: normal;
+
+  & > * {
+    flex-shrink: if($wrap == true, 1, 0);
+  }
+
+  @if $uniform == true {
+    & > * {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
+
+  @if   $wrap == true { flex-wrap: wrap; flex-shrink: 1; }
+  @else               { flex-wrap: nowrap; }
+
+  @if $alignH != null and length($alignH) > 0 {
+    @if length($alignH) > 1 { padding-left: nth($alignH, 2);  }
+    @if length($alignH) > 2 { padding-right: nth($alignH, 3); }
+  }
+
+  @if $alignV != null and length($alignV) > 0 {
+    @if length($alignV) > 1 { padding-top: nth($alignV, 2);    }
+    @if length($alignV) > 2 { padding-bottom: nth($alignV, 3); }
+  }
+
+  $h: nth($alignH, 1);
+  $v: nth($alignV, 1);
+
+  @if $direction == 'row' {
+    flex-direction: row;
+
+    @if      $h == 'left'                     { justify-content: flex-start; }
+    @else if $h == 'center' or $h == 'middle' { justify-content: center;     }
+    @else if $h == 'right'                    { justify-content: flex-end;   }
+
+    @if      $v == 'top'                      { align-items: flex-start; align-content: flex-start; }
+    @else if $v == 'center' or $v == 'middle' { align-items: center;     align-content: center;     }
+    @else if $v == 'bottom'                   { align-items: flex-end;   align-content: flex-end;   }
+  }
+  @else if $direction == 'row-reverse' {
+    flex-direction: row-reverse;
+
+    @if      $h == 'left'                     { justify-content: flex-end;   }
+    @else if $h == 'center' or $h == 'middle' { justify-content: center;     }
+    @else if $h == 'right'                    { justify-content: flex-start; }
+
+    @if      $v == 'top'                      { align-items: flex-start; align-content: flex-start; }
+    @else if $v == 'center' or $v == 'middle' { align-items: center;     align-content: center;     }
+    @else if $v == 'bottom'                   { align-items: flex-end;   align-content: flex-end;   }
+  }
+  @else if $direction == 'column' {
+    flex-direction: column;
+
+    @if      $v == 'top'                       { justify-content: flex-start; }
+    @else if $v == 'center' or $v == 'middle'  { justify-content: center;     }
+    @else if $v == 'bottom'                    { justify-content: flex-end;   }
+
+    @if      $h == 'left'                     { align-items: flex-start; align-content: flex-start; }
+    @else if $h == 'center' or $h == 'middle' { align-items: center;     align-content: center;     }
+    @else if $h == 'right'                    { align-items: flex-end;   align-content: flex-end;   }
+  }
+  @else if $direction == 'column-reverse' {
+    flex-direction: column-reverse;
+
+    @if      $v == 'top'                       { justify-content: flex-end;   }
+    @else if $v == 'center' or $v == 'middle'  { justify-content: center;     }
+    @else if $v == 'bottom'                    { justify-content: flex-start; }
+
+    @if      $h == 'left'                     { align-items: flex-start; align-content: flex-start; }
+    @else if $h == 'center' or $h == 'middle' { align-items: center;     align-content: center;     }
+    @else if $h == 'right'                    { align-items: flex-end;   align-content: flex-end;   }
+  }
+
+  @if   $inline == true { display: inline-flex; }
+  @else                 { display: flex;        }
+}
+
+/// Transforms the containing selector into a grid driven by flexbox. This grid
+/// supports the 4 directions available in flex-direction. It is not a good idea
+/// to directly tweak the margin and padding rules of this grid. If you must
+/// specify a margin, either put this grid in a parent container and tweak the
+/// margins of that instead, or manually take the internal paddings of the grid
+/// into account. The same goes for the individual items inside the grid. If the
+/// margin/padding rules must be tweaked, it is a better idea to have a child
+/// container and tweak the rules of that instead.
+///
+/// @param {List}    $size [auto]    - Specifies the size of this grid,
+///                                        complies to the size mixin.
+/// @param {string}  $direction [row]    - Specifies the direction of this grid,
+///                                        complies to the rules supported by
+///                                        flex-direction.
+/// @param {number}  $base-length [auto] - The length of the fixed side of the
+///                                        items. If the direction of the grid
+///                                        is horizontal, this value would refer
+///                                        to the row height. Similarly, if the
+///                                        direction of the grid is vertical,
+///                                        this value would refer to the column
+///                                        width.
+/// @param {number}  $base-count [0]     - The number of items in this grid's
+///                                        direction. For example, if the
+///                                        direction is horizontal, this value
+///                                        would refer to the number of columns.
+///                                        This value must be greater than or
+///                                        equal to 0. If number is 0, there will
+///                                        not be a fixed number of items per
+///                                        direction - the items will simply
+///                                        position freely as long as a given
+///                                        direction has enough room. If this
+///                                        value is greater than 0, each item
+///                                        will have an automatically assigned
+///                                        length to the side that is parallel to
+///                                        the direction.
+/// @param {List}    $padding [0px true] - Specifies the padding between each
+///                                        grid item. The first value specifies
+///                                        the actual length of the gap, whereas
+///                                        the second value is a boolean that
+///                                        specifies whether gaps should be
+///                                        applied to outmost items (hence the
+///                                        grid itself will have an inner padding
+///                                        of the gap value).
+/// @param {boolean} $autosize [false]   - Specifies whether grid items will
+///                                        automatically fill the rest of the
+///                                        grid if there are empty spaces.
+///
+/// @group alignments
+@mixin flex-grid($size:auto, $direction:row, $base-length:auto, $base-count:0, $padding:0px true, $autosize:false) {
+  @if ($base-count < 0) { @warn 'Value provided for base-count must be >= 0'; }
+
+  $_bordered: if(length($padding) > 1, nth($padding, 2), true);
+  $_padding: nth($padding, 1);
+  $_basis: auto;
+  $_orientation: if($direction == 'row' or $direction == 'row-reverse', 'horizontal', 'vertical');
+  $_width: nth($size, 1);
+  $_height: if(length($size) > 1, nth($size, 2), nth($size, 1));
+
+  @include flex-block('left', 'top', $direction, true);
+  @include size($size);
+  width: if((type-of($_width) == number) and ($_bordered == false), calc(#{$_width} + #{$_padding}), $_width);
+  height: if((type-of($_height) == number) and ($_bordered == false), calc(#{$_height} + #{$_padding}), $_height);
+  margin: if($_bordered == true, 0, #{-$_padding} 0 0 #{-$_padding});
+  padding: if($_bordered == true, #{$_padding / 2}, 0);
+
+  & > * {
+    margin: if($_bordered == true, #{$_padding / 2}, #{$_padding} 0 0 #{$_padding});
+    flex-basis: auto;
+    flex-grow: if($autosize == true, 1, 0);
+    flex-shrink: 0;
+    overflow: hidden;
+
+    @if ($base-count > 0) {
+      @if ($_bordered == true) {
+        & &.base-1 { flex-basis: calc(#{100 / $base-count * min(1, $base-count)}% - #{$_padding}); }
+        &.base-2   { flex-basis: calc(#{100 / $base-count * min(2, $base-count)}% - #{$_padding}); }
+        &.base-3   { flex-basis: calc(#{100 / $base-count * min(3, $base-count)}% - #{$_padding}); }
+        &.base-4   { flex-basis: calc(#{100 / $base-count * min(4, $base-count)}% - #{$_padding}); }
+        &.base-5   { flex-basis: calc(#{100 / $base-count * min(5, $base-count)}% - #{$_padding}); }
+        &.base-6   { flex-basis: calc(#{100 / $base-count * min(6, $base-count)}% - #{$_padding}); }
+      }
+      @else {
+        &, &.base-1 { flex-basis: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(1, $base-count)} + #{$_padding * (min(1, $base-count) - 1)}); }
+        &.base-2    { flex-basis: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(2, $base-count)} + #{$_padding * (min(2, $base-count) - 1)}); }
+        &.base-3    { flex-basis: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(3, $base-count)} + #{$_padding * (min(3, $base-count) - 1)}); }
+        &.base-4    { flex-basis: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(4, $base-count)} + #{$_padding * (min(4, $base-count) - 1)}); }
+        &.base-5    { flex-basis: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(5, $base-count)} + #{$_padding * (min(5, $base-count) - 1)}); }
+        &.base-6    { flex-basis: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(6, $base-count)} + #{$_padding * (min(6, $base-count) - 1)}); }
+      }
+    }
+
+    @if ($_orientation == 'horizontal') {
+      @if ($base-count > 0) {
+        @if ($_bordered == true) {
+          &, &.base-1 { width: calc(#{100 / $base-count * min(1, $base-count)}% - #{$_padding}); }
+          &.base-2    { width: calc(#{100 / $base-count * min(2, $base-count)}% - #{$_padding}); }
+          &.base-3    { width: calc(#{100 / $base-count * min(3, $base-count)}% - #{$_padding}); }
+          &.base-4    { width: calc(#{100 / $base-count * min(4, $base-count)}% - #{$_padding}); }
+          &.base-5    { width: calc(#{100 / $base-count * min(5, $base-count)}% - #{$_padding}); }
+          &.base-6    { width: calc(#{100 / $base-count * min(6, $base-count)}% - #{$_padding}); }
+        }
+        @else {
+          &, &.base-1 { width: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(1, $base-count)} + #{$_padding * (min(1, $base-count) - 1)}); }
+          &.base-2    { width: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(2, $base-count)} + #{$_padding * (min(2, $base-count) - 1)}); }
+          &.base-3    { width: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(3, $base-count)} + #{$_padding * (min(3, $base-count) - 1)}); }
+          &.base-4    { width: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(4, $base-count)} + #{$_padding * (min(4, $base-count) - 1)}); }
+          &.base-5    { width: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(5, $base-count)} + #{$_padding * (min(5, $base-count) - 1)}); }
+          &.base-6    { width: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(6, $base-count)} + #{$_padding * (min(6, $base-count) - 1)}); }
+        }
+      }
+
+      height: $base-length;
+    }
+    @else {
+      width: $base-length;
+
+      @if ($base-count > 0) {
+        @if ($_bordered == true) {
+          &, &.base-1 { height: calc(#{100 / $base-count * min(1, $base-count)}% - #{$_padding}); }
+          &.base-2    { height: calc(#{100 / $base-count * min(2, $base-count)}% - #{$_padding}); }
+          &.base-3    { height: calc(#{100 / $base-count * min(3, $base-count)}% - #{$_padding}); }
+          &.base-4    { height: calc(#{100 / $base-count * min(4, $base-count)}% - #{$_padding}); }
+          &.base-5    { height: calc(#{100 / $base-count * min(5, $base-count)}% - #{$_padding}); }
+          &.base-6    { height: calc(#{100 / $base-count * min(6, $base-count)}% - #{$_padding}); }
+        }
+        @else {
+          &, &.base-1 { height: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(1, $base-count)} + #{$_padding * (min(1, $base-count) - 1)}); }
+          &.base-2    { height: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(2, $base-count)} + #{$_padding * (min(2, $base-count) - 1)}); }
+          &.base-3    { height: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(3, $base-count)} + #{$_padding * (min(3, $base-count) - 1)}); }
+          &.base-4    { height: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(4, $base-count)} + #{$_padding * (min(4, $base-count) - 1)}); }
+          &.base-5    { height: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(5, $base-count)} + #{$_padding * (min(5, $base-count) - 1)}); }
+          &.base-6    { height: calc((100% - #{$_padding * ($base-count)}) / #{$base-count} * #{min(6, $base-count)} + #{$_padding * (min(6, $base-count) - 1)}); }
+        }
+      }
+    }
+  }
+}
+
+/// Aligns an element horizontally and vertically.
+///
+/// @param {List}   $alignH ['left']     - List of up to 3 values that describes
+///                                        the horizontal alignment. First value
+///                                        represents the direction (i.e. left,
+///                                        center, right) and the second and
+///                                        third value are the left and right
+///                                        edges respectively.
+/// @param {List}   $alignV ['top']      - List of up to 3 values that describes
+///                                        the vertical alignment. First value
+///                                        represents the direction (i.e. top,
+///                                        center, bottom) and the second and
+///                                        third value are the top and bottom
+///                                        edges respectively.
+/// @param {string} $type ['absolute']   - Specifies the position type (i.e.
+///                                        absolute or fixed).
+///
+/// @group alignments
+@mixin align($alignH:'left', $alignV:'top', $type:'absolute') {
+  @if ($type == 'absolute') or ($type == 'abs') {
+    @include abs-align($alignH, $alignV);
+  }
+  @else if ($type == 'fixed') or ($type == 'fix') {
+    @include fixed-align($alignH, $alignV);
+  }
+  @else if ($type == 'inline') {
+    @include inline-align($alignH, $alignV);
+  }
+}
+
+/// Aligns containing selector to specified x/y directions in absolute position.
+///
+/// @param {List} $alignH ['left'] - Horizontal alignment (left|center|right,
+///                                  left|right offset, right offset).
+/// @param {List} $alignV ['top']  - Vertical alignment (top|center|middle|bottom,
+///                                  top|bottom offset, bottom offset).
+///
+/// @group alignments
+@mixin abs-align($alignH:'left', $alignV:'top') {
+  @include edge(auto);
+  @include margin(0);
+  position: absolute;
+
+  @if $alignH != null and length($alignH) > 0 {
+    $align: nth($alignH, 1);
+    $left: if(length($alignH) > 1, nth($alignH, 2), null);
+    $right: if(length($alignH) > 2, nth($alignH, 3), null);
+
+    @if $align == 'left' {
+      left: 0px;
+    }
+    @else if $align == 'center' or $align == 'middle' {
+      @include marginH(auto);
+      left: 0px;
+      right: 0px;
+    }
+    @else if $align == 'right' {
+      right: 0px;
+    }
+
+    @include edgeH($left $right);
+  }
+
+  @if $alignV != null and length($alignV) > 0 {
+    $align: nth($alignV, 1);
+    $top: if(length($alignV) > 1, nth($alignV, 2), null);
+    $bottom: if(length($alignV) > 2, nth($alignV, 3), null);
+
+    @if $align == 'top' {
+      top: 0px;
+    }
+    @else if $align == 'center' or $align == 'middle' {
+      @include marginV(auto);
+      top: 0px;
+      bottom: 0px;
+    }
+    @else if $align == 'bottom' {
+      bottom: 0px;
+    }
+
+    @include edgeV($top $bottom);
+  }
+}
+
+// Aligns containing selector to specified x/y directions in fixed position.
+//
+// @param {List} $alignH ['left'] - Horizontal alignment (left|center|right,
+//                                  left|right offset, right offset).
+// @param {List} $alignV ['top']  - Vertical alignment (top|center|middle|bottom,
+//                                  top|bottom offset, bottom offset).
+//
+// @group alignments
+@mixin fixed-align($alignH:'left', $alignV:'top') {
+  @include abs-align($alignH, $alignV);
+  position: fixed;
+}
+
+/// Aligns containing inline-block to specified x/y directions in relative
+/// position.
+///
+/// @param {string} $alignH ['left'] - Horizontal alignment (i.e. left, center,
+///                                    right).
+/// @param {string} $alignV ['top']  - Vertical alignment (i.e. top, middle,
+///                                    bottom).
+///
+/// @group alignments
+@mixin inline-align($alignH:'left', $alignV:'top') {
+  position: relative;
+
+  // Horizontal alignment cannot be altered at the child level. Tweak the
+  // parent's text-align rule instead.
+
+  @if      $alignV == 'top'                           { vertical-align: top;    }
+  @else if $alignV == 'center' or $alignV == 'middle' { vertical-align: middle; }
+  @else if $alignV == 'bottom'                        { vertical-align: bottom; }
+}
+
+/// Transforms target selector into a container for parallax elements.
+///
+/// @param {number} $perspective [1] - Tweak this value to adjust perspective.
+///
+/// @see {mixin} parallax-element
+///
+/// @group alignments
+@mixin parallax-block($perspective:1) {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: #{$perspective + px};
+  transform-style: preserve-3d;
+}
+
+/// Transforms target selector into a parallax element. The target selector must
+/// be a child of a parallax-block.
+///
+/// @param {number} $z [0] - Position in the z-axis.
+///
+/// @see {mixin} parallax-block
+///
+/// @group alignments
+@mixin parallax-element($z:0) {
+  transform: translateZ(#{$z}px);
+}
+
+/// Sets the size of the target selector.
+///
+/// @param {number|List} $size         - Specifies the width and height of the
+///                                      selector. If only 1 value is provided,
+///                                      both width and height will use that
+///                                      value. If 2 values are provided, they
+///                                      will be used for the width and height
+///                                      respectively.
+/// @param {boolean}     $oval [false] - Specifies whether the selector is oval
+///                                      shaped (hence rounded corners
+///                                      corresponding to the shortest side).
+///
+/// @group alignments
+@mixin size($size, $oval:false) {
+  @if (length($size) > 1) {
+    @if (nth($size, 1) != null) { width: nth($size, 1); }
+    @if (nth($size, 2) != null) { height: nth($size, 2); }
+  }
+  @else {
+    @if ($size != null) {
+      width: $size;
+      height: $size;
+    }
+  }
+
+  @if ($oval == true) {
+    @include mask();
+    $d: if(length($size) > 1, min(nth($size, 1), nth($size, 2)), $size);
+    border-radius: $d / 2;
+  }
+}
+
+/// Sets the max size of the target selector.
+///
+/// @param {number|List} $size - Specifies the max width and height of the
+///                              selector. If only 1 value is provided, both
+///                              max-width and max-height will use that value.
+///                              If 2 values are provided, they will be used for
+///                              max-width and max-height respectively.
+///
+/// @group alignments
+@mixin max-size($size) {
+  @if (length($size) > 1) {
+    @if (nth($size, 1) != null) { max-width: nth($size, 1); }
+    @if (nth($size, 2) != null) { max-height: nth($size, 2); }
+  }
+  @else {
+    @if ($size != null) {
+      max-width: $size;
+      max-height: $size;
+    }
+  }
+}
+
+/// Sets the min size of the target selector.
+///
+/// @param {number|List} $size - Specifies the min width and height of the
+///                              selector. If only 1 value is provided, both
+///                              min-width and min-height will use that value.
+///                              If 2 values are provided, they will be used for
+///                              min-width and min-height respectively.
+///
+/// @group alignments
+@mixin min-size($size) {
+  @if (length($size) > 1) {
+    @if (nth($size, 1) != null) { min-width: nth($size, 1); }
+    @if (nth($size, 2) != null) { min-height: nth($size, 2); }
+  }
+  @else {
+    @if ($size != null) {
+      min-width: $size;
+      min-height: $size;
+    }
+  }
+}
+
+/// Applies mask to target selector.
+///
+/// @group alignments
+@mixin mask() {
+  overflow: hidden;
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+/// Hides the target selector.
+///
+/// @param {boolean} $forced [true] - Specifies whether !important is tagged.
+///
+/// @group alignments
+@mixin hidden($forced:true) {
+  @if ($forced == true) {
+    display: none !important;
+  }
+  @else {
+    display: none;
+  }
+}
+
+/// Makes the target selector invisible.
+///
+/// @param {boolean} $forced [true] - Specifies whether !important is tagged.
+///
+/// @group alignments
+@mixin invisible($forced:true) {
+  @if ($forced == true) {
+    visibility: hidden !important;
+  }
+  @else {
+    visibility: hidden;
+  }
+}
+
+/// Fits dimension to parent container.
+///
+/// @param {boolean} $w [true]            - Specifies whether to fit the width.
+/// @param {boolean} $h [true]            - Specifies whether to fit the height.
+/// @param {boolean} $useViewport [false] - Specifies whether measurements are
+///                                         relevant to the viewport.
+///
+/// @group alignments
+@mixin auto-fit($w:true, $h:true, $useViewport:false) {
+  @if ($w == true) { width: if($useViewport == true, 100vw, 100%); }
+  @if ($h == true) { height: if($useViewport == true, 100vh, 100%); }
+}
+
+/// Makes a video fill the parent block, maintaining aspect ratio and centered
+/// (like background-size: cover).
+///
+/// @group alignments
+@mixin cover-video() {
+  @include abs-align('left' 50%, 'top' 50%);
+  @include size(auto);
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+/// Sets the overflow of the target selector.
+///
+/// @param {number|List} $overflow - Specifies the overflow of the selector. If
+///                                  only 1 value is provided, both overflow-x
+///                                  and overflow-y use that value. If 2 values
+///                                  are provided, they will be used for
+///                                  overflow-x and overflow-y respectively.
+///
+/// @group alignments
+@mixin overflow($overflow) {
+  @if (length($overflow) > 1) {
+    overflow-x: nth($overflow, 1);
+    overflow-y: nth($overflow, 2);
+  }
+  @else {
+    overflow: $overflow;
+  }
+}

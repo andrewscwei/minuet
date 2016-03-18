@@ -1,0 +1,95 @@
+@import '~sass/minuet';
+
+main {
+  @include size(100% 100%);
+  @include transition(all, 1s, ease);
+  @include parallax-block(100);
+  background: rgb(20, 20, 90);
+
+  @include labels() {
+    @include font('Helvetica Neue' 'Helvetica' sans-serif, 1.5em, 100);
+    line-height: 1.4em;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+  }
+
+  @include links() {
+    color: purple;
+  }
+
+  img {
+    @include auto-fit();
+    object-fit: cover;
+  }
+
+  video {
+    @include cover-video();
+  }
+
+  @include box-id('flex-block') {
+    @include flex-block($alignH:'left', $alignV:'center', $direction:row, $uniform:true);
+    color: white;
+    background: black;
+
+    & > div {
+      @include flex-block($alignH:'center', $alignV:'center', $direction:column);
+      @include size(auto 100%);
+      padding: 20px;
+      text-align: center;
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) { background: rgba(100, 100, 100, $i * 0.1); }
+      }
+    }
+  }
+
+  @include box-id('fluid-block') {
+    @include fluid-block();
+    color: white;
+    background: rgb(10, 10, 10);
+
+    & > div {
+      @include size(80%);
+      @include fluid-block($inline:true);
+      padding: 20px;
+      background: rgb(20, 20, 20);
+    }
+  }
+
+  @include box-id('parallax-block') {
+    pointer-events: none;
+
+    & > div {
+      @include flex-block();
+      width: 100%;
+      height: 33.333333%;
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          @include parallax-element(#{(($i - 1) * 10)});
+          background: rgba(100, 100, 100, $i * 0.1);
+        }
+      }
+    }
+  }
+
+  @include box-id('flex-grid') {
+    @include flex-grid(100% auto, row, 300px, 4, 1px false);
+
+    & > div.generic {
+      @include flex-block();
+      padding: 20px;
+      background: rgb(10, 10, 10);
+
+      @include labels() { width: 100%; }
+      @include labels('header') { @include font(null, 8em, 100); }
+      @include labels('body') { @include font(null, 2.0em, 100); }
+    }
+
+    & > * {
+      @include transition(all, 0.4s, ease-out);
+      @include state('hover') { opacity: 0.4; }
+    }
+  }
+}
+

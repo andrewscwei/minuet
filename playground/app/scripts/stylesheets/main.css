@@ -1,0 +1,7 @@
+@import url('~minuet.min.css');
+
+main {
+  width: 100%;
+  height: 100%;
+  background: rgb(20, 20, 20);
+}
