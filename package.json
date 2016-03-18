@@ -1,0 +1,52 @@
+{
+  "name": "minuet",
+  "version": "0.1.0",
+  "description": "An experimental stylesheet library.",
+  "homepage": "http://VARIANTE.github.io/minuet",
+  "license": "MIT",
+  "authors": [
+    "Andrew Wei <andrew@variante.io>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VARIANTE/minuet.git"
+  },
+  "scripts": {
+    "clean": "rimraf dist && rimraf lib",
+    "clean:docs": "rimraf docs",
+    "clean:play": "rimraf playground/public",
+    "build": "npm run clean && npm run build:css:sass && npm run build:sass && npm run build:stylus",
+    "build:css:sass": "mkdir -p dist && node-sass src/sass/minuet.scss dist/minuet.css --output-style=expanded --include-path=src/sass && node-sass src/sass/minuet.scss dist/minuet.min.css --output-style=compressed --include-path=src/sass",
+    "build:css:stylus": "mkdir -p dist && stylus src/stylus/minuet.styl -o dist/minuet.css -I src/stylus --include-css && stylus src/stylus/minuet.styl -o dist/minuet.min.css -I src/stylus --include-css -c",
+    "build:sass": "mkdir -p lib/sass && ncp src/sass lib/sass",
+    "build:stylus": "mkdir -p lib/stylus && ncp src/stylus lib/stylus",
+    "build:docs": "sassdoc src/sass -d docs",
+    "build:play:templates": "jade -O \"{basedir:'playground/app/templates'}\" -o playground/public playground/app/templates/index.jade",
+    "build:play:scripts": "webpack --colors --profile --config ./playground/webpack.config.babel.js --display-error-details",
+    "serve:play": "webpack-dev-server --progress --inline --hot --config playground/webpack.config.babel.js --content-base playground/public --port 8080",
+    "docs": "npm run clean:docs && npm run build:docs",
+    "play": "npm run clean && npm run build && npm run clean:play && npm run build:play:templates && npm run serve:play",
+    "test": "npm run build"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "jade": "^1.11.0",
+    "ncp": "^2.0.0",
+    "node-sass": "^3.4.2",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^3.2.0",
+    "sassdoc": "^2.1.19",
+    "style-loader": "^0.13.0",
+    "stylus": "^0.54.2",
+    "stylus-loader": "^1.5.1",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

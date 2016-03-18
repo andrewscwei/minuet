@@ -1,0 +1,486 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+/// Selector for label elements. Each element is meant to contain text only. For
+/// optimal results, do not nest label elements. For italics, use <i>, and for
+/// bold, use <b>. <a> is not treated as a label element and should only be used
+/// to make a nested element a hyperlink.
+///
+/// @param {string} $type ['all'] - Type of the label (i.e. 'body', 'header',
+///                                 'all')
+///
+/// @group selectors
+labels($type='all')
+  if $type == 'all' or $type == 'body'
+    p
+      {block}
+    em
+      {block}
+    strong
+      {block}
+    label
+      {block}
+    a[type='label']
+      {block}
+    li[type='label']
+      {block}
+    span[type='label']
+      {block}
+
+  if $type == 'all' or $type == 'header'
+    h1
+      {block}
+    h2
+      {block}
+    h3
+      {block}
+    h4
+      {block}
+    h5
+      {block}
+    h6
+      {block}
+
+/// Selects labels with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+label($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +labels()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects labels with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+label-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +labels()
+      &.{$class}
+        {block}
+
+/// Selects labels with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+label-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +labels()
+      &#{$id}
+        {block}
+
+/// Selector for static elements.
+///
+/// @group selectors
+statics()
+  form
+    {block}
+
+/// Selects statics with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+static($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +statics()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects statics with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+static-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +statics()
+      &.{$class}
+        {block}
+
+/// Selects statics with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+static-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +statics()
+      &#{$id}
+        {block}
+
+/// Selector for button elements.
+///
+/// @group selectors
+buttons()
+  a[type='button']
+    {block}
+  input[type='submit']
+    {block}
+  input[type='button']
+    {block}
+  input[type='checkbox']
+    {block}
+  input[type='file']
+    {block}
+  button
+    {block}
+
+/// Selects buttons with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+button($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +buttons()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects buttons with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+button-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +buttons()
+      &.{$class}
+        {block}
+
+/// Selects buttons with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+button-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +buttons()
+      &#{$id}
+        {block}
+
+/// Selector for hyperlinks.
+///
+/// @group selectors
+links()
+  a:not([type='button']):not([type='label'])
+    {block}
+
+/// Selects links with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+link($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +links()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects links with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+link-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +links()
+      &.{$class}
+        {block}
+
+/// Selects links with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+link-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +links()
+      &#{$id}
+        {block}
+
+/// Selector for textfield input elements.
+///
+/// @group selectors
+textfields()
+  input[type='text']
+    {block}
+  input[type='password']
+    {block}
+  input[type='number']
+    {block}
+  input[type='date']
+    {block}
+  input[type='month']
+    {block}
+  input[type='week']
+    {block}
+  input[type='time']
+    {block}
+  input[type='datetime']
+    {block}
+  input[type='datetime-local']
+    {block}
+  input[type='email']
+    {block}
+  input[type='search']
+    {block}
+  input[type='tel']
+    {block}
+  input[type='url']
+    {block}
+  textarea
+    {block}
+
+/// Selects textfields with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+textfield($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +textfields()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects textfields with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+textfield-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +textfields()
+      &.{$class}
+        {block}
+
+/// Selects textfields with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+textfield-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +textfields()
+      &#{$id}
+        {block}
+
+/// Selector for box elements.
+///
+/// @group selectors
+boxes()
+  article
+    {block}
+  aside
+    {block}
+  details
+    {block}
+  dialog
+    {block}
+  summary
+    {block}
+  footer
+    {block}
+  header
+    {block}
+  main
+    {block}
+  figcaption
+    {block}
+  figure
+    {block}
+  hgroup
+    {block}
+  nav
+    {block}
+  section
+    {block}
+  div
+    {block}
+  table
+    {block}
+  tr
+    {block}
+  td
+    {block}
+  th
+    {block}
+  tbody
+    {block}
+  thead
+    {block}
+  tfoot
+    {block}
+  col
+    {block}
+
+/// Selects boxes with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+box($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +boxes()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects boxes with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+box-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +boxes()
+      &.{$class}
+        {block}
+
+/// Selects boxes with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+box-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +boxes()
+      &#{$id}
+        {block}
+
+/// Selector for list elements.
+///
+/// @group selectors
+lists()
+  ul
+    {block}
+  ol
+    {block}
+
+/// Selects lists with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+list($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +lists()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects lists with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+list-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +lists()
+      &.{$class}
+        {block}
+
+/// Selects lists with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+list-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +lists()
+      &#{$id}
+        {block}
+
+/// Selector for list items.
+///
+/// @group selectors
+lists()
+  li:not([type='label'])
+    {block}
+
+/// Selects list items with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+list-item($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +list-items()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects list items with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+list-item-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +list-items()
+      &.{$class}
+        {block}
+
+/// Selects list items with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+list-item-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +list-items()
+      &#{$id}
+        {block}

@@ -1,0 +1,37 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+$font-size-extra-small: 12px !default;
+$font-size-small: 14px !default;
+$font-size-medium: 18px !default;
+$font-size-large: 24px !default;
+$font-size-extra-large: 30px !default;
+
+/// Gets the specified font size.
+///
+/// @param {string|number} $size  ['default'] - Specify a value or pick from:
+///                                             'xl', 'l', 'm', 's', 'xs' or
+///                                             'default'.
+/// @param {number}        $scale [1]         - Specify a scale.
+///
+/// @return {font-size}
+@function get-font-size($size:'default', $scale:1) {
+  @if ($size == 'normal') or ($size == 'default') {
+    @return $font-size-reset * $scale / $font-size-reset;
+  } @else if ($size == 'x-small') or ($size == 'xs') or ($size == 'extra-small') or ($size == 'x-s') {
+    @return $font-size-extra-small * $scale / $font-size-reset;
+  } @else if ($size == 'small') or ($size == 's') {
+    @return $font-size-small * $scale / $font-size-reset;
+  } @else if ($size == 'medium') or ($size == 'm') {
+    @return $font-size-medium * $scale / $font-size-reset;
+  } @else if ($size == 'large') or ($size == 'l') {
+    @return $font-size-large * $scale / $font-size-reset;
+  } @else if ($size == 'x-large') or ($size == 'xl') or ($size == 'extra-large') or ($size == 'x-l') {
+    @return $font-size-extra-large * $scale / $font-size-reset;
+  } @else {
+    @return $size * $scale;
+  }
+}

@@ -1,0 +1,92 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+/// Selector for elements with the data-class attribute.
+///
+/// @param {string} $name - data-class attribute value.
+///
+/// @group attributes
+@mixin class($name) {
+  $attr: data-class;
+  [#{$attr}='#{$name}'] { @content; }
+}
+
+/// Selector for elements with the data-instance attribute.
+///
+/// @param {string} $name - data-instance attribute value.
+///
+/// @group attributes
+@mixin instance($name) {
+  $attr: data-instance;
+  [#{$attr}='#{$name}'] { @content; }
+}
+
+/// Selects elements with the specified data- key and value.
+///
+/// @param {string} $key            - data- key.
+/// @param {string} $value [null]   - data- value, if applicable.
+/// @param {string} $scope ['this'] - Specifies the scope relative to the target
+///                                   selector in which this property applies to
+///                                   (any, this, parent, or child).
+///
+/// @group attributes
+@mixin property($key, $value:null, $scope:'this') {
+  $attr: data-#{$key};
+
+  @if $value == null {
+    @if $scope == 'any' {
+      @at-root [#{$attr}] { @content; }
+    }
+    @else if $scope == 'this' {
+      &[#{$attr}] { @content; }
+    }
+    @else if $scope == 'parent' {
+      [#{$attr}] & { @content; }
+    }
+    @else if $scope == 'child' {
+      &[#{$attr}] * { @content; }
+    }
+  }
+  @else {
+    @if $scope == 'any' {
+      @at-root [#{$attr}='#{$value}'] { @content; }
+    }
+    @else if $scope == 'this' {
+      &[#{$attr}='#{$value}'] { @content; }
+    }
+    @else if $scope == 'parent' {
+      [#{$attr}='#{$value}'] & { @content; }
+    }
+    @else if $scope == 'child' {
+      &[#{$attr}='#{$value}'] * { @content; }
+    }
+  }
+}
+
+/// Binds the content to one/multiple data-state of the target selector. Option to
+/// specify whether the state(s) are default.
+///
+/// @param {List}    $states          - List of state names.
+/// @param {boolean} $default [false] - Specifies whether the class(es) are
+///                                     default.
+///
+/// @group attributes
+@mixin state($states, $default:false) {
+  $attr: data-state;
+  @each $state in $states {
+    @if $state == 'hover' {
+      &:hover { @content; }
+      &[#{$attr}='hover'] { @content; }
+    }
+    @else {
+      &[#{$attr}='#{$state}'] { @content; }
+    }
+  }
+
+  @if $default == true {
+    @content;
+  }
+}

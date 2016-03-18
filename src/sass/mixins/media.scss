@@ -1,0 +1,221 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+// Device size thresholds.
+$device-thresholds: (
+  'mobile': (
+    'min': 0px,
+    'max': 599px
+  ),
+  'phablet': (
+    'min': 600px,
+    'max': 767px
+  ),
+  'tablet': (
+    'min': 768px,
+    'max': 1024px
+  ),
+  'desktop': (
+    'min': 1025px,
+    'max': 100000px
+  )
+);
+
+/// Media query mixin that translates a set of descriptors into rules that apply
+/// bounding restrictions to screens. This mixin supports 4 predefined screen
+/// types: 'mobile', 'phablet', 'tablet' and 'desktop' and 2 predefined screen
+/// orientations: 'portrait' and 'landscape'.
+///
+/// @param {List} $descriptors   - List of strings formatted by either
+///                                '{base}{relational_operator}{%s_or_screen_type}'
+///                                or '{orientation}'. If no {base} is specified,
+///                                width will be used. {%s} is also optional.
+/// @param {List} $params [null] - List of values applied in the same order as
+///                                the descriptors for string replacement
+///                                whenever '%s' is used.
+///
+/// @example
+///   @include screen('w<%s', 200px) { ... } // or
+///   @include screen('<%s', 200px) { ... }  // or
+///   @include screen('<', 200px) { ... }
+///
+///   // @media screen and (max-width: 199px) { ... }
+///
+/// @example
+///   @include screen('h>=phablet') { ... }
+///
+///   // @media screen and (min-width: 767px) { ... }
+///
+/// @example
+///   @include screen('w=tablet') { ... }
+///
+///   // @media screen and (min-width: 768px) and (max-width: 1024px) { ... }
+///
+/// @example
+///   @include screen('w>=%s' 'w<%s' 'h>', 200px 400px 150px) { ... }
+///
+///   // @media screen and (min-width: 200px) and (max-width: 399px) and (min-height: 151px) { ... }
+///
+/// @group media
+@mixin screen($descriptors, $params:null) {
+  $_bases: (
+    'w': 'width',
+    'width': 'width',
+    'h': 'height',
+    'height': 'height'
+  );
+
+  $_queries: ();
+  $_p: 1;
+
+  @each $descriptor in $descriptors {
+    $_base: null;
+    $_rule: null;
+    $_min: null;
+    $_max: null;
+    $_orientation: null;
+
+    @if (str-index($descriptor, '<=') != null) {
+      $_i: str-index($descriptor, '<=');
+      $_base: str-slice($descriptor, 1, $_i - 1);
+      $_rule: str-slice($descriptor, $_i + 2);
+      $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
+      $_min: null;
+      $_max: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'max'));
+    }
+    @else if (str-index($descriptor, '<') != null) {
+      $_i: str-index($descriptor, '<');
+      $_base: str-slice($descriptor, 1, $_i - 1);
+      $_rule: str-slice($descriptor, $_i + 1);
+      $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
+      $_min: null;
+      $_max: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p) - 1, map-get(map-get($device-thresholds, $_rule), 'min') - 1);
+    }
+    @else if (str-index($descriptor, '>=') != null) {
+      $_i: str-index($descriptor, '>=');
+      $_base: str-slice($descriptor, 1, $_i - 1);
+      $_rule: str-slice($descriptor, $_i + 2);
+      $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
+      $_min: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'min'));
+      $_max: null;
+    }
+    @else if (str-index($descriptor, '>') != null) {
+      $_i: str-index($descriptor, '>');
+      $_base: str-slice($descriptor, 1, $_i - 1);
+      $_rule: str-slice($descriptor, $_i + 1);
+      $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
+      $_min: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p) + 1, map-get(map-get($device-thresholds, $_rule), 'max') + 1);
+      $_max: null;
+    }
+    @else if (str-index($descriptor, '=') != null) {
+      $_i: str-index($descriptor, '=');
+      $_base: str-slice($descriptor, 1, $_i - 1);
+      $_rule: str-slice($descriptor, $_i + 1);
+      $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
+      $_min: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'min'));
+      $_max: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'max'));
+    }
+    @else if ($descriptor == 'portrait') {
+      $_orientation: 'portrait';
+    }
+    @else if ($descriptor == 'landscape') {
+      $_orientation: 'landscape';
+    }
+
+    @if (map-get($device-thresholds, $_rule) == null) and ($_orientation == null) {
+      @if (($_rule == '%s') or ($_rule == '')) {
+        $_p: $_p + 1;
+      }
+      @else {
+        @warn 'Bad format specified: #{$_rule}. Use %s or leave as blank instead';
+      }
+    }
+
+    @if ($_min != null) { $_queries: append($_queries, '(min-#{$_base}: #{$_min})', 'comma'); }
+    @if ($_max != null) { $_queries: append($_queries, '(max-#{$_base}: #{$_max})', 'comma'); }
+    @if ($_orientation != null) { $_queries: append($_queries, '(orientation: #{$_orientation})'); }
+  }
+
+  $_media: '';
+
+  @each $_query in $_queries {
+    $_media: $_media + ' and ' + $_query;
+  }
+
+  @if ($_media != '') {
+    $_media: 'screen' + $_media;
+    @media #{$_media} { @content };
+  }
+  @else {
+    @warn 'No valid media queries devised from these descriptors: #{$descriptors}';
+  }
+}
+
+/// Sets the background-size and background-position of a target element which is
+/// using an image map to the corresponding item in the map.
+///
+/// @param {string} $path      - Path of sprite map.
+/// @param {number} $row-index - 0-based index of the row of the target item.
+/// @param {number} $col-index - 0-based index of the column of the target item.
+/// @param {number} $num-rows  - Total number of rows in the image map.
+/// @param {number} $num-cols  - Total number of columns in the image map.
+///
+/// @group media
+@mixin image-map-item($path, $row-index, $col-index, $num-rows, $num-cols) {
+  @if $path != null {
+    background-image: url($path);
+  }
+
+  $x: 0;
+  $y: 0;
+
+  @if $num-cols > 1 { $x: #{((100 / ($num-cols - 1)) * $col-index)}; }
+  @if $num-rows > 1 { $y: #{((100 / ($num-rows - 1)) * $row-index)}; }
+
+  background-size: #{$num-cols * 100}% #{$num-rows * 100}%;
+  background-position: #{$x}% #{$y}%;
+}
+
+/// Auto generates a list of class names of the target selector, where each
+/// class represents a sprite as provided by the sprite map.
+///
+/// @param {string} $path       - Path of sprite map.
+/// @param {List}   $map [null] - List (1D or 2D) of class names. The position
+///                               of each list item directly corresponds to the
+///                               sprite position on the sprite map.
+///
+/// @todo This mixin is quite slow in performance due to the nested loop.
+/// @group media
+@mixin image-map($path:null, $map:null) {
+  @if $path != null {
+    background-image: url($path);
+  }
+
+  @if $map != null {
+    $max-rows: length($map);
+
+    @if $max-rows > 0 {
+      @if type-of(nth($map, 1)) == list {
+        $max-cols: length(nth($map, 1));
+
+        @for $i from 1 through $max-rows {
+          $row: nth($map, $i);
+
+          @for $j from 1 through length(nth($map, $i)) {
+            $col: nth($row, $j);
+            &.#{$col} { @include image-map-item(null, $i - 1, $j - 1, $max-rows, $max-cols); }
+          }
+        }
+      }
+      @else {
+        @for $i from 1 through $max-rows {
+          $col: nth($map, $i);
+          &.#{$col} { @include image-map-item(null, 0, $i - 1, 1, $max-rows); }
+        }
+      }
+    }
+  }
+}
