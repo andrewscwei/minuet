@@ -18,19 +18,19 @@ $font-size-extra-large: 30px !default;
 /// @param {number}        $scale [1]         - Specify a scale.
 ///
 /// @return {font-size}
-@function get-font-size($size:'default', $scale:1) {
+@function font-size($size:'default', $scale:1) {
   @if ($size == 'normal') or ($size == 'default') {
-    @return $font-size-reset * $scale / $font-size-reset;
+    @return #{$font-size-reset * $scale / $font-size-reset}em;
   } @else if ($size == 'x-small') or ($size == 'xs') or ($size == 'extra-small') or ($size == 'x-s') {
-    @return $font-size-extra-small * $scale / $font-size-reset;
+    @return #{$font-size-extra-small * $scale / $font-size-reset}em;
   } @else if ($size == 'small') or ($size == 's') {
-    @return $font-size-small * $scale / $font-size-reset;
+    @return #{$font-size-small * $scale / $font-size-reset}em;
   } @else if ($size == 'medium') or ($size == 'm') {
-    @return $font-size-medium * $scale / $font-size-reset;
+    @return #{$font-size-medium * $scale / $font-size-reset}em;
   } @else if ($size == 'large') or ($size == 'l') {
-    @return $font-size-large * $scale / $font-size-reset;
+    @return #{$font-size-large * $scale / $font-size-reset}em;
   } @else if ($size == 'x-large') or ($size == 'xl') or ($size == 'extra-large') or ($size == 'x-l') {
-    @return $font-size-extra-large * $scale / $font-size-reset;
+    @return #{$font-size-extra-large * $scale / $font-size-reset}em;
   } @else {
     @return $size * $scale;
   }
