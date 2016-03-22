@@ -66,7 +66,7 @@
 ///                         respectively.
 ///
 /// @group alignments
-@mixin marginH($margin) {
+@mixin margin-h($margin) {
   $left: nth($margin, 1);
   $right: if(length($margin) > 1, nth($margin, 2), $left);
 
@@ -85,7 +85,7 @@
 ///                         respectively.
 ///
 /// @group alignments
-@mixin marginV($margin) {
+@mixin margin-v($margin) {
   $top: nth($margin, 1);
   $bottom: if(length($margin) > 1, nth($margin, 2), $top);
 
@@ -157,7 +157,7 @@
 ///                          respectively.
 ///
 /// @group alignments
-@mixin paddingH($padding) {
+@mixin padding-h($padding) {
   $left: nth($padding, 1);
   $right: if(length($padding) > 1, nth($padding, 2), $left);
 
@@ -176,7 +176,7 @@
 ///                          respectively.
 ///
 /// @group alignments
-@mixin paddingV($padding) {
+@mixin padding-v($padding) {
   $top: nth($padding, 1);
   $bottom: if(length($padding) > 1, nth($padding, 2), $top);
 
@@ -248,7 +248,7 @@
 ///                       respectively.
 ///
 /// @group alignments
-@mixin edgeH($edge) {
+@mixin edge-h($edge) {
   $left: nth($edge, 1);
   $right: if(length($edge) > 1, nth($edge, 2), $left);
 
@@ -267,7 +267,7 @@
 ///                       respectively.
 ///
 /// @group alignments
-@mixin edgeV($edge) {
+@mixin edge-v($edge) {
   $top: nth($edge, 1);
   $bottom: if(length($edge) > 1, nth($edge, 2), $top);
 
@@ -637,7 +637,7 @@
       left: 0px;
     }
     @else if $align == 'center' or $align == 'middle' {
-      @include marginH(auto);
+      @include margin-h(auto);
       left: 0px;
       right: 0px;
     }
@@ -645,7 +645,7 @@
       right: 0px;
     }
 
-    @include edgeH($left $right);
+    @include edge-h($left $right);
   }
 
   @if $alignV != null and length($alignV) > 0 {
@@ -657,7 +657,7 @@
       top: 0px;
     }
     @else if $align == 'center' or $align == 'middle' {
-      @include marginV(auto);
+      @include margin-v(auto);
       top: 0px;
       bottom: 0px;
     }
@@ -665,7 +665,7 @@
       bottom: 0px;
     }
 
-    @include edgeV($top $bottom);
+    @include edge-v($top $bottom);
   }
 }
 
@@ -839,19 +839,6 @@
   @else {
     visibility: hidden;
   }
-}
-
-/// Fits dimension to parent container.
-///
-/// @param {boolean} $w [true]            - Specifies whether to fit the width.
-/// @param {boolean} $h [true]            - Specifies whether to fit the height.
-/// @param {boolean} $useViewport [false] - Specifies whether measurements are
-///                                         relevant to the viewport.
-///
-/// @group alignments
-@mixin auto-fit($w:true, $h:true, $useViewport:false) {
-  @if ($w == true) { width: if($useViewport == true, 100vw, 100%); }
-  @if ($h == true) { height: if($useViewport == true, 100vh, 100%); }
 }
 
 /// Makes a video fill the parent block, maintaining aspect ratio and centered

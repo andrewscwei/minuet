@@ -1,6 +1,6 @@
 {
   "name": "minuet",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An experimental stylesheet library.",
   "homepage": "http://VARIANTE.github.io/minuet",
   "license": "MIT",
@@ -23,9 +23,10 @@
     "build:docs": "sassdoc src/sass -d docs",
     "build:play:templates": "jade -O \"{basedir:'playground/app/templates'}\" -o playground/public playground/app/templates/index.jade",
     "build:play:scripts": "webpack --colors --profile --config ./playground/webpack.config.babel.js --display-error-details",
+    "watch:play:templates": "jade -w -O \"{basedir:'playground/app/templates'}\" -o playground/public playground/app/templates/index.jade &",
     "serve:play": "webpack-dev-server --progress --inline --hot --config playground/webpack.config.babel.js --content-base playground/public --port 8080",
     "docs": "npm run clean:docs && npm run build:docs",
-    "play": "npm run clean && npm run build && npm run clean:play && npm run build:play:templates && npm run serve:play",
+    "play": "npm run clean && npm run build && npm run clean:play && npm run watch:play:templates && npm run serve:play",
     "test": "npm run build"
   },
   "files": [

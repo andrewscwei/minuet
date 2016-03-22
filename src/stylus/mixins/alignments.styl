@@ -10,12 +10,21 @@
 /// for a specific side of the margin, it will take the value of the previous
 /// side.
 ///
-/// @param {List} $margin - List of values for each side of the margin ordered
-///                         by top, right, bottom and left. Other than the first
-///                         value, all values are optional. If values are left
-///                         out, the behavior will be similar to the original
-///                         'margin' CSS rule (i.e. bottom matches top, right
-///                         matches left, etc).
+/// @param {number|List} $top            - Value for the top margin or a list of
+///                                        values for each side of the margin
+///                                        ordered by top, right, bottom and
+///                                        left. Other than the first value, all
+///                                        values are optional. If values are
+///                                        left out, the behavior will be
+///                                        similar to the original 'margin' CSS
+///                                        rule (i.e. bottom matches top, right
+///                                        matches left, etc).
+/// @param {number}      $right  [unset] - Value for the right margin, if unset
+///                                        this will be automatically inferred.
+/// @param {number}      $bottom [unset] - Value for the bottom margin, if unset
+///                                        this will be automatically inferred.
+/// @param {number}      $left   [unset] - Value for the left margin, if unset
+///                                        this will be automatically inferred.
 ///
 /// @example
 ///   @include margin(0px);
@@ -41,76 +50,89 @@
 ///   // margin-bottom: 5px;
 ///
 /// @group alignments
-margin($margin)
-  $top = (length($margin) > 1) ? $margin[0] : $margin
-  $right = (length($margin) > 1) ? $margin[1] : $top
-  $bottom = (length($margin) > 2) ? $margin[2] : $top
-  $left = (length($margin) > 3) ? $margin[3] : $right
+margin($top, $right=unset, $bottom=unset, $left=unset)
+  $_top = (length($top) > 1) ? $top[0] : $top
+  $_right = (length($top) > 1) ? $top[1] : $_top
+  $_right = ($right == unset) ? $_right : $right
+  $_bottom = (length($top) > 2) ? $top[2] : $_top
+  $_bottom = ($bottom == unset) ? $_bottom : $bottom
+  $_left = (length($top) > 3) ? $top[3] : $_right
+  $_left = ($left == unset) ? $_left : $left
 
-  if $right == ''
-    $right = $top
+  if $_right == ''
+    $_right = $_top
 
-  if $bottom == ''
-    $bottom = $right
+  if $_bottom == ''
+    $_bottom = $_right
 
-  if $left == ''
-    $left = $bottom
+  if $_left == ''
+    $_left = $_bottom
 
-  if $top != null and $top != '-' and $top != 'x' and $top != 'n'
-    margin-top: $top
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+    margin-top: $_top
 
-  if $right != null and $right != '-' and $right != 'x' and $right != 'n'
-    margin-right: $right
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+    margin-right: $_right
 
-  if $bottom != null and $bottom != '-' and $bottom != 'x' and $bottom != 'n'
-    margin-bottom: $bottom
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+    margin-bottom: $_bottom
 
-  if $left != null and $left != '-' and $left != 'x' and $left != 'n'
-    margin-left: $left
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+    margin-left: $_left
 
 /// Sets the horizontal margins (i.e. left and right respectively). Values are
 /// optional except for the first value. If null is specified, that side of
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {List} $margin - List of up to 2 values for left and right margins
-///                         respectively.
+/// @param {number|List} $left          - Value for the left margin or a list of
+///                                       up to 2 values for left and right
+///                                       margins respectively.
+/// @param {number}      $right [unset] - Value for the right margin. If unset,
+///                                       this value will be automatically
+///                                       inferred.
 ///
 /// @group alignments
-marginH($margin)
-  $left = $margin[0]
-  $right = (length($margin) > 1) ? $margin[1] : $left
+margin-h($left, $right=unset)
+  $_left = (length($left) > 1) ? $left[0] : $left
+  $_right = (length($left) > 1) ? $left[1] : $_left
+  $_right = ($right == unset) ? $_right : $right
 
-  if $right == ''
-    $right = $left
+  if $_right == ''
+    $_right = $_left
 
-  if $left != null and $left != '-' and $left != 'x' and $left != 'n'
-    margin-left: $left
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+    margin-left: $_left
 
-  if $right != null and $right != '-' and $right != 'x' and $right != 'n'
-    margin-right: $right
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+    margin-right: $_right
 
 /// Sets the vertical margins (i.e. top and bottom respectively). Values are
 /// optional except for the first value. If null is specified, that side of
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {List} $margin - List of up to 2 values for top and bottom margins
-///                         respectively.
+/// @param {number|List} $top            - Value for the top margin or a list of
+///                                        up to 2 values for top and bottom
+///                                        margins respectively.
+/// @param {number}      $bottom [unset] - Value for the bottom margin. If unset,
+///                                        this value will be automatically
+///                                        inferred.
 ///
 /// @group alignments
-marginV($margin)
-  $top = $margin[0]
-  $bottom = (length($margin) > 1) ? $margin[1] : $top
+margin-v($top, $bottom=unset)
+  $_top = (length($top) > 1) ? $top[0] : $top
+  $_bottom = (length($top) > 1) ? $top[1] : $_top
+  $_bottom = ($bottom == unset) ? $_bottom : $bottom
 
-  if $bottom == ''
-    $right = $top
+  if $_bottom == ''
+    $_right = $_top
 
-  if $top != null and $top != '-' and $top != 'x' and $top != 'n'
-    margin-top: $top
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+    margin-top: $_top
 
-  if $bottom != null and $bottom != '-' and $bottom != 'x' and $bottom != 'n'
-    margin-bottom: $bottom
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+    margin-bottom: $_bottom
 
 /// Sets the padding of an element. Similar to the original 'padding' CSS rule,
 /// except for the addition of 2 values: null and ''. If null is specified for
@@ -118,12 +140,21 @@ marginV($margin)
 /// specified for a specific side of the padding, it will take the value of the
 /// previous side.
 ///
-/// @param {List} $padding - List of values for each side of the padding ordered
-///                          by top, right, bottom and left. Other than the
-///                          first value, all values are optional. If values are
-///                          left out, the behavior will be similar to the
-///                          original 'padding' CSS rule (i.e. bottom matches
-///                          top, right matches left, etc).
+/// @param {number|List} $top            - Value for the top padding or a list of
+///                                        values for each side of the padding
+///                                        ordered by top, right, bottom and
+///                                        left. Other than the first value, all
+///                                        values are optional. If values are
+///                                        left out, the behavior will be
+///                                        similar to the original 'padding' CSS
+///                                        rule (i.e. bottom matches top, right
+///                                        matches left, etc).
+/// @param {number}      $right  [unset] - Value for the right padding, if unset
+///                                        this will be automatically inferred.
+/// @param {number}      $bottom [unset] - Value for the bottom padding, if unset
+///                                        this will be automatically inferred.
+/// @param {number}      $left   [unset] - Value for the left padding, if unset
+///                                        this will be automatically inferred.
 ///
 /// @example
 ///   @include padding(0px);
@@ -149,76 +180,89 @@ marginV($margin)
 ///   // padding-bottom: 5px;
 ///
 /// @group alignments
-padding($padding)
-  $top = (length($padding) > 1) ? $padding[0] : $padding
-  $right = (length($padding) > 1) ? $padding[1] : $top
-  $bottom = (length($padding) > 2) ? $padding[2] : $top
-  $left = (length($padding) > 3) ? $padding[3] : $right
+padding($top, $right=unset, $bottom=unset, $left=unset)
+  $_top = (length($top) > 1) ? $top[0] : $top
+  $_right = (length($top) > 1) ? $top[1] : $_top
+  $_right = ($right == unset) ? $_right : $right
+  $_bottom = (length($top) > 2) ? $top[2] : $_top
+  $_bottom = ($bottom == unset) ? $_bottom : $bottom
+  $_left = (length($top) > 3) ? $top[3] : $_right
+  $_left = ($left == unset) ? $_left : $left
 
-  if $right == ''
-    $right = $top
+  if $_right == ''
+    $_right = $_top
 
-  if $bottom == ''
-    $bottom = $right
+  if $_bottom == ''
+    $_bottom = $_right
 
-  if $left == ''
-    $left = $bottom
+  if $_left == ''
+    $_left = $_bottom
 
-  if $top != null and $top != '-' and $top != 'x' and $top != 'n'
-    padding-top: $top
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+    padding-top: $_top
 
-  if $right != null and $right != '-' and $right != 'x' and $right != 'n'
-    padding-right: $right
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+    padding-right: $_right
 
-  if $bottom != null and $bottom != '-' and $bottom != 'x' and $bottom != 'n'
-    padding-bottom: $bottom
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+    padding-bottom: $_bottom
 
-  if $left != null and $left != '-' and $left != 'x' and $left != 'n'
-    padding-left: $left
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+    padding-left: $_left
 
 /// Sets the horizontal paddings (i.e. left and right respectively). Values are
 /// optional except for the first value. If null is specified, that side of
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {List} $padding - List of up to 2 values for left and right paddings
-///                          respectively.
+/// @param {number|List} $left          - Value for the left padding or a list
+///                                       of up to 2 values for left and right
+///                                       margins respectively.
+/// @param {number}      $right [unset] - Value for the right padding. If unset,
+///                                       this value will be automatically
+///                                       inferred.
 ///
 /// @group alignments
-paddingH($padding)
-  $left = $padding[0]
-  $right = (length($padding) > 1) ? $padding[1] : $left
+padding-h($left, $right=unset)
+  $_left = (length($left) > 1) ? $left[0] : $left
+  $_right = (length($left) > 1) ? $left[1] : $_left
+  $_right = ($right == unset) ? $_right : $right
 
-  if $right == ''
-    $right = $left
+  if $_right == ''
+    $_right = $_left
 
-  if $left != null and $left != '-' and $left != 'x' and $left != 'n'
-    padding-left: $left
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+    padding-left: $_left
 
-  if $right != null and $right != '-' and $right != 'x' and $right != 'n'
-    padding-right: $right
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+    padding-right: $_right
 
 /// Sets the vertical paddings (i.e. top and bottom respectively). Values are
 /// optional except for the first value. If null is specified, that side of
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {List} $padding - List of up to 2 values for top and bottom paddings
-///                          respectively.
+/// @param {number|List} $top            - Value for the top padding or a list
+///                                        of up to 2 values for top and bottom
+///                                        margins respectively.
+/// @param {number}      $bottom [unset] - Value for the bottom padding. If unset,
+///                                        this value will be automatically
+///                                        inferred.
 ///
 /// @group alignments
-paddingV($padding)
-  $top = $padding[0]
-  $bottom = (length($padding) > 1) ? $padding[1] : $top
+padding-v($top, $bottom=unset)
+  $_top = (length($top) > 1) ? $top[0] : $top
+  $_bottom = (length($top) > 1) ? $top[1] : $_top
+  $_bottom = ($bottom == unset) ? $_bottom : $bottom
 
-  if $bottom == ''
-    $right = $top
+  if $_bottom == ''
+    $_right = $_top
 
-  if $top != null and $top != '-' and $top != 'x' and $top != 'n'
-    padding-top: $top
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+    padding-top: $_top
 
-  if $bottom != null and $bottom != '-' and $bottom != 'x' and $bottom != 'n'
-    padding-bottom: $bottom
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+    padding-bottom: $_bottom
 
 /// Sets the edge of an element (i.e. top, right, bottom and left). This mixin
 /// makes setting edges similar to margins and paddings where you can apply
@@ -226,12 +270,21 @@ paddingV($padding)
 /// specific edge, that edge will not be set. If '' is specified for a specific
 /// edge, it will take the value of the previous edge.
 ///
-/// @param {List} $edge - List of values for each edge ordered by top, right,
-///                       bottom and left. Other than the first value, all
-///                       values are optional. If values are left out, the
-///                       behavior will be similar to what the 'padding' and
-///                       'margin' CSS rules would do (i.e. bottom matches top,
-///                       right matches left, etc).
+/// @param {number|List} $top            - Value for the top edge or a list of
+///                                        values for each side of the edge
+///                                        ordered by top, right, bottom and
+///                                        left. Other than the first value, all
+///                                        values are optional. If values are
+///                                        left out, the behavior will be
+///                                        similar to the original 'margin' CSS
+///                                        rule (i.e. bottom matches top, right
+///                                        matches left, etc).
+/// @param {number}      $right  [unset] - Value for the right edge, if unset
+///                                        this will be automatically inferred.
+/// @param {number}      $bottom [unset] - Value for the bottom edge, if unset
+///                                        this will be automatically inferred.
+/// @param {number}      $left   [unset] - Value for the left edge, if unset
+///                                        this will be automatically inferred.
 ///
 /// @example
 ///   @include edge(0px);
@@ -257,76 +310,89 @@ paddingV($padding)
 ///   // bottom: 5px;
 ///
 /// @group alignments
-edge($edge)
-  $top = (length($edge) > 1) ? $edge[0] : $edge
-  $right = (length($edge) > 1) ? $edge[1] : $top
-  $bottom = (length($edge) > 2) ? $edge[2] : $top
-  $left = (length($edge) > 3) ? $edge[3] : $right
+edge($top, $right=unset, $bottom=unset, $left=unset)
+  $_top = (length($top) > 1) ? $top[0] : $top
+  $_right = (length($top) > 1) ? $top[1] : $_top
+  $_right = ($right == unset) ? $_right : $right
+  $_bottom = (length($top) > 2) ? $top[2] : $_top
+  $_bottom = ($bottom == unset) ? $_bottom : $bottom
+  $_left = (length($top) > 3) ? $top[3] : $_right
+  $_left = ($left == unset) ? $_left : $left
 
-  if $right == ''
-    $right = $top
+  if $_right == ''
+    $_right = $_top
 
-  if $bottom == ''
-    $bottom = $right
+  if $_bottom == ''
+    $_bottom = $_right
 
-  if $left == ''
-    $left = $bottom
+  if $_left == ''
+    $_left = $_bottom
 
-  if $top != null and $top != '-' and $top != 'x' and $top != 'n'
-    top: $top
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+    top: $_top
 
-  if $right != null and $right != '-' and $right != 'x' and $right != 'n'
-    right: $right
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+    right: $_right
 
-  if $bottom != null and $bottom != '-' and $bottom != 'x' and $bottom != 'n'
-    bottom: $bottom
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+    bottom: $_bottom
 
-  if $left != null and $left != '-' and $left != 'x' and $left != 'n'
-    left: $left
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+    left: $_left
 
 /// Sets the horizontal edges (i.e. left and right respectively). Values are
 /// optional except for the first value. If null is specified, that side of
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {List} $edge - List of up to 2 values for top and bottom edges
-///                       respectively.
+/// @param {number|List} $left          - Value for the left edge or a list of
+///                                       up to 2 values for left and right
+///                                       margins respectively.
+/// @param {number}      $right [unset] - Value for the right edge. If unset,
+///                                       this value will be automatically
+///                                       inferred.
 ///
 /// @group alignments
-edgeH($edge)
-  $left = $edge[0]
-  $right = (length($edge) > 1) ? $edge[1] : $left
+edge-h($left, $right=unset)
+  $_left = (length($left) > 1) ? $left[0] : $left
+  $_right = (length($left) > 1) ? $left[1] : $_left
+  $_right = ($right == unset) ? $_right : $right
 
-  if $right == ''
-    $right = $left
+  if $_right == ''
+    $_right = $_left
 
-  if $left != null and $left != '-' and $left != 'x' and $left != 'n'
-    left: $left
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+    left: $_left
 
-  if $right != null and $right != '-' and $right != 'x' and $right != 'n'
-    right: $right
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+    right: $_right
 
 /// Sets the vertical edges (i.e. top and bottom respectively). Values are
 /// optional except for the first value. If null is specified, that side of
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {List} $edge - List of up to 2 values for left and right edges
-///                       respectively.
+/// @param {number|List} $top            - Value for the top edge or a list of
+///                                        up to 2 values for top and bottom
+///                                        margins respectively.
+/// @param {number}      $bottom [unset] - Value for the bottom edge. If unset,
+///                                        this value will be automatically
+///                                        inferred.
 ///
 /// @group alignments
-edgeV($edge)
-  $top = $edge[0]
-  $bottom = (length($edge) > 1) ? $edge[1] : $top
+edge-v($top, $bottom=unset)
+  $_top = (length($top) > 1) ? $top[0] : $top
+  $_bottom = (length($top) > 1) ? $top[1] : $_top
+  $_bottom = ($bottom == unset) ? $_bottom : $bottom
 
-  if $bottom == ''
-    $right = $top
+  if $_bottom == ''
+    $_right = $_top
 
-  if $top != null and $top != '-' and $top != 'x' and $top != 'n'
-    top: $top
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+    top: $_top
 
-  if $bottom != null and $bottom != '-' and $bottom != 'x' and $bottom != 'n'
-    bottom: $bottom
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+    bottom: $_bottom
 
 /// Clearfix hack for floated elements.
 ///
@@ -832,75 +898,91 @@ parallax-element($z=0)
 
 /// Sets the size of the target selector.
 ///
-/// @param {number|List} $size         - Specifies the width and height of the
-///                                      selector. If only 1 value is provided,
-///                                      both width and height will use that
-///                                      value. If 2 values are provided, they
-///                                      will be used for the width and height
-///                                      respectively.
-/// @param {boolean}     $oval [false] - Specifies whether the selector is oval
-///                                      shaped (hence rounded corners
-///                                      corresponding to the shortest side).
+/// @param {number|List} $width          - Specifies the width and height of the
+///                                        selector. If only 1 value is provided,
+///                                        both width and height will use that
+///                                        value. If 2 values are provided, they
+///                                        will be used for width and height
+///                                        respectively.
+/// @param {number}      $height [unset] - Specifies the height (overrides
+///                                        the previous parameter).
+/// @param {boolean}     $oval [false]   - Specifies whether the selector is
+///                                        oval shaped (hence rounded corners
+///                                        corresponding to the shortest side).
 ///
 /// @group alignments
-size($size, $oval=false)
-  if length($size) > 1
-    if $size[0] != null
-      width: $size[0]
+size($width, $height=unset, $oval=false)
+  $_width = (length($width) > 1) ? $width[0] : $width
+  $_height = (length($width) > 1) ? $width[1] : $_width
+  $_height = ($height == unset or $height == true or $height == false) ? $_height : $height
+  $_oval = ($height == true or $height == false) ? $height : $oval
 
-    if $size[1] != null
-      height: $size[1]
-  else
-    if $size != null
-      width: $size
-      height: $size
+  if $_height == ''
+    $_height = $_width
 
-  if $oval == true
-    mask()
-    $d = (length($size) > 1) ? min($size[0], $size[1]) : $size
-    border-radius: ($d / 2)
+  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n'
+    width: $_width
+
+  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n'
+    height: $_height
+
+  if $_oval == true
+    overflow(hidden)
+    border-radius: (min($_width, $_height) / 2)
 
 /// Sets the max size of the target selector.
 ///
-/// @param {number|List} $size - Specifies the max width and height of the
-///                              selector. If only 1 value is provided, both
-///                              max-width and max-height will use that value.
-///                              If 2 values are provided, they will be used for
-///                              max-width and max-height respectively.
+/// @param {number|List} $width          - Specifies the max width and height of
+///                                        the selector. If only 1 value is
+///                                        provided, both max-width and
+///                                        max-height will use that value. If 2
+///                                        values are provided, they will be
+///                                        used for max-width and max-height
+///                                        respectively.
+/// @param {number}      $height [unset] - Specifies the max height (overrides
+///                                        the previous parameter).
 ///
 /// @group alignments
 max-size($size)
-  if length($size) > 1
-    if $size[0] != null
-      max-width: $size[0]
+  $_width = (length($width) > 1) ? $width[0] : $width
+  $_height = (length($width) > 1) ? $width[1] : $_width
+  $_height = ($height == unset) ? $_height : $height
 
-    if $size[1] != null
-      max-height: $size[1]
-  else
-    if $size != null
-      max-width: $size
-      max-height: $size
+  if $_height == ''
+    $_height = $_width
+
+  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n'
+    max-width: $_width
+
+  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n'
+    max-height: $_height
 
 /// Sets the min size of the target selector.
 ///
-/// @param {number|List} $size - Specifies the min width and height of the
-///                              selector. If only 1 value is provided, both
-///                              min-width and min-height will use that value.
-///                              If 2 values are provided, they will be used for
-///                              min-width and min-height respectively.
+/// @param {number|List} $width          - Specifies the min width and height of
+///                                        the selector. If only 1 value is
+///                                        provided, both min-width and
+///                                        min-height will use that value. If 2
+///                                        values are provided, they will be
+///                                        used for min-width and min-height
+///                                        respectively.
+/// @param {number}      $height [unset] - Specifies the min height (overrides
+///                                        the previous parameter).
 ///
 /// @group alignments
-min-size($size)
-  if length($size) > 1
-    if $size[0] != null
-      min-width: $size[0]
+min-size($width, $height=unset)
+  $_width = (length($width) > 1) ? $width[0] : $width
+  $_height = (length($width) > 1) ? $width[1] : $_width
+  $_height = ($height == unset) ? $_height : $height
 
-    if $size[1] != null
-      min-height: $size[1]
-  else
-    if $size != null
-      min-width: $size
-      min-height: $size
+  if $_height == ''
+    $_height = $_width
+
+  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n'
+    min-width: $_width
+
+  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n'
+    min-height: $_height
 
 /// Applies mask to target selector.
 ///
@@ -931,27 +1013,6 @@ invisible($forced=true)
   else
     visibility: hidden
 
-/// Fits dimension to parent container.
-///
-/// @param {boolean} $w [true]            - Specifies whether to fit the width.
-/// @param {boolean} $h [true]            - Specifies whether to fit the height.
-/// @param {boolean} $useViewport [false] - Specifies whether measurements are
-///                                         relevant to the viewport.
-///
-/// @group alignments
-auto-fit($w=true, $h=true, $useViewport=false)
-  if $w == true
-    if $useViewport == true
-      width: 100vw
-    else
-      width: 100%
-
-  if $h == true
-    if $useViewport == true
-      height: 100vh
-    else
-      height: 100%
-
 /// Makes a video fill the parent block, maintaining aspect ratio and centered
 /// (like background-size: cover).
 ///
@@ -965,16 +1026,26 @@ cover-video()
 
 /// Sets the overflow of the target selector.
 ///
-/// @param {number|List} $overflow - Specifies the overflow of the selector. If
-///                                  only 1 value is provided, both overflow-x
-///                                  and overflow-y use that value. If 2 values
-///                                  are provided, they will be used for
-///                                  overflow-x and overflow-y respectively.
+/// @param {number|List} $overflowX - Specifies the overflow of the selector. If
+///                                   only 1 value is provided, both overflow-x
+///                                   and overflow-y will use that value. If 2
+///                                   values are provided, they will be used for
+///                                   overflow-x and overflow-y respectively.
+/// @param {number}      $overflowY [unset] - Specifies the overflow-y value
+///                                           (overrides the previous parameter)
+///                                           if specified.
 ///
 /// @group alignments
-overflow($overflow)
-  if length($overflow) > 1
-    overflow-x: $overflow[0]
-    overflow-y: $overflow[1]
-  else
-    overflow: $overflow
+overflow($overflowX, $overflowY=unset)
+  $_overflowX = (length($overflowX) > 1) ? $overflowX[0] : $overflowX
+  $_overflowY = (length($overflowX) > 1) ? $overflowX[1] : $_overflowX
+  $_overflowY = ($overflowY == unset) ? $_overflowY : $overflowY
+
+  if $_overflowY == ''
+    $_overflowY = $_overflowX
+
+  if $_overflowX != null and $_overflowX != '-' and $_overflowX != 'x' and $_overflowX != 'n'
+    overflow-x: $_overflowX
+
+  if $_overflowY != null and $_overflowY != '-' and $_overflowY != 'x' and $_overflowY != 'n'
+    overflow-y: $_overflowY
