@@ -18,7 +18,7 @@ main {
   }
 
   img {
-    @include auto-fit();
+    @include size(100%);
     object-fit: cover;
   }
 
