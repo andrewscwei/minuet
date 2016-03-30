@@ -943,7 +943,7 @@ size($width, $height=unset, $oval=false)
 ///                                        the previous parameter).
 ///
 /// @group alignments
-max-size($size)
+max-size($width, $height=unset)
   $_width = (length($width) > 1) ? $width[0] : $width
   $_height = (length($width) > 1) ? $width[1] : $_width
   $_height = ($height == unset) ? $_height : $height
