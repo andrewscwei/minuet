@@ -409,6 +409,169 @@ clearfix()
     display: table
     clear: both
 
+/// Transforms an element into a container of the specified type. Special cases
+/// include 'fluid' blocks and 'flex' blocks. 'fluid' containers can freely
+/// align child inline-blocks with no fixed width/height requirements. 'flex'
+/// containers can specify the flex direction. Wrap the $type with '()' or
+/// prefix it with 'inline-' to use the inline counterpart of the block type.
+///
+/// @param {string}      $type                - Type of container. This complies
+///                                             to the standard 'display' CSS
+///                                             rule, with the exception of the
+///                                             following special cases:
+///                                             1.  'fluid'
+///                                             2.  '(fluid)' or 'inline-fluid'
+///                                             3.  'flex' (same as 'flex>')
+///                                             4.  '(flex)' or 'inline-flex'
+///                                             5.  'flex>' (row)
+///                                             6.  '(flex>)' or 'inline-flex>'
+///                                             7.  'flex<' (row-reverse)
+///                                             8.  '(flex<)' or 'inline-flex<'
+///                                             9.  'flex^' (column-reverse)
+///                                             10. '(flex^)' or 'inline-flex^'
+///                                             11.  'flexv' (column)
+///                                             12. '(flexv)' or 'inline-flexv'
+/// @param {string|List} $align1 [(top left)] - Internal alignment, can be a
+///                                             string or a list of 2 strings.
+/// @param {string}      $align2 [null]       - Internal alignment adjacent to
+///                                             $align1.
+///
+/// @group alignments
+display($type, $align1=(top left), $align2=null)
+  $_align1 = (length($align1) > 1) ? $align1[0] : $align1
+  $_align2 = (length($align1) > 1) ? $align1[1] : 'center'
+  $_align2 = ($align2 == null) ? $_align2 : $align2
+  $_h = ($_align1 == 'left' or $_align1 == 'right') ? $_align1 : 'center'
+  $_h = ($_align2 == 'left' or $_align2 == 'right') ? $_align2 : $_h
+  $_v = ($_align1 == 'top' or $_align1 == 'bottom') ? $_align1 : 'center'
+  $_v = ($_align2 == 'top' or $_align2 == 'bottom') ? $_align2 : $_v
+
+  if $type == '()'
+    display: inline
+
+  else if $type == '(block)'
+    display: inline-block
+
+  else if $type == 'flex'
+    display: flex
+
+  else if $type == '(flex)' or $type == 'inline-flex'
+    display: inline-flex
+
+  else if match('fluid', $type) != false
+    if $_h == 'left'
+      text-align: left
+    else if $_h == 'center'
+      text-align: center
+    else if $_h == 'right'
+      text-align: right
+
+    if $_v == 'top'
+      & > *
+        vertical-align: top
+    else if $_v == 'center'
+      & > *
+        vertical-align: middle
+    else if $_v == 'bottom'
+      & > *
+        vertical-align: bottom
+
+    & > *
+      display: inline-block
+
+    if match('inline', $type) != false or match('\(', $type) != false
+      display: inline-block
+    else
+      display: block
+
+    &:before
+      content: ''
+      display: inline-block
+      height: 100%
+      vertical-align: middle
+
+  else if match('flex', $type) != false
+    if match('<', $type) != false
+      flex-direction: row-reverse
+
+      if $_h == 'left'
+        justify-content: flex-end
+      else if $_h == 'center'
+        justify-content: center
+      else if $_h == 'right'
+        justify-content: flex-start
+
+      if $_v == 'top'
+        align-content: flex-start
+      else if $_v == 'center'
+        align-content: center
+      else if $_v == 'bottom'
+        align-content: flex-end
+    else if match('v', $type) != false
+      flex-direction: column
+
+      if $_v == 'top'
+        justify-content: flex-start
+      else if $_v == 'center'
+        justify-content: center
+      else if $_v == 'bottom'
+        justify-content: flex-end
+
+      if $_h == 'left'
+        align-content: flex-start
+      else if $_h == 'center'
+        align-content: center
+      else if $_h == 'right'
+        align-content: flex-end
+    else if match('\^', $type) != false
+      flex-direction: column-reverse
+
+      if $_v == 'top'
+        justify-content: flex-end
+      else if $_v == 'center'
+        justify-content: center
+      else if $_v == 'bottom'
+        justify-content: flex-start
+
+      if $_h == 'left'
+        align-content: flex-start
+      else if $_h == 'center'
+        align-content: center
+      else if $_h == 'right'
+        align-content: flex-end
+    else if match('>', $type) != false
+      flex-direction: row
+
+      if $_h == 'left'
+        justify-content: flex-start
+      else if $_h == 'center'
+        justify-content: center
+      else if $_h == 'right'
+        justify-content: flex-end
+
+      if $_v == 'top'
+        align-content: flex-start
+      else if $_v == 'center'
+        align-content: center
+      else if $_v == 'bottom'
+        align-content: flex-end
+
+    if match('inline', $type) != false or match('\(', $type) != false
+      display: inline-flex
+    else
+      display: flex
+
+    align-items: stretch
+    flex-wrap: nowrap
+    line-height: normal
+    white-space: normal
+
+    > *
+      flex-shrink: 1
+      flex-basis: auto
+  else
+    display: $type
+
 /// Transforms containing selector into a container that can freely align child
 /// inline-blocks with no fixed width/height requirements. Beware of whitespace
 /// between inline elements.
