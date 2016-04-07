@@ -10,7 +10,7 @@
 /// for a specific side of the margin, it will take the value of the previous
 /// side.
 ///
-/// @param {number|List} $top            - Value for the top margin or a list of
+/// @param {number|List} $top    [null]  - Value for the top margin or a list of
 ///                                        values for each side of the margin
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -50,7 +50,7 @@
 ///   // margin-bottom: 5px;
 ///
 /// @group alignments
-@mixin margin($top, $right:unset, $bottom:unset, $left:unset) {
+@mixin margin($top:null, $right:unset, $bottom:unset, $left:unset) {
   $_top: if(length($top) > 1, nth($top, 1), $top);
   $_right: if(length($top) > 1, nth($top, 2), $_top);
   $_right: if($right == unset, $_right, $right);
@@ -74,7 +74,7 @@
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left          - Value for the left margin or a list of
+/// @param {number|List} $left  [null]  - Value for the left margin or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
 /// @param {number}      $right [unset] - Value for the right margin. If unset,
@@ -82,7 +82,7 @@
 ///                                       inferred.
 ///
 /// @group alignments
-@mixin margin-h($left, $right:unset) {
+@mixin margin-h($left:null, $right:unset) {
   $_left: if(length($left) > 1, nth($left, 1), $left);
   $_right: if(length($left) > 1, nth($left, 2), $_left);
   $_right: if($right == unset, $_right, $right);
@@ -98,7 +98,7 @@
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top            - Value for the top margin or a list of
+/// @param {number|List} $top    [null]  - Value for the top margin or a list of
 ///                                        up to 2 values for top and bottom
 ///                                        margins respectively.
 /// @param {number}      $bottom [unset] - Value for the bottom margin. If unset,
@@ -106,7 +106,7 @@
 ///                                        inferred.
 ///
 /// @group alignments
-@mixin margin-v($top, $bottom:unset) {
+@mixin margin-v($top:null, $bottom:unset) {
   $_top: if(length($top) > 1, nth($top, 1), $top);
   $_bottom: if(length($top) > 1, nth($top, 2), $_top);
   $_bottom: if($bottom == unset, $_bottom, $bottom);
@@ -123,7 +123,7 @@
 /// specified for a specific side of the padding, it will take the value of the
 /// previous side.
 ///
-/// @param {number|List} $top            - Value for the top padding or a list of
+/// @param {number|List} $top    [null]  - Value for the top padding or a list of
 ///                                        values for each side of the padding
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -163,7 +163,7 @@
 ///   // padding-bottom: 5px;
 ///
 /// @group alignments
-@mixin padding($top, $right:unset, $bottom:unset, $left:unset) {
+@mixin padding($top:null, $right:unset, $bottom:unset, $left:unset) {
   $_top: if(length($top) > 1, nth($top, 1), $top);
   $_right: if(length($top) > 1, nth($top, 2), $_top);
   $_right: if($right == unset, $_right, $right);
@@ -187,7 +187,7 @@
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left          - Value for the left padding or a list
+/// @param {number|List} $left  [null]  - Value for the left padding or a list
 ///                                       of up to 2 values for left and right
 ///                                       margins respectively.
 /// @param {number}      $right [unset] - Value for the right padding. If unset,
@@ -195,7 +195,7 @@
 ///                                       inferred.
 ///
 /// @group alignments
-@mixin padding-h($left, $right:unset) {
+@mixin padding-h($left:null, $right:unset) {
   $_left: if(length($left) > 1, nth($left, 1), $left);
   $_right: if(length($left) > 1, nth($left, 2), $_left);
   $_right: if($right == unset, $_right, $right);
@@ -211,7 +211,7 @@
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top            - Value for the top padding or a list
+/// @param {number|List} $top    [null]  - Value for the top padding or a list
 ///                                        of up to 2 values for top and bottom
 ///                                        margins respectively.
 /// @param {number}      $bottom [unset] - Value for the bottom padding. If unset,
@@ -219,7 +219,7 @@
 ///                                        inferred.
 ///
 /// @group alignments
-@mixin padding-v($top, $bottom:unset) {
+@mixin padding-v($top:null, $bottom:unset) {
   $_top: if(length($top) > 1, nth($top, 1), $top);
   $_bottom: if(length($top) > 1, nth($top, 2), $_top);
   $_bottom: if($bottom == unset, $_bottom, $bottom);
@@ -236,7 +236,7 @@
 /// specific edge, that edge will not be set. If '' is specified for a specific
 /// edge, it will take the value of the previous edge.
 ///
-/// @param {number|List} $top            - Value for the top edge or a list of
+/// @param {number|List} $top    [null]  - Value for the top edge or a list of
 ///                                        values for each side of the edge
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -276,7 +276,7 @@
 ///   // bottom: 5px;
 ///
 /// @group alignments
-@mixin edge($top, $right:unset, $bottom:unset, $left:unset) {
+@mixin edge($top:null, $right:unset, $bottom:unset, $left:unset) {
   $_top: if(length($top) > 1, nth($top, 1), $top);
   $_right: if(length($top) > 1, nth($top, 2), $_top);
   $_right: if($right == unset, $_right, $right);
@@ -300,7 +300,7 @@
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left          - Value for the left edge or a list of
+/// @param {number|List} $left  [null]  - Value for the left edge or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
 /// @param {number}      $right [unset] - Value for the right edge. If unset,
@@ -308,7 +308,7 @@
 ///                                       inferred.
 ///
 /// @group alignments
-@mixin edge-h($left, $right:unset) {
+@mixin edge-h($left:null, $right:unset) {
   $_left: if(length($left) > 1, nth($left, 1), $left);
   $_right: if(length($left) > 1, nth($left, 2), $_left);
   $_right: if($right == unset, $_right, $right);
@@ -324,7 +324,7 @@
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top            - Value for the top edge or a list of
+/// @param {number|List} $top    [null]  - Value for the top edge or a list of
 ///                                        up to 2 values for top and bottom
 ///                                        margins respectively.
 /// @param {number}      $bottom [unset] - Value for the bottom edge. If unset,
@@ -332,7 +332,7 @@
 ///                                        inferred.
 ///
 /// @group alignments
-@mixin edge-v($top, $bottom:unset) {
+@mixin edge-v($top:null, $bottom:unset) {
   $_top: if(length($top) > 1, nth($top, 1), $top);
   $_bottom: if(length($top) > 1, nth($top, 2), $_top);
   $_bottom: if($bottom == unset, $_bottom, $bottom);

@@ -10,7 +10,7 @@
 /// for a specific side of the margin, it will take the value of the previous
 /// side.
 ///
-/// @param {number|List} $top            - Value for the top margin or a list of
+/// @param {number|List} $top    [null]  - Value for the top margin or a list of
 ///                                        values for each side of the margin
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -50,7 +50,7 @@
 ///   // margin-bottom: 5px;
 ///
 /// @group alignments
-margin($top, $right=unset, $bottom=unset, $left=unset)
+margin($top=null, $right=unset, $bottom=unset, $left=unset)
   $_top = (length($top) > 1) ? $top[0] : $top
   $_right = (length($top) > 1) ? $top[1] : $_top
   $_right = ($right == unset) ? $_right : $right
@@ -85,7 +85,7 @@ margin($top, $right=unset, $bottom=unset, $left=unset)
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left          - Value for the left margin or a list of
+/// @param {number|List} $left  [null]  - Value for the left margin or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
 /// @param {number}      $right [unset] - Value for the right margin. If unset,
@@ -93,7 +93,7 @@ margin($top, $right=unset, $bottom=unset, $left=unset)
 ///                                       inferred.
 ///
 /// @group alignments
-margin-h($left, $right=unset)
+margin-h($left=null, $right=unset)
   $_left = (length($left) > 1) ? $left[0] : $left
   $_right = (length($left) > 1) ? $left[1] : $_left
   $_right = ($right == unset) ? $_right : $right
@@ -112,7 +112,7 @@ margin-h($left, $right=unset)
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top            - Value for the top margin or a list of
+/// @param {number|List} $top    [null]  - Value for the top margin or a list of
 ///                                        up to 2 values for top and bottom
 ///                                        margins respectively.
 /// @param {number}      $bottom [unset] - Value for the bottom margin. If unset,
@@ -120,7 +120,7 @@ margin-h($left, $right=unset)
 ///                                        inferred.
 ///
 /// @group alignments
-margin-v($top, $bottom=unset)
+margin-v($top=null, $bottom=unset)
   $_top = (length($top) > 1) ? $top[0] : $top
   $_bottom = (length($top) > 1) ? $top[1] : $_top
   $_bottom = ($bottom == unset) ? $_bottom : $bottom
@@ -140,7 +140,7 @@ margin-v($top, $bottom=unset)
 /// specified for a specific side of the padding, it will take the value of the
 /// previous side.
 ///
-/// @param {number|List} $top            - Value for the top padding or a list of
+/// @param {number|List} $top    [null]  - Value for the top padding or a list of
 ///                                        values for each side of the padding
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -180,7 +180,7 @@ margin-v($top, $bottom=unset)
 ///   // padding-bottom: 5px;
 ///
 /// @group alignments
-padding($top, $right=unset, $bottom=unset, $left=unset)
+padding($top=null, $right=unset, $bottom=unset, $left=unset)
   $_top = (length($top) > 1) ? $top[0] : $top
   $_right = (length($top) > 1) ? $top[1] : $_top
   $_right = ($right == unset) ? $_right : $right
@@ -215,7 +215,7 @@ padding($top, $right=unset, $bottom=unset, $left=unset)
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left          - Value for the left padding or a list
+/// @param {number|List} $left  [null]  - Value for the left padding or a list
 ///                                       of up to 2 values for left and right
 ///                                       margins respectively.
 /// @param {number}      $right [unset] - Value for the right padding. If unset,
@@ -223,7 +223,7 @@ padding($top, $right=unset, $bottom=unset, $left=unset)
 ///                                       inferred.
 ///
 /// @group alignments
-padding-h($left, $right=unset)
+padding-h($left=null, $right=unset)
   $_left = (length($left) > 1) ? $left[0] : $left
   $_right = (length($left) > 1) ? $left[1] : $_left
   $_right = ($right == unset) ? $_right : $right
@@ -242,7 +242,7 @@ padding-h($left, $right=unset)
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top            - Value for the top padding or a list
+/// @param {number|List} $top    [null]  - Value for the top padding or a list
 ///                                        of up to 2 values for top and bottom
 ///                                        margins respectively.
 /// @param {number}      $bottom [unset] - Value for the bottom padding. If unset,
@@ -250,7 +250,7 @@ padding-h($left, $right=unset)
 ///                                        inferred.
 ///
 /// @group alignments
-padding-v($top, $bottom=unset)
+padding-v($top=null, $bottom=unset)
   $_top = (length($top) > 1) ? $top[0] : $top
   $_bottom = (length($top) > 1) ? $top[1] : $_top
   $_bottom = ($bottom == unset) ? $_bottom : $bottom
@@ -270,7 +270,7 @@ padding-v($top, $bottom=unset)
 /// specific edge, that edge will not be set. If '' is specified for a specific
 /// edge, it will take the value of the previous edge.
 ///
-/// @param {number|List} $top            - Value for the top edge or a list of
+/// @param {number|List} $top    [null]  - Value for the top edge or a list of
 ///                                        values for each side of the edge
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -310,7 +310,7 @@ padding-v($top, $bottom=unset)
 ///   // bottom: 5px;
 ///
 /// @group alignments
-edge($top, $right=unset, $bottom=unset, $left=unset)
+edge($top=null, $right=unset, $bottom=unset, $left=unset)
   $_top = (length($top) > 1) ? $top[0] : $top
   $_right = (length($top) > 1) ? $top[1] : $_top
   $_right = ($right == unset) ? $_right : $right
@@ -345,7 +345,7 @@ edge($top, $right=unset, $bottom=unset, $left=unset)
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left          - Value for the left edge or a list of
+/// @param {number|List} $left  [null]  - Value for the left edge or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
 /// @param {number}      $right [unset] - Value for the right edge. If unset,
@@ -353,7 +353,7 @@ edge($top, $right=unset, $bottom=unset, $left=unset)
 ///                                       inferred.
 ///
 /// @group alignments
-edge-h($left, $right=unset)
+edge-h($left=null, $right=unset)
   $_left = (length($left) > 1) ? $left[0] : $left
   $_right = (length($left) > 1) ? $left[1] : $_left
   $_right = ($right == unset) ? $_right : $right
@@ -372,7 +372,7 @@ edge-h($left, $right=unset)
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top            - Value for the top edge or a list of
+/// @param {number|List} $top    [null]  - Value for the top edge or a list of
 ///                                        up to 2 values for top and bottom
 ///                                        margins respectively.
 /// @param {number}      $bottom [unset] - Value for the bottom edge. If unset,
@@ -380,7 +380,7 @@ edge-h($left, $right=unset)
 ///                                        inferred.
 ///
 /// @group alignments
-edge-v($top, $bottom=unset)
+edge-v($top=null, $bottom=unset)
   $_top = (length($top) > 1) ? $top[0] : $top
   $_bottom = (length($top) > 1) ? $top[1] : $_top
   $_bottom = ($bottom == unset) ? $_bottom : $bottom
