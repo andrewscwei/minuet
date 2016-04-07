@@ -457,7 +457,7 @@
       @if      ($_h == 'left')   { align-items: flex-start; align-content: flex-start; }
       @else if ($_h == 'center') { align-items: center;     align-content: center;     }
       @else if ($_h == 'right')  { align-items: flex-end;   align-content: flex-end;   }
-    } @else {
+    } @else if (str-index($type, '>') != null) {
       flex-direction: row;
 
       @if      ($_h == 'left')   { justify-content: flex-start; }
