@@ -14,11 +14,11 @@ $font-size-scale: 100% !default;
 ///
 /// @group general
 %box-reset {
-  margin: 0;
-  padding: 0;
   border: none;
   box-sizing: border-box;
+  margin: 0;
   outline: none;
+  padding: 0;
 }
 
 /// Property reset for text elements.
@@ -26,8 +26,8 @@ $font-size-scale: 100% !default;
 /// @group general
 %text-reset {
   font-weight: normal;
-  text-decoration: none;
   line-height: normal;
+  text-decoration: none;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -76,6 +76,7 @@ body {
 @include labels() {
   @extend %box-reset;
   @extend %text-reset;
+  list-style: none;
 }
 
 @include lists() {

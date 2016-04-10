@@ -80,3 +80,32 @@ pointable($enabled=true, $recursive=true, $forced=true)
       else
         &
           pointer-events: none
+
+/// Applies mask to target selector.
+///
+/// @group features
+mask()
+  overflow: hidden
+  -webkit-mask-image: url(data:image/png\;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC)
+
+/// Hides the target selector.
+///
+/// @param {boolean} $forced [true] - Specifies whether !important is tagged.
+///
+/// @group features
+hidden($forced=true)
+  if $forced == true
+    display: none !important
+  else
+    display: none
+
+/// Makes the target selector invisible.
+///
+/// @param {boolean} $forced [true] - Specifies whether !important is tagged.
+///
+/// @group features
+invisible($forced=true)
+  if $forced == true
+    visibility: hidden !important
+  else
+    visibility: hidden

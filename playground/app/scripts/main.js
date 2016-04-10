@@ -1,7 +1,7 @@
 'use strict';
 
-// import 'stylesheets/main.css';
-// import 'stylesheets/main.scss';
-import 'stylesheets/main.styl';
+// import 'stylesheets/css/main.css';
+// import 'stylesheets/sass/main.scss';
+import 'stylesheets/stylus/main.styl';
 
 if (module.hot) module.hot.accept();

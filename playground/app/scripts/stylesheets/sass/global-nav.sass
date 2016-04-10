@@ -1,0 +1,25 @@
+
+header#global-nav
+  +align($type:'fixed')
+  +size(100% 60px)
+  background: rgba(#000, .6)
+  z-index: 100
+
+  nav
+    +size(100%)
+    +display('box>', left)
+    +padding(0 20px)
+
+  +list-items()
+    +space-between(20px)
+    +font('Helvetica Neue' 'Helvetica' sans-serif, 1.6em, 100)
+    color: #fff
+    list-style: none
+
+  +links()
+    +transition(opacity, .4s, ease-out)
+    color: #fff
+
+    +state('hover')
+      opacity: .6
+

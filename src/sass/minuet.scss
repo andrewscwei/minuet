@@ -8,7 +8,9 @@
 @import 'mixins/selectors';
 @import 'mixins/alignments';
 @import 'mixins/attributes';
+@import 'mixins/boxes';
 @import 'mixins/features';
 @import 'mixins/media';
+@import 'mixins/palette';
 @import 'mixins/typography';
-@import 'reset';
+@import 'base/reset';

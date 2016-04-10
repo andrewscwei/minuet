@@ -1,6 +1,7 @@
 @require '~stylus/minuet'
+@require 'global-nav'
 
-main
+main#home
   size(100% 100%)
   transition(all, 1s, ease)
   parallax-block(100)
@@ -51,6 +52,7 @@ main
   +box-id('parallax-block')
     pointer-events: none
 
+
     & > div
       flex-block()
       width: 100%
@@ -58,8 +60,8 @@ main
 
       for $i in (1..3)
         &:nth-child({$i})
-          parallax-element(($i - 1) * 10)
           background: rgba(100, 100, 100, ($i * 0.1))
+          transform: translate3d(0, 0, (($i - 1) * 10)px)
 
   +box-id('flex-grid')
     flex-grid(100% auto, row, 300px, 4, 1px false)
