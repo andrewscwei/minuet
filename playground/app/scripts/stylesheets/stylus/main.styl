@@ -1,5 +1,6 @@
 @require '~stylus/minuet'
 @require 'global-nav'
+@require 'flex-layout'
 
 main#home
   size(100% 100%)
@@ -17,19 +18,18 @@ main#home
     color: purple
 
   img
-    size(100%)
-    object-fit: cover
+    cover-image()
 
   video
     cover-video()
 
   +box-id('flex-block')
-    display: 'flex>' left
+    display: 'elastic>' left center
     color: white
     background: black
 
     & > div
-      flex-block($alignH:'center', $alignV:'center', $direction:column)
+      display: 'boxv'
       size(auto 100%)
       padding: 20px
       text-align: center
@@ -39,13 +39,13 @@ main#home
           background: rgba(100, 100, 100, ($i * 0.1))
 
   +box-id('fluid-block')
-    fluid-block()
+    display: 'fluid' center
     color: white
     background: rgb(10, 10, 10)
 
     & > div
       size(80%)
-      fluid-block($inline:true)
+      display: '(fluid)' center
       padding: 20px
       background: rgb(20, 20, 20)
 
@@ -54,7 +54,7 @@ main#home
 
 
     & > div
-      flex-block()
+      display: 'box' center
       width: 100%
       height: 33.333333%
 
@@ -64,10 +64,10 @@ main#home
           transform: translate3d(0, 0, (($i - 1) * 10)px)
 
   +box-id('flex-grid')
-    flex-grid(100% auto, row, 300px, 4, 1px false)
+    display: 'grid4/300px|10px'
 
     & > div.generic
-      flex-block()
+      display: 'box'
       padding: 20px
       background: rgb(10, 10, 10)
 

@@ -349,12 +349,12 @@
 @mixin clearfix() {
   *zoom: 1;
 
-  &:before {
+  &::before {
     content: '';
     display: table;
   }
 
-  &:after {
+  &::after {
     content: '';
     display: table;
     clear: both;
@@ -616,12 +616,12 @@
   $_direction: quote($direction);
 
   @if ($_direction == '>') or ($_direction == 'horizontal') or ($_direction == 'row') {
-    &:not(:last-child) {
+    &:not(:last-of-type) {
       margin-right: $value;
     }
   }
   @else if ($_direction == 'v') or ($_direction == 'vertical') or ($_direction == 'column') {
-    &:not(:last-child) {
+    &:not(:last-of-type) {
       margin-bottom: $value;
     }
   }
