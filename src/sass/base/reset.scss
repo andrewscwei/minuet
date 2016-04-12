@@ -65,7 +65,7 @@ body {
   display: inline-block;
 
   &:not(button):not(input) {
-    @include flex-block('center', 'center', row, false, true);
+    @include display('elastic>');
   }
 
   &:disabled {

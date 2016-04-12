@@ -1,0 +1,16 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+/// Returns a random number from specified min and max values.
+///
+/// @param {number} $min - The min value.
+/// @param {number} $max - The max value.
+///
+/// @return {number}
+///
+/// @group math
+random($min, $max)
+  return math(math(0, 'random')*($max - $min + 1) + $min, 'floor')
