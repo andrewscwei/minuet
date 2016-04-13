@@ -81,6 +81,10 @@
       &:hover { @content; }
       &[#{$attr}='hover'] { @content; }
     }
+    @else if $state == 'checked' {
+      &:checked { @content; }
+      &[#{$attr}='checked'] { @content; }
+    }
     @else {
       &[#{$attr}='#{$state}'] { @content; }
     }

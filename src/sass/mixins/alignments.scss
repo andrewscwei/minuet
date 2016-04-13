@@ -617,12 +617,12 @@
 
   @if ($_direction == '>') or ($_direction == 'horizontal') or ($_direction == 'row') {
     &:not(:last-of-type) {
-      margin-right: $value;
+      margin: 0 $value 0 0;
     }
   }
   @else if ($_direction == 'v') or ($_direction == 'vertical') or ($_direction == 'column') {
     &:not(:last-of-type) {
-      margin-bottom: $value;
+      margin: 0 0 $value 0;
     }
   }
 }

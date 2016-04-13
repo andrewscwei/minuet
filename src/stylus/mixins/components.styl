@@ -1,0 +1,110 @@
+// Minuet
+// (c) VARIANTE (http://variante.io)
+//
+// This software is released under the MIT License:
+// http://www.opensource.org/licenses/mit-license.php
+
+/// Transforms a button element into a standard hamburger menu button. Element
+/// can be any of the button elements supported by Minuet (@see (mixin) buttons).
+/// The button element must have at least 1 child `<span>` element, at most 2,
+/// to be used as the burger slices.
+///
+/// @param (number) $width     [27px] - Width of the burger.
+/// @param (number) $height    [20px] - Height of the burger.
+/// @param (number) $thickness [2px]  - Thickness of each slice.
+/// @param (Color)  $color     [#fff] - Color of the slices.
+///
+/// @group components
+burger-button($width=27px, $height=20px, $thickness=2px, $color=#fff)
+  min-size($width $height)
+  size($width $height)
+  background: transparent
+  position: relative
+
+  +state('hover')
+    span:not(:only-of-type):nth-of-type(2)
+      &::after
+        size(($width / 2) $thickness)
+    span:only-of-type
+      &::after
+        size($width $thickness)
+
+  +state('hover')
+    span:only-of-type
+      size(0 $thickness)
+      &:nth-of-type(1)
+        transform: translate3d(0, 0, 0)
+      &::before
+        transform: translate3d(0, ($height / 2), 0) rotate(45deg)
+      &::after
+        transform: translate3d(0, ($height / -2 + $thickness), 0) rotate(-45deg)
+
+    span:not(:only-of-type)
+      size(0 $thickness)
+      &::before
+        size(($width / 2) $thickness)
+      &::after
+        size(($width / 2) $thickness)
+
+      &:nth-of-type(1)
+        transform: translate3d(($width / 2), 0, 0)
+        &::before
+          transform: translate3d(($width / -2 + $thickness), ($height / 4), 0) rotate(45deg)
+        &::after
+          transform: translate3d(($width / -2 + $thickness), ($height / -4 + $thickness), 0) rotate(-45deg)
+
+      &:nth-of-type(2)
+        transform: translate3d(($width / -2), 0, 0)
+        &::before
+          transform: translate3d(($thickness * -1), ($height / 4), 0) rotate(-45deg)
+        &::after
+          transform: translate3d(($thickness * -1), ($height / -4 + $thickness), 0) rotate(45deg)
+
+  span:only-of-type,
+  span:only-of-type::before,
+  span:only-of-type::after
+    size($width $thickness)
+
+  span:not(:only-of-type),
+  span:not(:only-of-type)::before,
+  span:not(:only-of-type)::after
+    size(($width / 2) $thickness)
+
+  span,
+  span::before,
+  span::after
+    transition(all, 300ms, ease-in-out)
+    background: $color
+    content: ''
+
+  span:only-of-type
+    align('left', 'top')
+    edge((($height - $thickness) / 2) null null null)
+
+    &::before
+      align()
+      edge((($height - $thickness) / -2) null null null)
+
+    &::after
+      align('left', 'bottom')
+      edge(null null (($height - $thickness) / -2) null)
+      size(($width / 2) $thickness)
+
+  span:not(:only-of-type)
+    &:nth-of-type(1)
+      align('left', 'top')
+      edge((($height - $thickness) / 2) null null null)
+
+    &:nth-of-type(2)
+      align('right', 'top')
+      edge((($height - $thickness) / 2) null null null)
+      &::after
+        size(0 $thickness)
+
+    &::before
+      align()
+      edge((($height - $thickness) / -2) null null null)
+
+    &::after
+      align('left', 'bottom')
+      edge(null null (($height - $thickness) / -2) null)
