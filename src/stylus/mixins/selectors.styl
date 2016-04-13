@@ -502,15 +502,6 @@ each-child($max=10)
     &:nth-child({$i})
       {block}
 
-/// Selects the nth element of this element type, out of all sibling elements.
-///
-/// @param {number} $i - The element index.
-///
-/// @group selectors
-nth-child($i)
-  &:nth-child({$i})
-    {block}
-
 /// Selects each of the containing element based on the child index of this
 /// specific element type.
 ///
@@ -521,13 +512,3 @@ each-of-type($max=10)
   for $i in (1..$max)
     &:nth-child({$i})
       {block}
-
-/// Selects the nth element of this element type, out of sibling elements of the
-/// same type only.
-///
-/// @param {number} $i - The element index.
-///
-/// @group selectors
-nth-of-type($i)
-  &:nth-child({$i})
-    {block}
