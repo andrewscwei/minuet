@@ -652,8 +652,8 @@ space-between($value, $direction='>')
   $_direction = $direction
 
   if $_direction == '>' or $_direction == 'horizontal' or $_direction == 'row'
-    &:not(:last-of-type)
+    &:not(:last-child)
       margin: 0 $value 0 0
   else if $_direction == 'v' or $_direction == 'vertical' or $_direction == 'column'
-    &:not(:last-of-type)
+    &:not(:last-child)
       margin: 0 0 $value 0
