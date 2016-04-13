@@ -15,7 +15,7 @@ font($family=null, $size=null, $weight=null)
   if $family != null
     font-family: comma-list($family)
   if $size != null
-    font-size: $size
+    font-size: get-font-size($size)
   if $weight != null
     font-weight: $weight
 
