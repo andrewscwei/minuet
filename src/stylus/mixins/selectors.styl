@@ -439,21 +439,21 @@ list-id($id='')
       &#{$id}
         {block}
 
-/// Selector for list items.
+/// Selector for images.
 ///
 /// @group selectors
 lists()
   li:not([type='label'])
     {block}
 
-/// Selector for list items.
+/// Selector for images.
 ///
 /// @group selectors
 list-items()
   li:not([type='label'])
     {block}
 
-/// Selects list items with the given instance name.
+/// Selects images with the given instance name.
 ///
 /// @param {string} $instance - Instance name.
 ///
@@ -466,7 +466,7 @@ list-item($instance='')
       &[data-instance={$instance}]
         {block}
 
-/// Selects list items with the given class(es).
+/// Selects images with the given class(es).
 ///
 /// @param {string} $class - Class(es).
 ///
@@ -479,7 +479,7 @@ list-item-class($class='')
       &.{$class}
         {block}
 
-/// Selects list items with the given ID.
+/// Selects images with the given ID.
 ///
 /// @param {string} $id - ID.
 ///
@@ -489,6 +489,98 @@ list-item-id($id='')
     warn('ID must be specified')
   else
     +list-items()
+      &#{$id}
+        {block}
+
+/// Selector for images.
+///
+/// @group selectors
+images()
+  li:not([type='label'])
+    {block}
+
+/// Selects images with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+image($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +images()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects images with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+image-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +images()
+      &.{$class}
+        {block}
+
+/// Selects images with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+image-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +images()
+      &#{$id}
+        {block}
+
+/// Selector for videos.
+///
+/// @group selectors
+videos()
+  li:not([type='label'])
+    {block}
+
+/// Selects videos with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+video($instance='')
+  if $instance == ''
+    warn('Instance name must be specified')
+  else
+    +videos()
+      &[data-instance={$instance}]
+        {block}
+
+/// Selects videos with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+video-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +videos()
+      &.{$class}
+        {block}
+
+/// Selects videos with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+video-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +videos()
       &#{$id}
         {block}
 
