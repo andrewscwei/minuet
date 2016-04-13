@@ -19,9 +19,7 @@ $font-size-extra-large = 30px
 ///
 /// @return {font-size}
 get-font-size($size='default', $scale=1)
-  if $size == 'normal' or $size == 'default'
-    return unit($font-size-reset * $scale / $font-size-reset, em)
-  else if $size == 'x-small' or $size == 'xs' or $size == 'extra-small' or $size == 'x-s'
+  if $size == 'x-small' or $size == 'xs' or $size == 'extra-small' or $size == 'x-s'
     return unit($font-size-extra-small * $scale / $font-size-reset, em)
   else if $size == 'small' or $size == 's'
     return unit($font-size-small * $scale / $font-size-reset, em)
@@ -31,5 +29,7 @@ get-font-size($size='default', $scale=1)
     return unit($font-size-large * $scale / $font-size-reset, em)
   else if $size == 'x-large' or $size == 'xl' or $size == 'extra-large' or $size == 'x-l'
     return unit($font-size-extra-large * $scale / $font-size-reset, em)
-  else
+  else if typeof($size) == 'unit'
     return $size * $scale
+  else
+    return unit($font-size-reset * $scale / $font-size-reset, em)

@@ -13,7 +13,7 @@
 /// @group features
 @mixin font($family:null, $size:null, $weight:null) {
   @if ($family != null) { font-family: append($family, null, comma); }
-  @if ($size != null) { font-size: $size; }
+  @if ($size != null) { font-size: get-font-size($size, 1); }
   @if ($weight != null) { font-weight: $weight; }
 }
 
