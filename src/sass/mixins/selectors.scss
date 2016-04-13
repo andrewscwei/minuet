@@ -492,14 +492,14 @@
   }
 }
 
-/// Selector for list items.
+/// Selector for images.
 ///
 /// @group selectors
 @mixin list-items() {
   li:not([type='label']) { @content; }
 }
 
-/// Selects list items with the given instance name.
+/// Selects images with the given instance name.
 ///
 /// @param {string} $instance - Instance name.
 ///
@@ -517,7 +517,7 @@
   }
 }
 
-/// Selects list items with the given class(es).
+/// Selects images with the given class(es).
 ///
 /// @param {string} $class - Class(es).
 ///
@@ -535,7 +535,7 @@
   }
 }
 
-/// Selects list items with the given ID.
+/// Selects images with the given ID.
 ///
 /// @param {string} $id - ID.
 ///
@@ -546,6 +546,128 @@
   }
   @else {
     @include list-items() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for images.
+///
+/// @group selectors
+@mixin images() {
+  img { @content; }
+}
+
+/// Selects images with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin image($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include images() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects images with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin image-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include images() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects images with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin image-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include images() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selector for videos.
+///
+/// @group selectors
+@mixin videos() {
+  video { @content; }
+}
+
+/// Selects videos with the given instance name.
+///
+/// @param {string} $instance - Instance name.
+///
+/// @group selectors
+@mixin video($instance:'') {
+  @if ($instance == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include videos() {
+      &[data-instance='#{$instance}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects videos with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin video-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include videos() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects videos with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin video-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include videos() {
       &##{$id} {
         @content;
       }
