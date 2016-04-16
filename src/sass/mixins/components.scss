@@ -40,19 +40,17 @@
 
     span:not(:only-of-type) {
       @include size(0 $thickness);
-      &::before { @include size(#{$width / 2} $thickness); }
-      &::after { @include size(#{$width / 2} $thickness); }
 
       &:nth-of-type(1) {
         transform: translate3d(#{$width / 2}, 0, 0);
 
         &::before {
-          @include size($width $thickness);
+          @include size(#{$width / 2} $thickness);
           transform: translate3d(#{$width / -2 + $thickness}, #{$height / 4}, 0) rotate(45deg);
         }
 
         &::after {
-          @include size($width $thickness);
+          @include size(#{$width / 2} $thickness);
           transform: translate3d(#{$width / -2 + $thickness}, #{$height / -4 + $thickness}, 0) rotate(-45deg);
         }
       }
@@ -61,12 +59,12 @@
         transform: translate3d(#{$width / -2}, 0, 0);
 
         &::before {
-          @include size($width $thickness);
+          @include size(#{$width / 2} $thickness);
           transform: translate3d(#{$thickness * -1}, #{$height / 4}, 0) rotate(-45deg);
         }
 
         &::after {
-          @include size($width $thickness);
+          @include size(#{$width / 2} $thickness);
           transform: translate3d(#{$thickness * -1}, #{$height / -4 + $thickness}, 0) rotate(45deg);
         }
       }
