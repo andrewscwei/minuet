@@ -19,7 +19,6 @@
   @include min-size($width $height);
   @include size($width $height);
   background: transparent;
-  position: relative;
 
   @include state('hover') {
     span:not(:only-of-type):nth-of-type(2) {
@@ -46,14 +45,30 @@
 
       &:nth-of-type(1) {
         transform: translate3d(#{$width / 2}, 0, 0);
-        &::before { transform: translate3d(#{$width / -2 + $thickness}, #{$height / 4}, 0) rotate(45deg); }
-        &::after { transform: translate3d(#{$width / -2 + $thickness}, #{$height / -4 + $thickness}, 0) rotate(-45deg); }
+
+        &::before {
+          @include size($width $thickness);
+          transform: translate3d(#{$width / -2 + $thickness}, #{$height / 4}, 0) rotate(45deg);
+        }
+
+        &::after {
+          @include size($width $thickness);
+          transform: translate3d(#{$width / -2 + $thickness}, #{$height / -4 + $thickness}, 0) rotate(-45deg);
+        }
       }
 
       &:nth-of-type(2) {
         transform: translate3d(#{$width / -2}, 0, 0);
-        &::before { transform: translate3d(#{$thickness * -1}, #{$height / 4}, 0) rotate(-45deg); }
-        &::after { transform: translate3d(#{$thickness * -1}, #{$height / -4 + $thickness}, 0) rotate(45deg); }
+
+        &::before {
+          @include size($width $thickness);
+          transform: translate3d(#{$thickness * -1}, #{$height / 4}, 0) rotate(-45deg);
+        }
+
+        &::after {
+          @include size($width $thickness);
+          transform: translate3d(#{$thickness * -1}, #{$height / -4 + $thickness}, 0) rotate(45deg);
+        }
       }
     }
   }

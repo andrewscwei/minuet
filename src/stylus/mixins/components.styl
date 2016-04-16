@@ -19,7 +19,6 @@ burger-button($width=27px, $height=20px, $thickness=2px, $color=#fff)
   min-size($width $height)
   size($width $height)
   background: transparent
-  position: relative
 
   +state('hover')
     span:not(:only-of-type):nth-of-type(2)
@@ -29,7 +28,7 @@ burger-button($width=27px, $height=20px, $thickness=2px, $color=#fff)
       &::after
         size($width $thickness)
 
-  +state('hover')
+  +state('active')
     span:only-of-type
       size(0 $thickness)
       &:nth-of-type(1)
@@ -49,15 +48,19 @@ burger-button($width=27px, $height=20px, $thickness=2px, $color=#fff)
       &:nth-of-type(1)
         transform: translate3d(($width / 2), 0, 0)
         &::before
+          size($width $thickness)
           transform: translate3d(($width / -2 + $thickness), ($height / 4), 0) rotate(45deg)
         &::after
+          size($width $thickness)
           transform: translate3d(($width / -2 + $thickness), ($height / -4 + $thickness), 0) rotate(-45deg)
 
       &:nth-of-type(2)
         transform: translate3d(($width / -2), 0, 0)
         &::before
+          size($width $thickness)
           transform: translate3d(($thickness * -1), ($height / 4), 0) rotate(-45deg)
         &::after
+          size($width $thickness)
           transform: translate3d(($thickness * -1), ($height / -4 + $thickness), 0) rotate(45deg)
 
   span:only-of-type,
