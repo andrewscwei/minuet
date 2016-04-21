@@ -331,6 +331,7 @@
     $_width: if(str-length($_wstr) > 0, $_wstr, '');
     $_orientation: if(($_direction == '^') or ($_direction == 'v'), 'vertical', 'horizontal');
     $_padding-around: false;
+    $_padding: null;
     @if (str-index($_pstr, '[') == 1) and (str-index($_pstr, ']') == str-length($_pstr)) {
       $_padding-around: true;
       $_padding: str-slice($_pstr, 2, str-length($_pstr) - 1);
