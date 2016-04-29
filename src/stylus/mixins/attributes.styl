@@ -4,22 +4,46 @@
 // This software is released under the MIT License:
 // http://www.opensource.org/licenses/mit-license.php
 
-/// Selector for elements with the data-class attribute.
+
+/// Selector for custom elements with the specified tag.
 ///
-/// @param {string} $name - data-class attribute value.
+/// @param {string} $tag - Tag name.
 ///
 /// @group attributes
-class($name)
-  [data-class={$name}]
+element($tag)
+  {$tag},
+  [is={$tag}]
     {block}
 
-/// Selector for elements with the data-instance attribute.
+/// Selector for elements with the specified name.
 ///
-/// @param {string} $name - data-instance attribute value.
+/// @param {string} $name - Name attribute of the element.
 ///
 /// @group attributes
-instance($name)
-  [data-instance={$name}]
+name($name)
+  [name={$name}]
+    {block}
+
+/// Binds the content to one/multiple state of the target selector. Option to
+/// specify whether the state(s) are default.
+///
+/// @param {List}    $states          - List of state names.
+/// @param {boolean} $default [false] - Specifies whether the class(es) are
+///                                     default.
+///
+/// @group attributes
+state($states, $default=false)
+  for $state in $states
+    if $state == 'hover'
+      &:hover
+        {block}
+      &[state='hover']
+        {block}
+    else
+      &[state={$state}]
+        {block}
+
+  if $default == true
     {block}
 
 /// Selects elements with the specified data- key and value.
@@ -31,7 +55,7 @@ instance($name)
 ///                                   (any, this, parent, or child).
 ///
 /// @group attributes
-property($key, $value=null, $scope='this')
+data($key, $value=null, $scope='this')
   if $value == null
     if $scope == 'any'
       / [data-{$key}]
@@ -65,25 +89,3 @@ property($key, $value=null, $scope='this')
     else if $scope == 'child'
       &[data-{$key}={$value}] *
         {block}
-
-/// Binds the content to one/multiple data-state of the target selector. Option to
-/// specify whether the state(s) are default.
-///
-/// @param {List}    $states          - List of state names.
-/// @param {boolean} $default [false] - Specifies whether the class(es) are
-///                                     default.
-///
-/// @group attributes
-state($states, $default=false)
-  for $state in $states
-    if $state == 'hover'
-      &:hover
-        {block}
-      &[data-state='hover']
-        {block}
-    else
-      &[data-state={$state}]
-        {block}
-
-  if $default == true
-    {block}

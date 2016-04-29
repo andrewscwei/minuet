@@ -36,16 +36,16 @@
 
 /// Selects labels with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin label($instance:'') {
-  @if ($instance == '') {
+@mixin label($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include labels() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -97,16 +97,16 @@
 
 /// Selects statics with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin static($instance:'') {
-  @if ($instance == '') {
+@mixin static($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include statics() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -163,16 +163,16 @@
 
 /// Selects buttons with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin button($instance:'') {
-  @if ($instance == '') {
+@mixin button($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include buttons() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -224,16 +224,16 @@
 
 /// Selects links with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin link($instance:'') {
-  @if ($instance == '') {
+@mixin link($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include links() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -298,16 +298,16 @@
 
 /// Selects textfields with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin textfield($instance:'') {
-  @if ($instance == '') {
+@mixin textfield($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include textfields() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -380,16 +380,16 @@
 
 /// Selects boxes with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin box($instance:'') {
-  @if ($instance == '') {
+@mixin box($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include boxes() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -442,16 +442,16 @@
 
 /// Selects lists with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin list($instance:'') {
-  @if ($instance == '') {
+@mixin list($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include lists() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -501,16 +501,16 @@
 
 /// Selects images with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin list-item($instance:'') {
-  @if ($instance == '') {
+@mixin list-item($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include list-items() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -562,16 +562,16 @@
 
 /// Selects images with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin image($instance:'') {
-  @if ($instance == '') {
+@mixin image($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include images() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
@@ -623,16 +623,16 @@
 
 /// Selects videos with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-@mixin video($instance:'') {
-  @if ($instance == '') {
+@mixin video($name:'') {
+  @if ($name == '') {
     @warn 'Instance name must be specified';
   }
   @else {
     @include videos() {
-      &[data-instance='#{$instance}'] {
+      &[data-instance='#{$name}'] {
         @content;
       }
     }
