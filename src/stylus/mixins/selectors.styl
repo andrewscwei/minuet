@@ -46,15 +46,15 @@ labels($type='all')
 
 /// Selects labels with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-label($instance='')
-  if $instance == ''
+label($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +labels()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects labels with the given class(es).
@@ -92,15 +92,15 @@ statics()
 
 /// Selects statics with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-static($instance='')
-  if $instance == ''
+static($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +statics()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects statics with the given class(es).
@@ -148,15 +148,15 @@ buttons()
 
 /// Selects buttons with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-button($instance='')
-  if $instance == ''
+button($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +buttons()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects buttons with the given class(es).
@@ -194,15 +194,15 @@ links()
 
 /// Selects links with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-link($instance='')
-  if $instance == ''
+link($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +links()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects links with the given class(es).
@@ -266,15 +266,15 @@ textfields()
 
 /// Selects textfields with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-textfield($instance='')
-  if $instance == ''
+textfield($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +textfields()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects textfields with the given class(es).
@@ -354,15 +354,15 @@ boxes()
 
 /// Selects boxes with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-box($instance='')
-  if $instance == ''
+box($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +boxes()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects boxes with the given class(es).
@@ -402,15 +402,15 @@ lists()
 
 /// Selects lists with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-list($instance='')
-  if $instance == ''
+list($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +lists()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects lists with the given class(es).
@@ -455,15 +455,15 @@ list-items()
 
 /// Selects images with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-list-item($instance='')
-  if $instance == ''
+list-item($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +list-items()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects images with the given class(es).
@@ -501,15 +501,15 @@ images()
 
 /// Selects images with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-image($instance='')
-  if $instance == ''
+image($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +images()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects images with the given class(es).
@@ -547,15 +547,15 @@ videos()
 
 /// Selects videos with the given instance name.
 ///
-/// @param {string} $instance - Instance name.
+/// @param {string} $name - Instance name.
 ///
 /// @group selectors
-video($instance='')
-  if $instance == ''
+video($name='')
+  if $name == ''
     warn('Instance name must be specified')
   else
     +videos()
-      &[data-instance={$instance}]
+      &[data-instance={$name}]
         {block}
 
 /// Selects videos with the given class(es).
