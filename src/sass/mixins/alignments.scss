@@ -371,7 +371,8 @@
 ///
 /// @group alignments
 @mixin align($type:'absolute', $align1:null, $align2:null) {
-  $_align1: if(length($_default) > 1, nth($_default, 1), (top left));
+  $_default: if($align1 == null, (top left), $align1);
+  $_align1: if(length($_default) > 1, nth($_default, 1), $_default);
   $_align2: if(length($_default) > 1, nth($_default, 2), 'center');
   $_align2: if($align2 == null, $_align2, nth($align2, 1));
   $_h: if($_align1 == 'left' or $_align1 == 'right', $_align1, 'center');
