@@ -419,7 +419,8 @@ clearfix()
 ///
 /// @group alignments
 align($type='absolute', $align1=null, $align2=null)
-  $_align1 = (length($_default) > 1) ? $_default[0] : (top left)
+  $_default = ($align1 == null) ? (top left) : $align1
+  $_align1 = (length($_default) > 1) ? $_default[0] : $_default
   $_align2 = (length($_default) > 1) ? $_default[1] : 'center'
   $_align2 = ($align2 == null) ? $_align2 : $align2
   $_h = ($_align1 == 'left' or $_align1 == 'right') ? $_align1 : 'center'
