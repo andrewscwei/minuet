@@ -427,15 +427,23 @@ clearfix()
 ///                                        absolute or fixed).
 ///
 /// @group alignments
-align($alignH='left', $alignV='top', $type='absolute')
+align($type='absolute', $align1=null, $align2=null)
+  $_align1 = (length($_default) > 1) ? $_default[0] : (top left)
+  $_align2 = (length($_default) > 1) ? $_default[1] : 'center'
+  $_align2 = ($align2 == null) ? $_align2 : $align2
+  $_h = ($_align1 == 'left' or $_align1 == 'right') ? $_align1 : 'center'
+  $_h = ($_align2 == 'left' or $_align2 == 'right') ? $_align2 : $_h
+  $_v = ($_align1 == 'top' or $_align1 == 'bottom') ? $_align1 : 'center'
+  $_v = ($_align2 == 'top' or $_align2 == 'bottom') ? $_align2 : $_v
+
   if $type == 'absolute' or $type == 'abs'
-    abs-align($alignH, $alignV)
+    abs-align($_h, $_v)
 
   if $type == 'fixed' or $type == 'fix'
-    fixed-align($alignH, $alignV)
+    fixed-align($_h, $_v)
 
   if $type == 'inline'
-    inline-align($alignH, $alignV)
+    inline-align($_h, $_v)
 
 /// Aligns containing selector to specified x/y directions in absolute position.
 ///

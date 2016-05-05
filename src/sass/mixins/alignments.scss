@@ -379,15 +379,23 @@
 ///                                        absolute or fixed).
 ///
 /// @group alignments
-@mixin align($alignH:'left', $alignV:'top', $type:'absolute') {
+@mixin align($type:'absolute', $align1:null, $align2:null) {
+  $_align1: if(length($_default) > 1, nth($_default, 1), (top left));
+  $_align2: if(length($_default) > 1, nth($_default, 2), 'center');
+  $_align2: if($align2 == null, $_align2, nth($align2, 1));
+  $_h: if($_align1 == 'left' or $_align1 == 'right', $_align1, 'center');
+  $_h: if($_align2 == 'left' or $_align2 == 'right', $_align2, $_h);
+  $_v: if($_align1 == 'top' or $_align1 == 'bottom', $_align1, 'center');
+  $_v: if($_align2 == 'top' or $_align2 == 'bottom', $_align2, $_v);
+
   @if ($type == 'absolute') or ($type == 'abs') {
-    @include abs-align($alignH, $alignV);
+    @include abs-align($_h, $_v);
   }
   @else if ($type == 'fixed') or ($type == 'fix') {
-    @include fixed-align($alignH, $alignV);
+    @include fixed-align($_h, $_v);
   }
   @else if ($type == 'inline') {
-    @include inline-align($alignH, $alignV);
+    @include inline-align($_h, $_v);
   }
 }
 
