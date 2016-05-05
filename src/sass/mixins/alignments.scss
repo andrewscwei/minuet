@@ -363,20 +363,11 @@
 
 /// Aligns an element horizontally and vertically.
 ///
-/// @param {List}   $alignH ['left']     - List of up to 3 values that describes
-///                                        the horizontal alignment. First value
-///                                        represents the direction (i.e. left,
-///                                        center, right) and the second and
-///                                        third value are the left and right
-///                                        edges respectively.
-/// @param {List}   $alignV ['top']      - List of up to 3 values that describes
-///                                        the vertical alignment. First value
-///                                        represents the direction (i.e. top,
-///                                        center, bottom) and the second and
-///                                        third value are the top and bottom
-///                                        edges respectively.
-/// @param {string} $type ['absolute']   - Specifies the position type (i.e.
+/// @param {string} $type ['absolute']  - Specifies the position type (i.e.
 ///                                        absolute or fixed).
+/// @param {string|List} $align1 [null] - Internal alignment, can be a string or
+///                                       a list of 2 strings.
+/// @param {string}      $align2 [null] - Internal alignment adjacent to $align1.
 ///
 /// @group alignments
 @mixin align($type:'absolute', $align1:null, $align2:null) {
