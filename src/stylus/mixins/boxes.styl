@@ -222,8 +222,6 @@ display($type, $align1=null, $align2=null)
     else
       display: block
 
-    overflow: hidden
-
     &::before
       content: ''
       display: inline-block
@@ -343,7 +341,6 @@ display($type, $align1=null, $align2=null)
 
     flex-wrap: nowrap
     line-height: normal
-    overflow: hidden
     white-space: normal
 
     > *
@@ -399,7 +396,6 @@ display($type, $align1=null, $align2=null)
       flex-basis: auto;
       flex-grow: ($_grow == true) ? 1 : 0
       flex-shrink: 0;
-      overflow: hidden;
 
       if $_size > 0
         if $_padding-around == true
