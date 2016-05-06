@@ -54,7 +54,7 @@ label($name='')
     warn('Instance name must be specified')
   else
     +labels()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects labels with the given class(es).
@@ -83,6 +83,52 @@ label-id($id='')
       &#{$id}
         {block}
 
+/// Selector for icon elements.
+///
+/// @group selectors
+icons()
+  span[type='icon']
+    {block}
+
+/// Selects icons with the given instance name.
+///
+/// @param {string} $name - Instance name.
+///
+/// @group selectors
+icon($name='')
+  if $name == ''
+    warn('Instance name must be specified')
+  else
+    +icons()
+      &[name={$name}]
+        {block}
+
+/// Selects icons with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+icon-class($class='')
+  if $class == ''
+    warn('Class must be specified')
+  else
+    +icons()
+      &.{$class}
+        {block}
+
+/// Selects icons with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+icon-id($id='')
+  if $id == ''
+    warn('ID must be specified')
+  else
+    +icons()
+      &#{$id}
+        {block}
+
 /// Selector for static elements.
 ///
 /// @group selectors
@@ -100,7 +146,7 @@ static($name='')
     warn('Instance name must be specified')
   else
     +statics()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects statics with the given class(es).
@@ -156,7 +202,7 @@ button($name='')
     warn('Instance name must be specified')
   else
     +buttons()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects buttons with the given class(es).
@@ -202,7 +248,7 @@ link($name='')
     warn('Instance name must be specified')
   else
     +links()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects links with the given class(es).
@@ -274,7 +320,7 @@ textfield($name='')
     warn('Instance name must be specified')
   else
     +textfields()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects textfields with the given class(es).
@@ -362,7 +408,7 @@ box($name='')
     warn('Instance name must be specified')
   else
     +boxes()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects boxes with the given class(es).
@@ -410,7 +456,7 @@ list($name='')
     warn('Instance name must be specified')
   else
     +lists()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects lists with the given class(es).
@@ -463,7 +509,7 @@ list-item($name='')
     warn('Instance name must be specified')
   else
     +list-items()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects images with the given class(es).
@@ -509,7 +555,7 @@ image($name='')
     warn('Instance name must be specified')
   else
     +images()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects images with the given class(es).
@@ -555,7 +601,7 @@ video($name='')
     warn('Instance name must be specified')
   else
     +videos()
-      &[data-instance={$name}]
+      &[name={$name}]
         {block}
 
 /// Selects videos with the given class(es).

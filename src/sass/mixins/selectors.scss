@@ -45,7 +45,7 @@
   }
   @else {
     @include labels() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -88,6 +88,67 @@
   }
 }
 
+/// Selector for icon elements.
+///
+/// @group selectors
+@mixin icons() {
+  span[type='icon'] { @content; }
+}
+
+/// Selects icons with the given instance name.
+///
+/// @param {string} $name - Instance name.
+///
+/// @group selectors
+@mixin icon($name:'') {
+  @if ($name == '') {
+    @warn 'Instance name must be specified';
+  }
+  @else {
+    @include icons() {
+      &[name='#{$name}'] {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects icons with the given class(es).
+///
+/// @param {string} $class - Class(es).
+///
+/// @group selectors
+@mixin icon-class($class:'') {
+  @if ($class == '') {
+    @warn 'Class must be specified';
+  }
+  @else {
+    @include icons() {
+      &.#{$class} {
+        @content;
+      }
+    }
+  }
+}
+
+/// Selects icons with the given ID.
+///
+/// @param {string} $id - ID.
+///
+/// @group selectors
+@mixin icon-id($id:'') {
+  @if ($id == '') {
+    @warn 'ID must be specified';
+  }
+  @else {
+    @include icons() {
+      &##{$id} {
+        @content;
+      }
+    }
+  }
+}
+
 /// Selector for static elements.
 ///
 /// @group selectors
@@ -106,7 +167,7 @@
   }
   @else {
     @include statics() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -172,7 +233,7 @@
   }
   @else {
     @include buttons() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -233,7 +294,7 @@
   }
   @else {
     @include links() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -307,7 +368,7 @@
   }
   @else {
     @include textfields() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -389,7 +450,7 @@
   }
   @else {
     @include boxes() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -451,7 +512,7 @@
   }
   @else {
     @include lists() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -510,7 +571,7 @@
   }
   @else {
     @include list-items() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -571,7 +632,7 @@
   }
   @else {
     @include images() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
@@ -632,7 +693,7 @@
   }
   @else {
     @include videos() {
-      &[data-instance='#{$name}'] {
+      &[name='#{$name}'] {
         @content;
       }
     }
