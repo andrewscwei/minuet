@@ -209,8 +209,6 @@
       display: block;
     }
 
-    overflow: hidden;
-
     &::before {
       content: '';
       display: inline-block;
@@ -301,7 +299,6 @@
 
     flex-wrap: nowrap;
     line-height: normal;
-    overflow: hidden;
     white-space: normal;
 
     > * {
@@ -371,7 +368,6 @@
       flex-basis: auto;
       flex-grow: if($_grow, 1, 0);
       flex-shrink: 0;
-      overflow: hidden;
 
       @if ($_size > 0) {
         @if ($_padding-around == true) {
