@@ -380,8 +380,8 @@
   $_v: if($_align1 == 'top' or $_align1 == 'bottom', $_align1, 'center');
   $_v: if($_align2 == 'top' or $_align2 == 'bottom', $_align2, $_v);
   $_t: if((length($_default) > 0) and (nth($_default, 1) == 'fixed' or nth($_default, 1) == 'inline' or nth($_default, 1) == 'absolute'), nth($_default, 1), 'absolute');
-  $_t: if((length($_default) > 1) and (nth($_default, 2) == 'fixed' or nth($_default, 2) == 'inline' or nth($_default, 2) == 'absolute'), nth($_default, 2), 'absolute');
-  $_t: if((length($_default) > 2) and (nth($_default, 3) == 'fixed' or nth($_default, 3) == 'inline' or nth($_default, 3) == 'absolute'), nth($_default, 3), 'absolute');
+  $_t: if((length($_default) > 1) and (nth($_default, 2) == 'fixed' or nth($_default, 2) == 'inline' or nth($_default, 2) == 'absolute'), nth($_default, 2), $_t);
+  $_t: if((length($_default) > 2) and (nth($_default, 3) == 'fixed' or nth($_default, 3) == 'inline' or nth($_default, 3) == 'absolute'), nth($_default, 3), $_t);
   $_t: if($type == null, $_t, $type);
 
   @if ($_t == 'fixed') {
