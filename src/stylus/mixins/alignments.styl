@@ -428,8 +428,8 @@ align($align1=null, $align2=null, $type=null)
   $_v = ($_align1 == 'top' or $_align1 == 'bottom') ? $_align1 : 'center'
   $_v = ($_align2 == 'top' or $_align2 == 'bottom') ? $_align2 : $_v
   $_t = ((length($_default) > 0) and (nth($_default, 1) == 'fixed' or nth($_default, 1) == 'inline' or nth($_default, 1) == 'absolute')) ? $_default[0] : 'absolute'
-  $_t = ((length($_default) > 1) and (nth($_default, 2) == 'fixed' or nth($_default, 2) == 'inline' or nth($_default, 2) == 'absolute')) ? $_default[1] : 'absolute'
-  $_t = ((length($_default) > 2) and (nth($_default, 3) == 'fixed' or nth($_default, 3) == 'inline' or nth($_default, 3) == 'absolute')) ? $_default[2] : 'absolute'
+  $_t = ((length($_default) > 1) and (nth($_default, 2) == 'fixed' or nth($_default, 2) == 'inline' or nth($_default, 2) == 'absolute')) ? $_default[1] : $_t
+  $_t = ((length($_default) > 2) and (nth($_default, 3) == 'fixed' or nth($_default, 3) == 'inline' or nth($_default, 3) == 'absolute')) ? $_default[2] : $_t
   $_t = ($type == null) ? $_t : $type
 
   if $type == 'fixed'
