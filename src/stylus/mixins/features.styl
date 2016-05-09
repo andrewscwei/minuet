@@ -32,6 +32,30 @@ transition($properties=all, $durations=0s, $timing-functions=ease, $delays=0s)
   transition-duration: comma-list($durations)
   transition-timing-function: comma-list($timing-functions)
   transition-delay: comma-list($delays)
+  {block}
+
+/// Applies animation rules.
+///
+/// @param {List} $names [none]            - Animation name(s).
+/// @param {List} $durations [0s]          - Animation duration(s).
+/// @param {List} $timing-functions [ease] - Animation timing function(s).
+/// @param {List} $delays [0s]             - Animation delay(s).
+/// @param {List} $iteration-counts [1]    - Animation iteration count(s).
+/// @param {List} $directions [normal]     - Animation direction(s).
+/// @param {List} $fill-modes [none]       - Animation fill mode(s).
+/// @param {List} $play-states [running]   - Animation play state(s).
+///
+/// @group features
+animation($names=none, $durations=0s, $timing-functions=ease, $delays=0s, $iteration-counts=1, $directions=normal, $fill-modes=none, $play-states=running)
+  animation-name: comma-list($names)
+  animation-duration: comma-list($durations)
+  animation-timing-function: comma-list($timing-functions)
+  animation-delay: comma-list($delays)
+  animation-iteration-count: comma-list($iteration-counts)
+  animation-direction: comma-list($directions)
+  animation-fill-mode: comma-list($fill-modes)
+  animation-play-state: comma-list($play-states)
+  {block}
 
 /// Enables hardware acceleration for containing selector.
 ///

@@ -30,6 +30,31 @@
   transition-duration: append($durations, null, comma);
   transition-timing-function: append($timing-functions, null, comma);
   transition-delay: append($delays, null, comma);
+  @content;
+}
+
+/// Applies animation rules.
+///
+/// @param {List} $names [none]            - Animation name(s).
+/// @param {List} $durations [0s]          - Animation duration(s).
+/// @param {List} $timing-functions [ease] - Animation timing function(s).
+/// @param {List} $delays [0s]             - Animation delay(s).
+/// @param {List} $iteration-counts [1]    - Animation iteration count(s).
+/// @param {List} $directions [normal]     - Animation direction(s).
+/// @param {List} $fill-modes [none]       - Animation fill mode(s).
+/// @param {List} $play-states [running]   - Animation play state(s).
+///
+/// @group features
+@mixin animation($names:none, $durations:0s, $timing-functions:ease, $delays:0s, $iteration-counts:1, $directions:normal, $fill-modes:none, $play-states:running) {
+  animation-name: append($names, null, comma);
+  animation-duration: append($durations, null, comma);
+  animation-timing-function: append($timing-functions, null, comma);
+  animation-delay: append($delays, null, comma);
+  animation-iteration-count: append($iteration-counts, null, comma);
+  animation-direction: append($directions, null, comma);
+  animation-fill-mode: append($fill-modes, null, comma);
+  animation-play-state: append($play-states, null, comma);
+  @content;
 }
 
 /// Enables hardware acceleration for containing selector.
