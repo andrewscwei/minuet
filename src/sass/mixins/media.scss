@@ -172,8 +172,8 @@ $device-thresholds: (
   $x: 0;
   $y: 0;
 
-  @if $num-cols > 1 { $x: #{((100 / ($num-cols - 1)) * $col-index)}; }
-  @if $num-rows > 1 { $y: #{((100 / ($num-rows - 1)) * $row-index)}; }
+  @if $num-cols > 1 { $x: ((100 / ($num-cols - 1)) * $col-index); }
+  @if $num-rows > 1 { $y: ((100 / ($num-rows - 1)) * $row-index); }
 
   background-size: percentage($num-cols * 100) percentage($num-rows * 100);
   background-position: percentage($x) percentage($y);
