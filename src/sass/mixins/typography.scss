@@ -4,8 +4,8 @@
 // This software is released under the MIT License:
 // http://www.opensource.org/licenses/mit-license.php
 
-$font-family-serif: serif;
-$font-family-sans-serif: sans-serif;
+$font-family-serif: serif !default;
+$font-family-sans-serif: sans-serif !default;
 
 $font-size-extra-small: 12px !default;
 $font-size-small: 14px !default;
@@ -13,12 +13,12 @@ $font-size-medium: 18px !default;
 $font-size-large: 24px !default;
 $font-size-extra-large: 30px !default;
 
-$font-weight-serif-light: 100;
-$font-weight-serif-normal: 300;
-$font-weight-serif-bold: 400;
-$font-weight-sans-serif-light: 100;
-$font-weight-sans-serif-normal: 300;
-$font-weight-sans-serif-bold: 400;
+$font-weight-serif-light: 100 !default;
+$font-weight-serif-normal: 300 !default;
+$font-weight-serif-bold: 400 !default;
+$font-weight-sans-serif-light: 100 !default;
+$font-weight-sans-serif-normal: 300 !default;
+$font-weight-sans-serif-bold: 400 !default;
 
 /// Gets the font family of the specified type. Minuet natively supports
 /// overriding two font family types: 'serif' or 'sans-serif'.
