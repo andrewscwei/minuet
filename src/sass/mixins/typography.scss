@@ -4,11 +4,42 @@
 // This software is released under the MIT License:
 // http://www.opensource.org/licenses/mit-license.php
 
+$font-family-serif: serif;
+$font-family-sans-serif: sans-serif;
+
 $font-size-extra-small: 12px !default;
 $font-size-small: 14px !default;
 $font-size-medium: 18px !default;
 $font-size-large: 24px !default;
 $font-size-extra-large: 30px !default;
+
+$font-weight-serif-light: 100;
+$font-weight-serif-normal: 300;
+$font-weight-serif-bold: 400;
+$font-weight-sans-serif-light: 100;
+$font-weight-sans-serif-normal: 300;
+$font-weight-sans-serif-bold: 400;
+
+/// Gets the font family of the specified type. Minuet natively supports
+/// overriding two font family types: 'serif' or 'sans-serif'.
+///
+/// @param {string} $family ['serif'] - Specify a value or pick from: 'serif',
+///                                     'sans-serif'.
+///
+/// @return {font-family}
+///
+/// @group typography
+@function get-font-family($family:'serif') {
+  @if ($family == 'serif') or ($family == 's') {
+    @return append($font-family-serif, null, comma);
+  }
+  @else if ($family == 'sans-serif') or ($family == 'ss') or ($family == 's-s') {
+    @return append($font-family-sans-serif, null, comma);
+  }
+  @else {
+    @return append($family, null, comma);
+  }
+}
 
 /// Gets the specified font size.
 ///
@@ -18,6 +49,8 @@ $font-size-extra-large: 30px !default;
 /// @param {number}        $scale [1]         - Specify a scale.
 ///
 /// @return {font-size}
+///
+/// @group typography
 @function get-font-size($size:'default', $scale:1) {
   @if ($size == 'x-small') or ($size == 'xs') or ($size == 'extra-small') or ($size == 'x-s') {
     @return #{$font-size-extra-small * $scale / $font-size-reset}em;
@@ -34,4 +67,62 @@ $font-size-extra-large: 30px !default;
   } @else {
     @return #{$font-size-reset * $scale / $font-size-reset}em;
   }
+}
+
+/// Gets the font weight of the specified type. Minuet natively supports
+/// overriding three font weights for each font family types. The weights are
+/// 'light', 'normal' and 'bold'.
+///
+/// @param {string|unit} $weight ['normal'] - Specify a value or pick from:
+///                                           'light', 'normal' or 'bold'.
+/// @param {string} $family ['serif']       - Specifies the font-family this
+///                                           font weight is associated with.
+/// @return {font-weight}
+///
+/// @group typography
+@function get-font-weight($weight:'normal', $family:'serif') {
+  @if ($family == 'serif') or ($family == 's') {
+    @if ($weight == 'light') or ($weight == 'l') {
+      @return $font-weight-serif-light;
+    }
+    @else if ($weight == 'normal') or ($weight == 'n') {
+      @return $font-weight-serif-normal;
+    }
+    @else if ($weight == 'bold') or ($weight == 'b') {
+      @return $font-weight-serif-bold;
+    }
+    @else {
+      @return $weight;
+    }
+  }
+  @else if ($family == 'sans-serif') or ($family == 'ss') or ($family == 's-s') {
+    @if ($weight == 'light') or ($weight == 'l') {
+      @return $font-weight-sans-serif-light;
+    }
+    @else if ($weight == 'normal') or ($weight == 'n') {
+      @return $font-weight-sans-serif-normal;
+    }
+    @else if ($weight == 'bold') or ($weight == 'b') {
+      @return $font-weight-sans-serif-bold;
+    }
+    @else {
+      @return $weight;
+    }
+  }
+  @else {
+    @return $weight;
+  }
+}
+
+/// Applies font related rules.
+///
+/// @param {List}   $family [null] - Font family.
+/// @param {*}      $size [null]   - Font size.
+/// @param {number} $weight [null] - Font weight.
+///
+/// @group typography
+@mixin font($family:null, $size:null, $weight:null) {
+  @if ($family != null) { font-family: get-font-family($family); }
+  @if ($size != null) { font-size: get-font-size($size, 1); }
+  @if ($weight != null) and ($family != null) { font-weight: get-font-weight($weight, $family); }
 }
