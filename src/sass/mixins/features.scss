@@ -4,19 +4,6 @@
 // This software is released under the MIT License:
 // http://www.opensource.org/licenses/mit-license.php
 
-/// Applies font related rules.
-///
-/// @param {List}   $family [null] - Font family.
-/// @param {*}      $size [null]   - Font size.
-/// @param {number} $weight [null] - Font weight.
-///
-/// @group features
-@mixin font($family:null, $size:null, $weight:null) {
-  @if ($family != null) { font-family: append($family, null, comma); }
-  @if ($size != null) { font-size: get-font-size($size, 1); }
-  @if ($weight != null) { font-weight: $weight; }
-}
-
 /// Applies transition rules.
 ///
 /// @param {List} $properties [all]        - Transition property(ies).
