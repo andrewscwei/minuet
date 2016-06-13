@@ -1,15 +1,15 @@
 {
   "name": "minuet",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "An experimental stylesheet library.",
-  "homepage": "http://VARIANTE.github.io/minuet",
+  "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
   "authors": [
     "Andrew Wei <andrew@variante.io>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VARIANTE/minuet.git"
+    "url": "https://github.com/andrewscwei/minuet.git"
   },
   "scripts": {
     "clean": "rimraf dist && rimraf lib",

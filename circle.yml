@@ -4,7 +4,6 @@ machine:
 deployment:
   release:
     tag: /release-.*/
-    owner: VARIANTE
     commands:
       - chmod +x ./scripts/release.sh
       - ./scripts/release.sh
