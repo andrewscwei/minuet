@@ -2,6 +2,7 @@
 
 $font-family-serif = serif
 $font-family-sans-serif = sans-serif
+$font-family-monospace = monospace
 
 $font-size-extra-small = 12px
 $font-size-small = 14px
@@ -15,12 +16,15 @@ $font-weight-serif-bold = 400
 $font-weight-sans-serif-light = 100
 $font-weight-sans-serif-normal = 300
 $font-weight-sans-serif-bold = 400
+$font-weight-monospace-light = 100
+$font-weight-monospace-normal = 300
+$font-weight-monospace-bold = 400
 
 /// Gets the font family of the specified type. Minuet natively supports
-/// overriding two font family types: 'serif' or 'sans-serif'.
+/// overriding three font family types: 'serif', 'sans-serif' or 'monospace'.
 ///
 /// @param {string} $family ['serif'] - Specify a value or pick from: 'serif',
-///                                     'sans-serif'.
+///                                     'sans-serif', 'monospace'.
 ///
 /// @return {font-family}
 ///
@@ -30,6 +34,8 @@ get-font-family($family='serif')
     return comma-list($font-family-serif)
   @else if $family == 'sans-serif' or $family == 'ss' or $family == 's-s'
     return comma-list($font-family-sans-serif)
+  @else if $family == 'monospace' or $family == 'm'
+    return comma-list($font-family-monospace)
   @else
     return comma-list($family)
 
@@ -43,19 +49,19 @@ get-font-family($family='serif')
 /// @return {font-size}
 get-font-size($size='default', $scale=1)
   if $size == 'x-small' or $size == 'xs' or $size == 'extra-small' or $size == 'x-s'
-    return unit($font-size-extra-small * $scale / $font-size-reset, em)
+    return unit($font-size-extra-small * $scale / $font-size-default, em)
   else if $size == 'small' or $size == 's'
-    return unit($font-size-small * $scale / $font-size-reset, em)
+    return unit($font-size-small * $scale / $font-size-default, em)
   else if $size == 'medium' or $size == 'm'
-    return unit($font-size-medium * $scale / $font-size-reset, em)
+    return unit($font-size-medium * $scale / $font-size-default, em)
   else if $size == 'large' or $size == 'l'
-    return unit($font-size-large * $scale / $font-size-reset, em)
+    return unit($font-size-large * $scale / $font-size-default, em)
   else if $size == 'x-large' or $size == 'xl' or $size == 'extra-large' or $size == 'x-l'
-    return unit($font-size-extra-large * $scale / $font-size-reset, em)
+    return unit($font-size-extra-large * $scale / $font-size-default, em)
   else if typeof($size) == 'unit'
     return $size * $scale
   else
-    return unit($font-size-reset * $scale / $font-size-reset, em)
+    return unit($font-size-default * $scale / $font-size-default, em)
 
 /// Gets the font weight of the specified type. Minuet natively supports
 /// overriding three font weights for each font family types. The weights are
@@ -85,6 +91,15 @@ get-font-weight($weight='normal', $family='serif')
       return $font-weight-sans-serif-normal
     else if $weight == 'bold' or $weight == 'b'
       return $font-weight-sans-serif-bold
+    else
+      return $weight
+  else if $family == 'monospace' or $family == 'm'
+    if $weight == 'light' or $weight == 'l'
+      return $font-weight-monospace-light
+    else if $weight == 'normal' or $weight == 'n'
+      return $font-weight-monospace-normal
+    else if $weight == 'bold' or $weight == 'b'
+      return $font-weight-monospace-bold
     else
       return $weight
   else
