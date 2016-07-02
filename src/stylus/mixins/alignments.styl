@@ -634,8 +634,18 @@ overflow($overflowX, $overflowY=unset)
   if $_overflowX != null and $_overflowX != '-' and $_overflowX != 'x' and $_overflowX != 'n'
     overflow-x: $_overflowX
 
+    // Remove flickering by forcing hardware acceleration.
+    if $_overflowX == 'scroll'
+      backface-visibility: hidden
+      transform: translate3d(0, 0, 0)
+
   if $_overflowY != null and $_overflowY != '-' and $_overflowY != 'x' and $_overflowY != 'n'
     overflow-y: $_overflowY
+
+    // Remove flickering by forcing hardware acceleration.
+    if $_overflowY == 'scroll'
+      backface-visibility: hidden
+      transform: translate3d(0, 0, 0)
 
 /// Sets the space in between adjacent elements excluding the first and last
 /// element.
