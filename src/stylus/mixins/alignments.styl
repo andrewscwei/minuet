@@ -638,6 +638,7 @@ overflow($overflowX, $overflowY=unset)
     if $_overflowX == 'scroll'
       backface-visibility: hidden
       transform: translate3d(0, 0, 0)
+      -webkit-overflow-scrolling: touch
 
   if $_overflowY != null and $_overflowY != '-' and $_overflowY != 'x' and $_overflowY != 'n'
     overflow-y: $_overflowY
@@ -646,6 +647,7 @@ overflow($overflowX, $overflowY=unset)
     if $_overflowY == 'scroll'
       backface-visibility: hidden
       transform: translate3d(0, 0, 0)
+      -webkit-overflow-scrolling: touch
 
 /// Sets the space in between adjacent elements excluding the first and last
 /// element.
