@@ -601,6 +601,7 @@
     @if ($_overflowX == 'scroll') {
       backface-visibility: hidden;
       transform: translate3d(0, 0, 0);
+      -webkit-overflow-scrolling: touch;
     }
   }
 
@@ -611,6 +612,7 @@
     @if ($_overflowY == 'scroll') {
       backface-visibility: hidden;
       transform: translate3d(0, 0, 0);
+      -webkit-overflow-scrolling: touch;
     }
   }
 }
