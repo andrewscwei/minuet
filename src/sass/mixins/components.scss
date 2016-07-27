@@ -65,6 +65,10 @@
         }
       }
     }
+
+    span:only-of-type::after {
+      @include size($width $thickness);
+    }
   }
 
   span:only-of-type,

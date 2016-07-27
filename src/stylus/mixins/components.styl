@@ -55,6 +55,9 @@ burger-button($width=27px, $height=20px, $thickness=2px, $color=#fff)
           size(($width / 2) $thickness)
           transform: translate3d(($thickness * -1), ($height / -4 + $thickness), 0) rotate(45deg)
 
+    span:only-of-type::after
+      size($width $thickness)
+
   span:only-of-type,
   span:only-of-type::before,
   span:only-of-type::after
