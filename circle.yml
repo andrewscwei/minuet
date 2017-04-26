@@ -1,6 +1,9 @@
 machine:
   node:
     version: 7.8.0
+dependencies:
+  post:
+    - npm run build
 deployment:
   release:
     tag: /^v(\d+\.)?(\d+\.)?(\*|\d+)$/
