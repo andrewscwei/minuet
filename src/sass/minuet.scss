@@ -10,3 +10,8 @@
 @import 'mixins/typography';
 @import 'mixins/components';
 
+// Default global font size, override this if needed.
+$font-size-default: 16px !default;
+
+// Default global font scale, override this if needed.
+$font-size-scale: 100% !default;
