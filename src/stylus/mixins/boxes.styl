@@ -13,16 +13,16 @@
 ///
 /// Syntax: `fluid`
 ///
-/// `flex` - Arranges children in the specified `flex-direction` using `display: flex`.
-/// The lengths of the children that are parallel to the `flex-direction` is NOT
-/// inferred and must be specified by the children. On the other hand, the
-/// lengths of the children that are adjacent to the `flex-direction` automatically
-/// match that of the container. If the total length of the children in the
-/// specified `flex-direction` exceeds that of the container, the length of each
-/// child will shrink (`flex-shrink: 1`) proportionally according to its original
-/// length to fit the container. It is not recommended to add `padding` to its
-/// children because `padding` is used as part of the calculation for
-/// `flex-shrink`.
+/// `flex` - Arranges children in the specified `flex-direction` using 
+/// `display: flex`. The lengths of the children that are parallel to the 
+/// `flex-direction` are NOT inferred and MUST BE specified by the children. On 
+/// the other hand, the lengths of the children that are perpendicular to the 
+/// `flex-direction`  automatically match that of the container. If the total 
+/// length of the children in the specified `flex-direction` exceeds that of the 
+/// container, the length of each child will shrink (`flex-shrink: 1`) 
+/// proportionally according to its original length to fit the container. It is 
+/// not recommended to add `padding` to the children because `padding` is used 
+/// as part of the calculation for `flex-shrink`.
 ///
 /// Syntax: `flex{^|>|v|<}`, where:
 ///
@@ -37,8 +37,8 @@
 /// `box` - Similar to `fluid` containers, freely aligns child elements without
 /// interfering with their width and height. Child elements can then specify
 /// their own dimensions. The only difference between `box` containers and
-/// `fluid` containers is that `box` containers are not bounded to only
-/// consisting of `inline-block` child elements. Syntax is similar to `flex`.
+/// `fluid` containers is that `box` containers are not restricted to only
+/// supporting `inline-block` child elements. Syntax is similar to `flex`.
 ///
 /// Syntax: `box{^|>|v|<}`, where:
 ///
@@ -50,10 +50,10 @@
 ///
 /// `<` = `flex-direction: row-reverse`
 ///
-/// `elastic` - Similar to `flex`, except it automatically stretches its children
-/// evenly to fill the container in the specified `flex-direction`. Like `flex`,
-/// avoid adding `padding` to child elements in case of unexpected size
-/// adjustments.
+/// `elastic` - Similar to `flex`, except it automatically stretches its 
+/// children evenly to fill the container in the specified `flex-direction`. 
+/// Like `flex`, avoid adding `padding` to child elements in case of unexpected 
+/// size adjustments.
 ///
 /// Syntax: `elastic{^|>|v|<}`, where:
 ///
@@ -70,17 +70,17 @@
 /// margin and padding rules of this grid. If you must specify a margin, either
 /// put this grid in a parent container and tweak the margins of that instead,
 /// or manually take the internal paddings of the grid into account. The same
-/// goes for the individual items inside the grid. If the margin/padding rules
-/// must be tweaked, it is a better idea to have a child container and tweak the
-/// rules of that instead. There are a few customizable properties you
-/// can specify for this grid, as follows:
+/// goes for the direct child elements inside the grid. If the margin/padding 
+/// must be tweaked for these child elements, create a container inside the 
+/// elements and modify the margin/padding of that container instead. There are 
+/// a few customizable properties you can specify for this grid, as follows:
 ///   - `size` - The number of child elements expected per row/column, depending
 ///     on the `flex-direction`. This number must not be less than `0`. When
 ///     `size` is bigger than `0`, each row/column will ensure that it only has
 ///     that number of child elements in it, and push subsequent elements to the
-///     next row/column. If `size` is `0`, this restraint is removed and elements
-///     are  placed one after another as long as there is room in the current
-///     row/column. Defaults to `0`.
+///     next row/column. If `size` is `0`, this restraint is removed and 
+///     elements are  placed one after another as long as there is room in the 
+///     current row/column. Defaults to `0`.
 ///   - `grow` - Specifies whether child elements will automatically grow in the
 ///     specified `flex-direction` to fill remaininng gaps in the grid. Note
 ///     that if there is empty space in a given row/column, all elements in that
