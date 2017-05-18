@@ -632,10 +632,12 @@
   @if ($_direction == '>') or ($_direction == 'horizontal') or ($_direction == 'row') {
     &:not(:last-child) {
       margin-right: $value;
+      margin-bottom: initial;
     }
   }
   @else if ($_direction == 'v') or ($_direction == 'vertical') or ($_direction == 'column') {
     &:not(:last-child) {
+      margin-right: initial;
       margin-bottom: $value;
     }
   }
