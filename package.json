@@ -1,6 +1,6 @@
 {
   "name": "minuet",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "An experimental stylesheet library.",
   "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
@@ -13,9 +13,13 @@
   },
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && mkdir -p lib/sass && ncp src/sass lib/sass && mkdir -p lib/stylus && ncp src/stylus lib/stylus",
+    "build": "npm run clean && npm run build:sass && npm run build:stylus",
+    "build:sass": "mkdir -p lib/sass && ncp src/sass lib/sass && npm run bundle:sass",
+    "build:stylus": "mkdir -p lib/stylus && ncp src/stylus lib/stylus && npm run bundle:stylus",
+    "bundle:sass": "cat ./src/sass/mixins/utils.scss ./src/sass/mixins/selectors.scss ./src/sass/mixins/alignments.scss ./src/sass/mixins/attributes.scss ./src/sass/mixins/boxes.scss ./src/sass/mixins/features.scss ./src/sass/mixins/media.scss ./src/sass/mixins/palette.scss ./src/sass/mixins/typography.scss ./src/sass/mixins/components.scss ./src/sass/minuet.scss ./src/sass/reset.scss > ./lib/minuet.bundle.scss && sed -i '' 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '' '1s/^/\\/*! minuet, (c) Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
+    "bundle:stylus": "cat ./src/stylus/mixins/math.styl ./src/stylus/mixins/selectors.styl ./src/stylus/mixins/alignments.styl ./src/stylus/mixins/attributes.styl ./src/stylus/mixins/boxes.styl ./src/stylus/mixins/features.styl ./src/stylus/mixins/media.styl ./src/stylus/mixins/palette.styl ./src/stylus/mixins/typography.styl ./src/stylus/mixins/components.styl ./src/stylus/minuet.styl ./src/stylus/reset.styl > ./lib/minuet.bundle.styl && sed -i '' 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.styl && sed -i '' '1s/^/\\/*! minuet, (c) Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.styl",
     "docs": "rimraf docs && sassdoc src/sass -d docs",
-    "play": "rimraf playground/public && jade -w -O \"{basedir:'playground/app/templates'}\" -o playground/public playground/app/templates/views & webpack-dev-server --inline --hot --config playground/webpack.config.js --content-base playground/public --port 8080",
+    "play": "rimraf playground/public && pug -w -O \"{basedir:'playground/app/templates'}\" -o playground/public playground/app/templates/views & webpack-dev-server --inline --hot --config playground/webpack.config.js --content-base playground/public --port 8080",
     "test": "echo \"There are no tests in this package yet\""
   },
   "files": [
@@ -26,16 +30,16 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.0",
-    "jade": "^1.11.0",
     "ncp": "^2.0.0",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
+    "pug-cli": "^1.0.0-alpha6",
     "rimraf": "^2.6.1",
-    "sass-loader": "^6.0.3",
+    "sass-loader": "^6.0.6",
     "sassdoc": "^2.2.2",
-    "style-loader": "^0.16.1",
+    "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "webpack": "^2.4.1",
+    "webpack": "^3.5.5",
     "webpack-dev-server": "^2.4.4"
   }
 }
