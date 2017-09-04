@@ -56,3 +56,34 @@
 
   @return $value * map-get($_units, $unit);
 }
+
+/// Converts a font size to em.
+///
+/// @param {number} $value - Font size.
+///
+/// @return {font-size}
+///
+/// @group typography
+@function to-em($value) {
+  $_unit: unit($value);
+  
+  @if ($_unit == 'px') {
+    @return #{$value / $font-size-default}em;
+  }
+  @else {
+    @return $value;
+  }
+}
+
+/// Removes the unit from a number.
+///
+/// @param {number} $number - Number to remove unit from
+///
+/// @return {number}
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

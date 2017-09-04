@@ -39,16 +39,6 @@ get-font-family($family='serif')
   @else
     return comma-list($family)
 
-/// Converts pixels to em.
-///
-/// @param {number} $pixel - Size in pixels.
-///
-/// @return {font-size}
-///
-/// @group typography
-px2em($pixel)
-  return unit($pixel / $font-size-default, em)
-
 /// Gets the specified font size.
 ///
 /// @param {string|number} $size  ['default'] - Specify a value or pick from:
@@ -58,20 +48,22 @@ px2em($pixel)
 ///
 /// @return {font-size}
 get-font-size($size='default', $scale=1)
+  $_size = $font-size-default
+
   if $size == 'x-small' or $size == 'xs' or $size == 'extra-small' or $size == 'x-s'
-    return px2em($font-size-extra-small * $scale)
+    $_size = $font-size-extra-small
   else if $size == 'small' or $size == 's'
-    return px2em($font-size-small * $scale)
+    $_size = $font-size-small
   else if $size == 'medium' or $size == 'm'
-    return px2em($font-size-medium * $scale)
+    $_size = $font-size-medium
   else if $size == 'large' or $size == 'l'
-    return px2em($font-size-large * $scale)
+    $_size = $font-size-large
   else if $size == 'x-large' or $size == 'xl' or $size == 'extra-large' or $size == 'x-l'
-    return px2em($font-size-extra-large * $scale)
-  else if $size == 'default' or $size == 'd' or $size == 'normal' or $size == 'n' or $size == 'regular' or $size == 'r'
-    return px2em($font-size-default * $scale)
-  else
-    return $size
+    $_size = $font-size-extra-large
+  else if typeof($size) == 'unit'
+    $_size = $size
+  
+  return to-em($_size * $scale)
 
 /// Gets the font weight of the specified type. Minuet natively supports
 /// overriding three font weights for each font family types. The weights are

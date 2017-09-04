@@ -6,7 +6,7 @@ main#home {
   @include transition(all, 1s, ease);
   @include parallax-block(100);
   background: rgb(20, 20, 90);
-
+  
   @include labels() {
     @include font('Helvetica Neue' 'Helvetica' sans-serif, 1.5em, 100);
     line-height: 1.4em;
