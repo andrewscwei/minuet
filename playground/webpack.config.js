@@ -1,4 +1,4 @@
-// (c) Andrew Wei
+// © Andrew Wei
 
 'use strict';
 
