@@ -68,10 +68,10 @@ get-font-size($size='default', $scale=1)
     return px2em($font-size-large * $scale)
   else if $size == 'x-large' or $size == 'xl' or $size == 'extra-large' or $size == 'x-l'
     return px2em($font-size-extra-large * $scale)
-  else if typeof($size) == 'unit'
-    return $size * $scale
-  else
+  else if $size == 'default' or $size == 'd' or $size == 'normal' or $size == 'n' or $size == 'regular' or $size == 'r'
     return px2em($font-size-default * $scale)
+  else
+    return $size
 
 /// Gets the font weight of the specified type. Minuet natively supports
 /// overriding three font weights for each font family types. The weights are

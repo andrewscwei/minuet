@@ -76,10 +76,10 @@ $font-weight-monospace-bold: 400 !default;
     @return px2em($font-size-large * $scale);
   } @else if ($size == 'x-large') or ($size == 'xl') or ($size == 'extra-large') or ($size == 'x-l') {
     @return px2em($font-size-extra-large * $scale);
-  } @else if (type-of($size) == number) {
-    @return $size * $scale;
-  } @else {
+  } @else if ($size == 'default') or ($size == 'd') or ($size == 'normal') or ($size == 'n') or ($size == 'regular') or ($size == 'r') {
     @return px2em($font-size-default * $scale);
+  } @else {
+    @return $size;
   }
 }
 
