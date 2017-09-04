@@ -1,12 +1,13 @@
 {
   "name": "minuet",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "description": "An experimental stylesheet library.",
   "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
   "authors": [
     "Andrew Wei <andrewscwei@gmail.com>"
   ],
+  "main": "lib/sass/minuet.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewscwei/minuet.git"
