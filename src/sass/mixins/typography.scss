@@ -44,17 +44,6 @@ $font-weight-monospace-bold: 400 !default;
   }
 }
 
-/// Converts pixels to em.
-///
-/// @param {number} $pixel - Size in pixels.
-///
-/// @return {font-size}
-///
-/// @group typography
-@function px2em($pixel) {
-  @return #{$pixel / $font-size-default}em;
-}
-
 /// Gets the specified font size.
 ///
 /// @param {string|number} $size  ['default'] - Specify a value or pick from:
@@ -66,21 +55,25 @@ $font-weight-monospace-bold: 400 !default;
 ///
 /// @group typography
 @function get-font-size($size:'default', $scale:1) {
+  $_size: $font-size-default;
+  
   @if ($size == 'x-small') or ($size == 'xs') or ($size == 'extra-small') or ($size == 'x-s') {
-    @return px2em($font-size-extra-small * $scale);
+    $_size: $font-size-extra-small;
   } @else if ($size == 'small') or ($size == 's') {
-    @return px2em($font-size-small * $scale);
+    $_size: $font-size-small;
   } @else if ($size == 'medium') or ($size == 'm') {
-    @return px2em($font-size-medium * $scale);
+    $_size: $font-size-medium;
   } @else if ($size == 'large') or ($size == 'l') {
-    @return px2em($font-size-large * $scale);
+    $_size: $font-size-large;
   } @else if ($size == 'x-large') or ($size == 'xl') or ($size == 'extra-large') or ($size == 'x-l') {
-    @return px2em($font-size-extra-large * $scale);
-  } @else if ($size == 'default') or ($size == 'd') or ($size == 'normal') or ($size == 'n') or ($size == 'regular') or ($size == 'r') {
-    @return px2em($font-size-default * $scale);
-  } @else {
-    @return $size;
+    $_size: $font-size-extra-large;
+  } @else if (type-of($size) == number) {
+    $_size: $size;
   }
+
+  $_unit: unit($_size);
+  $_value: strip-unit($_size);
+  @return to-em(to-unit($_value, $_unit));
 }
 
 /// Gets the font weight of the specified type. Minuet natively supports
