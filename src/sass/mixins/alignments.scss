@@ -59,10 +59,10 @@
   @if ($_bottom == '') { $_bottom: $_right; }
   @if ($_left == '') { $_left: $_bottom; }
 
-  @if ($_top != null) and ($_top != '-') { margin-top: $_top; }
-  @if ($_right != null) and ($_right != '-') { margin-right: $_right; }
-  @if ($_bottom != null) and ($_bottom != '-') { margin-bottom: $_bottom; }
-  @if ($_left != null) and ($_left != '-') { margin-left: $_left; }
+  @if ($_top != null) and ($_top != '-') and ($_top != '_') { margin-top: $_top; }
+  @if ($_right != null) and ($_right != '-') and ($_right != '_') { margin-right: $_right; }
+  @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { margin-bottom: $_bottom; }
+  @if ($_left != null) and ($_left != '-') and ($_left != '_') { margin-left: $_left; }
 }
 
 /// Sets the horizontal margins (i.e. left and right respectively). Values are
@@ -85,8 +85,8 @@
 
   @if ($_right == '') { $_right: $_left; }
 
-  @if ($_left != null) and ($_left != '-') { margin-left: $_left; }
-  @if ($_right != null) and ($_right != '-') { margin-right: $_right; }
+  @if ($_left != null) and ($_left != '-') and ($_left != '_') { margin-left: $_left; }
+  @if ($_right != null) and ($_right != '-') and ($_right != '_') { margin-right: $_right; }
 }
 
 /// Sets the vertical margins (i.e. top and bottom respectively). Values are
@@ -109,8 +109,8 @@
 
   @if ($_bottom == '') { $_right: $_top; }
 
-  @if ($_top != null) and ($_top != '-') { margin-top: $_top; }
-  @if ($_bottom != null) and ($_bottom != '-') { margin-bottom: $_bottom; }
+  @if ($_top != null) and ($_top != '-') and ($_top != '_') { margin-top: $_top; }
+  @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { margin-bottom: $_bottom; }
 }
 
 /// Sets the padding of an element. Similar to the original 'padding' CSS rule,
@@ -172,10 +172,10 @@
   @if ($_bottom == '') { $_bottom: $_right; }
   @if ($_left == '') { $_left: $_bottom; }
 
-  @if ($_top != null) and ($_top != '-') { padding-top: $_top; }
-  @if ($_right != null) and ($_right != '-') { padding-right: $_right; }
-  @if ($_bottom != null) and ($_bottom != '-') { padding-bottom: $_bottom; }
-  @if ($_left != null) and ($_left != '-') { padding-left: $_left; }
+  @if ($_top != null) and ($_top != '-') and ($_top != '_') { padding-top: $_top; }
+  @if ($_right != null) and ($_right != '-') and ($_right != '_') { padding-right: $_right; }
+  @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { padding-bottom: $_bottom; }
+  @if ($_left != null) and ($_left != '-') and ($_left != '_') { padding-left: $_left; }
 }
 
 /// Sets the horizontal paddings (i.e. left and right respectively). Values are
@@ -198,8 +198,8 @@
 
   @if ($_right == '') { $_right: $_left; }
 
-  @if ($_left != null) and ($_left != '-') { padding-left: $_left; }
-  @if ($_right != null) and ($_right != '-') { padding-right: $_right; }
+  @if ($_left != null) and ($_left != '-') and ($_left != '_') { padding-left: $_left; }
+  @if ($_right != null) and ($_right != '-') and ($_right != '_') { padding-right: $_right; }
 }
 
 /// Sets the vertical paddings (i.e. top and bottom respectively). Values are
@@ -222,8 +222,8 @@
 
   @if ($_bottom == '') { $_right: $_top; }
 
-  @if ($_top != null) and ($_top != '-') { padding-top: $_top; }
-  @if ($_bottom != null) and ($_bottom != '-') { padding-bottom: $_bottom; }
+  @if ($_top != null) and ($_top != '-') and ($_top != '_') { padding-top: $_top; }
+  @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { padding-bottom: $_bottom; }
 }
 
 /// Sets the edge of an element (i.e. top, right, bottom and left). This mixin
@@ -285,10 +285,10 @@
   @if ($_bottom == '') { $_bottom: $_right; }
   @if ($_left == '') { $_left: $_bottom; }
 
-  @if ($_top != null) and ($_top != '-') { top: $_top; }
-  @if ($_right != null) and ($_right != '-') { right: $_right; }
-  @if ($_bottom != null) and ($_bottom != '-') { bottom: $_bottom; }
-  @if ($_left != null) and ($_left != '-') { left: $_left; }
+  @if ($_top != null) and ($_top != '-') and ($_top != '_') { top: $_top; }
+  @if ($_right != null) and ($_right != '-') and ($_right != '_') { right: $_right; }
+  @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { bottom: $_bottom; }
+  @if ($_left != null) and ($_left != '-') and ($_left != '_') { left: $_left; }
 }
 
 /// Sets the horizontal edges (i.e. left and right respectively). Values are
@@ -311,8 +311,8 @@
 
   @if ($_right == '') { $_right: $_left; }
 
-  @if ($_left != null) and ($_left != '-') { left: $_left; }
-  @if ($_right != null) and ($_right != '-') { right: $_right; }
+  @if ($_left != null) and ($_left != '-') and ($_left != '_') { left: $_left; }
+  @if ($_right != null) and ($_right != '-') and ($_right != '_') { right: $_right; }
 }
 
 /// Sets the vertical edges (i.e. top and bottom respectively). Values are
@@ -335,8 +335,8 @@
 
   @if ($_bottom == '') { $_right: $_top; }
 
-  @if ($_top != null) and ($_top != '-') { top: $_top; }
-  @if ($_bottom != null) and ($_bottom != '-') { bottom: $_bottom; }
+  @if ($_top != null) and ($_top != '-') and ($_top != '_') { top: $_top; }
+  @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { bottom: $_bottom; }
 }
 
 /// Clearfix hack for floated elements.
@@ -501,11 +501,11 @@
 
   @if ($_height == '') { $_height: $_width; }
 
-  @if ($_width != null) and ($_width != '-') and ($_width != 'x') and ($_width != 'n') {
+  @if ($_width != null) and ($_width != '-') and ($_width != 'x') and ($_width != 'n') and ($_width != '_') {
     width: $_width;
   }
 
-  @if ($_height != null) and ($_height != '-') and ($_height != 'x') and ($_height != 'n') {
+  @if ($_height != null) and ($_height != '-') and ($_height != 'x') and ($_height != 'n') and ($_height != '_') {
     height: $_height;
   }
 
@@ -535,11 +535,11 @@
 
   @if ($_height == '') { $_height: $_width; }
 
-  @if ($_width != null) and ($_width != '-') and ($_width != 'x') and ($_width != 'n') {
+  @if ($_width != null) and ($_width != '-') and ($_width != 'x') and ($_width != 'n') and ($_width != '_') {
     max-width: $_width;
   }
 
-  @if ($_height != null) and ($_height != '-') and ($_height != 'x') and ($_height != 'n') {
+  @if ($_height != null) and ($_height != '-') and ($_height != 'x') and ($_height != 'n') and ($_height != '_') {
     max-height: $_height;
   }
 }
@@ -564,11 +564,11 @@
 
   @if ($_height == '') { $_height: $_width; }
 
-  @if ($_width != null) and ($_width != '-') and ($_width != 'x') and ($_width != 'n') {
+  @if ($_width != null) and ($_width != '-') and ($_width != 'x') and ($_width != 'n') and ($_width != '_') {
     min-width: $_width;
   }
 
-  @if ($_height != null) and ($_height != '-') and ($_height != 'x') and ($_height != 'n') {
+  @if ($_height != null) and ($_height != '-') and ($_height != 'x') and ($_height != 'n') and ($_height != '_') {
     min-height: $_height;
   }
 }
@@ -594,7 +594,7 @@
     $_overflowY: $_overflowX;
   }
 
-  @if ($_overflowX != null) and ($_overflowX != '-') and ($_overflowX != 'x') and ($_overflowX != 'n') {
+  @if ($_overflowX != null) and ($_overflowX != '-') and ($_overflowX != 'x') and ($_overflowX != 'n') and ($_overflowX != '_') {
     overflow-x: $_overflowX;
 
     // Remove flickering by forcing hardware acceleration.
@@ -605,7 +605,7 @@
     }
   }
 
-  @if ($_overflowY != null) and ($_overflowY != '-') and ($_overflowY != 'x') and ($_overflowY != 'n') {
+  @if ($_overflowY != null) and ($_overflowY != '-') and ($_overflowY != 'x') and ($_overflowY != 'n') and ($_overflowY != '_') {
     overflow-y: $_overflowY;
 
     // Remove flickering by forcing hardware acceleration.

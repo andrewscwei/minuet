@@ -64,16 +64,16 @@ margin($top=null, $right=unset, $bottom=unset, $left=unset)
   if $_left == ''
     $_left = $_bottom
 
-  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n' and $_top != '_'
     margin-top: $_top
 
-  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n' and $_right != 'n'
     margin-right: $_right
 
-  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n' and $_bottom != 'n'
     margin-bottom: $_bottom
 
-  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n' and $_left != 'n'
     margin-left: $_left
 
 /// Sets the horizontal margins (i.e. left and right respectively). Values are
@@ -97,10 +97,10 @@ margin-h($left=null, $right=unset)
   if $_right == ''
     $_right = $_left
 
-  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n' and $_left != '_'
     margin-left: $_left
 
-  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n' and $_right != '_'
     margin-right: $_right
 
 /// Sets the vertical margins (i.e. top and bottom respectively). Values are
@@ -124,10 +124,10 @@ margin-v($top=null, $bottom=unset)
   if $_bottom == ''
     $_right = $_top
 
-  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n' and $_top != '_'
     margin-top: $_top
 
-  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n' and $_bottom != '_'
     margin-bottom: $_bottom
 
 /// Sets the padding of an element. Similar to the original 'padding' CSS rule,
@@ -194,16 +194,16 @@ padding($top=null, $right=unset, $bottom=unset, $left=unset)
   if $_left == ''
     $_left = $_bottom
 
-  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n' and $_top != '_'
     padding-top: $_top
 
-  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n' and $_right != '_'
     padding-right: $_right
 
-  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n' and $_bottom != '_'
     padding-bottom: $_bottom
 
-  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n' and $_left != '_'
     padding-left: $_left
 
 /// Sets the horizontal paddings (i.e. left and right respectively). Values are
@@ -227,10 +227,10 @@ padding-h($left=null, $right=unset)
   if $_right == ''
     $_right = $_left
 
-  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n' and $_left != '_'
     padding-left: $_left
 
-  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n' and $_right != '_'
     padding-right: $_right
 
 /// Sets the vertical paddings (i.e. top and bottom respectively). Values are
@@ -254,10 +254,10 @@ padding-v($top=null, $bottom=unset)
   if $_bottom == ''
     $_right = $_top
 
-  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n' and $_top != '_'
     padding-top: $_top
 
-  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n' and $_bottom != '_'
     padding-bottom: $_bottom
 
 /// Sets the edge of an element (i.e. top, right, bottom and left). This mixin
@@ -324,16 +324,16 @@ edge($top=null, $right=unset, $bottom=unset, $left=unset)
   if $_left == ''
     $_left = $_bottom
 
-  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n' and $_top != '_'
     top: $_top
 
-  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n' and $_right != '_'
     right: $_right
 
-  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n' and $_bottom != '_'
     bottom: $_bottom
 
-  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n' and $_left != '_'
     left: $_left
 
 /// Sets the horizontal edges (i.e. left and right respectively). Values are
@@ -357,10 +357,10 @@ edge-h($left=null, $right=unset)
   if $_right == ''
     $_right = $_left
 
-  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n'
+  if $_left != null and $_left != '-' and $_left != 'x' and $_left != 'n' and $_left != '_'
     left: $_left
 
-  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n'
+  if $_right != null and $_right != '-' and $_right != 'x' and $_right != 'n' and $_right != '_'
     right: $_right
 
 /// Sets the vertical edges (i.e. top and bottom respectively). Values are
@@ -384,10 +384,10 @@ edge-v($top=null, $bottom=unset)
   if $_bottom == ''
     $_right = $_top
 
-  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n'
+  if $_top != null and $_top != '-' and $_top != 'x' and $_top != 'n' and $_top != '_'
     top: $_top
 
-  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n'
+  if $_bottom != null and $_bottom != '-' and $_bottom != 'x' and $_bottom != 'n' and $_bottom != '_'
     bottom: $_bottom
 
 /// Clearfix hack for floated elements.
@@ -547,10 +547,10 @@ size($width, $height=unset, $oval=false)
   if $_height == ''
     $_height = $_width
 
-  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n'
+  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n' and $_width != '_'
     width: $_width
 
-  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n'
+  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n' and $_height != '_'
     height: $_height
 
   if $_oval == true
@@ -578,10 +578,10 @@ max-size($width, $height=unset)
   if $_height == ''
     $_height = $_width
 
-  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n'
+  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n' and $_width != '_'
     max-width: $_width
 
-  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n'
+  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n' and $_height != '_'
     max-height: $_height
 
 /// Sets the min size of the target selector.
@@ -605,10 +605,10 @@ min-size($width, $height=unset)
   if $_height == ''
     $_height = $_width
 
-  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n'
+  if $_width != null and $_width != '-' and $_width != 'x' and $_width != 'n' and $_width != '_'
     min-width: $_width
 
-  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n'
+  if $_height != null and $_height != '-' and $_height != 'x' and $_height != 'n' and $_height != '_'
     min-height: $_height
 
 /// Sets the overflow of the target selector.
@@ -631,7 +631,7 @@ overflow($overflowX, $overflowY=unset)
   if $_overflowY == ''
     $_overflowY = $_overflowX
 
-  if $_overflowX != null and $_overflowX != '-' and $_overflowX != 'x' and $_overflowX != 'n'
+  if $_overflowX != null and $_overflowX != '-' and $_overflowX != 'x' and $_overflowX != 'n' and $_overflowX != '_'
     overflow-x: $_overflowX
 
     // Remove flickering by forcing hardware acceleration.
@@ -640,7 +640,7 @@ overflow($overflowX, $overflowY=unset)
       transform: translate3d(0, 0, 0)
       -webkit-overflow-scrolling: touch
 
-  if $_overflowY != null and $_overflowY != '-' and $_overflowY != 'x' and $_overflowY != 'n'
+  if $_overflowY != null and $_overflowY != '-' and $_overflowY != 'x' and $_overflowY != 'n' and $_overflowY != '_'
     overflow-y: $_overflowY
 
     // Remove flickering by forcing hardware acceleration.
