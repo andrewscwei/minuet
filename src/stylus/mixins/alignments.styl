@@ -656,16 +656,19 @@ overflow($overflowX, $overflowY=unset)
 /// @param {string} $direction ['>'] - Specifies the direction. '>', 'horizontal'
 ///                                    and 'row' means horizontal. 'v', 'vertical'
 ///                                    and 'column' means vertical.
+/// @param {boolean} $unset [false]  - Unsets other margins set by this mixin.
 ///
 /// @group alignments
-space-between($value, $direction='>')
+space-between($value, $direction='>', $unset=false)
   $_direction = $direction
 
   if $_direction == '>' or $_direction == 'horizontal' or $_direction == 'row'
     &:not(:last-child)
       margin-right: $value
-      margin-bottom: initial
+      if $unset == true
+        margin-bottom: initial
   else if $_direction == 'v' or $_direction == 'vertical' or $_direction == 'column'
     &:not(:last-child)
-      margin-right: initial
       margin-bottom: $value
+      if $unset == true
+        margin-right: initial
