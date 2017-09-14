@@ -193,6 +193,7 @@ input,
 optgroup,
 select,
 textarea {
+  @extend %box-reset;
   color: inherit;
   font: inherit;
 }
