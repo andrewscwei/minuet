@@ -10,7 +10,7 @@ html
         each base, i in [1, 1, 2, 1, 3, 4, 2, 2, 1, 3]
           case i
             when 0
-              div.foo.generic(class='base-'+base): p= 'Welcome to Minuet demo.'
+              div.generic(class='base-'+base): p= 'Welcome to Minuet demo.'
             when 1
               div#fluid-block(class='base-'+base)
                 div

@@ -33,12 +33,15 @@ module.exports = {
       use: [{
         loader: 'style-loader'
       }, {
-        loader: 'css-loader'
+        loader: 'css-loader',
+        options: {
+          sourceMap: true
+        }
       }, {
         loader: 'sass-loader',
         options: {
           includePaths: [path.join(inputDir, 'stylesheets')],
-          outputStyle: 'expanded',
+          outputStyle: 'compressed',
           sourceMap: true
         }
       }]
@@ -47,7 +50,10 @@ module.exports = {
       use: [{
         loader: 'style-loader'
       }, {
-        loader: 'css-loader'
+        loader: 'css-loader',
+        options: {
+          sourceMap: true
+        }
       }, {
         loader: 'stylus-loader',
         options: {

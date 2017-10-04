@@ -1,735 +1,227 @@
 // © Andrew Wei
 
-/// Selector for label elements. Each element is meant to contain text only. For
+/// Resolves a list of selectors by appending the specified args to each 
+/// selector in the list. Returns a string containing all the selectors 
+/// separated by ','.
+///
+/// @param {List}   $list          - List of selectors to resolve.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// 
+/// @return {string} String of resolved selectors separated by comma.
+///
+@function resolve-selectors($list, $custom:null, $name:null, $class:null, $id:null) {
+  $_selectors: '';
+  
+  @for $_i from 1 through length($list) {
+    $_selector: nth($list, $_i);
+    @if ($name != null) { $_selector: $_selector + '[name="#{$name}"]'; }
+    @if ($class != null) { $_selector: $_selector + '.#{$class}'; }
+    @if ($id != null) { $_selector: $_selector + '##{$id}'; }
+    @if ($custom != null) { $_selector: $_selector + $custom; }
+
+    $_selectors: $_selectors + if($_selectors == '', '', ', ') + $_selector;
+  }
+
+  @return $_selectors;
+}
+
+/// Selector for text elements. Each element is meant to contain text only. For
 /// optimal results, do not nest label elements. For italics, use <i>, and for
 /// bold, use <b>. <a> is not treated as a label element and should only be used
 /// to make a nested element a hyperlink.
 ///
-/// @param {string} $type ['all'] - Type of the label (i.e. 'body', 'header',
-///                                 'all')
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
+///
+/// @return {string} String of text selectors separated by comma.
 ///
 /// @group selectors
-@mixin labels($type:'all') {
-  @if ($type == 'all') or ($type == 'body') {
-    p                  { @content; }
-    em                 { @content; }
-    strong             { @content; }
-    label              { @content; }
-    a[type='label']    { @content; }
-    li[type='label']   { @content; }
-    span[type='label'] { @content; }
-  }
-
-  @if ($type == 'all') or ($type == 'header') {
-    h1 { @content; }
-    h2 { @content; }
-    h3 { @content; }
-    h4 { @content; }
-    h5 { @content; }
-    h6 { @content; }
-  }
+@function select-texts($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('p', 'em', 'strong', 'label', 'a[type="label"]', 'li[type="label"]', 'span[type="label"]');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
-/// Selects labels with the given instance name.
+/// Selector for heading elements.
 ///
-/// @param {string} $name - Instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @group selectors
-@mixin label($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include labels() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects labels with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of heading selectors separated by comma.
 ///
 /// @group selectors
-@mixin label-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include labels() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects labels with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin label-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include labels() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-headings($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('h1', 'h2', 'h3', 'h4', 'h5', 'h6');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for icon elements.
 ///
-/// @group selectors
-@mixin icons() {
-  span[type='icon'] { @content; }
-}
-
-/// Selects icons with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
-///
-/// @group selectors
-@mixin icon($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include icons() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects icons with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of icon selectors separated by comma.
 ///
 /// @group selectors
-@mixin icon-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include icons() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects icons with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin icon-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include icons() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-icons($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('span[type="icon"]');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for static elements.
 ///
-/// @group selectors
-@mixin statics() {
-  form { @content; }
-}
-
-/// Selects statics with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
-///
-/// @group selectors
-@mixin static($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include statics() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects statics with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of static selectors separated by comma.
 ///
 /// @group selectors
-@mixin static-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include statics() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects statics with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin static-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include statics() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-statics($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('form');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for button elements.
 ///
-/// @group selectors
-@mixin buttons() {
-  a[type='button']       { @content; }
-  input[type='submit']   { @content; }
-  input[type='button']   { @content; }
-  input[type='checkbox'] { @content; }
-  input[type='file']     { @content; }
-  button                 { @content; }
-}
-
-/// Selects buttons with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
+/// @return {string} String of button selectors separated by comma.
 ///
 /// @group selectors
-@mixin button($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include buttons() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects buttons with the given class(es).
-///
-/// @param {string} $class - Class(es).
-///
-/// @group selectors
-@mixin button-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include buttons() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects buttons with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin button-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include buttons() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-buttons($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('a[type="button"]', 'input[type="submit"]', 'input[type="button"]', 'input[type="checkbox"]', 'input[type="file"]', 'button');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for hyperlinks.
 ///
-/// @group selectors
-@mixin links() {
-  a:not([type='button']):not([type='label']) { @content; }
-}
-
-/// Selects links with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
-///
-/// @group selectors
-@mixin link($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include links() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects links with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of link selectors separated by comma.
 ///
 /// @group selectors
-@mixin link-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include links() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects links with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin link-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include links() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-links($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('a:not([type="button"]):not([type="label"])');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for textfield input elements.
 ///
-/// @group selectors
-@mixin textfields() {
-  input[type='text']           { @content; }
-  input[type='password']       { @content; }
-  input[type='number']         { @content; }
-  input[type='date']           { @content; }
-  input[type='month']          { @content; }
-  input[type='week']           { @content; }
-  input[type='time']           { @content; }
-  input[type='datetime']       { @content; }
-  input[type='datetime-local'] { @content; }
-  input[type='email']          { @content; }
-  input[type='search']         { @content; }
-  input[type='tel']            { @content; }
-  input[type='url']            { @content; }
-  textarea                     { @content; }
-}
-
-/// Selects textfields with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
+/// @return {string} String of textfield selectors separated by comma.
 ///
 /// @group selectors
-@mixin textfield($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include textfields() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects textfields with the given class(es).
-///
-/// @param {string} $class - Class(es).
-///
-/// @group selectors
-@mixin textfield-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include textfields() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects textfields with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin textfield-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include textfields() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-textfields($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('input[type="text"]', 'input[type="password"]', 'input[type="number"]', 'input[type="date"]', 'input[type="month"]', 'input[type="week"]', 'input[type="time"]', 'input[type="datetime"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="url"]', 'textarea');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for box elements.
 ///
-/// @group selectors
-@mixin boxes() {
-  article    { @content; }
-  aside      { @content; }
-  details    { @content; }
-  dialog     { @content; }
-  summary    { @content; }
-  footer     { @content; }
-  header     { @content; }
-  main       { @content; }
-  figcaption { @content; }
-  figure     { @content; }
-  hgroup     { @content; }
-  nav        { @content; }
-  section    { @content; }
-  div        { @content; }
-  table      { @content; }
-  tr         { @content; }
-  td         { @content; }
-  th         { @content; }
-  tbody      { @content; }
-  thead      { @content; }
-  tfoot      { @content; }
-  col        { @content; }
-}
-
-/// Selects boxes with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
+/// @return {string} String of box selectors separated by comma.
 ///
 /// @group selectors
-@mixin box($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include boxes() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects boxes with the given class(es).
-///
-/// @param {string} $class - Class(es).
-///
-/// @group selectors
-@mixin box-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include boxes() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects boxes with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin box-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include boxes() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-boxes($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('article', 'aside', 'details', 'dialog', 'summary', 'footer', 'header', 'main', 'figcaption', 'figure', 'hgroup', 'nav', 'section', 'div', 'table', 'tr', 'td', 'th', 'tbody', 'thead', 'tfoot', 'col');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for list elements.
 ///
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
+///
+/// @return {string} String of list selectors separated by comma.
+///
 /// @group selectors
-@mixin lists() {
-  ul { @content; }
-  ol { @content; }
+@function select-lists($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('ul', 'ol');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
-/// Selects lists with the given instance name.
+/// Selector for list items.
 ///
-/// @param {string} $name - Instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @group selectors
-@mixin list($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include lists() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects lists with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
-@mixin list-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include lists() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects lists with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin list-id($id:'') {
-  @if ($id == '') { @warn 'ID must be specified'; }
-  @else {
-    @include lists() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-list-items($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('li:not([type="label"])');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for images.
 ///
-/// @group selectors
-@mixin list-items() {
-  li:not([type='label']) { @content; }
-}
-
-/// Selects images with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
-///
-/// @group selectors
-@mixin list-item($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include list-items() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects images with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
-@mixin list-item-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include list-items() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects images with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin list-item-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include list-items() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selector for images.
-///
-/// @group selectors
-@mixin images() {
-  img { @content; }
-}
-
-/// Selects images with the given instance name.
-///
-/// @param {string} $name - Instance name.
-///
-/// @group selectors
-@mixin image($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include images() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects images with the given class(es).
-///
-/// @param {string} $class - Class(es).
-///
-/// @group selectors
-@mixin image-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include images() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects images with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin image-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include images() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-images($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('img');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selector for videos.
 ///
-/// @group selectors
-@mixin videos() {
-  video { @content; }
-}
-
-/// Selects videos with the given instance name.
+/// @param {string} $custom [null] - Custom attribute(s) to append to each 
+///                                  selector.
+/// @param {string} $name   [null] - Name attribute to append to each selector.
+/// @param {string} $class  [null] - Class attribute to append to each selector.
+/// @param {string} $id     [null] - ID attribute to append to each selector.
 ///
-/// @param {string} $name - Instance name.
-///
-/// @group selectors
-@mixin video($name:'') {
-  @if ($name == '') {
-    @warn 'Instance name must be specified';
-  }
-  @else {
-    @include videos() {
-      &[name='#{$name}'] {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects videos with the given class(es).
-///
-/// @param {string} $class - Class(es).
+/// @return {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
-@mixin video-class($class:'') {
-  @if ($class == '') {
-    @warn 'Class must be specified';
-  }
-  @else {
-    @include videos() {
-      &.#{$class} {
-        @content;
-      }
-    }
-  }
-}
-
-/// Selects videos with the given ID.
-///
-/// @param {string} $id - ID.
-///
-/// @group selectors
-@mixin video-id($id:'') {
-  @if ($id == '') {
-    @warn 'ID must be specified';
-  }
-  @else {
-    @include videos() {
-      &##{$id} {
-        @content;
-      }
-    }
-  }
+@function select-videos($custom:null, $name:null, $class:null, $id:null) {
+  $_list: ('video');
+  @return resolve-selectors($_list, $custom, $name, $class, $id);
 }
 
 /// Selects each of the containing element based on the child index.

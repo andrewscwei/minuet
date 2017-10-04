@@ -8,14 +8,14 @@ main#home {
   @include parallax-block(100);
   background: rgb(20, 20, 90);
 
-  @include labels() {
+  #{select-headings()}, #{select-texts()} {
     @include font('Helvetica Neue' 'Helvetica' sans-serif, 1.5em, 100);
     line-height: 1.4em;
     color: rgba(255, 255, 255, 0.3);
     text-align: center;
   }
 
-  @include links() {
+  #{select-links()} {
     color: purple;
   }
 
@@ -27,7 +27,7 @@ main#home {
     @include cover-video();
   }
 
-  @include box-id('flex-block') {
+  #{select-boxes('#flex-block')} {
     @include display('elastic>', left center);
     color: white;
     background: black;
@@ -44,7 +44,7 @@ main#home {
     }
   }
 
-  @include box-id('fluid-block') {
+  #{select-boxes('#fluid-block')} {
     @include display('fluid', center);
     color: white;
     background: rgb(10, 10, 10);
@@ -57,7 +57,7 @@ main#home {
     }
   }
 
-  @include box-id('parallax-block') {
+  #{select-boxes('#parallax-block')} {
     pointer-events: none;
 
     & > div {
@@ -74,7 +74,7 @@ main#home {
     }
   }
 
-  @include box-id('flex-grid') {
+  #{select-boxes('#flex-grid')} {
     @include display('grid4/300px|10px');
 
     & > div.generic {
@@ -82,9 +82,15 @@ main#home {
       padding: 20px;
       background: rgb(10, 10, 10);
 
-      @include labels() { width: 100%; }
-      @include labels('header') { @include font(null, 8em, 100); }
-      @include labels('body') { @include font(null, 2.0em, 100); }
+      #{select-headings()} { 
+        @include font(null, 8em, 100);
+        width: 100%;
+      }
+      
+      #{select-texts()} { 
+        @include font(null, 2.0em, 100); 
+        width: 100%;
+      }
     }
 
     & > * {

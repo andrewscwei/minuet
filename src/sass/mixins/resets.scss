@@ -70,14 +70,14 @@ $font-size-scale: 100% !default;
   }
 
   #{$_root} {
-    @include boxes() {
+    #{select-boxes()} {
       @extend %box-reset;
       @extend %text-reset;
       display: block;
       position: relative;
     }
     
-    @include buttons() {
+    #{select-buttons()} {
       @extend %box-reset;
       @extend %text-reset;
       cursor: pointer;
@@ -91,18 +91,18 @@ $font-size-scale: 100% !default;
       }
     }
     
-    @include labels() {
+    #{select-headings()}, #{select-texts()} {
       @extend %box-reset;
       @extend %text-reset;
       list-style: none;
     }
     
-    @include lists() {
+    #{select-lists()} {
       @extend %box-reset;
       @extend %text-reset;
     }
     
-    @include textfields() {
+    #{select-textfields()} {
       @extend %box-reset;
       @extend %text-reset;
       resize: none;
@@ -118,13 +118,13 @@ $font-size-scale: 100% !default;
       }
     }
     
-    @include statics() {
+    #{select-statics()} {
       @extend %box-reset;
       @extend %text-reset;
       position: static;
     }
     
-    @include links() {
+    #{select-links()} {
       text-decoration: none;
       @include state('hover') {
         text-decoration: none;
