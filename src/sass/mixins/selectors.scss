@@ -5,23 +5,18 @@
 /// separated by ','.
 ///
 /// @param {List}   $list          - List of selectors to resolve.
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 /// 
 /// @return {string} String of resolved selectors separated by comma.
 ///
-@function resolve-selectors($list, $custom:null, $name:null, $class:null, $id:null) {
+@function resolve-selectors($list, $suffix:null, $prefix:null) {
   $_selectors: '';
   
   @for $_i from 1 through length($list) {
     $_selector: nth($list, $_i);
-    @if ($name != null) { $_selector: $_selector + '[name="#{$name}"]'; }
-    @if ($class != null) { $_selector: $_selector + '.#{$class}'; }
-    @if ($id != null) { $_selector: $_selector + '##{$id}'; }
-    @if ($custom != null) { $_selector: $_selector + $custom; }
+    @if ($prefix != null) { $_selector: $prefix + $_selector; }
+    @if ($suffix != null) { $_selector: $_selector + $suffix; }
 
     $_selectors: $_selectors + if($_selectors == '', '', ', ') + $_selector;
   }
@@ -34,194 +29,158 @@
 /// bold, use <b>. <a> is not treated as a label element and should only be used
 /// to make a nested element a hyperlink.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of text selectors separated by comma.
 ///
 /// @group selectors
-@function select-texts($custom:null, $name:null, $class:null, $id:null) {
+@function select-texts($suffix:null, $prefix:null) {
   $_list: ('p', 'em', 'strong', 'label', 'a[type="label"]', 'li[type="label"]', 'span[type="label"]');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for heading elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of heading selectors separated by comma.
 ///
 /// @group selectors
-@function select-headings($custom:null, $name:null, $class:null, $id:null) {
+@function select-headings($suffix:null, $prefix:null) {
   $_list: ('h1', 'h2', 'h3', 'h4', 'h5', 'h6');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for icon elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of icon selectors separated by comma.
 ///
 /// @group selectors
-@function select-icons($custom:null, $name:null, $class:null, $id:null) {
+@function select-icons($suffix:null, $prefix:null) {
   $_list: ('span[type="icon"]');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for static elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of static selectors separated by comma.
 ///
 /// @group selectors
-@function select-statics($custom:null, $name:null, $class:null, $id:null) {
+@function select-statics($suffix:null, $prefix:null) {
   $_list: ('form');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for button elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of button selectors separated by comma.
 ///
 /// @group selectors
-@function select-buttons($custom:null, $name:null, $class:null, $id:null) {
+@function select-buttons($suffix:null, $prefix:null) {
   $_list: ('a[type="button"]', 'input[type="submit"]', 'input[type="button"]', 'input[type="checkbox"]', 'input[type="file"]', 'button');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for hyperlinks.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of link selectors separated by comma.
 ///
 /// @group selectors
-@function select-links($custom:null, $name:null, $class:null, $id:null) {
+@function select-links($suffix:null, $prefix:null) {
   $_list: ('a:not([type="button"]):not([type="label"])');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for textfield input elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of textfield selectors separated by comma.
 ///
 /// @group selectors
-@function select-textfields($custom:null, $name:null, $class:null, $id:null) {
+@function select-textfields($suffix:null, $prefix:null) {
   $_list: ('input[type="text"]', 'input[type="password"]', 'input[type="number"]', 'input[type="date"]', 'input[type="month"]', 'input[type="week"]', 'input[type="time"]', 'input[type="datetime"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="url"]', 'textarea');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for box elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of box selectors separated by comma.
 ///
 /// @group selectors
-@function select-boxes($custom:null, $name:null, $class:null, $id:null) {
+@function select-boxes($suffix:null, $prefix:null) {
   $_list: ('article', 'aside', 'details', 'dialog', 'summary', 'footer', 'header', 'main', 'figcaption', 'figure', 'hgroup', 'nav', 'section', 'div', 'table', 'tr', 'td', 'th', 'tbody', 'thead', 'tfoot', 'col');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for list elements.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of list selectors separated by comma.
 ///
 /// @group selectors
-@function select-lists($custom:null, $name:null, $class:null, $id:null) {
+@function select-lists($suffix:null, $prefix:null) {
   $_list: ('ul', 'ol');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for list items.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
-@function select-list-items($custom:null, $name:null, $class:null, $id:null) {
+@function select-list-items($suffix:null, $prefix:null) {
   $_list: ('li:not([type="label"])');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for images.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
-@function select-images($custom:null, $name:null, $class:null, $id:null) {
+@function select-images($suffix:null, $prefix:null) {
   $_list: ('img');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selector for videos.
 ///
-/// @param {string} $custom [null] - Custom attribute(s) to append to each 
-///                                  selector.
-/// @param {string} $name   [null] - Name attribute to append to each selector.
-/// @param {string} $class  [null] - Class attribute to append to each selector.
-/// @param {string} $id     [null] - ID attribute to append to each selector.
+/// @param {string} $suffix [null] - Suffix to append to each selector.
+/// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
 /// @return {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
-@function select-videos($custom:null, $name:null, $class:null, $id:null) {
+@function select-videos($suffix:null, $prefix:null) {
   $_list: ('video');
-  @return resolve-selectors($_list, $custom, $name, $class, $id);
+  @return resolve-selectors($_list, $suffix, $prefix);
 }
 
 /// Selects each of the containing element based on the child index.
