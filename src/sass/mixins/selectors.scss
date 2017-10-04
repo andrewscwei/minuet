@@ -36,7 +36,7 @@
 ///
 /// @group selectors
 @function select-texts($suffix:null, $prefix:null) {
-  $_list: ('p', 'em', 'strong', 'label', 'a[type="label"]', 'li[type="label"]', 'span[type="label"]');
+  $_list: ('p', 'label', 'a[type="label"]', 'li[type="label"]', 'span[type="label"]');
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
