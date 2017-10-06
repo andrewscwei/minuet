@@ -57,6 +57,8 @@ $font-size-scale: 100% !default;
         font-size: $font-size-scale;
         height: 100%;
         width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
     }
   }
