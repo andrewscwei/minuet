@@ -1,25 +1,23 @@
 {
   "name": "minuet",
-  "version": "0.31.0",
-  "description": "An experimental stylesheet library.",
+  "version": "1.0.0",
+  "description": "An experimental Sass library.",
   "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
   "authors": [
     "Andrew Wei <andrewscwei@gmail.com>"
   ],
-  "main": "lib/sass/minuet.scss",
+  "main": "lib/minuet.bundle.scss",
+  "unpkg": "lib/minuet.bundle.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewscwei/minuet.git"
   },
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && npm run build:sass && npm run build:stylus",
-    "build:sass": "mkdir -p lib/sass && ncp src/sass lib/sass && npm run bundle:sass",
-    "build:stylus": "mkdir -p lib/stylus && ncp src/stylus lib/stylus && npm run bundle:stylus",
-    "bundle:sass": "cat  ./src/sass/mixins/resets.scss ./src/sass/mixins/utils.scss ./src/sass/mixins/selectors.scss ./src/sass/mixins/alignments.scss ./src/sass/mixins/attributes.scss ./src/sass/mixins/boxes.scss ./src/sass/mixins/features.scss ./src/sass/mixins/media.scss ./src/sass/mixins/palette.scss ./src/sass/mixins/typography.scss ./src/sass/mixins/components.scss ./src/sass/minuet.scss > ./lib/minuet.bundle.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
-    "bundle:stylus": "cat ./src/stylus/mixins/resets.styl ./src/stylus/mixins/math.styl ./src/stylus/mixins/selectors.styl ./src/stylus/mixins/alignments.styl ./src/stylus/mixins/attributes.styl ./src/stylus/mixins/boxes.styl ./src/stylus/mixins/features.styl ./src/stylus/mixins/media.styl ./src/stylus/mixins/palette.styl ./src/stylus/mixins/typography.styl ./src/stylus/mixins/components.styl ./src/stylus/minuet.styl > ./lib/minuet.bundle.styl && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.styl && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.styl",
-    "docs": "rimraf docs && sassdoc src/sass -d docs",
+    "build": "npm run clean && mkdir -p lib && ncp src lib && npm run bundle",
+    "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/minuet.scss > ./lib/minuet.bundle.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
+    "docs": "rimraf docs && sassdoc src -d docs",
     "demo": "npm start --prefix demo",
     "test": "echo \"There are no tests in this package yet\""
   },

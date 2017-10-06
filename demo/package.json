@@ -13,8 +13,6 @@
     "pug-loader": "^2.3.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   }

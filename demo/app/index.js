@@ -1,6 +1,5 @@
 'use strict';
 
-import 'stylesheets/main.scss';
-// import 'stylesheets/main.styl';
+import 'stylesheets/main';
 
 if (module.hot) module.hot.accept();
