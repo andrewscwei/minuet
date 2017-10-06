@@ -1,4 +1,4 @@
-@import '~sass/minuet';
+@import '~minuet';
 
 @include reset(true);
 
@@ -82,13 +82,13 @@ main#home {
       padding: 20px;
       background: rgb(10, 10, 10);
 
-      #{select-headings()} { 
+      #{select-headings()} {
         @include font(null, 8em, 100);
         width: 100%;
       }
-      
-      #{select-texts()} { 
-        @include font(null, 2.0em, 100); 
+
+      #{select-texts()} {
+        @include font(null, 2.0em, 100);
         width: 100%;
       }
     }

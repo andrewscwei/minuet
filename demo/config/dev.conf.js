@@ -29,7 +29,7 @@ module.exports = {
         presets: ['env']
       }
     }, {
-      test: /\.s?css|sass$/,
+      test: /\.scss|sass$/,
       use: [{
         loader: 'style-loader'
       }, {
@@ -43,22 +43,6 @@ module.exports = {
           includePaths: [path.join(inputDir, 'stylesheets')],
           outputStyle: 'compressed',
           sourceMap: true
-        }
-      }]
-    }, {
-      test: /\.styl$/,
-      use: [{
-        loader: 'style-loader'
-      }, {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true
-        }
-      }, {
-        loader: 'stylus-loader',
-        options: {
-          include: path.join(inputDir, 'stylesheets'),
-          includeCss: true
         }
       }]
     }, {
@@ -77,7 +61,7 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.scss', '.sass'],
     modules: [
       path.join(inputDir),
       path.join(baseDir, 'node_modules'),
