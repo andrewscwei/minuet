@@ -511,7 +511,16 @@
 
   @if ($_oval == true) {
     @include overflow(hidden);
-    border-radius: (min($_width, $_height) / 2);
+
+    @if type-of($_width) != number {
+      border-radius: ($_height / 2);
+    }
+    @else if type-of($_height) != number {
+      border-radius: ($_width / 2);
+    }
+    @else {
+      border-radius: (min($_width, $_height) / 2);
+    }
   }
 }
 
