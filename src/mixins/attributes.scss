@@ -18,36 +18,6 @@
   [name='#{$name}'] { @content; }
 }
 
-/// Binds the content to one/multiple state of the target selector. Option to
-/// specify whether the state(s) are default.
-///
-/// @param {List}    $states          - List of state names.
-/// @param {boolean} $default [false] - Specifies whether the class(es) are
-///                                     default.
-///
-/// @group attributes
-@mixin state($states, $default:false) {
-  $attr: 'state';
-
-  @each $state in $states {
-    @if $state == 'hover' {
-      &:hover { @content; }
-      &[#{$attr}='hover'] { @content; }
-    }
-    @else if $state == 'checked' {
-      &:checked { @content; }
-      &[#{$attr}='checked'] { @content; }
-    }
-    @else {
-      &[#{$attr}='#{$state}'] { @content; }
-    }
-  }
-
-  @if $default == true {
-    @content;
-  }
-}
-
 /// Selects elements with the specified data- key and value.
 ///
 /// @param {string} $key            - data- key.
