@@ -16,7 +16,7 @@
   @include size($width $height);
   background: transparent;
 
-  @include state('hover') {
+  &:hover {
     span:not(:only-of-type):nth-of-type(2) {
       &::after { @include size(#{$width / 2} $thickness); }
     }
@@ -26,7 +26,7 @@
     }
   }
 
-  @include state('active') {
+  &:active {
     span:only-of-type {
       @include size(0 $thickness);
       &:nth-child(1) { transform: translate3d(0, 0, 0); }
