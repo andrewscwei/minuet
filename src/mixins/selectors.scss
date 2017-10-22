@@ -1,18 +1,18 @@
 // © Andrew Wei
 
-/// Resolves a list of selectors by appending the specified args to each 
-/// selector in the list. Returns a string containing all the selectors 
+/// Resolves a list of selectors by appending the specified args to each
+/// selector in the list. Returns a string containing all the selectors
 /// separated by ','.
 ///
 /// @param {List}   $list          - List of selectors to resolve.
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
-/// 
+///
 /// @return {string} String of resolved selectors separated by comma.
 ///
 @function resolve-selectors($list, $suffix:null, $prefix:null) {
   $_selectors: '';
-  
+
   @for $_i from 1 through length($list) {
     $_selector: nth($list, $_i);
     @if ($prefix != null) { $_selector: $prefix + $_selector; }
@@ -40,6 +40,12 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
+/// @see select-texts()
+/// @group selectors
+@function texts($suffix:null, $prefix:null) {
+  @return select-texts($suffix, $prefix);
+}
+
 /// Selector for heading elements.
 ///
 /// @param {string} $suffix [null] - Suffix to append to each selector.
@@ -51,6 +57,12 @@
 @function select-headings($suffix:null, $prefix:null) {
   $_list: ('h1', 'h2', 'h3', 'h4', 'h5', 'h6');
   @return resolve-selectors($_list, $suffix, $prefix);
+}
+
+/// @see select-headings()
+/// @group selectors
+@function headings($suffix:null, $prefix:null) {
+  @return select-headings($suffix, $prefix);
 }
 
 /// Selector for icon elements.
@@ -66,6 +78,12 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
+/// @see select-icons()
+/// @group selectors
+@function icons($suffix:null, $prefix:null) {
+  @return select-icons($suffix, $prefix);
+}
+
 /// Selector for static elements.
 ///
 /// @param {string} $suffix [null] - Suffix to append to each selector.
@@ -77,6 +95,12 @@
 @function select-statics($suffix:null, $prefix:null) {
   $_list: ('form');
   @return resolve-selectors($_list, $suffix, $prefix);
+}
+
+/// @see select-statics()
+/// @group selectors
+@function statics($suffix:null, $prefix:null) {
+  @return select-statics($suffix, $prefix);
 }
 
 /// Selector for button elements.
@@ -92,6 +116,12 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
+/// @see select-buttons()
+/// @group selectors
+@function buttons($suffix:null, $prefix:null) {
+  @return select-buttons($suffix, $prefix);
+}
+
 /// Selector for hyperlinks.
 ///
 /// @param {string} $suffix [null] - Suffix to append to each selector.
@@ -103,6 +133,12 @@
 @function select-links($suffix:null, $prefix:null) {
   $_list: ('a:not([type="button"]):not([type="label"])');
   @return resolve-selectors($_list, $suffix, $prefix);
+}
+
+/// @see select-links()
+/// @group selectors
+@function links($suffix:null, $prefix:null) {
+  @return select-links($suffix, $prefix);
 }
 
 /// Selector for textfield input elements.
@@ -118,6 +154,12 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
+/// @see select-textfields()
+/// @group selectors
+@function textfields($suffix:null, $prefix:null) {
+  @return select-textfields($suffix, $prefix);
+}
+
 /// Selector for box elements.
 ///
 /// @param {string} $suffix [null] - Suffix to append to each selector.
@@ -129,6 +171,12 @@
 @function select-boxes($suffix:null, $prefix:null) {
   $_list: ('article', 'aside', 'details', 'dialog', 'summary', 'footer', 'header', 'main', 'figcaption', 'figure', 'hgroup', 'nav', 'section', 'div', 'table', 'tr', 'td', 'th', 'tbody', 'thead', 'tfoot', 'col');
   @return resolve-selectors($_list, $suffix, $prefix);
+}
+
+/// @see select-boxes()
+/// @group selectors
+@function boxes($suffix:null, $prefix:null) {
+  @return select-boxes($suffix, $prefix);
 }
 
 /// Selector for list elements.
@@ -144,6 +192,12 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
+/// @see select-lists()
+/// @group selectors
+@function lists($suffix:null, $prefix:null) {
+  @return select-lists($suffix, $prefix);
+}
+
 /// Selector for list items.
 ///
 /// @param {string} $suffix [null] - Suffix to append to each selector.
@@ -155,6 +209,12 @@
 @function select-list-items($suffix:null, $prefix:null) {
   $_list: ('li:not([type="label"])');
   @return resolve-selectors($_list, $suffix, $prefix);
+}
+
+/// @see select-list-items()
+/// @group selectors
+@function list-items($suffix:null, $prefix:null) {
+  @return select-list-items($suffix, $prefix);
 }
 
 /// Selector for images.
@@ -170,6 +230,12 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
+/// @see select-images()
+/// @group selectors
+@function images($suffix:null, $prefix:null) {
+  @return select-images($suffix, $prefix);
+}
+
 /// Selector for videos.
 ///
 /// @param {string} $suffix [null] - Suffix to append to each selector.
@@ -181,6 +247,12 @@
 @function select-videos($suffix:null, $prefix:null) {
   $_list: ('video');
   @return resolve-selectors($_list, $suffix, $prefix);
+}
+
+/// @see select-videos()
+/// @group selectors
+@function videos($suffix:null, $prefix:null) {
+  @return select-videos($suffix, $prefix);
 }
 
 /// Selects each of the containing element based on the child index.
