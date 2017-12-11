@@ -5,10 +5,10 @@ jobs:
   build:
     working_directory: ~/minuet
     docker:
-      - image: node:latest
+      - image: node:8.9.3
     steps:
       - checkout
-      - run: 
+      - run:
           name: Install dependencies
           command: yarn
       - run:
@@ -48,7 +48,7 @@ jobs:
 
                 # Push to gh-pages.
                 ORIGIN_URL=`git config --get remote.origin.url`
-                
+
                 git config user.name "$GITHUB_USERNAME"
                 git config user.email "$GITHUB_EMAIL"
                 git add -fA

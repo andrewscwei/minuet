@@ -96,7 +96,7 @@ main#home {
     & > * {
       @include overflow(hidden);
       @include transition(all, 0.4s, ease-out);
-      @include state('hover') { opacity: 0.4; }
+      &:hover { opacity: 0.4; }
     }
   }
 }
