@@ -1,6 +1,5 @@
+@import '~normalize';
 @import '~minuet';
-
-@include reset(true);
 
 main#home {
   @include size(100%);
