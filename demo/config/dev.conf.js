@@ -1,7 +1,5 @@
 // © Andrew Wei
 
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
@@ -12,6 +10,7 @@ const inputDir = path.join(baseDir, 'app');
 const outputDir = path.join(baseDir, 'public');
 
 module.exports = {
+  mode: `development`,
   devtool: 'cheap-module-eval-source-map',
   context: inputDir,
   entry: './index.js',

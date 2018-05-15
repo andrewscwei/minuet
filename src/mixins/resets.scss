@@ -6,46 +6,95 @@ $font-size-default: 16px !default;
 // Default global font scale, override this if needed.
 $font-size-scale: 100% !default;
 
-/// Property reset for box elements.
-///
-/// @group resets
-%box-reset {
-  border: none;
-  box-sizing: border-box;
-  margin: 0;
-  outline: none;
-  padding: 0;
-}
-
-/// Property reset for text elements.
-///
-/// @group resets
-%text-reset {
-  font-weight: normal;
-  line-height: normal;
-  text-decoration: none;
-  text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-text-stroke: 0;
-}
-
 @mixin normalize() {
-  #{select-boxes()} {
-    @extend %box-reset;
-    @extend %text-reset;
+  article,
+  aside,
+  details,
+  dialog,
+  summary,
+  footer,
+  header,
+  main,
+  figcaption,
+  figure,
+  hgroup,
+  nav,
+  section,
+  div,
+  table,
+  tr,
+  td,
+  th,
+  tbody,
+  thead,
+  tfoot,
+  col {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
     display: block;
     position: relative;
   }
 
-  #{select-buttons()} {
-    @extend %box-reset;
-    @extend %text-reset;
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    overflow: auto;
+  }
+
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'],
+  input[type='checkbox'],
+  input[type='radio'],
+  input[type='file'],
+  select,
+  button {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
     cursor: pointer;
     display: inline-block;
     position: relative;
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+
+    &::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
 
     &:disabled,
     &[disabled] {
@@ -54,21 +103,92 @@ $font-size-scale: 100% !default;
     }
   }
 
-  #{select-headings()}, #{select-texts()} {
-    @extend %box-reset;
-    @extend %text-reset;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  label,
+  a[type='label'],
+  li[type='label'],
+  span[type='label'] {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
     list-style: none;
   }
 
-  #{select-lists()} {
-    @extend %box-reset;
-    @extend %text-reset;
+  ul,
+  ol {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
   }
 
-  #{select-textfields()} {
-    @extend %box-reset;
-    @extend %text-reset;
+  input[type='text'],
+  input[type='password'],
+  input[type='number'],
+  input[type='date'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time'],
+  input[type='datetime'],
+  input[type='datetime-local'],
+  input[type='email'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='url'],
+  textarea {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: textfield;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
     resize: none;
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      height: auto;
+    }
 
     &:focus,
     &:invalid {
@@ -81,16 +201,31 @@ $font-size-scale: 100% !default;
     }
   }
 
-  #{select-statics()} {
-    @extend %box-reset;
-    @extend %text-reset;
+  form {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
     position: static;
   }
 
-  #{select-links()} {
+  a {
     text-decoration: none;
+    background-color: transparent;
 
+    &:active,
     &:hover {
+      outline: 0;
       text-decoration: none;
     }
   }
@@ -111,15 +246,6 @@ $font-size-scale: 100% !default;
   [hidden],
   template {
     display: none;
-  }
-
-  a {
-    background-color: transparent;
-
-    &:active,
-    &:hover {
-      outline: 0;
-    }
   }
 
   abbr[title] {
@@ -153,11 +279,11 @@ $font-size-scale: 100% !default;
   }
 
   sup {
-    top: -0.5em;
+    top: -.5em;
   }
 
   sub {
-    bottom: -0.25em;
+    bottom: -.25em;
   }
 
   svg:not(:root) {
@@ -177,86 +303,19 @@ $font-size-scale: 100% !default;
   kbd,
   pre,
   samp {
-    font-family: monospace, monospace;
+    font-family: monospace;
     font-size: 1em;
-  }
-
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    @extend %box-reset;
-    color: inherit;
-    font: inherit;
-  }
-
-  button {
-    overflow: visible;
-  }
-
-  button,
-  select {
-    text-transform: none;
-  }
-
-  button,
-  html input[type='button'],
-  input[type='reset'],
-  input[type='submit'] {
-    -webkit-appearance: button;
-    cursor: pointer;
-  }
-
-  button[disabled],
-  html input[disabled] {
-    cursor: default;
-  }
-
-  button::-moz-focus-inner,
-  input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-
-  input {
-    line-height: normal;
-  }
-
-  input[type='checkbox'],
-  input[type='radio'] {
-    box-sizing: border-box;
-    padding: 0;
-  }
-
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    height: auto;
-  }
-
-  input[type='search'] {
-    -webkit-appearance: textfield;
-    box-sizing: content-box;
-  }
-
-  input[type='search']::-webkit-search-cancel-button,
-  input[type='search']::-webkit-search-decoration {
-    -webkit-appearance: none;
   }
 
   fieldset {
     border: 1px solid #c0c0c0;
     margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
+    padding: .35em .625em .75em;
   }
 
   legend {
     border: 0;
     padding: 0;
-  }
-
-  textarea {
-    overflow: auto;
   }
 
   optgroup {
@@ -275,33 +334,41 @@ $font-size-scale: 100% !default;
 
   ::placeholder {
     color: inherit;
-    opacity: 0.3;
+    opacity: .3;
   }
 }
 
 /// Normalizes the child elements of the containing element. Can be applied to
 /// the root if specified.
 ///
-/// @param {boolean} $is-root [false] - Specifies whether the reset applies to
-///                                     the root context.
+/// @param {boolean} $is-root [true] - Specifies whether the reset applies to
+///                                    the root context.
 ///
 /// @group resets
-@mixin reset($is-root:false) {
+@mixin reset($is-root:true) {
   @if ($is-root) {
     @at-root {
       @include normalize();
 
       html {
-        @extend %box-reset;
+        border: none;
+        box-sizing: border-box;
+        margin: 0;
+        outline: none;
+        padding: 0;
         font-family: sans-serif;
-        font-size: $font-size-default;
+        font-size: 16px;
         height: 100%;
         width: 100%;
       }
 
       body {
-        @extend %box-reset;
-        font-size: $font-size-scale;
+        border: none;
+        box-sizing: border-box;
+        margin: 0;
+        outline: none;
+        padding: 0;
+        font-size: 100%;
         height: 100%;
         width: 100%;
         overflow-x: hidden;
@@ -312,8 +379,21 @@ $font-size-scale: 100% !default;
   @else {
     & {
       @include normalize();
-      @extend %box-reset;
-      @extend %text-reset;
+
+      border: none;
+      box-sizing: border-box;
+      margin: 0;
+      outline: none;
+      padding: 0;
+      font-weight: normal;
+      line-height: normal;
+      text-decoration: none;
+      text-rendering: optimizeLegibility;
+      text-size-adjust: 100%;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 0;
       display: block;
       position: relative;
     }

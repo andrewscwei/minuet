@@ -18,15 +18,28 @@
     "build": "npm run clean && mkdir -p lib && ncp src lib && npm run bundle",
     "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/minuet.scss > ./lib/minuet.bundle.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
     "docs": "rimraf docs && sassdoc src -d docs",
-    "demo": "npm start --prefix demo",
+    "demo": "webpack-dev-server --inline --hot --config demo/config/dev.conf.js --port 8080",
     "test": "echo \"There are no tests in this package yet\""
   },
   "files": [
     "lib"
   ],
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "html-webpack-plugin": "^3.2.0",
     "ncp": "^2.0.0",
+    "node-sass": "^4.9.0",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
     "rimraf": "^2.6.2",
-    "sassdoc": "^2.5.0"
+    "sass-loader": "^7.0.1",
+    "sassdoc": "^2.5.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
   }
 }
