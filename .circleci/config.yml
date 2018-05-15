@@ -2,7 +2,7 @@
 
 version: 2
 jobs:
-  test:
+  build_and_test:
     working_directory: ~/repo
     docker:
       - image: node:8.9.4
@@ -34,7 +34,7 @@ jobs:
       - store_artifacts:
           path: ~/repo/build
 
-  test-and-deploy:
+  build_test_and_deploy:
     working_directory: ~/repo
     docker:
       - image: node:8.9.4
@@ -55,6 +55,9 @@ jobs:
           paths:
             - "node_modules"
       - run:
+          name: Build
+          command: npm run build
+      - run:
           name: Test
           command: npm test
       - run:
@@ -71,15 +74,15 @@ jobs:
 
 workflows:
   version: 2
-  test:
+  build_and_test:
     jobs:
-      - test:
+      - build_and_test:
           filters:
             tags:
               ignore: /^v.*/
-  test-and-deploy:
+  build_test_and_deploy:
     jobs:
-      - test-and-deploy:
+      - build_test_and_deploy:
           filters:
             branches:
               ignore: /.*/
