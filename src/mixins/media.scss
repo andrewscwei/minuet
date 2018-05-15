@@ -1,28 +1,32 @@
 // © Andrew Wei
 
 // Device size thresholds.
-$device-thresholds: (
+$breakpoints: (
   'mobile': (
     'min': 0px,
-    'max': 599px
-  ),
-  'phablet': (
-    'min': 600px,
-    'max': 767px
+    'max': 639px
   ),
   'tablet': (
-    'min': 768px,
-    'max': 1024px
+    'min': 640px,
+    'max': 1023px
+  ),
+  'notebook': (
+    'min': 1024px,
+    'max': 1439px
   ),
   'desktop': (
-    'min': 1025px,
+    'min': 1440px,
+    'max': 1919px
+  ),
+  'tv': (
+    'min': 1920px,
     'max': 100000px
   )
 );
 
 /// Media query mixin that translates a set of descriptors into rules that apply
-/// bounding restrictions to screens. This mixin supports 4 predefined screen
-/// types: 'mobile', 'phablet', 'tablet' and 'desktop' and 2 predefined screen
+/// bounding restrictions to screens. This mixin supports 5 predefined screen
+/// types: 'mobile', tablet', 'notebook', 'desktop', 'tv' and 2 screen
 /// orientations: 'portrait' and 'landscape'.
 ///
 /// @param {List} $descriptors   - List of strings formatted by either
@@ -41,14 +45,14 @@ $device-thresholds: (
 ///   // @media screen and (max-width: 199px) { ... }
 ///
 /// @example
-///   @include screen('h>=phablet') { ... }
+///   @include screen('h>=tablet') { ... }
 ///
-///   // @media screen and (min-width: 767px) { ... }
+///   // @media screen and (min-height: 640px) { ... }
 ///
 /// @example
 ///   @include screen('w=tablet') { ... }
 ///
-///   // @media screen and (min-width: 768px) and (max-width: 1024px) { ... }
+///   // @media screen and (min-width: 640px) and (max-width: 1023px) { ... }
 ///
 /// @example
 ///   @include screen('w>=%s' 'w<%s' 'h>', 200px 400px 150px) { ... }
@@ -80,7 +84,7 @@ $device-thresholds: (
       $_rule: str-slice($descriptor, $_i + 2);
       $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
       $_min: null;
-      $_max: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'max'));
+      $_max: if(map-get($breakpoints, $_rule) == null, nth($params, $_p), map-get(map-get($breakpoints, $_rule), 'max'));
     }
     @else if (str-index($descriptor, '<') != null) {
       $_i: str-index($descriptor, '<');
@@ -88,14 +92,14 @@ $device-thresholds: (
       $_rule: str-slice($descriptor, $_i + 1);
       $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
       $_min: null;
-      $_max: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p) - 1, map-get(map-get($device-thresholds, $_rule), 'min') - 1);
+      $_max: if(map-get($breakpoints, $_rule) == null, nth($params, $_p) - 1, map-get(map-get($breakpoints, $_rule), 'min') - 1);
     }
     @else if (str-index($descriptor, '>=') != null) {
       $_i: str-index($descriptor, '>=');
       $_base: str-slice($descriptor, 1, $_i - 1);
       $_rule: str-slice($descriptor, $_i + 2);
       $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
-      $_min: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'min'));
+      $_min: if(map-get($breakpoints, $_rule) == null, nth($params, $_p), map-get(map-get($breakpoints, $_rule), 'min'));
       $_max: null;
     }
     @else if (str-index($descriptor, '>') != null) {
@@ -103,7 +107,7 @@ $device-thresholds: (
       $_base: str-slice($descriptor, 1, $_i - 1);
       $_rule: str-slice($descriptor, $_i + 1);
       $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
-      $_min: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p) + 1, map-get(map-get($device-thresholds, $_rule), 'max') + 1);
+      $_min: if(map-get($breakpoints, $_rule) == null, nth($params, $_p) + 1, map-get(map-get($breakpoints, $_rule), 'max') + 1);
       $_max: null;
     }
     @else if (str-index($descriptor, '=') != null) {
@@ -111,8 +115,8 @@ $device-thresholds: (
       $_base: str-slice($descriptor, 1, $_i - 1);
       $_rule: str-slice($descriptor, $_i + 1);
       $_base: if($_i == 1, map-get($_bases, 'width'), map-get($_bases, $_base));
-      $_min: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'min'));
-      $_max: if(map-get($device-thresholds, $_rule) == null, nth($params, $_p), map-get(map-get($device-thresholds, $_rule), 'max'));
+      $_min: if(map-get($breakpoints, $_rule) == null, nth($params, $_p), map-get(map-get($breakpoints, $_rule), 'min'));
+      $_max: if(map-get($breakpoints, $_rule) == null, nth($params, $_p), map-get(map-get($breakpoints, $_rule), 'max'));
     }
     @else if ($descriptor == 'portrait') {
       $_orientation: 'portrait';
@@ -121,7 +125,7 @@ $device-thresholds: (
       $_orientation: 'landscape';
     }
 
-    @if (map-get($device-thresholds, $_rule) == null) and ($_orientation == null) {
+    @if (map-get($breakpoints, $_rule) == null) and ($_orientation == null) {
       @if (($_rule == '%s') or ($_rule == '')) {
         $_p: $_p + 1;
       }
