@@ -46,6 +46,8 @@
 /// @param {string} $unit - String representation of the unit
 ///
 /// @return {Unit}
+///
+/// @group utils
 @function to-unit($value, $unit) {
   $_units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
 
@@ -63,10 +65,10 @@
 ///
 /// @return {font-size}
 ///
-/// @group typography
+/// @group utils
 @function to-em($value) {
   $_unit: unit($value);
-  
+
   @if ($_unit == 'px') {
     @return #{$value / $font-size-default}em;
   }
@@ -80,6 +82,8 @@
 /// @param {number} $number - Number to remove unit from
 ///
 /// @return {number}
+///
+/// @group utils
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);

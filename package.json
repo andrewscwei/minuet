@@ -1,6 +1,6 @@
 {
   "name": "minuet",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "An experimental Sass library.",
   "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
@@ -16,10 +16,10 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "npm run clean && mkdir -p lib && ncp src lib && npm run bundle",
-    "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/minuet.scss > ./lib/minuet.bundle.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
+    "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/placeholders/alignments.scss ./src/minuet.scss > ./lib/minuet.bundle.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
     "docs": "rimraf docs && sassdoc src -d docs",
     "demo": "webpack-dev-server --inline --hot --config demo/config/dev.conf.js --port 8080",
-    "test": "echo \"There are no tests in this package yet\""
+    "test": "echo \"There are no tests yet\""
   },
   "files": [
     "lib"

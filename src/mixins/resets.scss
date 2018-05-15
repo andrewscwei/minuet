@@ -357,7 +357,7 @@ $font-size-scale: 100% !default;
         outline: none;
         padding: 0;
         font-family: sans-serif;
-        font-size: 16px;
+        font-size: $font-size-default;
         height: 100%;
         width: 100%;
       }
@@ -368,7 +368,7 @@ $font-size-scale: 100% !default;
         margin: 0;
         outline: none;
         padding: 0;
-        font-size: 100%;
+        font-size: $font-size-scale;
         height: 100%;
         width: 100%;
         overflow-x: hidden;
