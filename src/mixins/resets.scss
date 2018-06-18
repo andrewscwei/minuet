@@ -1,12 +1,58 @@
 // © Andrew Wei
 
-// Default global font size, override this if needed.
-$font-size-default: 16px !default;
+/// Normalizes all the styles of child elements. Can be applied to the root or a
+/// specific element.
+///
+/// @param {boolean} $is-root [true] - Specifies whether the reset applies to
+///                                    the root context.
+///
+/// @group resets
+@mixin normalize($is-root:true) {
+  @if ($is-root) {
+    html {
+      border: none;
+      box-sizing: border-box;
+      font-family: sans-serif;
+      font-size: 10px;
+      height: 100%;
+      margin: 0;
+      outline: none;
+      padding: 0;
+      width: 100%;
+    }
 
-// Default global font scale, override this if needed.
-$font-size-scale: 100% !default;
+    body {
+      border: none;
+      box-sizing: border-box;
+      font-size: 1.6rem;
+      height: 100%;
+      margin: 0;
+      outline: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 0;
+      width: 100%;
+    }
+  }
+  @else {
+    border: none;
+    box-sizing: border-box;
+    display: block;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    position: relative;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 0;
+  }
 
-@mixin normalize() {
   article,
   aside,
   details,
@@ -339,67 +385,5 @@ $font-size-scale: 100% !default;
   ::placeholder {
     color: inherit;
     opacity: .3;
-  }
-}
-
-/// Normalizes the child elements of the containing element. Can be applied to
-/// the root if specified.
-///
-/// @param {boolean} $is-root [true] - Specifies whether the reset applies to
-///                                    the root context.
-///
-/// @group resets
-@mixin reset($is-root:true) {
-  @if ($is-root) {
-    @at-root {
-      @include normalize();
-
-      html {
-        border: none;
-        box-sizing: border-box;
-        margin: 0;
-        outline: none;
-        padding: 0;
-        font-family: sans-serif;
-        font-size: $font-size-default;
-        height: 100%;
-        width: 100%;
-      }
-
-      body {
-        border: none;
-        box-sizing: border-box;
-        margin: 0;
-        outline: none;
-        padding: 0;
-        font-size: $font-size-scale;
-        height: 100%;
-        width: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-    }
-  }
-  @else {
-    & {
-      @include normalize();
-
-      border: none;
-      box-sizing: border-box;
-      margin: 0;
-      outline: none;
-      padding: 0;
-      font-weight: normal;
-      line-height: normal;
-      text-decoration: none;
-      text-rendering: optimizeLegibility;
-      text-size-adjust: 100%;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      -webkit-text-stroke: 0;
-      display: block;
-      position: relative;
-    }
   }
 }

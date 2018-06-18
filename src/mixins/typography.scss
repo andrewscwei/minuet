@@ -55,8 +55,8 @@ $font-weight-monospace-bold: 400 !default;
 ///
 /// @group typography
 @function get-font-size($size:'default', $scale:1) {
-  $_size: $font-size-default;
-  
+  $_size: 100%;
+
   @if ($size == 'x-small') or ($size == 'xs') or ($size == 'extra-small') or ($size == 'x-s') {
     $_size: $font-size-extra-small;
   } @else if ($size == 'small') or ($size == 's') {

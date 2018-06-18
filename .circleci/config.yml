@@ -32,7 +32,7 @@ jobs:
           name: Pack
           command: .circleci/pack.sh
       - store_artifacts:
-          path: ~/repo/build
+          path: ~/repo/package
 
   build_test_and_deploy:
     working_directory: ~/repo
@@ -64,7 +64,7 @@ jobs:
           name: Pack
           command: .circleci/pack.sh
       - store_artifacts:
-          path: ~/repo/build
+          path: ~/repo/package
       - deploy:
           name: Deploy to NPM
           command: .circleci/deploy_to_npm.sh

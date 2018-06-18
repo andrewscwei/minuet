@@ -219,3 +219,246 @@ $breakpoints: (
     }
   }
 }
+
+/// Applies styles for portrait screens.
+///
+/// @group functional/media
+@mixin portrait() {
+  @include screen('portrait') {
+    @content;
+  }
+}
+
+/// Applies styles for landscape screens.
+///
+/// @group functional/media
+@mixin landscape() {
+  @include screen('landscape') {
+    @content;
+  }
+}
+
+/// Applies styles for mobile screens.
+///
+/// @group functional/media
+@mixin mobile() {
+  @include screen('w=mobile') {
+    @content;
+  }
+}
+
+/// Applies styles for tablet screens.
+///
+/// @group functional/media
+@mixin tablet() {
+  @include screen('w=tablet') {
+    @content;
+  }
+}
+
+/// Applies styles for notebook screens.
+///
+/// @group functional/media
+@mixin notebook() {
+  @include screen('w=notebook') {
+    @content;
+  }
+}
+
+/// Applies styles for desktop screens.
+///
+/// @group functional/media
+@mixin desktop() {
+  @include screen('w=desktop') {
+    @content;
+  }
+}
+
+/// Applies styles for TV screens.
+///
+/// @group functional/media
+@mixin tv() {
+  @include screen('w=tv') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than mobile devices.
+///
+/// @group functional/media
+@mixin gt-mobile() {
+  @include screen('w>mobile') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than tablet devices.
+///
+/// @group functional/media
+@mixin gt-tablet() {
+  @include screen('w>tablet') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than notebook devices.
+///
+/// @group functional/media
+@mixin gt-notebook() {
+  @include screen('w>notebook') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than desktop devices.
+///
+/// @group functional/media
+@mixin gt-desktop() {
+  @include screen('w>desktop') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than TV devices.
+///
+/// @group functional/media
+@mixin gt-tv() {
+  @include screen('w>tv') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than or equal to mobile devices.
+///
+/// @group functional/media
+@mixin gte-mobile() {
+  @include screen('w>=mobile') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than or equal to tablet devices.
+///
+/// @group functional/media
+@mixin gte-tablet() {
+  @include screen('w>=tablet') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than or equal to notebook devices.
+///
+/// @group functional/media
+@mixin gte-notebook() {
+  @include screen('w>=notebook') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than or equal to desktop devices.
+///
+/// @group functional/media
+@mixin gte-desktop() {
+  @include screen('w>=desktop') {
+    @content;
+  }
+}
+
+/// Applies styles for screens bigger than or equal to TV devices.
+///
+/// @group functional/media
+@mixin gte-tv() {
+  @include screen('w>=tv') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than or equal to mobile devices.
+///
+/// @group functional/media
+@mixin lte-mobile() {
+  @include screen('w<=mobile') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than or equal to tablet devices.
+///
+/// @group functional/media
+@mixin lte-tablet() {
+  @include screen('w<=tablet') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than or equal to notebook devices.
+///
+/// @group functional/media
+@mixin lte-notebook() {
+  @include screen('w<=notebook') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than or equal to desktop devices.
+///
+/// @group functional/media
+@mixin lte-desktop() {
+  @include screen('w<=desktop') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than or equal to TV devices.
+///
+/// @group functional/media
+@mixin lte-tv() {
+  @include screen('w<=tv') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than mobile devices.
+///
+/// @group functional/media
+@mixin lt-mobile() {
+  @include screen('w<mobile') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than tablet devices.
+///
+/// @group functional/media
+@mixin lt-tablet() {
+  @include screen('w<tablet') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than notebook devices.
+///
+/// @group functional/media
+@mixin lt-notebook() {
+  @include screen('w<notebook') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than desktop devices.
+///
+/// @group functional/media
+@mixin lt-desktop() {
+  @include screen('w<desktop') {
+    @content;
+  }
+}
+
+/// Applies styles for screens smaller than TV devices.
+///
+/// @group functional/media
+@mixin lt-tv() {
+  @include screen('w<tv') {
+    @content;
+  }
+}

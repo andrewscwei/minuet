@@ -652,3 +652,312 @@
     }
   }
 }
+
+/// Applies 100% width and height to containing element.
+///
+/// @group functional/alignments
+@mixin cover() {
+  width: 100%;
+  height: 100%;
+}
+
+/// Applies 100% width and height to containing element.
+///
+/// @group functional/alignments
+%cover { @include cover; }
+
+/// Absolutely aligns element to center left of parent.
+///
+/// @group functional/alignments
+@mixin cl() {
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+  right: unset;
+  top: 0;
+  position: absolute;
+}
+
+/// Absolutely aligns element to center left of parent.
+///
+/// @group functional/alignments
+%cl { @include cl(); }
+
+/// Absolutely aligns element to center of parent.
+///
+/// @group functional/alignments
+@mixin cc() {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Absolutely aligns element to center of parent.
+///
+/// @group functional/alignments
+%cc { @include cc(); }
+
+/// Absolutely aligns element to center right of parent.
+///
+/// @group functional/alignments
+@mixin cr() {
+  bottom: 0;
+  left: unset;
+  margin: auto 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Absolutely aligns element to center right of parent.
+///
+/// @group functional/alignments
+%cr { @include cr(); }
+
+/// Absolutely aligns element to top left of parent.
+///
+/// @group functional/alignments
+@mixin tl() {
+  bottom: unset;
+  left: 0;
+  margin: 0;
+  right: unset;
+  top: 0;
+  position: absolute;
+}
+
+/// Absolutely aligns element to top left of parent.
+///
+/// @group functional/alignments
+%tl { @include tl(); }
+
+/// Absolutely aligns element to top center of parent.
+///
+/// @group functional/alignments
+@mixin tc() {
+  bottom: unset;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Absolutely aligns element to top center of parent.
+///
+/// @group functional/alignments
+%tc { @include tc(); }
+
+/// Absolutely aligns element to top right of parent.
+///
+/// @group functional/alignments
+@mixin tr() {
+  bottom: unset;
+  left: unset;
+  margin: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Absolutely aligns element to top right of parent.
+///
+/// @group functional/alignments
+%tr { @include tr(); }
+
+/// Absolutely aligns element to bottom left of parent.
+///
+/// @group functional/alignments
+@mixin bl() {
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  right: unset;
+  top: unset;
+  position: absolute;
+}
+
+/// Absolutely aligns element to bottom center of parent.
+///
+/// @group functional/alignments
+@mixin bc() {
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  top: unset;
+  position: absolute;
+}
+
+/// Absolutely aligns element to bottom center of parent.
+///
+/// @group functional/alignments
+%bc { @include bc(); }
+
+/// Absolutely aligns element to bottom right of parent.
+///
+/// @group functional/alignments
+@mixin br() {
+  bottom: 0;
+  left: unset;
+  margin: 0;
+  right: 0;
+  top: unset;
+  position: absolute;
+}
+
+/// Absolutely aligns element to bottom right of parent.
+///
+/// @group functional/alignments
+%br { @include br(); }
+
+/// Fix aligns element to center left of parent.
+///
+/// @group functional/alignments
+@mixin fcl() {
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+  right: unset;
+  top: 0;
+  position: absolute;
+}
+
+/// Fix aligns element to center left of parent.
+///
+/// @group functional/alignments
+%fcl { @include fcl(); }
+
+/// Fix aligns element to center of parent.
+///
+/// @group functional/alignments
+@mixin fcc() {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Fix aligns element to center of parent.
+///
+/// @group functional/alignments
+%fcc { @include fcc(); }
+
+/// Fix aligns element to center right of parent.
+///
+/// @group functional/alignments
+@mixin fcr() {
+  bottom: 0;
+  left: unset;
+  margin: auto 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Fix aligns element to center right of parent.
+///
+/// @group functional/alignments
+%fcr { @include fcr(); }
+
+/// Fix aligns element to top left of parent.
+///
+/// @group functional/alignments
+@mixin ftl() {
+  bottom: unset;
+  left: 0;
+  margin: 0;
+  right: unset;
+  top: 0;
+  position: absolute;
+}
+
+/// Fix aligns element to top left of parent.
+///
+/// @group functional/alignments
+%ftl { @include ftl(); }
+
+/// Fix aligns element to top center of parent.
+///
+/// @group functional/alignments
+@mixin ftc() {
+  bottom: unset;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Fix aligns element to top center of parent.
+///
+/// @group functional/alignments
+%ftc { @include ftc(); }
+
+/// Fix aligns element to top right of parent.
+///
+/// @group functional/alignments
+@mixin ftr() {
+  bottom: unset;
+  left: unset;
+  margin: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+/// Fix aligns element to top right of parent.
+///
+/// @group functional/alignments
+%ftr { @include ftr(); }
+
+/// Fix aligns element to bottom left of parent.
+///
+/// @group functional/alignments
+@mixin fbl() {
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  right: unset;
+  top: unset;
+  position: absolute;
+}
+
+/// Fix aligns element to bottom center of parent.
+///
+/// @group functional/alignments
+@mixin fbc() {
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  top: unset;
+  position: absolute;
+}
+
+/// Fix aligns element to bottom center of parent.
+///
+/// @group functional/alignments
+%fbc { @include fbc(); }
+
+/// Fix aligns element to bottom right of parent.
+///
+/// @group functional/alignments
+@mixin fbr() {
+  bottom: 0;
+  left: unset;
+  margin: 0;
+  right: 0;
+  top: unset;
+  position: absolute;
+}
+
+/// Fix aligns element to bottom right of parent.
+///
+/// @group functional/alignments
+%fbr { @include fbr(); }

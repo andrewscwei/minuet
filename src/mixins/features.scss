@@ -40,13 +40,6 @@
   @content;
 }
 
-/// Enables hardware acceleration for containing selector.
-///
-/// @group features
-@mixin hardware-acceleration() {
-  transform: translate3d(0px, 0px, 0px);
-}
-
 /// Enables/disables pointer events for target selector and all child selectors.
 ///
 /// @param {boolean} $enabled [true]   - Specifies whether element should have
@@ -96,14 +89,6 @@
   }
 }
 
-/// Applies mask to target selector.
-///
-/// @group features
-@mixin mask() {
-  overflow: hidden;
-  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
-}
-
 /// Hides the target selector.
 ///
 /// @param {boolean} $forced [true] - Specifies whether !important is tagged.
@@ -131,3 +116,28 @@
     visibility: hidden;
   }
 }
+
+/// Applies mask to target selector.
+///
+/// @group functional/features
+@mixin mask() {
+  overflow: hidden;
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+/// Applies mask to target selector.
+///
+/// @group functional/features
+%mask { @include mask(); }
+
+/// Enables hardware acceleration for containing selector.
+///
+/// @group functional/features
+@mixin hardware-accelerated() {
+  transform: translate3d(0px, 0px, 0px);
+}
+
+/// Enables hardware acceleration for containing selector.
+///
+/// @group functional/features
+%hardware-accelerated { @include hardware-accelerated(); }

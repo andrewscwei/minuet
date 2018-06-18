@@ -70,7 +70,7 @@
   $_unit: unit($value);
 
   @if ($_unit == 'px') {
-    @return #{$value / $font-size-default}em;
+    @return #{$value / 16px}em;
   }
   @else {
     @return $value;

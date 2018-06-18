@@ -1,22 +1,22 @@
 {
   "name": "minuet",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "An experimental Sass library.",
   "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
   "authors": [
     "Andrew Wei <andrewscwei@gmail.com>"
   ],
-  "main": "lib/minuet.bundle.scss",
-  "unpkg": "lib/minuet.bundle.scss",
+  "main": "lib/minuet.scss",
+  "unpkg": "lib/minuet.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewscwei/minuet.git"
   },
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && mkdir -p lib && ncp src lib && npm run bundle",
-    "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/placeholders/alignments.scss ./src/minuet.scss > ./lib/minuet.bundle.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.bundle.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.bundle.scss",
+    "build": "npm run clean && mkdir -p lib && npm run bundle",
+    "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/minuet.scss > ./lib/minuet.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.scss",
     "docs": "rimraf docs && sassdoc src -d docs",
     "demo": "webpack-dev-server --inline --hot --config demo/config/dev.conf.js --port 8080",
     "test": "echo \"There are no tests yet\""
@@ -30,7 +30,6 @@
     "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
-    "ncp": "^2.0.0",
     "node-sass": "^4.9.0",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
