@@ -4,8 +4,6 @@
 ///
 /// @param {string} $tag - Tag name.
 ///
-/// @content Body content.
-///
 /// @group attributes
 @mixin element($tag) {
   #{$tag}, [is='#{$tag}'] { @content; }
@@ -14,8 +12,6 @@
 /// Selector for elements with the specified name.
 ///
 /// @param {string} $name - Name attribute of the element.
-///
-/// @content Body content.
 ///
 /// @group attributes
 @mixin name($name) {
@@ -29,8 +25,6 @@
 /// @param {string} $scope ['this'] - Specifies the scope relative to the target
 ///                                   selector in which this property applies to
 ///                                   (any, this, parent, or child).
-///
-/// @content Body content.
 ///
 /// @group attributes
 @mixin data($key, $value:null, $scope:'this') {
