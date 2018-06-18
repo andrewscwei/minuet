@@ -726,7 +726,7 @@
 /// aligned in the column orientation.
 ///
 /// @group functional/boxes
-%vbox-cr { @include vbox-cl(); }
+%vbox-cl { @include vbox-cl(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the column orientation.
