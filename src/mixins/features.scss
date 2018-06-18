@@ -7,6 +7,8 @@
 /// @param {List} $timing-functions [ease] - Transition timing function(s).
 /// @param {List} $delays [0s]             - Transition delay(s).
 ///
+/// @content Body content.
+///
 /// @group features
 @mixin transition($properties:all, $durations:0s, $timing-functions:ease, $delays:0s) {
   transition-property: append($properties, null, comma);
@@ -26,6 +28,8 @@
 /// @param {List} $directions [normal]     - Animation direction(s).
 /// @param {List} $fill-modes [none]       - Animation fill mode(s).
 /// @param {List} $play-states [running]   - Animation play state(s).
+///
+/// @content Body content.
 ///
 /// @group features
 @mixin animation($names:none, $durations:0s, $timing-functions:ease, $delays:0s, $iteration-counts:1, $directions:normal, $fill-modes:none, $play-states:running) {

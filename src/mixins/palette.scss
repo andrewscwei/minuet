@@ -45,6 +45,8 @@
 ///                                          (false will result in a of 0).
 ///                                          Otherwise the number will be used
 ///                                          as the a value.
+///
+/// @group palette
 @function random-greyscale($min:0, $max:255, $alpha:false) {
   $_r: min($max, max($min, random(256)-1));
   $_alpha: if($alpha == true, random(100)/100, if($alpha == false, 1, $alpha));

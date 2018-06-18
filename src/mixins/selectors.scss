@@ -10,6 +10,7 @@
 ///
 /// @return {string} String of resolved selectors separated by comma.
 ///
+/// @group selectors
 @function resolve-selectors($list, $suffix:null, $prefix:null) {
   $_selectors: '';
 
@@ -259,6 +260,8 @@
 ///
 /// @param {number} $max [10] - Max child index to iterate to.
 ///
+/// @content Body content.
+///
 /// @group selectors
 @mixin each-child($max:10) {
   @for $i from 1 through $max {
@@ -272,6 +275,8 @@
 /// specific element type.
 ///
 /// @param {number} $max [10] - Max child index to iterate to.
+///
+/// @content Body content.
 ///
 /// @group selectors
 @mixin each-of-type($max:10) {
