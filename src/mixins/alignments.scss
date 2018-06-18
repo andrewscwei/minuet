@@ -823,7 +823,7 @@
   margin: auto 0;
   right: unset;
   top: 0;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to center left of parent.
@@ -840,7 +840,7 @@
   margin: auto;
   right: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to center of parent.
@@ -857,7 +857,7 @@
   margin: auto 0;
   right: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to center right of parent.
@@ -874,7 +874,7 @@
   margin: 0;
   right: unset;
   top: 0;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to top left of parent.
@@ -891,7 +891,7 @@
   margin: 0 auto;
   right: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to top center of parent.
@@ -908,7 +908,7 @@
   margin: 0;
   right: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to top right of parent.
@@ -925,7 +925,7 @@
   margin: 0;
   right: unset;
   top: unset;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to bottom center of parent.
@@ -937,7 +937,7 @@
   margin: 0 auto;
   right: 0;
   top: unset;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to bottom center of parent.
@@ -954,7 +954,7 @@
   margin: 0;
   right: 0;
   top: unset;
-  position: absolute;
+  position: fixed;
 }
 
 /// Fix aligns element to bottom right of parent.
