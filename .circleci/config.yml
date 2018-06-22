@@ -83,6 +83,7 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build_test_and_deploy:
+          context: npm_deployment
           filters:
             branches:
               ignore: /.*/
