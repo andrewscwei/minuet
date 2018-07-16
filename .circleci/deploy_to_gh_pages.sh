@@ -17,8 +17,8 @@ rm -R docs/
 # Push to gh-pages.
 ORIGIN_URL=`git config --get remote.origin.url`
 
-git config user.name "$GITHUB_USERNAME"
-git config user.email "$GITHUB_EMAIL"
+git config user.name "$CIRCLE_PROJECT_USERNAME"
+git config user.email "$CIRCLE_PROJECT_USERNAME@users.noreply.github.com"
 git add -fA
 git commit --allow-empty -m "[Skip CI] $(git log -1 --pretty=%B)"
 git push -f $ORIGIN_URL gh-pages
