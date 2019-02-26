@@ -21,7 +21,3 @@ Minuet is an on-going pet project for experimenting with web UI styling techniqu
 ### `v1.0.0`
 
 - Dropped support for [Stylus](http://stylus-lang.com/).
-
-## License
-
-This software is released under the [MIT License](http://opensource.org/licenses/MIT).
