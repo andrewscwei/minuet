@@ -1,4 +1,4 @@
-# Minuet [![Circle CI](https://circleci.com/gh/andrewscwei/minuet/tree/master.svg?style=svg)](https://circleci.com/gh/andrewscwei/minuet/tree/master) [![npm version](https://badge.fury.io/js/minuet.svg)](https://badge.fury.io/js/minuet)
+# Minuet [![npm](https://img.shields.io/npm/v/minuet.svg)](https://www.npmjs.com/package/minuet) [![CircleCI](https://img.shields.io/circleci/build/github/andrewscwei/minuet.svg)](https://circleci.com/gh/andrewscwei/minuet)
 
 Minuet is a stand-alone Sass library. It is packaged with many handy mixins and functions to accomodate efficient styling. It pairs well with [Meno](https://github.com/andrewscwei/meno).
 
