@@ -1,25 +1,22 @@
 /// Converts a string to a number with/without a unit, where applicable. Any
 /// invalid inputs such as a non-number string or an unrecognized unit will
-/// output `0`. Passing a number into this function does nothing.
+/// throw an error. Passing a number into this function does nothing.
 ///
 /// @param {String | Number} $value - Value to be converted.
 ///
-/// @returns {Number} The converted number or unit value. If the input cannot be
-///                   converted, `0` is returned.
+/// @returns {Number} The converted number value.
 ///
 /// @example scss
 ///   to-number('6') // 6
-///   to-number('6px') // 1px
-///   to-number('6foo') // 0
-///   to-number('foo') // 0
+///   to-number('6px') // 6px
 ///
 /// @group utils
 @function to-number($value) {
   @if (type-of($value) == 'number') {
     @return $value;
-  } @else if (type-of($value) != 'string') {
-    @warn 'Value must be a number or a string';
-    @return 0;
+  }
+  @else if (type-of($value) != 'string') {
+    @error 'Value must be a number or a string';
   }
 
   $_output: 0;
@@ -48,7 +45,7 @@
 }
 
 /// Converts a number without unit to a number with the desired unit. If the
-/// desired unit is an unrecognized unit, this function will output `0`.
+/// desired unit is an unrecognized unit, this function will throw an error.
 ///
 /// @param {Number} $value - The number value to convert.
 /// @param {String} $unit - Desired unit after the conversion.
@@ -57,61 +54,45 @@
 ///
 /// @example scss
 ///   to-unit(6, 'px') // 6px
-///   to-unit('6', 'px') // 0
-///   to-unit(6, 'foo') // 0
 ///
 /// @group utils
 @function to-unit($value, $unit) {
   $_units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
 
   @if (not index(map-keys($_units), $unit)) {
-    @warn 'Invalid unit: #{$unit}';
-    @return 0;
+    @error 'Invalid unit: #{$unit}';
   }
 
   @return $value * map-get($_units, $unit);
 }
 
-/// Converts a font size to em.
+/// Removes the unit from a number and returns it.
 ///
-/// @param {Number} $value - Font size.
+/// @param {Number} $number - Number to remove unit from.
 ///
-/// @returns {font-size}
-///
-/// @group utils
-@function to-em($value) {
-  $_unit: unit($value);
-
-  @if ($_unit == 'px') {
-    @return #{$value / 16px}em;
-  }
-  @else {
-    @return $value;
-  }
-}
-
-/// Removes the unit from a number.
-///
-/// @param {Number} $number - Number to remove unit from
-///
-/// @returns {Number}
+/// @returns {Number} The number value without its original unit.
 ///
 /// @group utils
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+  @if type-of($number) == 'number' {
+    @if unitless($number) {
+      @return $number;
+    }
+    @else {
+      @return $number / ($number * 0 + 1);
+    }
   }
 
-  @return $number;
+  @error 'Invalid input: #{$number}';
 }
 
-/// Checks if string ends with substring.
+/// Checks if a string ends with a substring.
 ///
 /// @param {String} $string - String to check.
 /// @param {String} $substring - Substring to check against.
 ///
 /// @returns {Boolean} `true` if string contains the substring, `false`
-///                   otherwise.
+///                    otherwise.
 ///
 /// @group utils
 @function ends-with($string, $substring) {
