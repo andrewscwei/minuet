@@ -2,7 +2,7 @@
 
 @include normalize();
 
-@warn "#{to-number('3')}";
+@warn "#{to-unit(3px, 'px')}";
 
 #home {
   @include size(100%);

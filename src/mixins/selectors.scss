@@ -3,10 +3,10 @@
 /// separated by ','.
 ///
 /// @param {List}   $list          - List of selectors to resolve.
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of resolved selectors separated by comma.
+/// @returns {String} String of resolved selectors separated by comma.
 ///
 /// @group selectors
 @function resolve-selectors($list, $suffix:null, $prefix:null) {
@@ -28,10 +28,10 @@
 /// bold, use <b>. <a> is not treated as a label element and should only be used
 /// to make a nested element a hyperlink.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of text selectors separated by comma.
+/// @returns {String} String of text selectors separated by comma.
 ///
 /// @group selectors
 @function select-texts($suffix:null, $prefix:null) {
@@ -47,10 +47,10 @@
 
 /// Selector for heading elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of heading selectors separated by comma.
+/// @returns {String} String of heading selectors separated by comma.
 ///
 /// @group selectors
 @function select-headings($suffix:null, $prefix:null) {
@@ -66,10 +66,10 @@
 
 /// Selector for icon elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of icon selectors separated by comma.
+/// @returns {String} String of icon selectors separated by comma.
 ///
 /// @group selectors
 @function select-icons($suffix:null, $prefix:null) {
@@ -85,10 +85,10 @@
 
 /// Selector for static elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of static selectors separated by comma.
+/// @returns {String} String of static selectors separated by comma.
 ///
 /// @group selectors
 @function select-statics($suffix:null, $prefix:null) {
@@ -104,10 +104,10 @@
 
 /// Selector for button elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of button selectors separated by comma.
+/// @returns {String} String of button selectors separated by comma.
 ///
 /// @group selectors
 @function select-buttons($suffix:null, $prefix:null) {
@@ -123,10 +123,10 @@
 
 /// Selector for hyperlinks.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of link selectors separated by comma.
+/// @returns {String} String of link selectors separated by comma.
 ///
 /// @group selectors
 @function select-links($suffix:null, $prefix:null) {
@@ -142,10 +142,10 @@
 
 /// Selector for textfield input elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of textfield selectors separated by comma.
+/// @returns {String} String of textfield selectors separated by comma.
 ///
 /// @group selectors
 @function select-textfields($suffix:null, $prefix:null) {
@@ -161,10 +161,10 @@
 
 /// Selector for box elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of box selectors separated by comma.
+/// @returns {String} String of box selectors separated by comma.
 ///
 /// @group selectors
 @function select-boxes($suffix:null, $prefix:null) {
@@ -180,10 +180,10 @@
 
 /// Selector for list elements.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of list selectors separated by comma.
+/// @returns {String} String of list selectors separated by comma.
 ///
 /// @group selectors
 @function select-lists($suffix:null, $prefix:null) {
@@ -199,10 +199,10 @@
 
 /// Selector for list items.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of list item selectors separated by comma.
+/// @returns {String} String of list item selectors separated by comma.
 ///
 /// @group selectors
 @function select-list-items($suffix:null, $prefix:null) {
@@ -218,10 +218,10 @@
 
 /// Selector for images.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of list item selectors separated by comma.
+/// @returns {String} String of list item selectors separated by comma.
 ///
 /// @group selectors
 @function select-images($suffix:null, $prefix:null) {
@@ -237,10 +237,10 @@
 
 /// Selector for videos.
 ///
-/// @param {string} $suffix [null] - Suffix to append to each selector.
-/// @param {string} $prefix [null] - Prefix to prepend to each selector.
+/// @param {String} $suffix [null] - Suffix to append to each selector.
+/// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @returns {string} String of list item selectors separated by comma.
+/// @returns {String} String of list item selectors separated by comma.
 ///
 /// @group selectors
 @function select-videos($suffix:null, $prefix:null) {
@@ -256,7 +256,7 @@
 
 /// Selects each of the containing element based on the child index.
 ///
-/// @param {number} $max [10] - Max child index to iterate to.
+/// @param {Number} $max [10] - Max child index to iterate to.
 ///
 /// @group selectors
 @mixin each-child($max:10) {
@@ -270,7 +270,7 @@
 /// Selects each of the containing element based on the child index of this
 /// specific element type.
 ///
-/// @param {number} $max [10] - Max child index to iterate to.
+/// @param {Number} $max [10] - Max child index to iterate to.
 ///
 /// @group selectors
 @mixin each-of-type($max:10) {

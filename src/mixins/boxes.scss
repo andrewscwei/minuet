@@ -123,13 +123,13 @@
 ///                       `[]` to specify `padding-around` as `true`, or simply
 ///                       leave it out for `false`, i.e. `|4px` or `|[4px]`
 ///
-/// @param {string}      $type          - Type of container. If none of the
+/// @param {String}      $type          - Type of container. If none of the
 ///                                       special types are specified, this
 ///                                       value will apply directly to the
 ///                                       'display' CSS rule.
-/// @param {string|List} $align1 [null] - Internal alignment, can be a string or
+/// @param {String | List} $align1 [null] - Internal alignment, can be a string or
 ///                                       a list of 2 strings.
-/// @param {string}      $align2 [null] - Internal alignment adjacent to $align1.
+/// @param {String}      $align2 [null] - Internal alignment adjacent to $align1.
 ///
 /// @example
 ///   // Defines a fluid block with child elements aligned to top left (default)
@@ -434,7 +434,7 @@
 
 /// Transforms target selector into a container for parallax elements.
 ///
-/// @param {number} $perspective [1] - Tweak this value to adjust perspective.
+/// @param {Number} $perspective [1] - Tweak this value to adjust perspective.
 ///
 /// @group boxes
 @mixin parallax-block($perspective:1) {

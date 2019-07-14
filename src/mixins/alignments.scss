@@ -4,7 +4,7 @@
 /// for a specific side of the margin, it will take the value of the previous
 /// side.
 ///
-/// @param {number|List} $top    [null]  - Value for the top margin or a list of
+/// @param {Number | List} $top    [null]  - Value for the top margin or a list of
 ///                                        values for each side of the margin
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -13,11 +13,11 @@
 ///                                        similar to the original 'margin' CSS
 ///                                        rule (i.e. bottom matches top, right
 ///                                        matches left, etc).
-/// @param {number}      $right  [unset] - Value for the right margin, if unset
+/// @param {Number}      $right  [unset] - Value for the right margin, if unset
 ///                                        this will be automatically inferred.
-/// @param {number}      $bottom [unset] - Value for the bottom margin, if unset
+/// @param {Number}      $bottom [unset] - Value for the bottom margin, if unset
 ///                                        this will be automatically inferred.
-/// @param {number}      $left   [unset] - Value for the left margin, if unset
+/// @param {Number}      $left   [unset] - Value for the left margin, if unset
 ///                                        this will be automatically inferred.
 ///
 /// @example
@@ -68,10 +68,10 @@
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left  [null]  - Value for the left margin or a list of
+/// @param {Number | List} $left  [null]  - Value for the left margin or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
-/// @param {number}      $right [unset] - Value for the right margin. If unset,
+/// @param {Number}      $right [unset] - Value for the right margin. If unset,
 ///                                       this value will be automatically
 ///                                       inferred.
 ///
@@ -92,10 +92,10 @@
 /// the margin will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top    [null]  - Value for the top margin or a list of
+/// @param {Number | List} $top    [null]  - Value for the top margin or a list of
 ///                                        up to 2 values for top and bottom
 ///                                        margins respectively.
-/// @param {number}      $bottom [unset] - Value for the bottom margin. If unset,
+/// @param {Number}      $bottom [unset] - Value for the bottom margin. If unset,
 ///                                        this value will be automatically
 ///                                        inferred.
 ///
@@ -117,7 +117,7 @@
 /// specified for a specific side of the padding, it will take the value of the
 /// previous side.
 ///
-/// @param {number|List} $top    [null]  - Value for the top padding or a list of
+/// @param {Number | List} $top    [null]  - Value for the top padding or a list of
 ///                                        values for each side of the padding
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -126,11 +126,11 @@
 ///                                        similar to the original 'padding' CSS
 ///                                        rule (i.e. bottom matches top, right
 ///                                        matches left, etc).
-/// @param {number}      $right  [unset] - Value for the right padding, if unset
+/// @param {Number}      $right  [unset] - Value for the right padding, if unset
 ///                                        this will be automatically inferred.
-/// @param {number}      $bottom [unset] - Value for the bottom padding, if unset
+/// @param {Number}      $bottom [unset] - Value for the bottom padding, if unset
 ///                                        this will be automatically inferred.
-/// @param {number}      $left   [unset] - Value for the left padding, if unset
+/// @param {Number}      $left   [unset] - Value for the left padding, if unset
 ///                                        this will be automatically inferred.
 ///
 /// @example
@@ -181,10 +181,10 @@
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left  [null]  - Value for the left padding or a list
+/// @param {Number | List} $left  [null]  - Value for the left padding or a list
 ///                                       of up to 2 values for left and right
 ///                                       margins respectively.
-/// @param {number}      $right [unset] - Value for the right padding. If unset,
+/// @param {Number}      $right [unset] - Value for the right padding. If unset,
 ///                                       this value will be automatically
 ///                                       inferred.
 ///
@@ -205,10 +205,10 @@
 /// the padding will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top    [null]  - Value for the top padding or a list
+/// @param {Number | List} $top    [null]  - Value for the top padding or a list
 ///                                        of up to 2 values for top and bottom
 ///                                        margins respectively.
-/// @param {number}      $bottom [unset] - Value for the bottom padding. If unset,
+/// @param {Number}      $bottom [unset] - Value for the bottom padding. If unset,
 ///                                        this value will be automatically
 ///                                        inferred.
 ///
@@ -230,7 +230,7 @@
 /// specific edge, that edge will not be set. If '' is specified for a specific
 /// edge, it will take the value of the previous edge.
 ///
-/// @param {number|List} $top    [null]  - Value for the top edge or a list of
+/// @param {Number | List} $top    [null]  - Value for the top edge or a list of
 ///                                        values for each side of the edge
 ///                                        ordered by top, right, bottom and
 ///                                        left. Other than the first value, all
@@ -239,11 +239,11 @@
 ///                                        similar to the original 'margin' CSS
 ///                                        rule (i.e. bottom matches top, right
 ///                                        matches left, etc).
-/// @param {number}      $right  [unset] - Value for the right edge, if unset
+/// @param {Number}      $right  [unset] - Value for the right edge, if unset
 ///                                        this will be automatically inferred.
-/// @param {number}      $bottom [unset] - Value for the bottom edge, if unset
+/// @param {Number}      $bottom [unset] - Value for the bottom edge, if unset
 ///                                        this will be automatically inferred.
-/// @param {number}      $left   [unset] - Value for the left edge, if unset
+/// @param {Number}      $left   [unset] - Value for the left edge, if unset
 ///                                        this will be automatically inferred.
 ///
 /// @example
@@ -294,10 +294,10 @@
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $left  [null]  - Value for the left edge or a list of
+/// @param {Number | List} $left  [null]  - Value for the left edge or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
-/// @param {number}      $right [unset] - Value for the right edge. If unset,
+/// @param {Number}      $right [unset] - Value for the right edge. If unset,
 ///                                       this value will be automatically
 ///                                       inferred.
 ///
@@ -318,10 +318,10 @@
 /// the edge will not be set. If '' is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {number|List} $top    [null]  - Value for the top edge or a list of
+/// @param {Number | List} $top    [null]  - Value for the top edge or a list of
 ///                                        up to 2 values for top and bottom
 ///                                        margins respectively.
-/// @param {number}      $bottom [unset] - Value for the bottom edge. If unset,
+/// @param {Number}      $bottom [unset] - Value for the bottom edge. If unset,
 ///                                        this value will be automatically
 ///                                        inferred.
 ///
@@ -357,10 +357,10 @@
 
 /// Aligns an element horizontally and vertically.
 ///
-/// @param {string|List} $align1 [null] - Internal alignment, can be a string or
+/// @param {String | List} $align1 [null] - Internal alignment, can be a string or
 ///                                       a list of 2 strings.
-/// @param {string}      $align2 [null] - Internal alignment adjacent to $align1.
-/// @param {string} $type [null]        - Specifies the position type (i.e.
+/// @param {String}      $align2 [null] - Internal alignment adjacent to $align1.
+/// @param {String} $type [null]        - Specifies the position type (i.e.
 ///                                       absolute or fixed).
 ///
 /// @group alignments
@@ -459,9 +459,9 @@
 /// Aligns containing inline-block to specified x/y directions in relative
 /// position.
 ///
-/// @param {string} $alignH ['left'] - Horizontal alignment (i.e. left, center,
+/// @param {String} $alignH ['left'] - Horizontal alignment (i.e. left, center,
 ///                                    right).
-/// @param {string} $alignV ['top']  - Vertical alignment (i.e. top, middle,
+/// @param {String} $alignV ['top']  - Vertical alignment (i.e. top, middle,
 ///                                    bottom).
 ///
 /// @group alignments
@@ -478,15 +478,15 @@
 
 /// Sets the size of the target selector.
 ///
-/// @param {number|List} $width          - Specifies the width and height of the
+/// @param {Number | List} $width          - Specifies the width and height of the
 ///                                        selector. If only 1 value is provided,
 ///                                        both width and height will use that
 ///                                        value. If 2 values are provided, they
 ///                                        will be used for width and height
 ///                                        respectively.
-/// @param {number}      $height [unset] - Specifies the height (overrides
+/// @param {Number}      $height [unset] - Specifies the height (overrides
 ///                                        the previous parameter).
-/// @param {boolean}     $oval [false]   - Specifies whether the selector is
+/// @param {Boolean}     $oval [false]   - Specifies whether the selector is
 ///                                        oval shaped (hence rounded corners
 ///                                        corresponding to the shortest side).
 ///
@@ -524,14 +524,14 @@
 
 /// Sets the max size of the target selector.
 ///
-/// @param {number|List} $width          - Specifies the max width and height of
+/// @param {Number | List} $width          - Specifies the max width and height of
 ///                                        the selector. If only 1 value is
 ///                                        provided, both max-width and
 ///                                        max-height will use that value. If 2
 ///                                        values are provided, they will be
 ///                                        used for max-width and max-height
 ///                                        respectively.
-/// @param {number}      $height [unset] - Specifies the max height (overrides
+/// @param {Number}      $height [unset] - Specifies the max height (overrides
 ///                                        the previous parameter).
 ///
 /// @group alignments
@@ -553,14 +553,14 @@
 
 /// Sets the min size of the target selector.
 ///
-/// @param {number|List} $width          - Specifies the min width and height of
+/// @param {Number | List} $width          - Specifies the min width and height of
 ///                                        the selector. If only 1 value is
 ///                                        provided, both min-width and
 ///                                        min-height will use that value. If 2
 ///                                        values are provided, they will be
 ///                                        used for min-width and min-height
 ///                                        respectively.
-/// @param {number}      $height [unset] - Specifies the min height (overrides
+/// @param {Number}      $height [unset] - Specifies the min height (overrides
 ///                                        the previous parameter).
 ///
 /// @group alignments
@@ -582,12 +582,12 @@
 
 /// Sets the overflow of the target selector.
 ///
-/// @param {number|List} $overflowX - Specifies the overflow of the selector. If
+/// @param {Number | List} $overflowX - Specifies the overflow of the selector. If
 ///                                   only 1 value is provided, both overflow-x
 ///                                   and overflow-y will use that value. If 2
 ///                                   values are provided, they will be used for
 ///                                   overflow-x and overflow-y respectively.
-/// @param {number}      $overflowY [unset] - Specifies the overflow-y value
+/// @param {Number}      $overflowY [unset] - Specifies the overflow-y value
 ///                                           (overrides the previous parameter)
 ///                                           if specified.
 ///
@@ -627,11 +627,11 @@
 /// Sets the space in between adjacent elements excluding the first and last
 /// element.
 ///
-/// @param {number} $value           - Specifies the value of the gap.
-/// @param {string} $direction ['>'] - Specifies the direction. '>', 'horizontal'
+/// @param {Number} $value           - Specifies the value of the gap.
+/// @param {String} $direction ['>'] - Specifies the direction. '>', 'horizontal'
 ///                                    and 'row' means horizontal. 'v', 'vertical'
 ///                                    and 'column' means vertical.
-/// @param {boolean} $unset [false]  - Unsets other margins set by this mixin.
+/// @param {Boolean} $unset [false]  - Unsets other margins set by this mixin.
 ///
 /// @group alignments
 @mixin space-between($value, $direction:'>', $unset:false) {

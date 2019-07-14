@@ -40,11 +40,11 @@
 
 /// Enables/disables pointer events for target selector and all child selectors.
 ///
-/// @param {boolean} $enabled [true]   - Specifies whether element should have
+/// @param {Boolean} $enabled [true]   - Specifies whether element should have
 ///                                      pointer events enabled.
-/// @param {boolean} $recursive [true] - Specifies whether child elements should
+/// @param {Boolean} $recursive [true] - Specifies whether child elements should
 ///                                      also be applied.
-/// @param {boolean} $forced [true]    - Specifies whether the behavior is
+/// @param {Boolean} $forced [true]    - Specifies whether the behavior is
 ///                                      tagged '!important'.
 ///
 /// @group features
@@ -89,7 +89,7 @@
 
 /// Hides the target selector.
 ///
-/// @param {boolean} $forced [true] - Specifies whether !important is tagged.
+/// @param {Boolean} $forced [true] - Specifies whether !important is tagged.
 ///
 /// @group features
 @mixin hidden($forced:true) {
@@ -103,7 +103,7 @@
 
 /// Makes the target selector invisible.
 ///
-/// @param {boolean} $forced [true] - Specifies whether !important is tagged.
+/// @param {Boolean} $forced [true] - Specifies whether !important is tagged.
 ///
 /// @group features
 @mixin invisible($forced:true) {

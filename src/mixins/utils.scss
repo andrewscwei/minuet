@@ -1,20 +1,17 @@
-/// Converts a string to a number with/without unit, where applicable. If the
-/// string is a number containing a valid unit, this function will output the
-/// number value plus its original unit. If the string is a number without any
-/// units, this function will output the number value only. Any invalid entries
-/// such as a non-number string or an unrecognizable unit will yield `0`
-/// instead.
+/// Converts a string to a number with/without a unit, where applicable. Any
+/// invalid inputs such as a non-number string or an unrecognized unit will
+/// output `0`. Passing a number into this function does nothing.
 ///
-/// @param {string | number} $value - Value to be converted.
+/// @param {String | Number} $value - Value to be converted.
 ///
-/// @returns {number} The converted number value. If the input cannot be
+/// @returns {Number} The converted number or unit value. If the input cannot be
 ///                   converted, `0` is returned.
 ///
 /// @example scss
-///   to-number(6) // 6
-///   to-number(6px) // 1px
-///   to-number(6foo) // 0
-///   to-number(foo) // 0
+///   to-number('6') // 6
+///   to-number('6px') // 1px
+///   to-number('6foo') // 0
+///   to-number('foo') // 0
 ///
 /// @group utils
 @function to-number($value) {
@@ -50,12 +47,18 @@
   @return if($_negative, -$_output, $_output);
 }
 
-/// Converts a number to a unit.
+/// Converts a number without unit to a number with the desired unit. If the
+/// desired unit is an unrecognized unit, this function will output `0`.
 ///
-/// @param {number} $value - Value to add unit to
-/// @param {string} $unit - String representation of the unit
+/// @param {Number} $value - The number value to convert.
+/// @param {String} $unit - Desired unit after the conversion.
 ///
-/// @returns {Unit}
+/// @returns {Number} The converted number value with the desired unit.
+///
+/// @example scss
+///   to-unit(6, 'px') // 6px
+///   to-unit('6', 'px') // 0
+///   to-unit(6, 'foo') // 0
 ///
 /// @group utils
 @function to-unit($value, $unit) {
@@ -71,7 +74,7 @@
 
 /// Converts a font size to em.
 ///
-/// @param {number} $value - Font size.
+/// @param {Number} $value - Font size.
 ///
 /// @returns {font-size}
 ///
@@ -89,9 +92,9 @@
 
 /// Removes the unit from a number.
 ///
-/// @param {number} $number - Number to remove unit from
+/// @param {Number} $number - Number to remove unit from
 ///
-/// @returns {number}
+/// @returns {Number}
 ///
 /// @group utils
 @function strip-unit($number) {
@@ -104,10 +107,10 @@
 
 /// Checks if string ends with substring.
 ///
-/// @param {string} $string - String to check.
-/// @param {string} $substring - Substring to check against.
+/// @param {String} $string - String to check.
+/// @param {String} $substring - Substring to check against.
 ///
-/// @returns {boolean} `true` if string contains the substring, `false`
+/// @returns {Boolean} `true` if string contains the substring, `false`
 ///                   otherwise.
 ///
 /// @group utils

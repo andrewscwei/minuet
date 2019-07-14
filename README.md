@@ -18,6 +18,10 @@ Minuet is an on-going pet project for experimenting with web UI styling techniqu
 
 ## Breaking Changes
 
+### `v5.0.0`
+
+- Breaking API changes.
+
 ### `v1.0.0`
 
 - Dropped support for [Stylus](http://stylus-lang.com/).

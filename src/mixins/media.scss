@@ -155,11 +155,11 @@ $breakpoints: (
 /// Sets the background-size and background-position of a target element which is
 /// using an image map to the corresponding item in the map.
 ///
-/// @param {string} $path      - Path of sprite map.
-/// @param {number} $row-index - 0-based index of the row of the target item.
-/// @param {number} $col-index - 0-based index of the column of the target item.
-/// @param {number} $num-rows  - Total number of rows in the image map.
-/// @param {number} $num-cols  - Total number of columns in the image map.
+/// @param {String} $path      - Path of sprite map.
+/// @param {Number} $row-index - 0-based index of the row of the target item.
+/// @param {Number} $col-index - 0-based index of the column of the target item.
+/// @param {Number} $num-rows  - Total number of rows in the image map.
+/// @param {Number} $num-cols  - Total number of columns in the image map.
 ///
 /// @group media
 @mixin image-map-item($path, $row-index, $col-index, $num-rows, $num-cols) {
@@ -180,7 +180,7 @@ $breakpoints: (
 /// Auto generates a list of class names of the target selector, where each
 /// class represents a sprite as provided by the sprite map.
 ///
-/// @param {string} $path       - Path of sprite map.
+/// @param {String} $path       - Path of sprite map.
 /// @param {List}   $map [null] - List (1D or 2D) of class names. The position
 ///                               of each list item directly corresponds to the
 ///                               sprite position on the sprite map.

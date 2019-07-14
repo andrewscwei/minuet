@@ -3,9 +3,9 @@
 /// The button element must have at least 1 child `<span>` element, at most 2,
 /// to be used as the burger slices.
 ///
-/// @param {number} $width     [27px] - Width of the burger.
-/// @param {number} $height    [20px] - Height of the burger.
-/// @param {number} $thickness [2px]  - Thickness of each slice.
+/// @param {Number} $width     [27px] - Width of the burger.
+/// @param {Number} $height    [20px] - Height of the burger.
+/// @param {Number} $thickness [2px]  - Thickness of each slice.
 /// @param {Color}  $color     [#fff] - Color of the slices.
 ///
 /// @group components

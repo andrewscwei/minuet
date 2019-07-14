@@ -13,9 +13,9 @@ $font-weights: (
 /// Infers the font format from a font file extension. Supported extensions
 /// include: `eot`, `woff2`, `woff`, `ttf`, `otf`, `svg`.
 ///
-/// @param {string} $path - The path of the font file.
+/// @param {String} $path - The path of the font file.
 ///
-/// @returns {string} The font format. Defaults to `opentype` if unable to infer.
+/// @returns {String} The font format. Defaults to `opentype` if unable to infer.
 ///
 /// @group typogrpahy
 @function get-font-format($path) {
@@ -41,9 +41,9 @@ $font-weights: (
 
 /// Infers the font style from a font file path. Supports `italic` and `oblique`.
 ///
-/// @param {string} $path - Path of the font file.
+/// @param {String} $path - Path of the font file.
 ///
-/// @returns {string} The font style of the font file. Defaults to `normal` if
+/// @returns {String} The font style of the font file. Defaults to `normal` if
 /// unable to infer.
 ///
 /// @group typogrpahy
@@ -61,9 +61,9 @@ $font-weights: (
 
 /// Infers the font weight from a font file path.
 ///
-/// @param {string} $path - Path of the font file.
+/// @param {String} $path - Path of the font file.
 ///
-/// @returns {number} The font weight of the font file. Defaults to normal (400).
+/// @returns {Number} The font weight of the font file. Defaults to normal (400).
 ///
 /// @group typogrpahy
 @function get-font-weight($path) {
@@ -98,11 +98,11 @@ $font-weights: (
 
 /// Defines the @font-face rule.
 ///
-/// @param {string} $family - The `font-family` property.
-/// @param {string} $src - The `url` property.
-/// @param {string|number} $weight [null] - The `font-weight` property.
-/// @param {string} $style [null] - The `font-style` property.
-/// @param {string} $display [auto] - The `font-display` property.
+/// @param {String} $family - The `font-family` property.
+/// @param {String} $src - The `url` property.
+/// @param {String | Number} $weight [null] - The `font-weight` property.
+/// @param {String} $style [null] - The `font-style` property.
+/// @param {String} $display [auto] - The `font-display` property.
 ///
 /// @group typogrpahy
 @mixin font-face($family, $src, $weight:null, $style:null, $display:auto) {

@@ -1,6 +1,6 @@
 /// Selector for custom elements with the specified tag.
 ///
-/// @param {string} $tag - Tag name.
+/// @param {String} $tag - Tag name.
 ///
 /// @group attributes
 @mixin element($tag) {
@@ -9,7 +9,7 @@
 
 /// Selector for elements with the specified name.
 ///
-/// @param {string} $name - Name attribute of the element.
+/// @param {String} $name - Name attribute of the element.
 ///
 /// @group attributes
 @mixin name($name) {
@@ -18,9 +18,9 @@
 
 /// Selects elements with the specified data- key and value.
 ///
-/// @param {string} $key            - data- key.
-/// @param {string} $value [null]   - data- value, if applicable.
-/// @param {string} $scope ['this'] - Specifies the scope relative to the target
+/// @param {String} $key            - data- key.
+/// @param {String} $value [null]   - data- value, if applicable.
+/// @param {String} $scope ['this'] - Specifies the scope relative to the target
 ///                                   selector in which this property applies to
 ///                                   (any, this, parent, or child).
 ///
