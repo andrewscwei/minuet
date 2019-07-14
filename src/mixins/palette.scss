@@ -1,5 +1,3 @@
-// © Andrew Wei
-
 /// Retuns a random color based on the specified parameters.
 ///
 /// @param {number|boolean} $red   [true]  - A boolean value here indicates
@@ -23,7 +21,7 @@
 ///                                          Otherwise the number will be used
 ///                                          as the a value.
 ///
-/// @return {rgba}
+/// @returns {rgba}
 ///
 /// @group palette
 @function random-color($red:true, $green:true, $blue:true, $alpha:false) {

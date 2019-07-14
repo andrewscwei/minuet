@@ -1,5 +1,3 @@
-// © Andrew Wei
-
 /// Resolves a list of selectors by appending the specified args to each
 /// selector in the list. Returns a string containing all the selectors
 /// separated by ','.
@@ -8,7 +6,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of resolved selectors separated by comma.
+/// @returns {string} String of resolved selectors separated by comma.
 ///
 /// @group selectors
 @function resolve-selectors($list, $suffix:null, $prefix:null) {
@@ -33,7 +31,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of text selectors separated by comma.
+/// @returns {string} String of text selectors separated by comma.
 ///
 /// @group selectors
 @function select-texts($suffix:null, $prefix:null) {
@@ -52,7 +50,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of heading selectors separated by comma.
+/// @returns {string} String of heading selectors separated by comma.
 ///
 /// @group selectors
 @function select-headings($suffix:null, $prefix:null) {
@@ -71,7 +69,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of icon selectors separated by comma.
+/// @returns {string} String of icon selectors separated by comma.
 ///
 /// @group selectors
 @function select-icons($suffix:null, $prefix:null) {
@@ -90,7 +88,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of static selectors separated by comma.
+/// @returns {string} String of static selectors separated by comma.
 ///
 /// @group selectors
 @function select-statics($suffix:null, $prefix:null) {
@@ -109,7 +107,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of button selectors separated by comma.
+/// @returns {string} String of button selectors separated by comma.
 ///
 /// @group selectors
 @function select-buttons($suffix:null, $prefix:null) {
@@ -128,7 +126,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of link selectors separated by comma.
+/// @returns {string} String of link selectors separated by comma.
 ///
 /// @group selectors
 @function select-links($suffix:null, $prefix:null) {
@@ -147,7 +145,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of textfield selectors separated by comma.
+/// @returns {string} String of textfield selectors separated by comma.
 ///
 /// @group selectors
 @function select-textfields($suffix:null, $prefix:null) {
@@ -166,7 +164,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of box selectors separated by comma.
+/// @returns {string} String of box selectors separated by comma.
 ///
 /// @group selectors
 @function select-boxes($suffix:null, $prefix:null) {
@@ -185,7 +183,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of list selectors separated by comma.
+/// @returns {string} String of list selectors separated by comma.
 ///
 /// @group selectors
 @function select-lists($suffix:null, $prefix:null) {
@@ -204,7 +202,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of list item selectors separated by comma.
+/// @returns {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
 @function select-list-items($suffix:null, $prefix:null) {
@@ -223,7 +221,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of list item selectors separated by comma.
+/// @returns {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
 @function select-images($suffix:null, $prefix:null) {
@@ -242,7 +240,7 @@
 /// @param {string} $suffix [null] - Suffix to append to each selector.
 /// @param {string} $prefix [null] - Prefix to prepend to each selector.
 ///
-/// @return {string} String of list item selectors separated by comma.
+/// @returns {string} String of list item selectors separated by comma.
 ///
 /// @group selectors
 @function select-videos($suffix:null, $prefix:null) {

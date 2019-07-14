@@ -1,5 +1,3 @@
-// © Andrew Wei
-
 $font-weights: (
   'thin': 100,
   'extra-light': 200,
@@ -17,7 +15,7 @@ $font-weights: (
 ///
 /// @param {string} $path - The path of the font file.
 ///
-/// @return {string} The font format. Defaults to `opentype` if unable to infer.
+/// @returns {string} The font format. Defaults to `opentype` if unable to infer.
 ///
 /// @group typogrpahy
 @function get-font-format($path) {
@@ -45,7 +43,7 @@ $font-weights: (
 ///
 /// @param {string} $path - Path of the font file.
 ///
-/// @return {string} The font style of the font file. Defaults to `normal` if
+/// @returns {string} The font style of the font file. Defaults to `normal` if
 /// unable to infer.
 ///
 /// @group typogrpahy
@@ -65,7 +63,7 @@ $font-weights: (
 ///
 /// @param {string} $path - Path of the font file.
 ///
-/// @return {number} The font weight of the font file. Defaults to normal (400).
+/// @returns {number} The font weight of the font file. Defaults to normal (400).
 ///
 /// @group typogrpahy
 @function get-font-weight($path) {

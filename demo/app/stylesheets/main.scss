@@ -2,6 +2,8 @@
 
 @include normalize();
 
+@warn "#{to-number('3')}";
+
 #home {
   @include size(100%);
   @include transition(all, 1s, ease);

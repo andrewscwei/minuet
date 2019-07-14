@@ -1,10 +1,20 @@
-// © Andrew Wei
-
-/// Converts a string to a number.
+/// Converts a string to a number with/without unit, where applicable. If the
+/// string is a number containing a valid unit, this function will output the
+/// number value plus its original unit. If the string is a number without any
+/// units, this function will output the number value only. Any invalid entries
+/// such as a non-number string or an unrecognizable unit will yield `0`
+/// instead.
 ///
-/// @param {string|number} $value - Value to be converted.
+/// @param {string | number} $value - Value to be converted.
 ///
-/// @return {number}
+/// @returns {number} The converted number value. If the input cannot be
+///                   converted, `0` is returned.
+///
+/// @example scss
+///   to-number(6) // 6
+///   to-number(6px) // 1px
+///   to-number(6foo) // 0
+///   to-number(foo) // 0
 ///
 /// @group utils
 @function to-number($value) {
@@ -24,7 +34,7 @@
     $_c: str-slice($value, $i, $i);
 
     @if not (index(map-keys($_lookup), $_c) or $_c == '.') {
-      @return to-unit(if($_negative, -$_output, $_output), str-slice($value, $i))
+      @return to-unit(if($_negative, -$_output, $_output), str-slice($value, $i));
     }
 
     @if ($_c == '.') {
@@ -37,7 +47,7 @@
     }
   }
 
-  @return if($_negative, -$_output, $_output);;
+  @return if($_negative, -$_output, $_output);
 }
 
 /// Converts a number to a unit.
@@ -45,7 +55,7 @@
 /// @param {number} $value - Value to add unit to
 /// @param {string} $unit - String representation of the unit
 ///
-/// @return {Unit}
+/// @returns {Unit}
 ///
 /// @group utils
 @function to-unit($value, $unit) {
@@ -53,7 +63,7 @@
 
   @if (not index(map-keys($_units), $unit)) {
     @warn 'Invalid unit: #{$unit}';
-    @return 0
+    @return 0;
   }
 
   @return $value * map-get($_units, $unit);
@@ -63,7 +73,7 @@
 ///
 /// @param {number} $value - Font size.
 ///
-/// @return {font-size}
+/// @returns {font-size}
 ///
 /// @group utils
 @function to-em($value) {
@@ -81,7 +91,7 @@
 ///
 /// @param {number} $number - Number to remove unit from
 ///
-/// @return {number}
+/// @returns {number}
 ///
 /// @group utils
 @function strip-unit($number) {
@@ -97,7 +107,7 @@
 /// @param {string} $string - String to check.
 /// @param {string} $substring - Substring to check against.
 ///
-/// @return {boolean} `true` if string contains the substring, `false`
+/// @returns {boolean} `true` if string contains the substring, `false`
 ///                   otherwise.
 ///
 /// @group utils
