@@ -1,149 +1,118 @@
 // © Andrew Wei
 
-$font-family-serif: serif !default;
-$font-family-sans-serif: sans-serif !default;
-$font-family-monospace: monospace !default;
+$font-weights: (
+  'thin': 100,
+  'extra-light': 200,
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semi-bold': 600,
+  'bold': 700,
+  'extra-bold': 800,
+  'black': 900
+);
 
-$font-size-extra-small: 12px !default;
-$font-size-small: 14px !default;
-$font-size-medium: 18px !default;
-$font-size-large: 24px !default;
-$font-size-extra-large: 30px !default;
-
-$font-weight-serif-light: 100 !default;
-$font-weight-serif-normal: 300 !default;
-$font-weight-serif-bold: 400 !default;
-$font-weight-sans-serif-light: 100 !default;
-$font-weight-sans-serif-normal: 300 !default;
-$font-weight-sans-serif-bold: 400 !default;
-$font-weight-monospace-light: 100 !default;
-$font-weight-monospace-normal: 300 !default;
-$font-weight-monospace-bold: 400 !default;
-
-/// Gets the font family of the specified type. Minuet natively supports
-/// overriding three font family types: 'serif', 'sans-serif' or 'monospace'.
+/// Infers the font format from a font file extension. Supported extensions
+/// include: `eot`, `woff2`, `woff`, `ttf`, `otf`, `svg`.
 ///
-/// @param {string} $family ['serif'] - Specify a value or pick from: 'serif',
-///                                     'sans-serif', 'monospace'.
+/// @param {string} $path - The path of the font file.
 ///
-/// @return {font-family}
+/// @return {string} The font format. Defaults to `opentype` if unable to infer.
 ///
-/// @group typography
-@function get-font-family($family:'serif') {
-  @if ($family == 'serif') or ($family == 's') {
-    @return append($font-family-serif, null, comma);
+/// @group typogrpahy
+@function get-font-format($path) {
+  @if (ends-with($path, '.eot')) {
+    @return 'eot';
   }
-  @else if ($family == 'sans-serif') or ($family == 'ss') or ($family == 's-s') {
-    @return append($font-family-sans-serif, null, comma);
+  @else if (ends-with($path, '.woff2')) {
+    @return 'woff2';
   }
-  @else if ($family == 'monospace') or ($family == 'm') {
-    @return append($font-family-monospace, null, comma);
+  @else if (ends-with($path, '.woff')) {
+    @return 'woff';
+  }
+  @else if (ends-with($path, '.ttf')) {
+    @return 'truetype';
+  }
+  @else if (ends-with($path, '.svg')) {
+    @return 'svg';
   }
   @else {
-    @return append($family, null, comma);
+    @return 'opentype';
   }
 }
 
-/// Gets the specified font size.
+/// Infers the font style from a font file path. Supports `italic` and `oblique`.
 ///
-/// @param {string|number} $size  ['default'] - Specify a value or pick from:
-///                                             'xl', 'l', 'm', 's', 'xs' or
-///                                             'default'.
-/// @param {number}        $scale [1]         - Specify a scale.
+/// @param {string} $path - Path of the font file.
 ///
-/// @return {font-size}
+/// @return {string} The font style of the font file. Defaults to `normal` if
+/// unable to infer.
 ///
-/// @group typography
-@function get-font-size($size:'default', $scale:1) {
-  $_size: 100%;
-
-  @if ($size == 'x-small') or ($size == 'xs') or ($size == 'extra-small') or ($size == 'x-s') {
-    $_size: $font-size-extra-small;
-  } @else if ($size == 'small') or ($size == 's') {
-    $_size: $font-size-small;
-  } @else if ($size == 'medium') or ($size == 'm') {
-    $_size: $font-size-medium;
-  } @else if ($size == 'large') or ($size == 'l') {
-    $_size: $font-size-large;
-  } @else if ($size == 'x-large') or ($size == 'xl') or ($size == 'extra-large') or ($size == 'x-l') {
-    $_size: $font-size-extra-large;
-  } @else if (type-of($size) == number) {
-    $_size: $size;
+/// @group typogrpahy
+@function get-font-style($path) {
+  @if (str-index($path, 'italic') or str-index($path, 'Italic')) {
+    @return italic;
   }
-
-  $_unit: unit($_size);
-  $_value: strip-unit($_size);
-  @return to-em(to-unit($_value, $_unit));
-}
-
-/// Gets the font weight of the specified type. Minuet natively supports
-/// overriding three font weights for each font family types. The weights are
-/// 'light', 'normal' and 'bold'.
-///
-/// @param {string|unit} $weight ['normal'] - Specify a value or pick from:
-///                                           'light', 'normal' or 'bold'.
-/// @param {string} $family ['serif']       - Specifies the font-family this
-///                                           font weight is associated with.
-/// @return {font-weight}
-///
-/// @group typography
-@function get-font-weight($weight:'normal', $family:'serif') {
-  @if ($family == 'serif') or ($family == 's') {
-    @if ($weight == 'light') or ($weight == 'l') {
-      @return $font-weight-serif-light;
-    }
-    @else if ($weight == 'normal') or ($weight == 'n') {
-      @return $font-weight-serif-normal;
-    }
-    @else if ($weight == 'bold') or ($weight == 'b') {
-      @return $font-weight-serif-bold;
-    }
-    @else {
-      @return $weight;
-    }
-  }
-  @else if ($family == 'sans-serif') or ($family == 'ss') or ($family == 's-s') {
-    @if ($weight == 'light') or ($weight == 'l') {
-      @return $font-weight-sans-serif-light;
-    }
-    @else if ($weight == 'normal') or ($weight == 'n') {
-      @return $font-weight-sans-serif-normal;
-    }
-    @else if ($weight == 'bold') or ($weight == 'b') {
-      @return $font-weight-sans-serif-bold;
-    }
-    @else {
-      @return $weight;
-    }
-  }
-  @else if ($family == 'monospace') or ($family == 'm') {
-    @if ($weight == 'light') or ($weight == 'l') {
-      @return $font-weight-monospace-light;
-    }
-    @else if ($weight == 'normal') or ($weight == 'n') {
-      @return $font-weight-monospace-normal;
-    }
-    @else if ($weight == 'bold') or ($weight == 'b') {
-      @return $font-weight-monospace-bold;
-    }
-    @else {
-      @return $weight;
-    }
+  @else if (str-index($path, 'oblique') or str-index($path, 'Oblique')) {
+    @return oblique;
   }
   @else {
-    @return $weight;
+    @return normal;
   }
 }
 
-/// Applies font related rules.
+/// Infers the font weight from a font file path.
 ///
-/// @param {List}   $family [null] - Font family.
-/// @param {*}      $size [null]   - Font size.
-/// @param {number} $weight [null] - Font weight.
+/// @param {string} $path - Path of the font file.
 ///
-/// @group typography
-@mixin font($family:null, $size:null, $weight:null) {
-  @if ($family != null) { font-family: get-font-family($family); }
-  @if ($size != null) { font-size: get-font-size($size, 1); }
-  @if ($weight != null) and ($family != null) { font-weight: get-font-weight($weight, $family); }
+/// @return {number} The font weight of the font file. Defaults to normal (400).
+///
+/// @group typogrpahy
+@function get-font-weight($path) {
+  @if (str-index($path, 'thin') or str-index($path, 'Thin')) {
+    @return map-get($font-weights, 'thin');
+  }
+  @else if (str-index($path, 'extralight') or str-index($path, 'ExtraLight')) {
+    @return map-get($font-weights, 'extra-light');
+  }
+  @else if (str-index($path, 'light') or str-index($path, 'Light')) {
+    @return map-get($font-weights, 'light');
+  }
+  @else if (str-index($path, 'medium') or str-index($path, 'Medium')) {
+    @return map-get($font-weights, 'medium');
+  }
+  @else if (str-index($path, 'semibold') or str-index($path, 'SemiBold')) {
+    @return map-get($font-weights, 'semi-bold');
+  }
+  @else if (str-index($path, 'extrabold') or str-index($path, 'ExtraBold')) {
+    @return map-get($font-weights, 'extra-bold');
+  }
+  @else if (str-index($path, 'bold') or str-index($path, 'Bold')) {
+    @return map-get($font-weights, 'bold');
+  }
+  @else if (str-index($path, 'black') or str-index($path, 'Black')) {
+    @return map-get($font-weights, 'black');
+  }
+  @else {
+    @return map-get($font-weights, 'normal');
+  }
+}
+
+/// Defines the @font-face rule.
+///
+/// @param {string} $family - The `font-family` property.
+/// @param {string} $src - The `url` property.
+/// @param {string|number} $weight [null] - The `font-weight` property.
+/// @param {string} $style [null] - The `font-style` property.
+/// @param {string} $display [auto] - The `font-display` property.
+///
+/// @group typogrpahy
+@mixin font-face($family, $src, $weight:null, $style:null, $display:auto) {
+  @font-face {
+    font-family: $family;
+    // src: url($src) format(#{get-font-format($src)});
+    font-style: if($style == null, get-font-style($src), $style);
+    font-weight: if($weight == null, get-font-weight($src), $weight);
+    font-display: $display;
+  }
 }

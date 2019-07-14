@@ -9,7 +9,9 @@
   background: rgb(20, 20, 90);
 
   #{select-headings()}, #{select-texts()} {
-    @include font('Helvetica Neue' 'Helvetica' sans-serif, 1.5em, 100);
+    font-family: 'Helvetica Neue' 'Helvetica' sans-serif;
+    font-weight: 100;
+    font-size: 1.5em;
     line-height: 1.4em;
     color: rgba(255, 255, 255, 0.3);
     text-align: center;
@@ -48,12 +50,14 @@
       background: rgb(10, 10, 10);
 
       #{select-headings()} {
-        @include font(null, 8em, 100);
+        font-size: 8em;
+        font-weight: 100;
         width: 100%;
       }
 
       #{select-texts()} {
-        @include font(null, 2.0em, 100);
+        font-size: 2em;
+        font-weight: 100;
         width: 100%;
       }
     }

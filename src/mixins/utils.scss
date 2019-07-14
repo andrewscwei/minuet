@@ -91,3 +91,16 @@
 
   @return $number;
 }
+
+/// Checks if string ends with substring.
+///
+/// @param {string} $string - String to check.
+/// @param {string} $substring - Substring to check against.
+///
+/// @return {boolean} `true` if string contains the substring, `false`
+///                   otherwise.
+///
+/// @group utils
+@function ends-with($string, $substring) {
+  @return str-slice($string, (str-length($string) - str-length($substring) + 1)) == $substring;
+}

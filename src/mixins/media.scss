@@ -286,7 +286,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than mobile devices.
 ///
 /// @group functional/media
-@mixin gt-mobile() {
+@mixin gtmobile() {
   @include screen('w>mobile') {
     @content;
   }
@@ -295,7 +295,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than tablet devices.
 ///
 /// @group functional/media
-@mixin gt-tablet() {
+@mixin gttablet() {
   @include screen('w>tablet') {
     @content;
   }
@@ -304,7 +304,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than notebook devices.
 ///
 /// @group functional/media
-@mixin gt-notebook() {
+@mixin gtnotebook() {
   @include screen('w>notebook') {
     @content;
   }
@@ -313,7 +313,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than desktop devices.
 ///
 /// @group functional/media
-@mixin gt-desktop() {
+@mixin gtdesktop() {
   @include screen('w>desktop') {
     @content;
   }
@@ -322,7 +322,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than TV devices.
 ///
 /// @group functional/media
-@mixin gt-tv() {
+@mixin gttv() {
   @include screen('w>tv') {
     @content;
   }
@@ -331,7 +331,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than or equal to mobile devices.
 ///
 /// @group functional/media
-@mixin gte-mobile() {
+@mixin gtemobile() {
   @include screen('w>=mobile') {
     @content;
   }
@@ -340,7 +340,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than or equal to tablet devices.
 ///
 /// @group functional/media
-@mixin gte-tablet() {
+@mixin gtetablet() {
   @include screen('w>=tablet') {
     @content;
   }
@@ -349,7 +349,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than or equal to notebook devices.
 ///
 /// @group functional/media
-@mixin gte-notebook() {
+@mixin gtenotebook() {
   @include screen('w>=notebook') {
     @content;
   }
@@ -358,7 +358,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than or equal to desktop devices.
 ///
 /// @group functional/media
-@mixin gte-desktop() {
+@mixin gtedesktop() {
   @include screen('w>=desktop') {
     @content;
   }
@@ -367,7 +367,7 @@ $breakpoints: (
 /// Applies styles for screens bigger than or equal to TV devices.
 ///
 /// @group functional/media
-@mixin gte-tv() {
+@mixin gtetv() {
   @include screen('w>=tv') {
     @content;
   }
@@ -376,7 +376,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than or equal to mobile devices.
 ///
 /// @group functional/media
-@mixin lte-mobile() {
+@mixin ltemobile() {
   @include screen('w<=mobile') {
     @content;
   }
@@ -385,7 +385,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than or equal to tablet devices.
 ///
 /// @group functional/media
-@mixin lte-tablet() {
+@mixin ltetablet() {
   @include screen('w<=tablet') {
     @content;
   }
@@ -394,7 +394,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than or equal to notebook devices.
 ///
 /// @group functional/media
-@mixin lte-notebook() {
+@mixin ltenotebook() {
   @include screen('w<=notebook') {
     @content;
   }
@@ -403,7 +403,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than or equal to desktop devices.
 ///
 /// @group functional/media
-@mixin lte-desktop() {
+@mixin ltedesktop() {
   @include screen('w<=desktop') {
     @content;
   }
@@ -412,7 +412,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than or equal to TV devices.
 ///
 /// @group functional/media
-@mixin lte-tv() {
+@mixin ltetv() {
   @include screen('w<=tv') {
     @content;
   }
@@ -421,7 +421,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than mobile devices.
 ///
 /// @group functional/media
-@mixin lt-mobile() {
+@mixin ltmobile() {
   @include screen('w<mobile') {
     @content;
   }
@@ -430,7 +430,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than tablet devices.
 ///
 /// @group functional/media
-@mixin lt-tablet() {
+@mixin lttablet() {
   @include screen('w<tablet') {
     @content;
   }
@@ -439,7 +439,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than notebook devices.
 ///
 /// @group functional/media
-@mixin lt-notebook() {
+@mixin ltnotebook() {
   @include screen('w<notebook') {
     @content;
   }
@@ -448,7 +448,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than desktop devices.
 ///
 /// @group functional/media
-@mixin lt-desktop() {
+@mixin ltdesktop() {
   @include screen('w<desktop') {
     @content;
   }
@@ -457,7 +457,7 @@ $breakpoints: (
 /// Applies styles for screens smaller than TV devices.
 ///
 /// @group functional/media
-@mixin lt-tv() {
+@mixin lttv() {
   @include screen('w<tv') {
     @content;
   }
