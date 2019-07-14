@@ -126,7 +126,7 @@
 /// @param {String} $type - Type of container. If none of the special types are
 ///                         specified, this value will apply directly to the
 ///                         'display' CSS rule.
-/// @param {String | List} $align1 [null] - Internal alignment, can be a string or
+/// @param {String/List} $align1 [null] - Internal alignment, can be a string or
 ///                                       a list of 2 strings.
 /// @param {String} $align2 [null] - Internal alignment adjacent to $align1.
 ///
@@ -167,7 +167,7 @@
 ///   @include display('gridv|1px');
 ///
 /// @group boxes
-@mixin display($type, $align1:null, $align2:null) {
+@mixin display($type, $align1: null, $align2: null) {
   $_default: if($align1 == null, if(str-index($type, 'box') != null, center, (top left)), $align1);
   $_align1: if(length($_default) > 1, nth($_default, 1), $_default);
   $_align2: if(length($_default) > 1, nth($_default, 2), 'center');
@@ -436,7 +436,7 @@
 /// @param {Number} $perspective [1] - Tweak this value to adjust perspective.
 ///
 /// @group boxes
-@mixin parallax-block($perspective:1) {
+@mixin parallax-block($perspective: 1) {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;

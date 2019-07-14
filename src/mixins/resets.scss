@@ -5,7 +5,7 @@
 ///                                    the root context.
 ///
 /// @group resets
-@mixin normalize($is-root:true) {
+@mixin normalize($is-root: true) {
   @if ($is-root) {
     html {
       border: none;

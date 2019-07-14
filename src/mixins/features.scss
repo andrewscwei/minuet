@@ -6,7 +6,7 @@
 /// @param {List} $delays [0s] - Transition delay(s).
 ///
 /// @group features
-@mixin transition($properties:all, $durations:0s, $timing-functions:ease, $delays:0s) {
+@mixin transition($properties: all, $durations: 0s, $timing-functions: ease, $delays: 0s) {
   transition-property: append($properties, null, comma);
   transition-duration: append($durations, null, comma);
   transition-timing-function: append($timing-functions, null, comma);
@@ -26,7 +26,7 @@
 /// @param {List} $play-states [running] - Animation play state(s).
 ///
 /// @group features
-@mixin animation($names:none, $durations:0s, $timing-functions:ease, $delays:0s, $iteration-counts:1, $directions:normal, $fill-modes:none, $play-states:running) {
+@mixin animation($names: none, $durations: 0s, $timing-functions: ease, $delays: 0s, $iteration-counts: 1, $directions: normal, $fill-modes: none, $play-states: running) {
   animation-name: append($names, null, comma);
   animation-duration: append($durations, null, comma);
   animation-timing-function: append($timing-functions, null, comma);
@@ -48,7 +48,7 @@
 ///                                   `!important`.
 ///
 /// @group features
-@mixin pointable($enabled:true, $recursive:true, $forced:true) {
+@mixin pointable($enabled: true, $recursive: true, $forced: true) {
   @if ($enabled == true) {
     @if ($recursive == true) {
       @if ($forced == true) {
@@ -92,7 +92,7 @@
 /// @param {Boolean} $forced [true] - Specifies whether `!important` is tagged.
 ///
 /// @group features
-@mixin hidden($forced:true) {
+@mixin hidden($forced: true) {
   @if ($forced == true) {
     display: none !important;
   }
@@ -106,7 +106,7 @@
 /// @param {Boolean} $forced [true] - Specifies whether `!important` is tagged.
 ///
 /// @group features
-@mixin invisible($forced:true) {
+@mixin invisible($forced: true) {
   @if ($forced == true) {
     visibility: hidden !important;
   }

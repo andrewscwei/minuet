@@ -31,7 +31,7 @@
 /// @content Encapsulated styles within the selected elements.
 ///
 /// @group attributes
-@mixin data($key, $value:null, $scope:'this') {
+@mixin data($key, $value: null, $scope: 'this') {
   $attr: data-#{$key};
 
   @if $value == null {

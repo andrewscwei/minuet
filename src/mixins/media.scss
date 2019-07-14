@@ -63,7 +63,7 @@ $breakpoints: (
 /// @content Encapsulated styles within the media query.
 ///
 /// @group media
-@mixin screen($descriptors, $params:null) {
+@mixin screen($descriptors, $params: null) {
   $_bases: (
     'w': 'width',
     'width': 'width',
@@ -193,7 +193,7 @@ $breakpoints: (
 ///
 /// @todo This mixin is quite slow in performance due to the nested loop.
 /// @group media
-@mixin image-map($path:null, $map:null) {
+@mixin image-map($path: null, $map: null) {
   @if $path != null {
     background-image: url($path);
   }

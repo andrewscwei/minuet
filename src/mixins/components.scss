@@ -9,7 +9,7 @@
 /// @param {Color} $color [#fff] - Color of the slices.
 ///
 /// @group components
-@mixin burger-button($width:27px, $height:20px, $thickness:2px, $color:#fff) {
+@mixin burger-button($width: 27px, $height: 20px, $thickness: 2px, $color: #fff) {
   @include min-size($width $height);
   @include size($width $height);
   background: transparent;

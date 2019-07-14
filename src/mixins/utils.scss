@@ -2,7 +2,7 @@
 /// invalid inputs such as a non-number string or an unrecognized unit will
 /// throw an error. Passing a number into this function does nothing.
 ///
-/// @param {String | Number} $value - Value to be converted.
+/// @param {String/Number} $value - Value to be converted.
 ///
 /// @returns {Number} The converted number value.
 ///

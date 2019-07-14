@@ -106,12 +106,12 @@ $font-weights: (
 ///
 /// @param {String} $family - The `font-family` property.
 /// @param {String} $src - The `url` property.
-/// @param {String | Number} $weight [null] - The `font-weight` property.
+/// @param {String/Number} $weight [null] - The `font-weight` property.
 /// @param {String} $style [null] - The `font-style` property.
 /// @param {String} $display [auto] - The `font-display` property.
 ///
 /// @group typography
-@mixin font-face($family, $src, $weight:null, $style:null, $display:auto) {
+@mixin font-face($family, $src, $weight: null, $style: null, $display: auto) {
   @font-face {
     font-family: $family;
     src: url($src) format(#{get-font-format($src)});
