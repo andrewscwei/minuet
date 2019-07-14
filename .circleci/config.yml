@@ -33,6 +33,7 @@ jobs:
           paths:
             - .circleci/
             - lib/
+            - src/
             - node_modules/
             - package.json
   test:
