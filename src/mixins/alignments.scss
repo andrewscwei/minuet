@@ -1,24 +1,23 @@
-/// Sets the margin of an element. Similar to the original 'margin' CSS rule,
-/// except for the addition of 2 values: null and ''. If null is specified for
-/// a specific side of the margin, that side will not be set. If '' is specified
-/// for a specific side of the margin, it will take the value of the previous
-/// side.
+/// Sets the margin of an element. Similar to the original `margin` CSS rule,
+/// except for the addition of 2 values: `null` and `''`. If `null` is specified
+/// for a specific side of the margin, that side will not be set. If `''` is
+/// specified for a specific side of the margin, it will take the value of the
+/// previous side.
 ///
-/// @param {Number | List} $top    [null]  - Value for the top margin or a list of
-///                                        values for each side of the margin
-///                                        ordered by top, right, bottom and
-///                                        left. Other than the first value, all
-///                                        values are optional. If values are
-///                                        left out, the behavior will be
-///                                        similar to the original 'margin' CSS
-///                                        rule (i.e. bottom matches top, right
-///                                        matches left, etc).
-/// @param {Number}      $right  [unset] - Value for the right margin, if unset
-///                                        this will be automatically inferred.
-/// @param {Number}      $bottom [unset] - Value for the bottom margin, if unset
-///                                        this will be automatically inferred.
-/// @param {Number}      $left   [unset] - Value for the left margin, if unset
-///                                        this will be automatically inferred.
+/// @param {Number | List} $top [null] - Value for the top margin or a list of
+///                                      values for each side of the margin
+///                                      ordered by top, right, bottom and left.
+///                                      Other than the first value, all values
+///                                      are optional. If values are left out,
+///                                      the behavior will be similar to the
+///                                      original `margin` CSS rule (i.e. bottom
+///                                      matches top, right matches left, etc).
+/// @param {Number} $right [unset] - Value for the right margin, if unset this
+///                                  will be automatically inferred.
+/// @param {Number} $bottom [unset] - Value for the bottom margin, if unset this
+///                                   will be automatically inferred.
+/// @param {Number} $left [unset] - Value for the left margin, if unset this
+///                                 will be automatically inferred.
 ///
 /// @example
 ///   @include margin(0px);
@@ -64,16 +63,15 @@
 }
 
 /// Sets the horizontal margins (i.e. left and right respectively). Values are
-/// optional except for the first value. If null is specified, that side of
-/// the margin will not be set. If '' is specified, the previous value will be
+/// optional except for the first value. If `null` is specified, that side of
+/// the margin will not be set. If `''` is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {Number | List} $left  [null]  - Value for the left margin or a list of
+/// @param {Number | List} $left [null] - Value for the left margin or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
-/// @param {Number}      $right [unset] - Value for the right margin. If unset,
-///                                       this value will be automatically
-///                                       inferred.
+/// @param {Number} $right [unset] - Value for the right margin. If unset, this
+///                                  value will be automatically inferred.
 ///
 /// @group alignments
 @mixin margin-h($left:null, $right:unset) {
@@ -88,16 +86,15 @@
 }
 
 /// Sets the vertical margins (i.e. top and bottom respectively). Values are
-/// optional except for the first value. If null is specified, that side of
-/// the margin will not be set. If '' is specified, the previous value will be
+/// optional except for the first value. If `null` is specified, that side of
+/// the margin will not be set. If `''` is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {Number | List} $top    [null]  - Value for the top margin or a list of
-///                                        up to 2 values for top and bottom
-///                                        margins respectively.
-/// @param {Number}      $bottom [unset] - Value for the bottom margin. If unset,
-///                                        this value will be automatically
-///                                        inferred.
+/// @param {Number | List} $top [null] - Value for the top margin or a list of
+///                                      up to 2 values for top and bottom
+///                                      margins respectively.
+/// @param {Number} $bottom [unset] - Value for the bottom margin. If unset,
+///                                   this value will be automatically inferred.
 ///
 /// @group alignments
 @mixin margin-v($top:null, $bottom:unset) {
@@ -111,27 +108,27 @@
   @if ($_bottom != null) and ($_bottom != '-') and ($_bottom != '_') { margin-bottom: $_bottom; }
 }
 
-/// Sets the padding of an element. Similar to the original 'padding' CSS rule,
-/// except for the addition of 2 values: null and ''. If null is specified for
-/// a specific side of the padding, that side will not be set. If '' is
+/// Sets the padding of an element. Similar to the original `padding` CSS rule,
+/// except for the addition of 2 values: `null` and `''`. If null is specified
+/// for a specific side of the padding, that side will not be set. If `''` is
 /// specified for a specific side of the padding, it will take the value of the
 /// previous side.
 ///
-/// @param {Number | List} $top    [null]  - Value for the top padding or a list of
-///                                        values for each side of the padding
-///                                        ordered by top, right, bottom and
-///                                        left. Other than the first value, all
-///                                        values are optional. If values are
-///                                        left out, the behavior will be
-///                                        similar to the original 'padding' CSS
-///                                        rule (i.e. bottom matches top, right
-///                                        matches left, etc).
-/// @param {Number}      $right  [unset] - Value for the right padding, if unset
-///                                        this will be automatically inferred.
-/// @param {Number}      $bottom [unset] - Value for the bottom padding, if unset
-///                                        this will be automatically inferred.
-/// @param {Number}      $left   [unset] - Value for the left padding, if unset
-///                                        this will be automatically inferred.
+/// @param {Number | List} $top [null] - Value for the top padding or a list of
+///                                      values for each side of the padding
+///                                      ordered by top, right, bottom and left.
+///                                      Other than the first value, all values
+///                                      are optional. If values are left out,
+///                                      the behavior will be similar to the
+///                                      original `padding` CSS rule (i.e.
+///                                      bottom matches top, right matches left,
+///                                      etc).
+/// @param {Number} $right [unset] - Value for the right padding, if unset this
+///                                  will be automatically inferred.
+/// @param {Number} $bottom [unset] - Value for the bottom padding, if unset
+///                                   this will be automatically inferred.
+/// @param {Number} $left [unset] - Value for the left padding, if unset this
+///                                 will be automatically inferred.
 ///
 /// @example
 ///   @include padding(0px);
@@ -177,16 +174,15 @@
 }
 
 /// Sets the horizontal paddings (i.e. left and right respectively). Values are
-/// optional except for the first value. If null is specified, that side of
-/// the padding will not be set. If '' is specified, the previous value will be
+/// optional except for the first value. If `null` is specified, that side of
+/// the padding will not be set. If `''` is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {Number | List} $left  [null]  - Value for the left padding or a list
+/// @param {Number | List} $left [null] - Value for the left padding or a list
 ///                                       of up to 2 values for left and right
 ///                                       margins respectively.
-/// @param {Number}      $right [unset] - Value for the right padding. If unset,
-///                                       this value will be automatically
-///                                       inferred.
+/// @param {Number} $right [unset] - Value for the right padding. If unset, this
+///                                  value will be automatically inferred.
 ///
 /// @group alignments
 @mixin padding-h($left:null, $right:unset) {
@@ -201,16 +197,15 @@
 }
 
 /// Sets the vertical paddings (i.e. top and bottom respectively). Values are
-/// optional except for the first value. If null is specified, that side of
-/// the padding will not be set. If '' is specified, the previous value will be
-/// used instead (likewise if it is left out).
+/// optional except for the first value. If `null` is specified, that side of
+/// the padding will not be set. If `''` is specified, the previous value will
+/// be used instead (likewise if it is left out).
 ///
-/// @param {Number | List} $top    [null]  - Value for the top padding or a list
-///                                        of up to 2 values for top and bottom
-///                                        margins respectively.
-/// @param {Number}      $bottom [unset] - Value for the bottom padding. If unset,
-///                                        this value will be automatically
-///                                        inferred.
+/// @param {Number | List} $top [null] - Value for the top padding or a list of
+///                                      up to 2 values for top and bottom
+///                                      margins respectively.
+/// @param {Number} $bottom [unset] - Value for the bottom padding. If unset,
+///                                   this value will be automatically inferred.
 ///
 /// @group alignments
 @mixin padding-v($top:null, $bottom:unset) {
@@ -225,26 +220,25 @@
 }
 
 /// Sets the edge of an element (i.e. top, right, bottom and left). This mixin
-/// makes setting edges similar to margins and paddings where you can apply
-/// a list of up to 4 values to set all edges. If null is specified for a
-/// specific edge, that edge will not be set. If '' is specified for a specific
-/// edge, it will take the value of the previous edge.
+/// makes setting edges similar to margins and paddings where you can apply a
+/// list of up to 4 values to set all edges. If `null` is specified for a
+/// specific edge, that edge will not be set. If `''` is specified for a
+/// specific edge, it will take the value of the previous edge.
 ///
-/// @param {Number | List} $top    [null]  - Value for the top edge or a list of
-///                                        values for each side of the edge
-///                                        ordered by top, right, bottom and
-///                                        left. Other than the first value, all
-///                                        values are optional. If values are
-///                                        left out, the behavior will be
-///                                        similar to the original 'margin' CSS
-///                                        rule (i.e. bottom matches top, right
-///                                        matches left, etc).
-/// @param {Number}      $right  [unset] - Value for the right edge, if unset
-///                                        this will be automatically inferred.
-/// @param {Number}      $bottom [unset] - Value for the bottom edge, if unset
-///                                        this will be automatically inferred.
-/// @param {Number}      $left   [unset] - Value for the left edge, if unset
-///                                        this will be automatically inferred.
+/// @param {Number | List} $top [null] - Value for the top edge or a list of
+///                                      values for each side of the edge
+///                                      ordered by top, right, bottom and left.
+///                                      Other than the first value, all values
+///                                      are optional. If values are left out,
+///                                      the behavior will be similar to the
+///                                      original 'margin' CSS rule (i.e. bottom
+///                                      matches top, right matches left, etc).
+/// @param {Number} $right [unset] - Value for the right edge, if unset this
+///                                  will be automatically inferred.
+/// @param {Number} $bottom [unset] - Value for the bottom edge, if unset this
+///                                   will be automatically inferred.
+/// @param {Number} $left [unset] - Value for the left edge, if unset this will
+///                                 be automatically inferred.
 ///
 /// @example
 ///   @include edge(0px);
@@ -290,16 +284,15 @@
 }
 
 /// Sets the horizontal edges (i.e. left and right respectively). Values are
-/// optional except for the first value. If null is specified, that side of
-/// the edge will not be set. If '' is specified, the previous value will be
+/// optional except for the first value. If `null` is specified, that side of
+/// the edge will not be set. If `''` is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {Number | List} $left  [null]  - Value for the left edge or a list of
+/// @param {Number | List} $left [null] - Value for the left edge or a list of
 ///                                       up to 2 values for left and right
 ///                                       margins respectively.
-/// @param {Number}      $right [unset] - Value for the right edge. If unset,
-///                                       this value will be automatically
-///                                       inferred.
+/// @param {Number} $right [unset] - Value for the right edge. If unset, this
+///                                  value will be automatically inferred.
 ///
 /// @group alignments
 @mixin edge-h($left:null, $right:unset) {
@@ -314,16 +307,15 @@
 }
 
 /// Sets the vertical edges (i.e. top and bottom respectively). Values are
-/// optional except for the first value. If null is specified, that side of
-/// the edge will not be set. If '' is specified, the previous value will be
+/// optional except for the first value. If `null` is specified, that side of
+/// the edge will not be set. If `''` is specified, the previous value will be
 /// used instead (likewise if it is left out).
 ///
-/// @param {Number | List} $top    [null]  - Value for the top edge or a list of
-///                                        up to 2 values for top and bottom
-///                                        margins respectively.
-/// @param {Number}      $bottom [unset] - Value for the bottom edge. If unset,
-///                                        this value will be automatically
-///                                        inferred.
+/// @param {Number | List} $top [null] - Value for the top edge or a list of up
+///                                      to 2 values for top and bottom margins
+///                                      respectively.
+/// @param {Number} $bottom [unset] - Value for the bottom edge. If unset, this
+///                                   value will be automatically inferred.
 ///
 /// @group alignments
 @mixin edge-v($top:null, $bottom:unset) {
@@ -357,11 +349,11 @@
 
 /// Aligns an element horizontally and vertically.
 ///
-/// @param {String | List} $align1 [null] - Internal alignment, can be a string or
-///                                       a list of 2 strings.
-/// @param {String}      $align2 [null] - Internal alignment adjacent to $align1.
-/// @param {String} $type [null]        - Specifies the position type (i.e.
-///                                       absolute or fixed).
+/// @param {String | List} $align1 [null] - Internal alignment, can be a string
+///                                         or a list of 2 strings.
+/// @param {String} $align2 [null] - Internal alignment adjacent to `$align1`.
+/// @param {String} $type [null] - Specifies the position type (i.e. `absolute`
+///                                or `fixed`).
 ///
 /// @group alignments
 @mixin align($align1:null, $align2:null, $type:null) {
@@ -393,8 +385,9 @@
 ///
 /// @param {List} $alignH ['left'] - Horizontal alignment (left|center|right,
 ///                                  left|right offset, right offset).
-/// @param {List} $alignV ['top']  - Vertical alignment (top|center|middle|bottom,
-///                                  top|bottom offset, bottom offset).
+/// @param {List} $alignV ['top'] - Vertical alignment
+///                                 (top|center|middle|bottom, top|bottom
+///                                 offset, bottom offset).
 ///
 /// @group alignments
 @mixin abs-align($alignH:'left', $alignV:'top') {
@@ -447,8 +440,8 @@
 //
 // @param {List} $alignH ['left'] - Horizontal alignment (left|center|right,
 //                                  left|right offset, right offset).
-// @param {List} $alignV ['top']  - Vertical alignment (top|center|middle|bottom,
-//                                  top|bottom offset, bottom offset).
+// @param {List} $alignV ['top'] - Vertical alignment (top|center|middle|bottom,
+//                                 top|bottom offset, bottom offset).
 //
 // @group alignments
 @mixin fixed-align($alignH:'left', $alignV:'top') {
@@ -461,8 +454,8 @@
 ///
 /// @param {String} $alignH ['left'] - Horizontal alignment (i.e. left, center,
 ///                                    right).
-/// @param {String} $alignV ['top']  - Vertical alignment (i.e. top, middle,
-///                                    bottom).
+/// @param {String} $alignV ['top'] - Vertical alignment (i.e. top, middle,
+///                                   bottom).
 ///
 /// @group alignments
 @mixin inline-align($alignH:'left', $alignV:'top') {
@@ -471,24 +464,23 @@
   // Horizontal alignment cannot be altered at the child level. Tweak the
   // parent's text-align rule instead.
 
-  @if      $alignV == 'top'                           { vertical-align: top;    }
+  @if $alignV == 'top' { vertical-align: top; }
   @else if $alignV == 'center' or $alignV == 'middle' { vertical-align: middle; }
-  @else if $alignV == 'bottom'                        { vertical-align: bottom; }
+  @else if $alignV == 'bottom' { vertical-align: bottom; }
 }
 
 /// Sets the size of the target selector.
 ///
-/// @param {Number | List} $width          - Specifies the width and height of the
-///                                        selector. If only 1 value is provided,
-///                                        both width and height will use that
-///                                        value. If 2 values are provided, they
-///                                        will be used for width and height
-///                                        respectively.
-/// @param {Number}      $height [unset] - Specifies the height (overrides
-///                                        the previous parameter).
-/// @param {Boolean}     $oval [false]   - Specifies whether the selector is
-///                                        oval shaped (hence rounded corners
-///                                        corresponding to the shortest side).
+/// @param {Number | List} $width - Specifies the width and height of the
+///                                 selector. If only 1 value is provided, both
+///                                 width and height will use that value. If 2
+///                                 values are provided, they will be used for
+///                                 `width` and `height` respectively.
+/// @param {Number} $height [unset] - Specifies the height (overrides the
+///                                   previous parameter).
+/// @param {Boolean} $oval [false] - Specifies whether the selector is oval
+///                                  shaped (hence rounded corners corresponding
+///                                  to the shortest side).
 ///
 /// @group alignments
 @mixin size($width, $height:unset, $oval:false) {
@@ -524,15 +516,14 @@
 
 /// Sets the max size of the target selector.
 ///
-/// @param {Number | List} $width          - Specifies the max width and height of
-///                                        the selector. If only 1 value is
-///                                        provided, both max-width and
-///                                        max-height will use that value. If 2
-///                                        values are provided, they will be
-///                                        used for max-width and max-height
-///                                        respectively.
-/// @param {Number}      $height [unset] - Specifies the max height (overrides
-///                                        the previous parameter).
+/// @param {Number | List} $width - Specifies the max width and height of the
+///                                 selector. If only 1 value is provided, both
+///                                 max-width and max-height will use that
+///                                 value. If 2 values are provided, they will
+///                                 be used for `max-width` and `max-height`
+///                                 respectively.
+/// @param {Number} $height [unset] - Specifies the `max-height` (overrides the
+///                                   previous parameter).
 ///
 /// @group alignments
 @mixin max-size($width, $height:unset) {
@@ -553,15 +544,14 @@
 
 /// Sets the min size of the target selector.
 ///
-/// @param {Number | List} $width          - Specifies the min width and height of
-///                                        the selector. If only 1 value is
-///                                        provided, both min-width and
-///                                        min-height will use that value. If 2
-///                                        values are provided, they will be
-///                                        used for min-width and min-height
-///                                        respectively.
-/// @param {Number}      $height [unset] - Specifies the min height (overrides
-///                                        the previous parameter).
+/// @param {Number | List} $width - Specifies the min width and height of the
+///                                 selector. If only 1 value is provided, both
+///                                 min-width and min-height will use that
+///                                 value. If 2 values are provided, they will
+///                                 be used for `min-width` and `min-height`
+///                                 respectively.
+/// @param {Number} $height [unset] - Specifies the `min-height` (overrides the
+///                                   previous parameter).
 ///
 /// @group alignments
 @mixin min-size($width, $height:unset) {
@@ -582,14 +572,15 @@
 
 /// Sets the overflow of the target selector.
 ///
-/// @param {Number | List} $overflowX - Specifies the overflow of the selector. If
-///                                   only 1 value is provided, both overflow-x
-///                                   and overflow-y will use that value. If 2
-///                                   values are provided, they will be used for
-///                                   overflow-x and overflow-y respectively.
-/// @param {Number}      $overflowY [unset] - Specifies the overflow-y value
-///                                           (overrides the previous parameter)
-///                                           if specified.
+/// @param {Number | List} $overflowX - Specifies the overflow of the selector.
+///                                     If only 1 value is provided, both
+///                                     `overflow-x` and `overflow-y` will use
+///                                     that value. If 2 values are provided,
+///                                     they will be used for `overflow-x` and
+///                                     `overflow-y` respectively.
+/// @param {Number} $overflowY [unset] - Specifies the `overflow-y` value
+///                                      (overrides the previous parameter) if
+///                                      specified.
 ///
 /// @group alignments
 @mixin overflow($overflowX, $overflowY:unset) {
@@ -627,10 +618,11 @@
 /// Sets the space in between adjacent elements excluding the first and last
 /// element.
 ///
-/// @param {Number} $value           - Specifies the value of the gap.
-/// @param {String} $direction ['>'] - Specifies the direction. '>', 'horizontal'
-///                                    and 'row' means horizontal. 'v', 'vertical'
-///                                    and 'column' means vertical.
+/// @param {Number} $value - Specifies the value of the gap.
+/// @param {String} $direction ['>'] - Specifies the direction. `>`,
+///                                    `horizontal` and `row` means horizontal.
+///                                    `v`, `vertical` and `column` means
+///                                    vertical.
 /// @param {Boolean} $unset [false]  - Unsets other margins set by this mixin.
 ///
 /// @group alignments
@@ -653,7 +645,7 @@
 
 /// Applies 100% width and height to containing element.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin cover() {
   width: 100%;
   height: 100%;
@@ -661,12 +653,12 @@
 
 /// Applies 100% width and height to containing element.
 ///
-/// @group functional/alignments
+/// @group alignments
 %cover { @include cover; }
 
 /// Absolutely aligns element to center left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin cl() {
   bottom: 0;
   left: 0;
@@ -678,12 +670,12 @@
 
 /// Absolutely aligns element to center left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %cl { @include cl(); }
 
 /// Absolutely aligns element to center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin cc() {
   bottom: 0;
   left: 0;
@@ -695,12 +687,12 @@
 
 /// Absolutely aligns element to center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %cc { @include cc(); }
 
 /// Absolutely aligns element to center right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin cr() {
   bottom: 0;
   left: unset;
@@ -712,12 +704,12 @@
 
 /// Absolutely aligns element to center right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %cr { @include cr(); }
 
 /// Absolutely aligns element to top left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin tl() {
   bottom: unset;
   left: 0;
@@ -729,12 +721,12 @@
 
 /// Absolutely aligns element to top left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %tl { @include tl(); }
 
 /// Absolutely aligns element to top center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin tc() {
   bottom: unset;
   left: 0;
@@ -746,12 +738,12 @@
 
 /// Absolutely aligns element to top center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %tc { @include tc(); }
 
 /// Absolutely aligns element to top right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin tr() {
   bottom: unset;
   left: unset;
@@ -763,12 +755,12 @@
 
 /// Absolutely aligns element to top right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %tr { @include tr(); }
 
 /// Absolutely aligns element to bottom left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin bl() {
   bottom: 0;
   left: 0;
@@ -780,7 +772,7 @@
 
 /// Absolutely aligns element to bottom center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin bc() {
   bottom: 0;
   left: 0;
@@ -792,12 +784,12 @@
 
 /// Absolutely aligns element to bottom center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %bc { @include bc(); }
 
 /// Absolutely aligns element to bottom right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin br() {
   bottom: 0;
   left: unset;
@@ -809,12 +801,12 @@
 
 /// Absolutely aligns element to bottom right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %br { @include br(); }
 
 /// Fix aligns element to center left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin fcl() {
   bottom: 0;
   left: 0;
@@ -826,12 +818,12 @@
 
 /// Fix aligns element to center left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %fcl { @include fcl(); }
 
 /// Fix aligns element to center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin fcc() {
   bottom: 0;
   left: 0;
@@ -843,12 +835,12 @@
 
 /// Fix aligns element to center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %fcc { @include fcc(); }
 
 /// Fix aligns element to center right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin fcr() {
   bottom: 0;
   left: unset;
@@ -860,12 +852,12 @@
 
 /// Fix aligns element to center right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %fcr { @include fcr(); }
 
 /// Fix aligns element to top left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin ftl() {
   bottom: unset;
   left: 0;
@@ -877,12 +869,12 @@
 
 /// Fix aligns element to top left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %ftl { @include ftl(); }
 
 /// Fix aligns element to top center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin ftc() {
   bottom: unset;
   left: 0;
@@ -894,12 +886,12 @@
 
 /// Fix aligns element to top center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %ftc { @include ftc(); }
 
 /// Fix aligns element to top right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin ftr() {
   bottom: unset;
   left: unset;
@@ -911,12 +903,12 @@
 
 /// Fix aligns element to top right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %ftr { @include ftr(); }
 
 /// Fix aligns element to bottom left of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin fbl() {
   bottom: 0;
   left: 0;
@@ -928,7 +920,7 @@
 
 /// Fix aligns element to bottom center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin fbc() {
   bottom: 0;
   left: 0;
@@ -940,12 +932,12 @@
 
 /// Fix aligns element to bottom center of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %fbc { @include fbc(); }
 
 /// Fix aligns element to bottom right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 @mixin fbr() {
   bottom: 0;
   left: unset;
@@ -957,5 +949,5 @@
 
 /// Fix aligns element to bottom right of parent.
 ///
-/// @group functional/alignments
+/// @group alignments
 %fbr { @include fbr(); }

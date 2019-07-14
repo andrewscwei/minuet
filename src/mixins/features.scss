@@ -1,9 +1,9 @@
 /// Applies transition rules.
 ///
-/// @param {List} $properties [all]        - Transition property(ies).
-/// @param {List} $durations [0s]          - Transition duration(s).
+/// @param {List} $properties [all] - Transition property(ies).
+/// @param {List} $durations [0s] - Transition duration(s).
 /// @param {List} $timing-functions [ease] - Transition timing function(s).
-/// @param {List} $delays [0s]             - Transition delay(s).
+/// @param {List} $delays [0s] - Transition delay(s).
 ///
 /// @group features
 @mixin transition($properties:all, $durations:0s, $timing-functions:ease, $delays:0s) {
@@ -16,14 +16,14 @@
 
 /// Applies animation rules.
 ///
-/// @param {List} $names [none]            - Animation name(s).
-/// @param {List} $durations [0s]          - Animation duration(s).
+/// @param {List} $names [none] - Animation name(s).
+/// @param {List} $durations [0s] - Animation duration(s).
 /// @param {List} $timing-functions [ease] - Animation timing function(s).
-/// @param {List} $delays [0s]             - Animation delay(s).
-/// @param {List} $iteration-counts [1]    - Animation iteration count(s).
-/// @param {List} $directions [normal]     - Animation direction(s).
-/// @param {List} $fill-modes [none]       - Animation fill mode(s).
-/// @param {List} $play-states [running]   - Animation play state(s).
+/// @param {List} $delays [0s] - Animation delay(s).
+/// @param {List} $iteration-counts [1] - Animation iteration count(s).
+/// @param {List} $directions [normal] - Animation direction(s).
+/// @param {List} $fill-modes [none] - Animation fill mode(s).
+/// @param {List} $play-states [running] - Animation play state(s).
 ///
 /// @group features
 @mixin animation($names:none, $durations:0s, $timing-functions:ease, $delays:0s, $iteration-counts:1, $directions:normal, $fill-modes:none, $play-states:running) {
@@ -40,12 +40,12 @@
 
 /// Enables/disables pointer events for target selector and all child selectors.
 ///
-/// @param {Boolean} $enabled [true]   - Specifies whether element should have
-///                                      pointer events enabled.
+/// @param {Boolean} $enabled [true] - Specifies whether element should have
+///                                    pointer events enabled.
 /// @param {Boolean} $recursive [true] - Specifies whether child elements should
 ///                                      also be applied.
-/// @param {Boolean} $forced [true]    - Specifies whether the behavior is
-///                                      tagged '!important'.
+/// @param {Boolean} $forced [true] - Specifies whether the behavior is tagged
+///                                   `!important`.
 ///
 /// @group features
 @mixin pointable($enabled:true, $recursive:true, $forced:true) {
@@ -89,7 +89,7 @@
 
 /// Hides the target selector.
 ///
-/// @param {Boolean} $forced [true] - Specifies whether !important is tagged.
+/// @param {Boolean} $forced [true] - Specifies whether `!important` is tagged.
 ///
 /// @group features
 @mixin hidden($forced:true) {
@@ -103,7 +103,7 @@
 
 /// Makes the target selector invisible.
 ///
-/// @param {Boolean} $forced [true] - Specifies whether !important is tagged.
+/// @param {Boolean} $forced [true] - Specifies whether `!important` is tagged.
 ///
 /// @group features
 @mixin invisible($forced:true) {
@@ -117,7 +117,7 @@
 
 /// Applies mask to target selector.
 ///
-/// @group functional/features
+/// @group features
 @mixin mask() {
   overflow: hidden;
   -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
@@ -125,17 +125,5 @@
 
 /// Applies mask to target selector.
 ///
-/// @group functional/features
+/// @group features
 %mask { @include mask(); }
-
-/// Enables hardware acceleration for containing selector.
-///
-/// @group functional/features
-@mixin hardware-accelerated() {
-  transform: translate3d(0px, 0px, 0px);
-}
-
-/// Enables hardware acceleration for containing selector.
-///
-/// @group functional/features
-%hardware-accelerated { @include hardware-accelerated(); }

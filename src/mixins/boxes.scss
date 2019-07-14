@@ -123,13 +123,12 @@
 ///                       `[]` to specify `padding-around` as `true`, or simply
 ///                       leave it out for `false`, i.e. `|4px` or `|[4px]`
 ///
-/// @param {String}      $type          - Type of container. If none of the
-///                                       special types are specified, this
-///                                       value will apply directly to the
-///                                       'display' CSS rule.
+/// @param {String} $type - Type of container. If none of the special types are
+///                         specified, this value will apply directly to the
+///                         'display' CSS rule.
 /// @param {String | List} $align1 [null] - Internal alignment, can be a string or
 ///                                       a list of 2 strings.
-/// @param {String}      $align2 [null] - Internal alignment adjacent to $align1.
+/// @param {String} $align2 [null] - Internal alignment adjacent to $align1.
 ///
 /// @example
 ///   // Defines a fluid block with child elements aligned to top left (default)
@@ -446,9 +445,9 @@
 }
 
 /// Makes a video fill the parent block, maintaining aspect ratio and centered
-/// (like background-size: cover).
+/// (like `background-size: cover`).
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin cover-video() {
   @include abs-align('left' 50%, 'top' 50%);
   @include size(auto);
@@ -458,9 +457,9 @@
 }
 
 /// Makes a video fill the parent block, maintaining aspect ratio and centered
-/// (like background-size: cover).
+/// (like `background-size: cover`).
 ///
-/// @group functional/boxes
+/// @group boxes
 %cover-video { @include cover-video(); }
 
 /// Makes an image fill the parent block. Note that this mixin doesn't support
@@ -468,7 +467,7 @@
 ///
 /// @link http://caniuse.com/#feat=object-fit
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin cover-image() {
   @include size(100%);
   object-fit: cover;
@@ -479,12 +478,12 @@
 ///
 /// @link http://caniuse.com/#feat=object-fit
 ///
-/// @group functional/boxes
+/// @group boxes
 %cover-image { @include cover-image(); }
 
 /// Normalizes an element container.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin box() {
   box-sizing: border-box;
   display: block;
@@ -492,13 +491,13 @@
 
 /// Normalizes an element container.
 ///
-/// @group functional/boxes
+/// @group boxes
 %box { @include box(); }
 
 /// Transforms an element to a flex box where the child elements are
 /// horizontally aligned.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhcc() {
   @include box();
   align-items: center;
@@ -510,13 +509,13 @@
 /// Transforms an element to a flex box where the child elements are
 /// horizontally aligned.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhcc { @include fhcc(); }
 
 /// Transforms an element to a flex box where the child elements are top left
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhtl() {
   @include fhcc();
   align-items: flex-start;
@@ -526,13 +525,13 @@
 /// Transforms an element to a flex box where the child elements are top left
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhtl { @include fhtl(); }
 
 /// Transforms an element to a flex box where the child elements are top center
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhtc() {
   @include fhcc();
   align-items: flex-start;
@@ -542,13 +541,13 @@
 /// Transforms an element to a flex box where the child elements are top center
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhtc { @include fhtc(); }
 
 /// Transforms an element to a flex box where the child elements are top right
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhtr() {
   @include fhcc();
   align-items: flex-start;
@@ -558,13 +557,13 @@
 /// Transforms an element to a flex box where the child elements are top right
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhtr { @include fhtr(); }
 
 /// Transforms an element to a flex box where the child elements are top aligned
 /// and evenly spaced in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhts() {
   @include fhcc();
   align-items: flex-start;
@@ -574,13 +573,13 @@
 /// Transforms an element to a flex box where the child elements are top aligned
 /// and evenly spaced in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhts { @include fhts(); }
 
 /// Transforms an element to a flex box where the child elements are center left
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhcl() {
   @include fhcc();
   align-items: center;
@@ -590,13 +589,13 @@
 /// Transforms an element to a flex box where the child elements are center left
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhcl { @include fhcl(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhcr() {
   @include fhcc();
   align-items: center;
@@ -606,13 +605,13 @@
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhcr { @include fhcr(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// aligned and evenly spaced in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhcs() {
   @include fhcc();
   align-items: center;
@@ -622,13 +621,13 @@
 /// Transforms an element to a flex box where the child elements are center
 /// aligned and evenly spaced in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhcs { @include fhcs(); }
 
 /// Transforms an element to a flex box where the child elements are bottom left
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhbl() {
   @include fhcc();
   align-items: flex-end;
@@ -638,13 +637,13 @@
 /// Transforms an element to a flex box where the child elements are bottom left
 /// aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhbl { @include fhbl(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// center aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhbc() {
   @include fhcc();
   align-items: flex-end;
@@ -654,13 +653,13 @@
 /// Transforms an element to a flex box where the child elements are bottom
 /// center aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhbc { @include fhbc(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// right aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhbr() {
   @include fhcc();
   align-items: flex-end;
@@ -670,13 +669,13 @@
 /// Transforms an element to a flex box where the child elements are bottom
 /// right aligned in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhbr { @include fhbr(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// aligned and evenly spaced in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fhbs() {
   @include fhcc();
   align-items: flex-end;
@@ -686,13 +685,13 @@
 /// Transforms an element to a flex box where the child elements are bottom
 /// aligned and evenly spaced in the row orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fhbs { @include fhbs(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvcc() {
   @include box;
   align-items: center;
@@ -704,13 +703,13 @@
 /// Transforms an element to a flex box where the child elements are center
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvcc { @include fvcc(); }
 
 /// Transforms an element to a flex box where the child elements are top left
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvtl() {
   @include fvcc();
   align-items: flex-start;
@@ -720,13 +719,13 @@
 /// Transforms an element to a flex box where the child elements are top left
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvtl { @include fvtl(); }
 
 /// Transforms an element to a flex box where the child elements are top center
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvtc() {
   @include fvcc();
   align-items: center;
@@ -736,13 +735,13 @@
 /// Transforms an element to a flex box where the child elements are top center
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvtc { @include fvtc(); }
 
 /// Transforms an element to a flex box where the child elements are top right
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvtr() {
   @include fvcc();
   align-items: flex-end;
@@ -752,13 +751,13 @@
 /// Transforms an element to a flex box where the child elements are top right
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvtr { @include fvtr(); }
 
 /// Transforms an element to a flex box where the child elements are top aligned
 /// and stretched in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvts() {
   @include fvcc();
   align-items: stretch;
@@ -768,13 +767,13 @@
 /// Transforms an element to a flex box where the child elements are top aligned
 /// and stretched in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvts { @include fvts(); }
 
 /// Transforms an element to a flex box where the child elements are center left
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvcl() {
   @include fvcc();
   align-items: flex-start;
@@ -784,13 +783,13 @@
 /// Transforms an element to a flex box where the child elements are center left
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvcl { @include fvcl(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvcr() {
   @include fvcc();
   align-items: flex-end;
@@ -800,13 +799,13 @@
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvcr { @include fvcr(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// aligned and stretched in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvcs() {
   @include fvcc();
   align-items: stretch;
@@ -816,13 +815,13 @@
 /// Transforms an element to a flex box where the child elements are center
 /// aligned and stretched in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvcs { @include fvcs(); }
 
 /// Transforms an element to a flex box where the child elements are bottom left
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvbl() {
   @include fvcc();
   align-items: flex-start;
@@ -832,13 +831,13 @@
 /// Transforms an element to a flex box where the child elements are bottom left
 /// aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvbl { @include fvbl(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// center aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvbc() {
   @include fvcc();
   align-items: center;
@@ -848,13 +847,13 @@
 /// Transforms an element to a flex box where the child elements are bottom
 /// center aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvbc { @include fvbc(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// right aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvbr() {
   @include fvcc();
   align-items: flex-end;
@@ -864,13 +863,13 @@
 /// Transforms an element to a flex box where the child elements are bottom
 /// right aligned in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvbr { @include fvbr(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// aligned and stretched in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 @mixin fvbs() {
   @include fvcc();
   align-items: stretch;
@@ -880,19 +879,5 @@
 /// Transforms an element to a flex box where the child elements are bottom
 /// aligned and stretched in the column orientation.
 ///
-/// @group functional/boxes
+/// @group boxes
 %fvbs { @include fvbs(); }
-
-/// Fills the element to its parent.
-///
-/// @group functional/boxes
-@mixin fullscreen() {
-  @include cover();
-  @include box();
-  @include tl();
-}
-
-/// Fills the element to its parent.
-///
-/// @group functional/boxes
-%fullscreen { @include fullscreen(); }

@@ -1,4 +1,6 @@
-// Device size thresholds.
+/// Media query breakpoints.
+///
+/// @group media
 $breakpoints: (
   'mobile': (
     'min': 0px,
@@ -27,13 +29,14 @@ $breakpoints: (
 /// types: 'mobile', tablet', 'notebook', 'desktop', 'tv' and 2 screen
 /// orientations: 'portrait' and 'landscape'.
 ///
-/// @param {List} $descriptors   - List of strings formatted by either
-///                                '{base}{relational_operator}{%s_or_screen_type}'
-///                                or '{orientation}'. If no {base} is specified,
-///                                width will be used. {%s} is also optional.
+/// @param {List} $descriptors - List of strings formatted by either
+///                              `{base}{relational_operator}{%s_or_screen_type}`
+///                              or `{orientation}`. If no `{base}` is
+///                              specified, width will be used. `{%s}` is also
+///                              optional.
 /// @param {List} $params [null] - List of values applied in the same order as
 ///                                the descriptors for string replacement
-///                                whenever '%s' is used.
+///                                whenever `%s` is used.
 ///
 /// @example
 ///   @include screen('w<%s', 200px) { ... } // or
@@ -56,6 +59,8 @@ $breakpoints: (
 ///   @include screen('w>=%s' 'w<%s' 'h>', 200px 400px 150px) { ... }
 ///
 ///   // @media screen and (min-width: 200px) and (max-width: 399px) and (min-height: 151px) { ... }
+///
+/// @content Encapsulated styles within the media query.
 ///
 /// @group media
 @mixin screen($descriptors, $params:null) {
@@ -152,14 +157,15 @@ $breakpoints: (
   }
 }
 
-/// Sets the background-size and background-position of a target element which is
-/// using an image map to the corresponding item in the map.
+/// Sets the `background-size` and `background-position` of a target element,
+/// one that is using an sprite map as its background, to the corresponding item
+/// on the sprite map.
 ///
-/// @param {String} $path      - Path of sprite map.
+/// @param {String} $path - Path of sprite map.
 /// @param {Number} $row-index - 0-based index of the row of the target item.
 /// @param {Number} $col-index - 0-based index of the column of the target item.
-/// @param {Number} $num-rows  - Total number of rows in the image map.
-/// @param {Number} $num-cols  - Total number of columns in the image map.
+/// @param {Number} $num-rows - Total number of rows in the image map.
+/// @param {Number} $num-cols - Total number of columns in the image map.
 ///
 /// @group media
 @mixin image-map-item($path, $row-index, $col-index, $num-rows, $num-cols) {
@@ -180,7 +186,7 @@ $breakpoints: (
 /// Auto generates a list of class names of the target selector, where each
 /// class represents a sprite as provided by the sprite map.
 ///
-/// @param {String} $path       - Path of sprite map.
+/// @param {String} $path - Path of sprite map.
 /// @param {List}   $map [null] - List (1D or 2D) of class names. The position
 ///                               of each list item directly corresponds to the
 ///                               sprite position on the sprite map.
@@ -220,7 +226,9 @@ $breakpoints: (
 
 /// Applies styles for portrait screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin portrait() {
   @include screen('portrait') {
     @content;
@@ -229,7 +237,9 @@ $breakpoints: (
 
 /// Applies styles for landscape screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin landscape() {
   @include screen('landscape') {
     @content;
@@ -238,7 +248,9 @@ $breakpoints: (
 
 /// Applies styles for mobile screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin mobile() {
   @include screen('w=mobile') {
     @content;
@@ -247,7 +259,9 @@ $breakpoints: (
 
 /// Applies styles for tablet screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin tablet() {
   @include screen('w=tablet') {
     @content;
@@ -256,7 +270,9 @@ $breakpoints: (
 
 /// Applies styles for notebook screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin notebook() {
   @include screen('w=notebook') {
     @content;
@@ -265,7 +281,9 @@ $breakpoints: (
 
 /// Applies styles for desktop screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin desktop() {
   @include screen('w=desktop') {
     @content;
@@ -274,7 +292,9 @@ $breakpoints: (
 
 /// Applies styles for TV screens.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin tv() {
   @include screen('w=tv') {
     @content;
@@ -283,7 +303,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than mobile devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtmobile() {
   @include screen('w>mobile') {
     @content;
@@ -292,7 +314,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than tablet devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gttablet() {
   @include screen('w>tablet') {
     @content;
@@ -301,7 +325,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than notebook devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtnotebook() {
   @include screen('w>notebook') {
     @content;
@@ -310,7 +336,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than desktop devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtdesktop() {
   @include screen('w>desktop') {
     @content;
@@ -319,7 +347,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than TV devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gttv() {
   @include screen('w>tv') {
     @content;
@@ -328,7 +358,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than or equal to mobile devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtemobile() {
   @include screen('w>=mobile') {
     @content;
@@ -337,7 +369,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than or equal to tablet devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtetablet() {
   @include screen('w>=tablet') {
     @content;
@@ -346,7 +380,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than or equal to notebook devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtenotebook() {
   @include screen('w>=notebook') {
     @content;
@@ -355,7 +391,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than or equal to desktop devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtedesktop() {
   @include screen('w>=desktop') {
     @content;
@@ -364,7 +402,9 @@ $breakpoints: (
 
 /// Applies styles for screens bigger than or equal to TV devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin gtetv() {
   @include screen('w>=tv') {
     @content;
@@ -373,7 +413,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than or equal to mobile devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltemobile() {
   @include screen('w<=mobile') {
     @content;
@@ -382,7 +424,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than or equal to tablet devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltetablet() {
   @include screen('w<=tablet') {
     @content;
@@ -391,7 +435,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than or equal to notebook devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltenotebook() {
   @include screen('w<=notebook') {
     @content;
@@ -400,7 +446,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than or equal to desktop devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltedesktop() {
   @include screen('w<=desktop') {
     @content;
@@ -409,7 +457,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than or equal to TV devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltetv() {
   @include screen('w<=tv') {
     @content;
@@ -418,7 +468,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than mobile devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltmobile() {
   @include screen('w<mobile') {
     @content;
@@ -427,7 +479,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than tablet devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin lttablet() {
   @include screen('w<tablet') {
     @content;
@@ -436,7 +490,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than notebook devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltnotebook() {
   @include screen('w<notebook') {
     @content;
@@ -445,7 +501,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than desktop devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin ltdesktop() {
   @include screen('w<desktop') {
     @content;
@@ -454,7 +512,9 @@ $breakpoints: (
 
 /// Applies styles for screens smaller than TV devices.
 ///
-/// @group functional/media
+/// @content Encapsulated styles within the media query.
+///
+/// @group media
 @mixin lttv() {
   @include screen('w<tv') {
     @content;

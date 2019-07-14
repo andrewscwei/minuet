@@ -1,28 +1,34 @@
-/// Selector for custom elements with the specified tag.
+/// Selector for custom elements with the specified `is` tag.
 ///
 /// @param {String} $tag - Tag name.
+///
+/// @content Encapsulated styles within the selected elements.
 ///
 /// @group attributes
 @mixin element($tag) {
   #{$tag}, [is='#{$tag}'] { @content; }
 }
 
-/// Selector for elements with the specified name.
+/// Selector for elements with the specified `name` tag.
 ///
 /// @param {String} $name - Name attribute of the element.
+///
+/// @content Encapsulated styles within the selected elements.
 ///
 /// @group attributes
 @mixin name($name) {
   [name='#{$name}'] { @content; }
 }
 
-/// Selects elements with the specified data- key and value.
+/// Selects elements with the specified `data-` key and value.
 ///
-/// @param {String} $key            - data- key.
-/// @param {String} $value [null]   - data- value, if applicable.
+/// @param {String} $key - `data-` key.
+/// @param {String} $value [null] - `data-` value, if applicable.
 /// @param {String} $scope ['this'] - Specifies the scope relative to the target
 ///                                   selector in which this property applies to
 ///                                   (any, this, parent, or child).
+///
+/// @content Encapsulated styles within the selected elements.
 ///
 /// @group attributes
 @mixin data($key, $value:null, $scope:'this') {

@@ -1,8 +1,8 @@
 /// Resolves a list of selectors by appending the specified args to each
 /// selector in the list. Returns a string containing all the selectors
-/// separated by ','.
+/// separated by `,`.
 ///
-/// @param {List}   $list          - List of selectors to resolve.
+/// @param {List} $list - List of selectors to resolve.
 /// @param {String} $suffix [null] - Suffix to append to each selector.
 /// @param {String} $prefix [null] - Prefix to prepend to each selector.
 ///
@@ -24,9 +24,9 @@
 }
 
 /// Selector for text elements. Each element is meant to contain text only. For
-/// optimal results, do not nest label elements. For italics, use <i>, and for
-/// bold, use <b>. <a> is not treated as a label element and should only be used
-/// to make a nested element a hyperlink.
+/// optimal results, do not nest label elements. For italics, use `<i>`, and for
+/// bold, use `<b>`. `<a>` is not treated as a label element and should only be
+/// used to make a nested element a hyperlink.
 ///
 /// @param {String} $suffix [null] - Suffix to append to each selector.
 /// @param {String} $prefix [null] - Prefix to prepend to each selector.
@@ -39,7 +39,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-texts()
+/// @see select-texts
 /// @group selectors
 @function texts($suffix:null, $prefix:null) {
   @return select-texts($suffix, $prefix);
@@ -58,7 +58,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-headings()
+/// @see select-headings
 /// @group selectors
 @function headings($suffix:null, $prefix:null) {
   @return select-headings($suffix, $prefix);
@@ -77,7 +77,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-icons()
+/// @see select-icons
 /// @group selectors
 @function icons($suffix:null, $prefix:null) {
   @return select-icons($suffix, $prefix);
@@ -96,7 +96,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-statics()
+/// @see select-statics
 /// @group selectors
 @function statics($suffix:null, $prefix:null) {
   @return select-statics($suffix, $prefix);
@@ -115,7 +115,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-buttons()
+/// @see select-buttons
 /// @group selectors
 @function buttons($suffix:null, $prefix:null) {
   @return select-buttons($suffix, $prefix);
@@ -134,7 +134,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-links()
+/// @see select-links
 /// @group selectors
 @function links($suffix:null, $prefix:null) {
   @return select-links($suffix, $prefix);
@@ -153,7 +153,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-textfields()
+/// @see select-textfields
 /// @group selectors
 @function textfields($suffix:null, $prefix:null) {
   @return select-textfields($suffix, $prefix);
@@ -172,7 +172,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-boxes()
+/// @see select-boxes
 /// @group selectors
 @function boxes($suffix:null, $prefix:null) {
   @return select-boxes($suffix, $prefix);
@@ -191,7 +191,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-lists()
+/// @see select-lists
 /// @group selectors
 @function lists($suffix:null, $prefix:null) {
   @return select-lists($suffix, $prefix);
@@ -210,7 +210,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-list-items()
+/// @see select-list-items
 /// @group selectors
 @function list-items($suffix:null, $prefix:null) {
   @return select-list-items($suffix, $prefix);
@@ -229,7 +229,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-images()
+/// @see select-images
 /// @group selectors
 @function images($suffix:null, $prefix:null) {
   @return select-images($suffix, $prefix);
@@ -248,7 +248,7 @@
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
-/// @see select-videos()
+/// @see select-videos
 /// @group selectors
 @function videos($suffix:null, $prefix:null) {
   @return select-videos($suffix, $prefix);

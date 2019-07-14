@@ -1,3 +1,6 @@
+/// Supported font weight aliases.
+///
+/// @group typography
 $font-weights: (
   'thin': 100,
   'extra-light': 200,
@@ -15,9 +18,10 @@ $font-weights: (
 ///
 /// @param {String} $path - The path of the font file.
 ///
-/// @returns {String} The font format. Defaults to `opentype` if unable to infer.
+/// @returns {String} The font format. Defaults to `opentype` if unable to
+///                   infer.
 ///
-/// @group typogrpahy
+/// @group typography
 @function get-font-format($path) {
   @if (ends-with($path, '.eot')) {
     @return 'eot';
@@ -39,14 +43,15 @@ $font-weights: (
   }
 }
 
-/// Infers the font style from a font file path. Supports `italic` and `oblique`.
+/// Infers the font style from a font file path. Supports `italic` and
+/// `oblique`.
 ///
 /// @param {String} $path - Path of the font file.
 ///
 /// @returns {String} The font style of the font file. Defaults to `normal` if
-/// unable to infer.
+///                   unable to infer.
 ///
-/// @group typogrpahy
+/// @group typography
 @function get-font-style($path) {
   @if (str-index($path, 'italic') or str-index($path, 'Italic')) {
     @return italic;
@@ -63,9 +68,10 @@ $font-weights: (
 ///
 /// @param {String} $path - Path of the font file.
 ///
-/// @returns {Number} The font weight of the font file. Defaults to normal (400).
+/// @returns {Number} The font weight of the font file. Defaults to `normal`
+///                   (`400`).
 ///
-/// @group typogrpahy
+/// @group typography
 @function get-font-weight($path) {
   @if (str-index($path, 'thin') or str-index($path, 'Thin')) {
     @return map-get($font-weights, 'thin');
@@ -96,7 +102,7 @@ $font-weights: (
   }
 }
 
-/// Defines the @font-face rule.
+/// Defines the `@font-face` rule.
 ///
 /// @param {String} $family - The `font-family` property.
 /// @param {String} $src - The `url` property.
@@ -104,7 +110,7 @@ $font-weights: (
 /// @param {String} $style [null] - The `font-style` property.
 /// @param {String} $display [auto] - The `font-display` property.
 ///
-/// @group typogrpahy
+/// @group typography
 @mixin font-face($family, $src, $weight:null, $style:null, $display:auto) {
   @font-face {
     font-family: $family;

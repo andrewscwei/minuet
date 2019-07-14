@@ -1,27 +1,28 @@
 /// Retuns a random color based on the specified parameters.
 ///
-/// @param {Number | Boolean} $red   [true]  - A boolean value here indicates
-///                                          whether r in rgba is randomized
-///                                          (false will result in r of 0).
-///                                          Otherwise the number will be used
-///                                          as the r value.
-/// @param {Number | Boolean} $green [true]  - A boolean value here indicates
-///                                          whether g in rgba is randomized
-///                                          (false will result in g of 0).
-///                                          Otherwise the number will be used
-///                                          as the g value.
-/// @param {Number | Boolean} $blue  [true]  - A boolean value here indicates
-///                                          whether b in rgba is randomized
-///                                          (false will result in b of 0).
-///                                          Otherwise the number will be used
-///                                          as the b value.
+/// @param {Number | Boolean} $red [true] - A boolean value here indicates
+///                                         whether `r` in `rgba` is randomized
+///                                         (`false` will result in `r` of `0`).
+///                                         Otherwise the number will be used as
+///                                         the `r` value.
+/// @param {Number | Boolean} $green [true] - A boolean value here indicates
+///                                           whether `g` in `rgba` is
+///                                           randomized (`false` will result in
+///                                           `g` of `0`). Otherwise the number
+///                                           will be used as the `g` value.
+/// @param {Number | Boolean} $blue [true] - A boolean value here indicates
+///                                          whether `b` in `rgba` is randomized
+///                                          (`false` will result in `b` of
+///                                          `0`). Otherwise the number will be
+///                                          used as the `b` value.
 /// @param {Number | Boolean} $alpha [false] - A boolean value here indicates
-///                                          whether a in rgba is randomized
-///                                          (false will result in a of 0).
-///                                          Otherwise the number will be used
-///                                          as the a value.
+///                                            whether `a` in `rgba` is
+///                                            randomized (`false` will result
+///                                            in `a` of `0`). Otherwise the
+///                                            number will be used as the `a`
+///                                            value.
 ///
-/// @returns {rgba}
+/// @returns {Color} A random color in the format `rgba(rr, gg, bb, aa)`.
 ///
 /// @group palette
 @function random-color($red:true, $green:true, $blue:true, $alpha:false) {
@@ -34,15 +35,19 @@
 
 /// Returns a random greyscale color based on the specified parameters.
 ///
-/// @param {Number} $min           [0]     - Minimum value for the greyscale
-///                                          color, within the range 0-255.
-/// @param {Number} $max           [255]   - Maximum value for the greyscale
-///                                          color, within the range 0-255.
+/// @param {Number} $min [0] - Minimum value for the greyscale color, within the
+///                            range 0-255.
+/// @param {Number} $max [255] - Maximum value for the greyscale color, within
+///                              the range 0-255.
 /// @param {Number | Boolean} $alpha [false] - A boolean value here indicates
-///                                          whether a in rgba is randomized
-///                                          (false will result in a of 0).
-///                                          Otherwise the number will be used
-///                                          as the a value.
+///                                            whether `a` in `rgba` is
+///                                            randomized (`false` will result
+///                                            in `a` of `0`). Otherwise the
+///                                            number will be used as the `a`
+///                                            value.
+///
+/// @returns {Color} A random greyscale color in the format
+///                  `rgba(rr, gg, bb, aa)`.
 ///
 /// @group palette
 @function random-greyscale($min:0, $max:255, $alpha:false) {
