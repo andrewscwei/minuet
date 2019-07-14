@@ -1,9 +1,5 @@
 #!/bin/bash
 
-set -e
-
-source .circleci/get_opts.sh
-
-mkdir package
-npm pack
-mv $PACKAGE_FILE.tgz package/
+PACKAGE_FILE=$(npm pack | tail -1)
+mkdir -p package
+mv $PACKAGE_FILE package/

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 if [ `git branch | grep gh-pages` ]; then
   git branch -D gh-pages
 fi
