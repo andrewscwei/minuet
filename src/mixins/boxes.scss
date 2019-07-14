@@ -509,11 +509,11 @@
   justify-content: center;
 }
 
-/// Transforms an element to a flex box where the child elements are center
-/// aligned in the row orientation.
-///
-/// @group functional/boxes
-%hbox { @include hbox(); }
+/// @alias hbox
+@mixin fhcc() { @include hbox(); }
+
+/// @alias hbox
+%fhcc { @include hbox(); }
 
 /// Transforms an element to a flex box where the child elements are top left
 /// aligned in the row orientation.
@@ -525,11 +525,11 @@
   justify-content: flex-start;
 }
 
-/// Transforms an element to a flex box where the child elements are top left
-/// aligned in the row orientation.
-///
-/// @group functional/boxes
-%hbox-tl { @include hbox-tl(); }
+/// @alias hbox-tl
+@mixin fhtl() { @include hbox-tl(); }
+
+/// @alias hbox-tl
+%fhtl { @include hbox-tl(); }
 
 /// Transforms an element to a flex box where the child elements are top center
 /// aligned in the row orientation.
@@ -541,11 +541,11 @@
   justify-content: center;
 }
 
-/// Transforms an element to a flex box where the child elements are top center
-/// aligned in the row orientation.
-///
-/// @group functional/boxes
-%hbox-tc { @include hbox-tc(); }
+/// @alias hbox-tc
+@mixin fhtc() { @include hbox-tc(); }
+
+/// @alias hbox-tc
+%fhtc { @include hbox-tc(); }
 
 /// Transforms an element to a flex box where the child elements are top right
 /// aligned in the row orientation.
@@ -557,11 +557,27 @@
   justify-content: flex-end;
 }
 
-/// Transforms an element to a flex box where the child elements are top right
-/// aligned in the row orientation.
+/// @alias hbox-tr
+@mixin fhtr() { @include hbox-tr(); }
+
+/// @alias hbox-tr
+%fhtr { @include hbox-tr(); }
+
+/// Transforms an element to a flex box where the child elements are top aligned
+/// and evenly spaced in the row orientation.
 ///
 /// @group functional/boxes
-%hbox-tr { @include hbox-tr(); }
+@mixin hbox-ts() {
+  @include hbox();
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/// @alias hbox-ts
+@mixin fhts() { @include hbox-ts(); }
+
+/// @alias hbox-ts
+%fhts { @include hbox-ts(); }
 
 /// Transforms an element to a flex box where the child elements are center left
 /// aligned in the row orientation.
@@ -573,11 +589,11 @@
   justify-content: flex-start;
 }
 
-/// Transforms an element to a flex box where the child elements are center left
-/// aligned in the row orientation.
-///
-/// @group functional/boxes
-%hbox-cl { @include hbox-cl(); }
+/// @alias hbox-cl
+@mixin fhcl() { @include hbox-cl(); }
+
+/// @alias hbox-cl
+%fhcl { @include hbox-cl(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the row orientation.
@@ -589,11 +605,27 @@
   justify-content: flex-end;
 }
 
+/// @alias hbox-cr
+@mixin fhcr() { @include hbox-cr(); }
+
+/// @alias hbox-cr
+%fhcr { @include hbox-cr(); }
+
 /// Transforms an element to a flex box where the child elements are center
-/// right aligned in the row orientation.
+/// aligned and evenly spaced in the row orientation.
 ///
 /// @group functional/boxes
-%hbox-cr { @include hbox-cr(); }
+@mixin hbox-cs() {
+  @include hbox();
+  align-items: center;
+  justify-content: space-between;
+}
+
+/// @alias hbox-cs
+@mixin fhcs() { @include hbox-cs(); }
+
+/// @alias hbox-cs
+%fhcs { @include hbox-cs(); }
 
 /// Transforms an element to a flex box where the child elements are bottom left
 /// aligned in the row orientation.
@@ -605,11 +637,11 @@
   justify-content: flex-start;
 }
 
-/// Transforms an element to a flex box where the child elements are bottom left
-/// aligned in the row orientation.
-///
-/// @group functional/boxes
-%hbox-bl { @include hbox-bl(); }
+/// @alias hbox-bl
+@mixin fhbl() { @include hbox-bl(); }
+
+/// @alias hbox-bl
+%fhbl { @include hbox-bl(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// center aligned in the row orientation.
@@ -621,11 +653,11 @@
   justify-content: center;
 }
 
-/// Transforms an element to a flex box where the child elements are bottom
-/// center aligned in the row orientation.
-///
-/// @group functional/boxes
-%hbox-bc { @include hbox-bc(); }
+/// @alias hbox-bc
+@mixin fhbc() { @include hbox-bc(); }
+
+/// @alias hbox-bc
+%fhbc { @include hbox-bc(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// right aligned in the row orientation.
@@ -637,11 +669,27 @@
   justify-content: flex-end;
 }
 
+/// @alias hbox-br
+@mixin fhbr() { @include hbox-br(); }
+
+/// @alias hbox-br
+%fhbr { @include hbox-br(); }
+
 /// Transforms an element to a flex box where the child elements are bottom
-/// right aligned in the row orientation.
+/// aligned and evenly spaced in the row orientation.
 ///
 /// @group functional/boxes
-%hbox-br { @include hbox-br(); }
+@mixin hbox-bs() {
+  @include hbox();
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/// @alias hbox-bs
+@mixin fhbs() { @include hbox-bs(); }
+
+/// @alias hbox-bs
+%fhbs { @include hbox-bs(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// aligned in the column orientation.
@@ -655,11 +703,8 @@
   justify-content: center;
 }
 
-/// Transforms an element to a flex box where the child elements are center
-/// aligned in the column orientation.
-///
-/// @group functional/boxes
-%vbox { @include vbox(); }
+/// @alias vbox
+%fvcc { @include vbox(); }
 
 /// Transforms an element to a flex box where the child elements are top left
 /// aligned in the column orientation.
@@ -671,11 +716,11 @@
   justify-content: flex-start;
 }
 
-/// Transforms an element to a flex box where the child elements are top left
-/// aligned in the column orientation.
-///
-/// @group functional/boxes
-%vbox-tl { @include vbox-tl(); }
+/// @alias vbox-tl
+@mixin fvtl() { @include vbox-tl(); }
+
+/// @alias vbox-tl
+%fvtl { @include vbox-tl(); }
 
 /// Transforms an element to a flex box where the child elements are top center
 /// aligned in the column orientation.
@@ -687,11 +732,11 @@
   justify-content: flex-start;
 }
 
-/// Transforms an element to a flex box where the child elements are top center
-/// aligned in the column orientation.
-///
-/// @group functional/boxes
-%vbox-tc { @include vbox-tc(); }
+/// @alias vbox-tc
+@mixin fvtc() { @include vbox-tc(); }
+
+/// @alias vbox-tc
+%fvtc { @include vbox-tc(); }
 
 /// Transforms an element to a flex box where the child elements are top right
 /// aligned in the column orientation.
@@ -703,11 +748,28 @@
   justify-content: flex-start;
 }
 
-/// Transforms an element to a flex box where the child elements are top right
-/// aligned in the column orientation.
+/// @alias vbox-tr
+@mixin fvtr() { @include vbox-tr(); }
+
+/// @alias vbox-tr
+%fvtr { @include vbox-tr(); }
+
+/// Transforms an element to a flex box where the child elements are top aligned
+/// and stretched in the column orientation.
 ///
 /// @group functional/boxes
-%vbox-tr { @include vbox-tr(); }
+@mixin vbox-ts() {
+  @include vbox();
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+/// @alias vbox-ts
+@mixin fvts() { @include vbox-ts(); }
+
+/// @alias vbox-ts
+%fvts { @include vbox-ts(); }
+
 
 /// Transforms an element to a flex box where the child elements are center left
 /// aligned in the column orientation.
@@ -719,11 +781,11 @@
   justify-content: center;
 }
 
-/// Transforms an element to a flex box where the child elements are center left
-/// aligned in the column orientation.
-///
-/// @group functional/boxes
-%vbox-cl { @include vbox-cl(); }
+/// @alias vbox-cl
+@mixin fvcl() { @include vbox-cl(); }
+
+/// @alias vbox-cl
+%fvcl { @include vbox-cl(); }
 
 /// Transforms an element to a flex box where the child elements are center
 /// right aligned in the column orientation.
@@ -735,11 +797,27 @@
   justify-content: center;
 }
 
+/// @alias vbox-cr
+@mixin fvcr() { @include vbox-cr(); }
+
+/// @alias vbox-cr
+%fvcr { @include vbox-cr(); }
+
 /// Transforms an element to a flex box where the child elements are center
-/// right aligned in the column orientation.
+/// aligned and stretched in the column orientation.
 ///
 /// @group functional/boxes
-%vbox-cr { @include vbox-cr(); }
+@mixin vbox-cs() {
+  @include vbox();
+  align-items: stretch;
+  justify-content: center;
+}
+
+/// @alias vbox-cs
+@mixin fvcs() { @include vbox-cs(); }
+
+/// @alias vbox-cs
+%fvcs { @include vbox-cs(); }
 
 /// Transforms an element to a flex box where the child elements are bottom left
 /// aligned in the column orientation.
@@ -751,11 +829,11 @@
   justify-content: flex-end;
 }
 
-/// Transforms an element to a flex box where the child elements are bottom left
-/// aligned in the column orientation.
-///
-/// @group functional/boxes
-%vbox-bl { @include vbox-bl(); }
+/// @alias vbox-bl
+@mixin fvbl() { @include vbox-bl(); }
+
+/// @alias vbox-bl
+%fvbl { @include vbox-bl(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// center aligned in the column orientation.
@@ -767,11 +845,11 @@
   justify-content: flex-end;
 }
 
-/// Transforms an element to a flex box where the child elements are bottom
-/// center aligned in the column orientation.
-///
-/// @group functional/boxes
-%vbox-bc { @include vbox-bc(); }
+/// @alias vbox-bc
+@mixin fvbc() { @include vbox-bc(); }
+
+/// @alias vbox-bc
+%fvbc { @include vbox-bc(); }
 
 /// Transforms an element to a flex box where the child elements are bottom
 /// right aligned in the column orientation.
@@ -783,11 +861,27 @@
   justify-content: flex-end;
 }
 
+/// @group vbox-br
+@mixin fvbr() { @include vbox-br(); }
+
+/// @group vbox-br
+%fvbr { @include vbox-br(); }
+
 /// Transforms an element to a flex box where the child elements are bottom
-/// right aligned in the column orientation.
+/// aligned and stretched in the column orientation.
 ///
 /// @group functional/boxes
-%vbox-br { @include vbox-br(); }
+@mixin vbox-bs() {
+  @include vbox();
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+/// @group vbox-bs
+@mixin fvbs() { @include vbox-bs(); }
+
+/// @group vbox-bs
+%fvbs { @include vbox-bs(); }
 
 /// Fills the element to its parent.
 ///
