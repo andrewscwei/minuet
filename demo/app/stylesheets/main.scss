@@ -2,8 +2,6 @@
 
 @include normalize();
 
-@warn "#{to-unit(3px, 'px')}";
-
 #home {
   @include size(100%);
   @include transition(all, 1s, ease);
