@@ -87,32 +87,32 @@
   }
 }
 
-/// Hides the target selector.
-///
-/// @param {Boolean} $forced [true] - Specifies whether `!important` is tagged.
+/// Hides element but makes it accessible to screen readers.
 ///
 /// @group features
-@mixin hidden($forced: true) {
-  @if ($forced == true) {
-    display: none !important;
-  }
-  @else {
-    display: none;
-  }
+@mixin visually-hidden() {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
 }
 
-/// Makes the target selector invisible.
+/// Reverses the properties applied by `visually-hidden`.
 ///
-/// @param {Boolean} $forced [true] - Specifies whether `!important` is tagged.
+/// @param {String} $position - The `position` property to apply to the element.
 ///
 /// @group features
-@mixin invisible($forced: true) {
-  @if ($forced == true) {
-    visibility: hidden !important;
-  }
-  @else {
-    visibility: hidden;
-  }
+@mixin visually-shown($position: inherit) {
+  position: $position !important;
+  overflow: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
 }
 
 /// Applies mask to target selector.
