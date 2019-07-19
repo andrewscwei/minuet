@@ -83,7 +83,7 @@
   span,
   span::before,
   span::after {
-    @include transition(width height transform opacity, 250ms, ease-in-out);
+    @include transition(width height transform opacity background, 250ms, ease-in-out);
     background: $color;
     content: '';
   }
