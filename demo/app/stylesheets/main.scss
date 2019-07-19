@@ -2,8 +2,6 @@
 
 @include normalize();
 
-@warn "#{strip-unit(3)}";
-
 #home {
   @include size(100%);
   @include transition(all, 1s, ease);
@@ -29,6 +27,14 @@
 
   video {
     @include cover-video();
+  }
+
+  #burger {
+    @include burger-button();
+    @include ftl;
+    z-index: 100;
+    top: 20px;
+    left: 20px;
   }
 
   #flex-grid {

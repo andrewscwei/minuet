@@ -12,90 +12,65 @@
 @mixin burger-button($width: 27px, $height: 20px, $thickness: 2px, $color: #fff) {
   @include min-size($width $height);
   @include size($width $height);
+  @include box();
+  cursor: pointer;
   background: transparent;
-
-  &:hover {
-    span:not(:only-of-type):nth-of-type(2) {
-      &::after { @include size(#{$width / 2} $thickness); }
-    }
-
-    span:only-of-type {
-      &::after { @include size($width $thickness); }
-    }
-  }
-
-  &:active {
-    span:only-of-type {
-      @include size(0 $thickness);
-      &:nth-child(1) { transform: translate3d(0, 0, 0); }
-      &::before { transform: translate3d(0, #{$height / 2}, 0) rotate(45deg); }
-      &::after { transform: translate3d(0, #{$height / -2 + $thickness}, 0) rotate(-45deg); }
-    }
-
-    span:not(:only-of-type) {
-      @include size(0 $thickness);
-
-      &:nth-of-type(1) {
-        transform: translate3d(#{$width / 2}, 0, 0);
-
-        &::before {
-          @include size(#{$width / 2} $thickness);
-          transform: translate3d(#{$width / -2 + $thickness}, #{$height / 4}, 0) rotate(45deg);
-        }
-
-        &::after {
-          @include size(#{$width / 2} $thickness);
-          transform: translate3d(#{$width / -2 + $thickness}, #{$height / -4 + $thickness}, 0) rotate(-45deg);
-        }
-      }
-
-      &:nth-of-type(2) {
-        transform: translate3d(#{$width / -2}, 0, 0);
-
-        &::before {
-          @include size(#{$width / 2} $thickness);
-          transform: translate3d(#{$thickness * -1}, #{$height / 4}, 0) rotate(-45deg);
-        }
-
-        &::after {
-          @include size(#{$width / 2} $thickness);
-          transform: translate3d(#{$thickness * -1}, #{$height / -4 + $thickness}, 0) rotate(45deg);
-        }
-      }
-    }
-
-    span:only-of-type::after {
-      @include size($width $thickness);
-    }
-  }
-
-  span:only-of-type,
-  span:only-of-type::before,
-  span:only-of-type::after {
-    @include size($width $thickness);
-  }
-
-  span:not(:only-of-type),
-  span:not(:only-of-type)::before,
-  span:not(:only-of-type)::after {
-    @include size(#{$width / 2} $thickness);
-  }
-
-  span,
-  span::before,
-  span::after {
-    @include transition(all, 300ms, ease-in-out);
-    background: $color;
-    content: '';
-  }
+  pointer-events: auto;
 
   span:only-of-type {
     @include align('left', 'top');
     @include edge(#{($height - $thickness) / 2} null null null);
+    @include size($width $thickness);
 
     &::before {
       @include align();
       @include edge(#{($height - $thickness) / -2} null null null);
+      @include size($width $thickness);
+      transform-origin: center left;
+    }
+
+    &::after {
+      @include align('left', 'bottom');
+      @include edge(null null #{($height - $thickness) / -2} null);
+      @include size(#{$width / 2} $thickness);
+      transform-origin: center left;
+    }
+  }
+
+  span:not(:only-of-type) {
+    @include size(#{$width / 2} $thickness);
+
+    &:nth-of-type(1) {
+      @include align('left', 'top');
+      @include edge(#{($height - $thickness) / 2} null null null);
+
+      &::before {
+        transform-origin: top left;
+      }
+
+      &::after {
+        transform-origin: bottom left;
+      }
+    }
+
+    &:nth-of-type(2) {
+      @include align('right', 'top');
+      @include edge(#{($height - $thickness) / 2} null null null);
+
+      &::before {
+        transform-origin: top right;
+      }
+
+      &::after {
+        @include size(0 $thickness);
+        transform-origin: bottom right;
+      }
+    }
+
+    &::before {
+      @include align();
+      @include edge(#{($height - $thickness) / -2} null null null);
+      @include size(#{$width / 2} $thickness);
     }
 
     &::after {
@@ -105,27 +80,79 @@
     }
   }
 
-  span:not(:only-of-type) {
-    &:nth-of-type(1) {
-      @include align('left', 'top');
-      @include edge(#{($height - $thickness) / 2} null null null);
+  span,
+  span::before,
+  span::after {
+    @include transition(width height transform opacity, 250ms, ease-in-out);
+    background: $color;
+    content: '';
+  }
+
+  &:hover {
+    span:not(:only-of-type):nth-of-type(2)::after {
+      @include size(#{$width / 2} $thickness);
     }
 
-    &:nth-of-type(2) {
-      @include align('right', 'top');
-      @include edge(#{($height - $thickness) / 2} null null null);
+    span:only-of-type::after {
+      @include size($width $thickness);
+    }
+  }
 
-      &::after { @include size(0 $thickness); }
+  &:active {
+    $_deg: 45deg;
+    $_w: $width / 2;
+    $_h: $height / 2;
+    $_off: $thickness / 2;
+
+    span:only-of-type {
+      $_hyp: $width;
+      $_opp: sin($_deg) * $_hyp;
+      $_adj: cos($_deg) * $_hyp;
+
+      @include size(0 $thickness);
+      transform: translate3d($_w, 0, 0);
+
+      &::before {
+        transform: translate3d(-$_w + ($width - $_adj) / 2 - $_off / 2, ($height - $_opp) / 2 - $_off, 0) rotate($_deg);
+      }
+
+      &::after {
+        @include size($width $thickness);
+        transform: translate3d(-$_w + ($width - $_adj) / 2 - $_off / 2, ($height - $_opp) / -2 + $_off, 0) rotate(-$_deg);
+      }
     }
 
-    &::before {
-      @include align();
-      @include edge(#{($height - $thickness) / -2} null null null);
-    }
+    span:not(:only-of-type) {
+      $_hyp: $_w;
+      $_opp: sin($_deg) * $_hyp;
+      $_adj: cos($_deg) * $_hyp;
 
-    &::after {
-      @include align('left', 'bottom');
-      @include edge(null null #{($height - $thickness) / -2} null);
+      @include size(0 $thickness);
+
+      &:nth-of-type(1) {
+        transform: translate3d($_w, 0, 0);
+
+        &::before {
+          transform: translate3d(-$_adj + $_off, $_h - $_opp, 0) rotate($_deg);
+        }
+
+        &::after {
+          transform: translate3d(-$_adj + $_off, $_opp - $_h, 0) rotate(-$_deg);
+        }
+      }
+
+      &:nth-of-type(2) {
+        transform: translate3d(-$_w, 0, 0);
+
+        &::before {
+          transform: translate3d($_adj - $_w - $_off, $_h - $_opp, 0) rotate(-$_deg);
+        }
+
+        &::after {
+          @include size($_w $thickness);
+          transform: translate3d($_adj - $_w - $_off, $_opp - $_h, 0) rotate($_deg);
+        }
+      }
     }
   }
 }

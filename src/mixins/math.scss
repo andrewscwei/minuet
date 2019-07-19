@@ -1,0 +1,79 @@
+$pi: 3.14159265359;
+
+@function pow($number, $exp) {
+  $_out: 1;
+
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $_out: $_out * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $_out: $_out / $number;
+    }
+  }
+
+  @return $_out;
+}
+
+@function fact($number) {
+  $_out: 1;
+
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $_out: $_out * $i;
+    }
+  }
+
+  @return $_out;
+}
+
+@function dtor($angle) {
+  $_unit: unit($angle);
+  $_unitless: strip-unit($angle);
+
+  // If the angle has 'deg' as unit, convert to radians.
+  @if $_unit == deg {
+    @return ($_unitless / 180) * $pi;
+  }
+
+  @error 'Provided input is not a degree value';
+}
+
+@function rtod($angle) {
+  $_unit: unit($angle);
+  $_unitless: strip-unit($angle);
+
+  @if $_unit == '' {
+    @return to-unit($_unitless * (180 / $pi), 'deg');
+  }
+
+  @error 'Provided input is not a radian value';
+}
+
+@function sin($deg) {
+  $_out: 0;
+  $_rad: dtor($deg);
+
+  @for $i from 0 through 10 {
+    $_out: $_out + pow(-1, $i) * pow($_rad, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+
+  @return $_out;
+}
+
+@function cos($deg) {
+  $_out: 0;
+  $_rad: dtor($deg);
+
+  @for $i from 0 through 10 {
+    $_out: $_out + pow(-1, $i) * pow($_rad, 2 * $i) / fact(2 * $i);
+  }
+
+  @return $_out;
+}
+
+@function tan($deg) {
+  @return sin($deg) / cos($deg);
+}
