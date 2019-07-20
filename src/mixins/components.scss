@@ -98,7 +98,7 @@
     }
   }
 
-  &:active {
+  &.active {
     $_deg: 45deg;
     $_w: $width / 2;
     $_h: $height / 2;
