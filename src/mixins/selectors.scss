@@ -280,3 +280,21 @@
     }
   }
 }
+
+/// Selects every child element except for the last one.
+///
+/// @group selectors
+@mixin each-but-last-child() {
+  > *:not(:last-child) {
+    @content;
+  }
+}
+
+/// Selects every child element except for the first one.
+///
+/// @group selectors
+@mixin each-but-first-child() {
+  > *:not(:first-child) {
+    @content;
+  }
+}
