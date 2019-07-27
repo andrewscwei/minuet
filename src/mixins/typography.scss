@@ -114,7 +114,7 @@ $font-weights: (
 @mixin font-face($family, $src, $weight: null, $style: null, $display: auto) {
   @font-face {
     font-family: $family;
-    src: url($src) format(#{get-font-format($src)});
+    src: url($src) format('#{get-font-format($src)}');
     font-style: if($style == null, get-font-style($src), $style);
     font-weight: if($weight == null, get-font-weight($src), $weight);
     font-display: $display;
