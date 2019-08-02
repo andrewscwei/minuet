@@ -423,27 +423,13 @@
     opacity: .3;
   }
 
-  .no-js:not(html) {
-    display: none;
+  html.no-js .js,
+  html:not(.no-js) .no-js {
+    display: none !important;
   }
 
-  .no-js .no-js:not(html) {
-    display: block;
-  }
-
-  .no-js .js {
-    display: none;
-  }
-
-  .supports-no-cookies:not(html) {
-    display: none;
-  }
-
-  html.supports-no-cookies .supports-no-cookies:not(html) {
-    display: block;
-  }
-
-  html.supports-no-cookies .supports-cookies {
-    display: none;
+  html.supports-no-cookies .supports-cookies,
+  html:not(.supports-no-cookies) .supports-no-cookies {
+    display: none !important;
   }
 }
