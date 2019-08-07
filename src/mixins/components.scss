@@ -133,11 +133,11 @@
         transform: translate3d($_w, 0, 0);
 
         &::before {
-          transform: translate3d(-$_adj + $_off, $_h - $_opp, 0) rotate($_deg);
+          transform: translate3d(-$_adj + $_off * 1.25, $_h - $_opp, 0) rotate($_deg);
         }
 
         &::after {
-          transform: translate3d(-$_adj + $_off, $_opp - $_h, 0) rotate(-$_deg);
+          transform: translate3d(-$_adj + $_off * 1.25, $_opp - $_h, 0) rotate(-$_deg);
         }
       }
 
@@ -145,12 +145,12 @@
         transform: translate3d(-$_w, 0, 0);
 
         &::before {
-          transform: translate3d($_adj - $_w - $_off, $_h - $_opp, 0) rotate(-$_deg);
+          transform: translate3d($_adj - $_w - $_off * 1.25, $_h - $_opp, 0) rotate(-$_deg);
         }
 
         &::after {
           @include size($_w $thickness);
-          transform: translate3d($_adj - $_w - $_off, $_opp - $_h, 0) rotate($_deg);
+          transform: translate3d($_adj - $_w - $_off * 1.25, $_opp - $_h, 0) rotate($_deg);
         }
       }
     }
