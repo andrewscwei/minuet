@@ -283,6 +283,11 @@
     &:-webkit-autofill {
       box-shadow: 0 0 0 1000px white inset;
     }
+
+    &::placeholder {
+      color: inherit;
+      opacity: .3;
+    }
   }
 
   form {
@@ -418,7 +423,7 @@
     padding: 0;
   }
 
-  &::placeholder {
+  ::placeholder {
     color: inherit;
     opacity: .3;
   }
