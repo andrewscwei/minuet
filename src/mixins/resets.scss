@@ -418,7 +418,10 @@
     padding: 0;
   }
 
-  ::placeholder {
+  ::placeholder,
+  ::-webkit-input-placeholder,
+  ::-ms-input-placeholder,
+  :-ms-input-placeholder {
     color: inherit;
     opacity: .3;
   }
