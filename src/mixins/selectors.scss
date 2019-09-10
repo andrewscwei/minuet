@@ -298,3 +298,21 @@
     @content;
   }
 }
+
+/// Selects the parent element on hover when HTML has no `.touch` class.
+///
+/// @group selectors
+@mixin hover-without-touch() {
+  html:not(.touch) &:hover {
+    @content;
+  }
+}
+
+/// Selects the parent element on hover when HTML has no `.touch` class.
+///
+/// @group selectors
+@mixin hwot() {
+  @include hover-without-touch() {
+    @content;
+  }
+}
