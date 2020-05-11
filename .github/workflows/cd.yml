@@ -77,3 +77,5 @@ jobs:
         run: .github/workflows/deploy_to_npm.sh
         env:
           NPM_AUTH: ${{ secrets.NPM_AUTH }}
+      - name: Deploy to GitHub pages
+        run: .github/workflows/deploy_to_gh_pages.sh
