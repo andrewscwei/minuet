@@ -1,4 +1,4 @@
-# Minuet [![npm](https://img.shields.io/npm/v/minuet.svg)](https://www.npmjs.com/package/minuet) [![CircleCI](https://img.shields.io/circleci/build/github/andrewscwei/minuet.svg)](https://circleci.com/gh/andrewscwei/minuet)
+# Minuet [![npm](https://img.shields.io/npm/v/minuet.svg)](https://www.npmjs.com/package/minuet) [![CI](https://github.com/andrewscwei/minuet/workflows/CI/badge.svg)](https://github.com/andrewscwei/minuet/actions?query=workflow%3ACI) [![CD](https://github.com/andrewscwei/minuet/workflows/CD/badge.svg)](https://github.com/andrewscwei/minuet/actions?query=workflow%3ACD)
 
 Minuet is a stand-alone Sass library. It is packaged with many handy mixins and functions to accomodate efficient styling. It pairs well with [Meno](https://github.com/andrewscwei/meno).
 

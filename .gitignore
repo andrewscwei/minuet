@@ -39,6 +39,7 @@ lib/
 .tmp/
 .tmp.*/
 .publish/
+.gh-pages
 
 # Packages
 *.7z

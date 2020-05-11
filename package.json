@@ -1,6 +1,6 @@
 {
   "name": "minuet",
-  "version": "5.12.0",
+  "version": "5.13.0",
   "description": "An experimental Sass library.",
   "homepage": "http://andrewscwei.github.io/minuet",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "clean": "rimraf lib",
     "build": "npm run clean && mkdir -p lib && npm run bundle",
     "bundle": "cat ./src/mixins/resets.scss ./src/mixins/utils.scss ./src/mixins/math.scss ./src/mixins/selectors.scss ./src/mixins/alignments.scss ./src/mixins/attributes.scss ./src/mixins/boxes.scss ./src/mixins/features.scss ./src/mixins/media.scss ./src/mixins/palette.scss ./src/mixins/typography.scss ./src/mixins/components.scss ./src/minuet.scss > ./lib/minuet.scss && sed -i 's/^[[:space:]]*@import.*$//g;s/^[[:space:]]*\\/\\/.*$//g;s/^[[:space:]]*\\/\\*.*$//g;/^[[:space:]]*$/d' ./lib/minuet.scss && sed -i '1s/^/\\/*! minuet, © Andrew Wei *\\/\\\n/' ./lib/minuet.scss",
-    "docs": "rimraf docs && sassdoc src -d docs",
+    "pages": "rimraf .gh-pages && sassdoc src -d .gh-pages",
     "demo": "webpack-dev-server --inline --hot --config demo/config/dev.conf.js --port 8080",
     "test": "echo \"There are no tests yet\""
   },
