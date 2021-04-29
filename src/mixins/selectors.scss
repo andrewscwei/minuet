@@ -168,7 +168,7 @@
 ///
 /// @group selectors
 @function select-boxes($suffix: null, $prefix: null) {
-  $_list: ('article', 'aside', 'details', 'dialog', 'summary', 'footer', 'header', 'main', 'figcaption', 'figure', 'hgroup', 'nav', 'section', 'div', 'table', 'tr', 'td', 'th', 'tbody', 'thead', 'tfoot', 'col');
+  $_list: ('article', 'aside', 'details', 'dialog', 'summary', 'footer', 'header', 'main', 'figcaption', 'figure', 'hgroup', 'nav', 'section', 'div');
   @return resolve-selectors($_list, $suffix, $prefix);
 }
 
