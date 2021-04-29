@@ -8,7 +8,7 @@ const outputDir = path.join(baseDir, 'public');
 
 module.exports = {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   context: inputDir,
   entry: './index.js',
   output: {
@@ -36,9 +36,13 @@ module.exports = {
       }, {
         loader: 'sass-loader',
         options: {
-          includePaths: [path.join(inputDir, 'stylesheets')],
-          outputStyle: 'compressed',
-          sourceMap: true
+          sassOptions: {
+            includePaths: [
+              path.join(inputDir, 'stylesheets'),
+            ],
+            outputStyle: 'compressed',
+            sourceMap: true
+          }
         }
       }]
     }, {
@@ -61,7 +65,6 @@ module.exports = {
     modules: [
       path.join(inputDir),
       path.join(baseDir, 'node_modules'),
-      path.join(libRoot, 'src'),
       path.join(libRoot, 'node_modules')
     ]
   },
