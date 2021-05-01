@@ -11,7 +11,6 @@
   transition-duration: append($durations, null, comma);
   transition-timing-function: append($timing-functions, null, comma);
   transition-delay: append($delays, null, comma);
-  will-change: append($properties, null, comma);
   @content;
 }
 
