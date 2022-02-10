@@ -30,7 +30,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "rimraf": "^3.0.2",
